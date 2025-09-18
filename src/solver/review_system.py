@@ -291,7 +291,7 @@ class ReviewAgent:
         attempts = []
         
         for iteration in solver_log.iterations:
-            if "candidates_generated" in iteration:
+            if isinstance(iteration, dict) and "candidates_generated" in iteration:
                 for candidate_info in iteration["candidates_generated"]:
                     if candidate_info.get("clue_id") == clue_id:
                         attempts.append(candidate_info)

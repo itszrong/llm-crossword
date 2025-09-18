@@ -11,6 +11,7 @@ This implementation incorporates several agentic design patterns:
 """
 
 import asyncio
+import copy
 import json
 import logging
 import os
@@ -53,6 +54,29 @@ def get_clue_id(clue: Clue) -> str:
     return f"{clue.number}_{clue.direction}"
 
 
+@dataclass 
+class SearchTreeNode:
+    """Represents a node in the backtracking search tree"""
+    puzzle_state: CrosswordPuzzle
+    solved_clues: Set[str] = field(default_factory=set)
+    locked_answers: Dict[str, str] = field(default_factory=dict)  # clue_id -> answer
+    depth: int = 0
+    parent: Optional['SearchTreeNode'] = None
+    children: List['SearchTreeNode'] = field(default_factory=list)
+    score: float = 0.0  # Quality of this partial solution
+    
+    def copy(self) -> 'SearchTreeNode':
+        """Create a deep copy of this node for branching"""
+        return SearchTreeNode(
+            puzzle_state=copy.deepcopy(self.puzzle_state),
+            solved_clues=self.solved_clues.copy(),
+            locked_answers=self.locked_answers.copy(),
+            depth=self.depth,
+            parent=self.parent,  # Keep same parent reference
+            children=[],  # New node starts with no children
+            score=self.score
+        )
+
 @dataclass
 class SolverState:
     """Current state of the crossword solving process"""
@@ -65,6 +89,11 @@ class SolverState:
     attempted_words: Dict[str, List[str]] = field(default_factory=dict)  # clue_id -> [attempted_words]
     rejection_reasons: Dict[str, List[str]] = field(default_factory=dict)  # clue_id -> [reasons]
     partial_patterns: Dict[str, str] = field(default_factory=dict)  # clue_id -> current_pattern
+    
+    # Backtracking tree components
+    search_tree_root: Optional[SearchTreeNode] = None
+    current_node: Optional[SearchTreeNode] = None
+    max_backtrack_depth: int = 8
 
 
 @dataclass
@@ -713,7 +742,7 @@ For definition clues:
             if other_clue != target_clue and other_clue.answered:
                 other_chars = puzzle.get_current_clue_chars(other_clue)
                 if any(char is not None for char in other_chars):
-                    intersecting_clues.append(f"'{other_clue.text}' = {''.join(other_chars)}")
+                    intersecting_clues.append(f"'{other_clue.text}' = {''.join(str(char) if char is not None else '_' for char in other_chars)}")
         
         if intersecting_clues:
             context_parts.append("Intersecting words: " + "; ".join(intersecting_clues))
@@ -1215,7 +1244,7 @@ class VisualizationAgent:
             
             if clue.answered and all(char is not None for char in current_chars):
                 clue_state["fully_solved"] = True
-                clue_state["final_answer"] = "".join(current_chars)
+                clue_state["final_answer"] = "".join(str(char) if char is not None else '_' for char in current_chars)
             else:
                 clue_state["fully_solved"] = False
             
@@ -1622,7 +1651,7 @@ class CoordinatorAgent:
                 expected_chars = list(clue.answer)
                 
                 if current_chars != expected_chars:
-                    current_word = ''.join(current_chars) if current_chars else "EMPTY"
+                    current_word = ''.join(str(char) if char is not None else '_' for char in current_chars) if current_chars else "EMPTY"
                     issues.append({
                         'clue': clue,
                         'current_answer': current_word,
@@ -1721,15 +1750,20 @@ class CoordinatorAgent:
             blocked_clue = conflict['blocked_clue']
             reason = conflict['conflict_reason']
             
-            # Check if this looks like a textbook answer being blocked
-            if self.constraint_agent._should_prioritize_over_existing(candidate, blocked_clue, None, "", puzzle):
-                logger.warning(f"Resolving priority conflict: removing blocking answers to place '{candidate.word}'")
+            # CONSERVATIVE APPROACH: Only clear answers if the new candidate has VERY high confidence
+            # and the existing answer seems clearly wrong
+            if (candidate.confidence >= 0.9 and 
+                self.constraint_agent._should_prioritize_over_existing(candidate, blocked_clue, None, "", puzzle)):
+                logger.warning(f"HIGH-CONFIDENCE OVERRIDE: Considering removing blocking answers for '{candidate.word}' (confidence: {candidate.confidence})")
                 
+                # Only proceed if this is clearly a better answer
                 # Find and remove conflicting answers based on the validation conflict
                 if "intersection conflict with" in reason.lower():
                     # Parse the conflicting clue from the reason string
                     # This is a simplified approach - in production, you'd want more robust parsing
                     self._clear_conflicting_intersections(puzzle, blocked_clue, candidate, state)
+            else:
+                logger.info(f"PRESERVING existing answers - candidate '{candidate.word}' (confidence: {candidate.confidence}) not confident enough to override")
     
     def _clear_conflicting_intersections(self, puzzle: CrosswordPuzzle, target_clue: Clue, 
                                        candidate: ClueCandidate, state: SolverState):
@@ -1954,6 +1988,8 @@ class CoordinatorAgent:
                     
                     # Apply the solution
                     puzzle.set_clue_chars(clue, list(candidate.word))
+                    # CRITICAL FIX: Mark clue as answered to prevent re-attempts
+                    clue.answered = True
                     state.solved_clues.append(get_clue_id(clue))
                     progress_made = True
                     
@@ -2038,7 +2074,7 @@ class CoordinatorAgent:
                 grid_state["solved_clues"].append({
                     "number": clue.number,
                     "text": clue.text,
-                    "answer": "".join(current_chars)
+                    "answer": "".join(str(char) if char is not None else '_' for char in current_chars)
                 })
                 solved_count += 1
                 clue_state["fully_solved"] = True

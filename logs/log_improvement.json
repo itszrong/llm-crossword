@@ -1,0 +1,199 @@
+ING:src.solver.agents:ClueAgent async attempt 2 failed for 'A year (3,5)'
+WARNING:src.solver.agents:❌ LENGTH MISMATCH: 'NEWYEAR' (7 letters) rejected for 8-letter clue 'A year (3,5)'
+WARNING:src.solver.agents:❌ LENGTH MISMATCH: 'ONEYEAR' (7 letters) rejected for 8-letter clue 'A year (3,5)'
+WARNING:src.solver.agents:❌ LENGTH MISMATCH: 'THEYEAR' (7 letters) rejected for 8-letter clue 'A year (3,5)'
+WARNING:src.solver.agents:ClueAgent async attempt 3 failed for 'A year (3,5)'
+ERROR:src.solver.agents:ClueAgent failed to solve 'A year (3,5)' async after 3 attempts
+WARNING:src.solver.agents:🏛️ Technical clue boost for 'OEDIPUSREX' (clue: 'Greek tragedy (7,3)')
+WARNING:src.solver.agents:🎯 Priority calc: 'OEDIPUSREX' = 0.28 × 2.00 × 3.0 = 1.710
+WARNING:src.solver.agents:🏛️ Technical clue boost for 'ANTIGONEAN' (clue: 'Greek tragedy (7,3)')
+WARNING:src.solver.agents:🎯 Priority calc: 'ANTIGONEAN' = 0.08 × 2.00 × 3.0 = 0.480
+WARNING:src.solver.agents:🚀 MULTI-WORD BOOST: 'DRACHMA' (clue: 'Greek money, formerly (7)', confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'DRACHMA' = 0.95 × 1.80 × 6.0 = 10.260
+WARNING:src.solver.agents:🚀 MULTI-WORD BOOST: 'CHARADES' (clue: 'Parlour game (8)', confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'CHARADES' = 0.95 × 1.80 × 6.0 = 10.260
+WARNING:src.solver.agents:🚀 MULTI-WORD BOOST: 'CHARADES' (clue: 'Parlour game (8)', confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'CHARADES' = 0.95 × 1.80 × 6.0 = 10.260
+WARNING:src.solver.agents:⭐ High-confidence boost for 'OVAL' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'OVAL' = 0.95 × 1.40 × 2.5 = 3.325
+WARNING:src.solver.agents:⭐ High-confidence boost for 'ACHE' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'ACHE' = 0.95 × 1.40 × 2.5 = 3.325
+WARNING:src.solver.agents:🎯 Priority calc: 'PAIN' = 0.85 × 1.40 × 1.0 = 1.197
+WARNING:src.solver.agents:🎯 Priority calc: 'NUCLEUS' = 0.85 × 1.60 × 1.0 = 1.368
+WARNING:src.solver.agents:🎯 Priority calc: 'ESSENCE' = 0.85 × 1.60 × 1.0 = 1.368
+WARNING:src.solver.agents:🎯 Priority calc: 'CONJURE' = 0.85 × 1.60 × 1.0 = 1.368
+WARNING:src.solver.agents:⭐ High-confidence boost for 'BURR' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'BURR' = 0.95 × 1.40 × 2.5 = 3.325
+WARNING:src.solver.agents:⭐ High-confidence boost for 'TEAM' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'TEAM' = 0.95 × 1.40 × 2.5 = 3.325
+WARNING:src.solver.agents:🎯 Priority calc: 'UNIT' = 0.85 × 1.40 × 1.0 = 1.197
+WARNING:src.solver.agents:🎯 Priority calc: 'CREW' = 0.85 × 1.40 × 1.0 = 1.197
+WARNING:src.solver.agents:⭐ High-confidence boost for 'DEADLOCK' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'DEADLOCK' = 0.95 × 1.80 × 2.5 = 4.275
+WARNING:src.solver.agents:⭐ High-confidence boost for 'DELTA' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'DELTA' = 0.95 × 1.60 × 2.5 = 3.800
+WARNING:src.solver.agents:⭐ High-confidence boost for 'GAMMA' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'GAMMA' = 0.95 × 1.60 × 2.5 = 3.800
+WARNING:src.solver.agents:🏛️ Technical clue boost for 'ALPHA' (clue: 'Greek letter (5)')
+WARNING:src.solver.agents:🎯 Priority calc: 'ALPHA' = 0.85 × 1.60 × 3.0 = 4.104
+WARNING:src.solver.agents:⭐ High-confidence boost for 'PUNY' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'PUNY' = 0.95 × 1.40 × 2.5 = 3.325
+WARNING:src.solver.agents:⭐ High-confidence boost for 'SEMESTER' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'SEMESTER' = 0.95 × 1.80 × 2.5 = 4.275
+WARNING:src.solver.agents:⭐ High-confidence boost for 'MAUDLIN' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'MAUDLIN' = 0.95 × 1.80 × 2.5 = 4.275
+WARNING:src.solver.agents:⭐ High-confidence boost for 'GIANT' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'GIANT' = 0.95 × 1.60 × 2.5 = 3.800
+WARNING:src.solver.agents:🎯 Priority calc: 'RACER' = 0.85 × 1.60 × 1.0 = 1.368
+WARNING:src.solver.agents:🎯 Priority calc: 'RACER' = 0.85 × 1.60 × 1.0 = 1.368
+WARNING:src.solver.agents:⭐ High-confidence boost for 'MAGI' (confidence: 0.95)
+WARNING:src.solver.agents:🎯 Priority calc: 'MAGI' = 0.95 × 1.40 × 2.5 = 3.325
+WARNING:src.solver.agents:🏆 Top 5 priorities this iteration:
+WARNING:src.solver.agents:  1. DRACHMA (priority=10.260, confidence=0.95)
+WARNING:src.solver.agents:  2. CHARADES (priority=10.260, confidence=0.95)
+WARNING:src.solver.agents:  3. CHARADES (priority=10.260, confidence=0.95)
+WARNING:src.solver.agents:  4. DEADLOCK (priority=4.275, confidence=0.95)
+WARNING:src.solver.agents:  5. SEMESTER (priority=4.275, confidence=0.95)
+WARNING:src.solver.agents:VALIDATION ISSUE: Clue 12 'Greek letter (5)' has 'ALPHA' but expected 'OMEGA'
+WARNING:src.solver.agents:VALIDATION ISSUE: Clue 21 'Huge (5)' has 'GIANT' but expected 'JUMBO'
+ERROR:src.solver.main_solver:Error during puzzle solving: 'NoneType' object has no attribute 'text'
+
+📊 Initial Solver Results:
+  ✅ Success: False
+  📈 Completion: 15/23 clues (65.2%)
+  ⏱️  Time: 50.08 seconds
+  🎭 Review enabled: True
+  📝 Log saved to: ../logs/hard_detailed_test.json
+
+🎭 Applying Manual Review System (completion: 65.2%)...
+  ❌ Review system error: 'str' object has no attribute 'get'
+
+🔄 Starting Iterative Solver + Review Loop...
+
+🔄 Iterative Solver + Review Loop (max 8 cycles)
+============================================================
+
+🔄 CYCLE 1/8
+----------------------------------------
+  🎯 Phase 1: Running solver pass...
+    🎯 Cycle 1: Standard approach
+WARNING:src.solver.agents:📝 Then targeting 6 partially filled clues for completion
+WARNING:src.solver.agents:🔤 Finally processing 2 regular clues
+ERROR:src.solver.agents:Error solving clue 'Greek tragedy (7,3)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'A year (3,5)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Perform tricks (7)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Squad (4)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Mess (4,6)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Call up (5)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Greek letter (5)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Huge (5)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.main_solver:Error during puzzle solving: sequence item 0: expected str instance, NoneType found
+    📊 Solver result: +0 clues (15/23)
+  🎭 Phase 2: Applying review system...
+ERROR:src.solver.review_system:Error generating correction candidates: 'NoneType' object has no attribute 'split'
+    ✅ Review applied 3 corrections
+  📊 Cycle 1 total: +3 clues
+  📈 Current progress: 18/23 (78.3%)
+
+🔄 CYCLE 2/8
+----------------------------------------
+  🎯 Phase 1: Running solver pass...
+    🎯 Cycle 2: Standard approach
+WARNING:src.solver.agents:📝 Then targeting 4 partially filled clues for completion
+WARNING:src.solver.agents:🔤 Finally processing 1 regular clues
+ERROR:src.solver.agents:Error solving clue 'Greek tragedy (7,3)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Perform tricks (7)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Mess (4,6)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Call up (5)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Huge (5)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.main_solver:Error during puzzle solving: sequence item 0: expected str instance, NoneType found
+    📊 Solver result: +0 clues (18/23)
+  🎭 Phase 2: Applying review system...
+    ✅ Review applied 2 corrections
+  📊 Cycle 2 total: +2 clues
+  📈 Current progress: 20/23 (87.0%)
+
+🔄 CYCLE 3/8
+----------------------------------------
+  🎯 Phase 1: Running solver pass...
+    🎯 Cycle 3: More aggressive thresholds
+WARNING:src.solver.agents:📝 Then targeting 3 partially filled clues for completion
+ERROR:src.solver.agents:Error solving clue 'Greek tragedy (7,3)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Mess (4,6)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.agents:Error solving clue 'Call up (5)' async: sequence item 0: expected str instance, NoneType found
+ERROR:src.solver.main_solver:Error during puzzle solving: sequence item 0: expected str instance, NoneType found
+    📊 Solver result: +0 clues (20/23)
+  🎭 Phase 2: Applying review system...
+    ℹ️  Review found no applicable corrections
+  📊 Cycle 3 total: +0 clues
+  📈 Current progress: 20/23 (87.0%)
+  ⏹️  No improvement in cycle 3
+  🛑 Stopping early - no progress for multiple cycles
+
+📊 Iterative Loop Summary:
+  🔄 Cycles completed: 3/8
+  📈 Total improvement: +5 clues
+  🎯 Final result: 20/23 clues (87.0%)
+  ✅ Success: False
+
+🎯 Final grid:
+┌───────────────────────────────────────┐
+│ ░        D     P     S           ░  ░ │
+│ ░     ░  R  ░  U  ░  E  ░     ░  L  ░ │
+│          A     N     M  ░  O  V  A  L │
+│ ░     ░  C  ░  Y  ░  E  ░     ░  N  ░ │
+│ ░     C  H  E  ░  E  S  S  E  N  C  E │
+│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │
+│ ░  C  R  A  S  H  H  E  L  M  E  T  ░ │
+│ ░  R  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │
+│    O           R     ░  B  U  R  R  ░ │
+│ ░  W  ░     ░  A  ░  M  ░  D  ░  A  ░ │
+│    E        ░  D  E  A  D  L  O  C  K │
+│ ░  D  ░     ░  E  ░  G  ░  I  ░  E  ░ │
+│ ░  ░           S     I     N     R  ░ │
+└───────────────────────────────────────┘
+❌ Solution has errors
+
+📊 Final Comprehensive Results:
+  ✅ Solver Success: False
+  📈 Final Completion: 20/23 clues (87.0%)
+  ⏱️  Initial Solve Time: 50.08 seconds
+  🎭 Review System Used: True
+  🔄 Iterative Cycles: 3
+  ✅ Solution Consistency: False
+  🧩 Solver Method: Iterative agentic solving with review system
+
+📋 Visualization History:
+  Total visualizations captured: 8
+
+🔍 Final Clue States:
+  ❌ Clue 1 Direction.ACROSS: 'Greek tragedy (7,3)' = __D_P_S___
+  ❌ Clue 2 Direction.ACROSS: 'A year (3,5)' = ___A_N_M
+  ✅ Clue 3 Direction.ACROSS: 'Elliptical shape (4)' = OVAL
+  ❌ Clue 4 Direction.ACROSS: 'Feeling of discomfort (4)' = _CHE
+  ✅ Clue 5 Direction.ACROSS: 'Kernel (7)' = ESSENCE
+  ✅ Clue 6 Direction.ACROSS: 'Safety equipment for a biker, say (5,6)' = CRASHHELMET
+  ❌ Clue 7 Direction.ACROSS: 'Perform tricks (7)' = _O___R_
+  ✅ Clue 8 Direction.ACROSS: 'Prickly seed case (4)' = BURR
+  ❌ Clue 9 Direction.ACROSS: 'Squad (4)' = _E__
+  ✅ Clue 10 Direction.ACROSS: 'Impasse (8)' = DEADLOCK
+  ❌ Clue 11 Direction.ACROSS: 'Mess (4,6)' = ___S_I_N_R
+  ❌ Clue 12 Direction.DOWN: 'Greek letter (5)' = _____
+  ✅ Clue 13 Direction.DOWN: 'Greek money, formerly (7)' = DRACHMA
+  ✅ Clue 14 Direction.DOWN: 'Small and weak (4)' = PUNY
+  ✅ Clue 15 Direction.DOWN: 'Academic term (8)' = SEMESTER
+  ❌ Clue 16 Direction.DOWN: 'Call up (5)' = __O_E
+  ✅ Clue 17 Direction.DOWN: 'Surgical knife (6)' = LANCET
+  ✅ Clue 18 Direction.DOWN: 'Parlour game (8)' = CHARADES
+  ✅ Clue 19 Direction.DOWN: 'Bragged (6)' = CROWED
+  ✅ Clue 20 Direction.DOWN: 'Schmaltzy (7)' = MAUDLIN
+  ❌ Clue 21 Direction.DOWN: 'Huge (5)' = _____
+  ✅ Clue 22 Direction.DOWN: 'Fast car or fast driver (5)' = RACER
+  ✅ Clue 23 Direction.DOWN: 'Travellers who followed a star (4)' = MAGI
+
+❌ Remaining Unsolved Clues (3):
+  1 ACROSS: 'Greek tragedy (7,3)' (10 letters) = __D_P_S___
+  11 ACROSS: 'Mess (4,6)' (10 letters) = ___S_I_N_R
+  16 DOWN: 'Call up (5)' (5 letters) = __O_E
+
+🎯 Result: ❌ FAILED
