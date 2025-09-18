@@ -20,58 +20,47 @@ from src.solver.review_system import TwoStageReviewSystem
 # Load environment variables
 load_dotenv()
 
-def apply_final_completion(puzzle: CrosswordPuzzle) -> int:
+def apply_additional_solver_passes(puzzle: CrosswordPuzzle, solver: AgenticCrosswordSolver, max_passes: int = 3) -> int:
     """
-    Apply final completion using known correct answers as fallback
-    Based on final_completion.py logic
+    Apply additional solver passes to try to complete more clues
+    This uses only the solver's own capabilities, no ground truth
     """
-    print("\n🎯 Applying Final Completion...")
-    
-    # Complete set of correct answers from final_completion.py
-    all_solutions = {
-        "Greek tragedy (7,3)": "OEDIPUSREX",     # The classic Greek tragedy by Sophocles
-        "A year (3,5)": "PERANNUM",              # Latin for "per year" 
-        "Elliptical shape (4)": "OVAL",          # Oval shape
-        "Feeling of discomfort (4)": "ACHE",     # Pain or discomfort
-        "Kernel (7)": "ESSENCE",                 # Core or central part
-        "Safety equipment for a biker, say (5,6)": "CRASHHELMET",  # Protective headgear
-        "Perform tricks (7)": "CONJURE",         # To perform magic tricks
-        "Prickly seed case (4)": "BURR",         # Spiky seed covering
-        "Squad (4)": "TEAM",                     # Group or squad
-        "Impasse (8)": "DEADLOCK",               # Standstill or stalemate
-        "Mess (4,6)": "DOGSDINNER",              # British slang for a mess
-        "Greek letter (5)": "OMEGA",             # Greek letter Ω (last letter of Greek alphabet)
-        "Greek money, formerly (7)": "DRACHMA",  # Former Greek currency
-        "Small and weak (4)": "PUNY",            # Weak or feeble
-        "Academic term (8)": "SEMESTER",         # School term
-        "Call up (5)": "EVOKE",                  # To summon or call forth
-        "Surgical knife (6)": "LANCET",          # Medical cutting instrument
-        "Parlour game (8)": "CHARADES",          # Acting game
-        "Bragged (6)": "CROWED",                 # Boasted proudly
-        "Schmaltzy (7)": "MAUDLIN",              # Overly sentimental
-        "Huge (5)": "LARGE",                     # Very big
-        "Fast car or fast driver (5)": "RACER",  # Racing car or driver
-        "Travellers who followed a star (4)": "MAGI"  # The wise men/three kings
-    }
+    print(f"\n🔄 Applying Additional Solver Passes (max {max_passes})...")
     
     initial_solved = sum(1 for clue in puzzle.clues if clue.answered)
-    completed_count = 0
+    total_improvements = 0
     
-    for clue in puzzle.clues:
-        if not clue.answered and clue.text in all_solutions:
-            answer = all_solutions[clue.text]
-            try:
-                puzzle.set_clue_chars(clue, list(answer))
-                completed_count += 1
-                print(f"  ✅ Completed '{clue.text}' = {answer}")
-            except Exception as e:
-                print(f"  ❌ Error completing '{clue.text}' = {answer}: {e}")
+    for pass_num in range(1, max_passes + 1):
+        print(f"\n  🔄 Pass {pass_num}:")
+        
+        # Try to solve remaining unsolved clues with fresh perspective
+        unsolved_clues = [clue for clue in puzzle.clues if not clue.answered]
+        
+        if not unsolved_clues:
+            print(f"    ✅ All clues already solved!")
+            break
+        
+        print(f"    🎯 Attempting to solve {len(unsolved_clues)} remaining clues...")
+        
+        # Apply solver again on the current state
+        pass_success = solver.solve(puzzle, verbose=False, puzzle_name=f"Hard_Test_Pass_{pass_num}")
+        
+        current_solved = sum(1 for clue in puzzle.clues if clue.answered)
+        improvements_this_pass = current_solved - (initial_solved + total_improvements)
+        total_improvements += improvements_this_pass
+        
+        print(f"    📊 Pass {pass_num} result: +{improvements_this_pass} clues solved")
+        print(f"    📈 Current total: {current_solved}/{len(puzzle.clues)} clues ({current_solved/len(puzzle.clues)*100:.1f}%)")
+        
+        if improvements_this_pass == 0:
+            print(f"    ⏹️  No progress in pass {pass_num}, stopping additional passes")
+            break
     
     final_solved = sum(1 for clue in puzzle.clues if clue.answered)
-    print(f"  📊 Final completion added: {completed_count} clues")
-    print(f"  📈 Total completion: {final_solved}/{len(puzzle.clues)} clues ({final_solved/len(puzzle.clues)*100:.1f}%)")
+    print(f"\n  📊 Additional passes result: +{total_improvements} clues solved")
+    print(f"  📈 Final completion: {final_solved}/{len(puzzle.clues)} clues ({final_solved/len(puzzle.clues)*100:.1f}%)")
     
-    return completed_count
+    return total_improvements
 
 def test_hard_puzzle():
     """Test the hard puzzle with detailed logging"""
@@ -144,12 +133,12 @@ def test_hard_puzzle():
             except Exception as e:
                 print(f"  ❌ Review system error: {e}")
         
-        # Apply final completion if still not fully solved
+        # Apply additional solver passes if still not fully solved
         if stats['completion_rate'] < 1.0:
-            print(f"\n🎯 Applying Final Completion Fallback...")
-            completed_count = apply_final_completion(puzzle)
+            print(f"\n🔄 Applying Additional Solver Passes...")
+            additional_solved = apply_additional_solver_passes(puzzle, solver, max_passes=3)
             
-            if completed_count > 0:
+            if additional_solved > 0:
                 new_solved = sum(1 for clue in puzzle.clues if clue.answered)
                 stats['finally_solved'] = new_solved
                 stats['completion_rate'] = new_solved / len(puzzle.clues)
@@ -167,11 +156,12 @@ def test_hard_puzzle():
         
         # Display final comprehensive results
         print(f"\n📊 Final Comprehensive Results:")
-        print(f"  ✅ Overall Success: {stats['success']}")
+        print(f"  ✅ Solver Success: {stats['success']}")
         print(f"  📈 Final Completion: {stats['finally_solved']}/{stats['total_clues']} clues ({stats['completion_rate']:.1%})")
-        print(f"  ⏱️  Total Time: {stats['solving_time']:.2f} seconds")
+        print(f"  ⏱️  Initial Solve Time: {stats['solving_time']:.2f} seconds")
         print(f"  🎭 Review System Used: {stats['review_enabled']}")
-        print(f"  ✅ Solution Validated: {validation_success}")
+        print(f"  ✅ Solution Consistency: {validation_success}")
+        print(f"  🧩 Solver Method: Agentic solving with review system and additional passes")
         
         print(f"\n📋 Visualization History:")
         print(f"  Total visualizations captured: {len(solver.coordinator.visualization_agent.visualization_history)}")
@@ -196,22 +186,16 @@ def test_hard_puzzle():
             solved = "✅" if clue.answered and all(char is not None for char in current_chars) else "❌"
             print(f"  {solved} Clue {clue.number} {clue.direction}: '{clue.text}' = {current_word}")
             
-        # Show some expected answers for debugging (hard puzzle samples)
-        print(f"\n🎯 Expected Answers (Sample):")
-        expected_answers = {
-            "1_across": "OEDIPUSREX",    # Greek tragedy (7,3)
-            "2_across": "PERANNUM",     # A year (3,5)
-            "3_across": "OVAL",         # Elliptical shape (4)
-            "4_across": "ACHE",         # Feeling of discomfort (4)
-            "5_across": "ESSENCE",      # Kernel (7)
-            "12_down": "OMEGA",         # Greek letter (5)
-            "13_down": "DRACHMA",       # Greek money, formerly (7)
-            "14_down": "PUNY"           # Small and weak (4)
-        }
-        for clue in puzzle.clues[:8]:  # Show first 8 clues
-            clue_key = f"{clue.number}_{clue.direction}"
-            if clue_key in expected_answers:
-                print(f"  Clue {clue.number} {clue.direction}: '{clue.text}' → {expected_answers[clue_key]}")
+        # Show summary of unsolved clues for analysis
+        unsolved_clues = [clue for clue in puzzle.clues if not clue.answered]
+        if unsolved_clues:
+            print(f"\n❌ Remaining Unsolved Clues ({len(unsolved_clues)}):")
+            for clue in unsolved_clues:
+                current_chars = puzzle.get_current_clue_chars(clue)
+                pattern = "".join(char or "_" for char in current_chars)
+                print(f"  {clue.number} {clue.direction.name}: '{clue.text}' ({clue.length} letters) = {pattern}")
+        else:
+            print(f"\n🎉 All clues solved by the solver!")
             
         # Return comprehensive success (either solver succeeded or final completion achieved 100%)
         return stats['success'] and validation_success

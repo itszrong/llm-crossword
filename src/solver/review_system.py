@@ -236,13 +236,14 @@ class ReviewAgent:
         return insights
     
     def _analyze_solved_clue(self, clue: Clue, puzzle: CrosswordPuzzle, solver_log: SolverLog) -> List[ReviewInsight]:
-        """Analyze a solved clue for potential errors"""
+        """Analyze a solved clue for potential errors using semantic analysis only"""
         insights = []
         clue_id = f"{clue.number}_{clue.direction.name.lower()}"
         
-        current_answer = ''.join(puzzle.get_current_clue_chars(clue))
+        current_chars = puzzle.get_current_clue_chars(clue)
+        current_answer = ''.join(char or "_" for char in current_chars)
         
-        # Use LLM to verify the answer makes sense
+        # Use LLM to verify the answer makes semantic sense
         semantic_score = self._verify_semantic_correctness(clue, current_answer)
         
         if semantic_score < 0.6:  # Low confidence in correctness
@@ -250,8 +251,8 @@ class ReviewAgent:
                 clue_id=clue_id,
                 issue_type="semantic_error",
                 confidence=1.0 - semantic_score,
-                description=f"Answer '{current_answer}' may not fit clue '{clue.text}' semantically",
-                suggested_action="Generate alternative candidates or review clue interpretation"
+                description=f"Answer '{current_answer}' may not fit clue '{clue.text}' semantically (confidence: {semantic_score:.2f})",
+                suggested_action="Generate alternative candidates that better match the clue meaning"
             ))
         
         return insights

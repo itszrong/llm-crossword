@@ -719,7 +719,8 @@ class ConstraintAgent:
         # Check intersections with all answered clues
         for other_clue in puzzle.clues:
             if other_clue != clue and other_clue.answered:
-                other_word = ''.join(puzzle.get_current_clue_chars(other_clue))
+                other_chars = puzzle.get_current_clue_chars(other_clue)
+                other_word = ''.join(char or "_" for char in other_chars)
                 if not self.tools.validate_intersection(puzzle, clue, candidate.word, 
                                                       other_clue, other_word):
                     # ENHANCED: Check if this is a high-confidence answer being blocked by a lower-confidence one
@@ -1220,7 +1221,8 @@ Format: SCORE: [number] | REASON: [brief explanation]
             
             for other_clue in puzzle.clues:
                 if other_clue != clue and other_clue.answered:
-                    other_word = ''.join(puzzle.get_current_clue_chars(other_clue))
+                    other_chars = puzzle.get_current_clue_chars(other_clue)
+                other_word = ''.join(char or "_" for char in other_chars)
                     if not self.tools.validate_intersection(puzzle, clue, candidate.word, other_clue, other_word):
                         return 0.0  # Hard failure for intersection conflicts
             
@@ -1508,7 +1510,8 @@ class CoordinatorAgent:
                 intersections = self._find_intersections(target_clue, other_clue)
                 if intersections:
                     # Check if placing the candidate would conflict
-                    other_word = ''.join(puzzle.get_current_clue_chars(other_clue))
+                    other_chars = puzzle.get_current_clue_chars(other_clue)
+                other_word = ''.join(char or "_" for char in other_chars)
                     if not self.tools.validate_intersection(puzzle, target_clue, candidate.word, 
                                                           other_clue, other_word):
                         logger.info(f"Clearing conflicting answer '{other_word}' from clue {other_clue.number} to allow '{candidate.word}'")

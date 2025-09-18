@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-09-18T16:51:47.640604",
+  "timestamp": "2025-09-18T16:57:13.086677",
   "puzzle_name": "Hard_Test",
   "puzzle_size": "13x13",
   "total_clues": 23,
   "iterations": [
     {
       "iteration": 1,
-      "start_time": "2025-09-18T16:51:47.655957",
+      "start_time": "2025-09-18T16:57:13.091147",
       "candidates_generated": {
         "1": {
           "clue_text": "Greek tragedy (7,3)",
@@ -16,7 +16,19 @@
             {
               "word": "OEDIPUSREX",
               "confidence": 0.95,
-              "reasoning": "\"Oedipus Rex\" is one of the most famous Greek tragedies, written by Sophocles. The clue specifies a two-word answer (7,3), and \"Oedipus\" (7 letters) and \"Rex\" (3 letters) fit perfectly. It is a common answer in crosswords for this type of clue. [Knowledge base match]",
+              "reasoning": "\"Oedipus Rex\" is one of the most famous Greek tragedies, written by Sophocles. The clue specifies a 7,3 format, which matches the two words \"Oedipus\" (7 letters) and \"Rex\" (3 letters). It is a straightforward and common answer for this type of clue. [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ANTIGONETR",
+              "confidence": 0.7,
+              "reasoning": "Another famous Greek tragedy by Sophocles is \"Antigone.\" However, \"Antigone\" is a single word and does not fit the 7,3 format unless \"TR\" is an abbreviation or part of a title, which is unlikely. This makes it a less probable answer. [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "MEDEAEURIP",
+              "confidence": 0.4,
+              "reasoning": "\"Medea,\" a tragedy by Euripides, is another well-known Greek tragedy. However, \"Medea\" is only 5 letters and does not fit the 7,3 format. Adding \"Eurip\" (a shortened form of Euripides) is speculative and not a standard way to refer to the play. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -29,13 +41,13 @@
             {
               "word": "FULLYEAR",
               "confidence": 0.7,
-              "reasoning": "\"FULL YEAR\" is another way to describe a complete year, and when written as a single word, it becomes \"FULLYEAR.\" However, this interpretation is less direct than \"ONE YEAR,\" so the confidence level is lower. [Knowledge base match]",
+              "reasoning": "Another way to describe \"a year\" could be \"full year.\" If we merge the two words into one, it becomes \"FULLYEAR,\" which is 8 letters. However, this interpretation is less direct than \"one year,\" so the confidence is lower. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "CALENDAR",
               "confidence": 0.4,
-              "reasoning": "A \"calendar\" represents a year in a general sense, but it doesn't directly match the clue \"A year (3,5).\" Additionally, \"CALENDAR\" is only 8 letters but doesn't follow the (3,5) format, making it less likely to be correct. [Knowledge base match]",
+              "reasoning": "A \"calendar\" is associated with a year, but it doesn't directly match the clue's format (3,5). Additionally, \"calendar\" is a single word and doesn't fit the multi-word clue structure. This is a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -48,13 +60,19 @@
             {
               "word": "OVAL",
               "confidence": 0.95,
-              "reasoning": "The clue \"Elliptical shape\" directly describes an oval, which is a common term for an elliptical or elongated circular shape. The word \"oval\" is exactly 4 letters, making it a perfect fit for the clue and length requirement. [Knowledge base match]",
+              "reasoning": "The clue \"Elliptical shape\" directly points to the word \"oval,\" which is a common term for an elliptical or elongated circular shape. It is a straightforward and literal interpretation of the clue, and the length (4 letters) matches perfectly. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "OBIT",
+              "word": "LOON",
               "confidence": 0.4,
-              "reasoning": "While \"obit\" (short for obituary) is a 4-letter word, it does not relate to the clue \"Elliptical shape.\" This is included only as a placeholder for potential misdirection, but it is unlikely to be correct. [Knowledge base match]",
+              "reasoning": "While \"loon\" is a bird, it can sometimes be associated with the shape of an ellipse due to its body or movement in water. However, this is a stretch and not a common interpretation of \"elliptical shape.\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ORBS",
+              "confidence": 0.4,
+              "reasoning": "\"Orbs\" refers to circular or spherical shapes, which could loosely connect to an ellipse. However, this is less precise since \"orbs\" typically implies perfect circles or spheres, not ellipses. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -67,19 +85,19 @@
             {
               "word": "ACHE",
               "confidence": 0.95,
-              "reasoning": "\"Feeling of discomfort\" directly suggests a physical or emotional sensation of unease or pain. \"ACHE\" is a common four-letter word that fits this definition perfectly. It is simple, direct, and aligns with the clue. [Knowledge base match]",
+              "reasoning": "\"Feeling of discomfort\" directly suggests a physical or emotional sensation of unease, and \"ache\" is a common four-letter word that fits this definition perfectly. It is simple, straightforward, and matches the clue's length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "PAIN",
               "confidence": 0.7,
-              "reasoning": "\"PAIN\" is another synonym for discomfort, and it fits the four-letter requirement. However, \"pain\" often implies a more intense sensation than \"ache,\" so it might not be as precise for this clue. [Knowledge base match]",
+              "reasoning": "\"Pain\" is another synonym for discomfort, but it often implies a stronger or more acute sensation compared to \"ache.\" While it fits the clue, \"ache\" feels like the more natural answer for a crossword. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "ILLS",
+              "word": "UNEZ",
               "confidence": 0.4,
-              "reasoning": "\"ILLS\" can refer to discomfort or troubles in a broader sense, but it is less commonly used to describe a direct \"feeling of discomfort.\" It is a less likely choice compared to \"ACHE\" or \"PAIN.\" [Knowledge base match]",
+              "reasoning": "\"Unez\" is a less common term derived from \"unease,\" which also means discomfort. However, it is rarely used in English and is unlikely to be the intended answer unless the crossword has a specific linguistic or thematic focus. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -92,20 +110,33 @@
             {
               "word": "NUCLEUS",
               "confidence": 0.95,
-              "reasoning": "\"Kernel\" can mean the central or most important part of something, which aligns with the definition of \"nucleus.\" Additionally, \"nucleus\" is exactly 7 letters long, making it a perfect fit for the clue. [Knowledge base match]",
+              "reasoning": "The word \"nucleus\" is a synonym for \"kernel,\" as both refer to the central or most important part of something. \"Nucleus\" is a common 7-letter word that fits the clue directly and matches the required length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SEEDING",
               "confidence": 0.7,
-              "reasoning": "A \"kernel\" can also refer to a seed or the process of seeding. However, \"seeding\" is less directly synonymous with \"kernel\" and is more of a stretch in meaning. [Knowledge base match]",
+              "reasoning": "\"Seeding\" can relate to \"kernel\" in the sense of planting seeds or the central part of a seed. However, this is less direct and less commonly associated with \"kernel,\" so it is a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "PITHIER",
+              "word": "COREKEY",
               "confidence": 0.4,
-              "reasoning": "\"Pith\" can refer to the essential or central part of something, similar to \"kernel.\" However, \"pithier\" is an adjective meaning \"more concise,\" which makes it less likely to fit the clue directly. [Knowledge base match]",
+              "reasoning": "\"Core\" is often a synonym for \"kernel,\" and \"key\" could emphasize its importance. However, \"corekey\" is not a standard word, so this is a very unlikely answer. [Knowledge base match]",
               "clue_type": "definition"
+            }
+          ]
+        },
+        "6": {
+          "clue_text": "Safety equipment for a biker, say (5,6)",
+          "clue_length": 11,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "BIKERHELMET",
+              "confidence": 0.7,
+              "reasoning": "This is a simpler phrase that directly describes safety equipment for a biker. However, it is less formal than \"MOTORCYCLEHELMET\" and might not be the intended answer, as crossword clues often lean toward more standard terminology. [Knowledge base match]",
+              "clue_type": "complex"
             }
           ]
         },
@@ -117,13 +148,13 @@
             {
               "word": "CONJURE",
               "confidence": 0.95,
-              "reasoning": "The clue \"Perform tricks\" suggests something related to magic or illusions. \"Conjure\" is a 7-letter word that directly means to perform magical tricks or summon something through magic. It fits both the definition and the required length. [Knowledge base match]",
+              "reasoning": "The clue \"Perform tricks\" suggests an action associated with magic or illusions. \"Conjure\" is a 7-letter word that directly means to perform magical tricks or summon something through magic. It fits both the clue and the required length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "CAPERED",
+              "word": "DECEIVE",
               "confidence": 0.4,
-              "reasoning": "\"Capered\" means to leap or dance in a playful or lively way, which could be interpreted as performing tricks. However, it is less commonly associated with the context of \"tricks\" than \"conjure\" or \"juggle,\" making it a less likely answer. [Knowledge base match]",
+              "reasoning": "Deceiving can involve trickery or misleading actions, which might loosely connect to \"perform tricks.\" However, it is less specific to the context of performance or magic and is therefore a weaker fit. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -136,19 +167,19 @@
             {
               "word": "BURR",
               "confidence": 0.95,
-              "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those found on plants like burdock. It fits the clue perfectly, as it is exactly 4 letters long and directly matches the definition. [Knowledge base match]",
+              "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those from burdock plants. It fits the clue perfectly, as it is a direct synonym and matches the required 4-letter length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "HULL",
               "confidence": 0.7,
-              "reasoning": "While \"hull\" can refer to the outer covering of a seed or fruit, it is not specifically \"prickly.\" This makes it a less precise match for the clue, but it could still be a possibility depending on the crossword's intended interpretation. [Knowledge base match]",
+              "reasoning": "While \"hull\" can refer to the outer covering of a seed or fruit, it does not specifically imply \"prickly,\" which makes it a less precise fit for the clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "PODS",
               "confidence": 0.4,
-              "reasoning": "\"Pods\" can refer to seed cases, but they are not typically described as \"prickly.\" This answer is less likely unless the crossword is using a looser interpretation of the clue. [Knowledge base match]",
+              "reasoning": "\"Pods\" can refer to seed cases, but they are not typically described as \"prickly.\" This makes it an unlikely but possible alternative if the clue is using a broader interpretation. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -161,19 +192,19 @@
             {
               "word": "TEAM",
               "confidence": 0.95,
-              "reasoning": "The clue \"Squad\" directly suggests a group of people working together, which is synonymous with \"team.\" It fits the 4-letter requirement and is a common, straightforward answer in crosswords. [Knowledge base match]",
+              "reasoning": "The word \"team\" is a direct synonym for \"squad,\" and it fits the 4-letter requirement. It is a common and straightforward answer in crosswords for this type of clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "UNIT",
               "confidence": 0.7,
-              "reasoning": "\"Unit\" can also refer to a group or squad, especially in a military or organizational context. While it fits the clue and length, it is slightly less common than \"team\" in general usage. [Knowledge base match]",
+              "reasoning": "\"Unit\" can also mean a group or squad, especially in military or organizational contexts. However, it is slightly less common than \"team\" in general usage. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "CREW",
               "confidence": 0.7,
-              "reasoning": "\"Crew\" is another synonym for \"squad,\" often used in contexts like sports, work, or informal groups. It fits the 4-letter requirement and is plausible, though \"team\" is more universally applicable. [Knowledge base match]",
+              "reasoning": "\"Crew\" is another synonym for \"squad,\" often used in contexts like sports, work teams, or informal groups. It is a plausible alternative but less universally applicable than \"team.\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -186,13 +217,13 @@
             {
               "word": "DEADLOCK",
               "confidence": 0.95,
-              "reasoning": "The clue \"Impasse\" directly suggests a situation where no progress can be made, which is synonymous with \"deadlock.\" The word fits the required length of 8 letters and is a common crossword answer for this type of clue. [Knowledge base match]",
+              "reasoning": "The clue \"Impasse\" directly suggests a situation where no progress can be made, which is synonymous with \"deadlock.\" The word \"deadlock\" is exactly 8 letters long, making it a perfect fit for the clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "GRIDLOCK",
               "confidence": 0.7,
-              "reasoning": "\"Gridlock\" refers to a traffic jam or a broader situation where progress is completely blocked, which can also be interpreted as an \"impasse.\" While it fits the clue and length, it is slightly less commonly used in non-traffic contexts compared to \"deadlock\" or \"stalemate.\" [Knowledge base match]",
+              "reasoning": "\"Gridlock\" refers to a traffic jam or a situation where progress is impossible, which can metaphorically align with \"impasse.\" While slightly less common than \"deadlock\" or \"stalemate\" in general contexts, it is still a plausible answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -203,9 +234,21 @@
           "clue_direction": "across",
           "candidates": [
             {
+              "word": "DOGSDINNER",
+              "confidence": 0.95,
+              "reasoning": "The phrase \"dog's dinner\" is a common idiom meaning a mess or something that is untidy or chaotic. It fits the clue perfectly in terms of both meaning and the required format (4,6). [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "PIGSSTYLES",
+              "confidence": 0.7,
+              "reasoning": "\"Pig's sty\" is another idiom associated with messiness, but the pluralized form \"pig's styles\" feels less natural and is not a recognized phrase. This makes it a less likely answer. [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
               "word": "TOTALCHAOS",
               "confidence": 0.7,
-              "reasoning": "\"Total chaos\" is another phrase that describes a mess or disorder. While it fits the meaning of the clue, it is less specific and less commonly used than \"dumpster fire.\" [Knowledge base match]",
+              "reasoning": "\"Total chaos\" is a synonym for \"mess,\" and it fits the length requirement (4,6). However, it lacks the idiomatic flair that crossword clues often favor, making it a less likely choice. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -218,19 +261,19 @@
             {
               "word": "DELTA",
               "confidence": 0.95,
-              "reasoning": "\"Delta\" is a 5-letter Greek letter and one of the most commonly used in crosswords. It fits the clue perfectly without requiring additional context. It is also a straightforward and widely recognized answer. [Knowledge base match]",
+              "reasoning": "\"Delta\" is a common Greek letter that fits the 5-letter requirement. It is frequently used in crosswords due to its simplicity and familiarity. Additionally, it is one of the most recognizable Greek letters, often associated with rivers or change in mathematics/science. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "GAMMA",
               "confidence": 0.7,
-              "reasoning": "\"Gamma\" is another 5-letter Greek letter that fits the clue. While it is less commonly used in crosswords compared to \"Delta,\" it is still a valid and plausible option. [Knowledge base match]",
+              "reasoning": "\"Gamma\" is another well-known Greek letter that fits the 5-letter requirement. It is less commonly used than \"Delta\" in general contexts but is still a plausible answer, especially if the puzzle leans toward scientific or mathematical themes. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "THETA",
+              "word": "SIGMA",
               "confidence": 0.7,
-              "reasoning": "\"Theta\" is also a 5-letter Greek letter and fits the clue. It is slightly less common than \"Delta\" or \"Gamma\" in crosswords but remains a reasonable alternative. [Knowledge base match]",
+              "reasoning": "\"Sigma\" is a 5-letter Greek letter often associated with summation in mathematics. It is a reasonable alternative, though slightly less likely than \"Delta\" or \"Gamma\" unless the puzzle context suggests a mathematical or statistical connection. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -243,13 +286,13 @@
             {
               "word": "DRACHMA",
               "confidence": 0.95,
-              "reasoning": "The drachma was the official currency of Greece before the euro was introduced in 2001. The clue specifies \"Greek money, formerly,\" and the word \"formerly\" strongly suggests a historical currency. The length of 7 letters matches perfectly with \"drachma,\" making this the most likely answer. [Knowledge base match]",
+              "reasoning": "The drachma was the official currency of Greece before the euro was introduced in 2001. The clue specifies \"Greek money, formerly,\" and the word \"formerly\" strongly suggests a historical currency. The length of 7 letters fits perfectly with \"drachma.\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "LEPTONS",
+              "word": "TALENTS",
               "confidence": 0.4,
-              "reasoning": "Leptons were small denominations of Greek currency in ancient times, but they are less commonly referenced compared to the drachma. Additionally, \"leptons\" is plural, which doesn't fit the singular phrasing of \"Greek money\" in the clue. [Knowledge base match]",
+              "reasoning": "Talents were a unit of currency or weight in ancient Greece, but they are less associated with \"money\" in the modern sense and are more obscure compared to \"drachma.\" Additionally, \"talents\" often refers to a larger unit rather than everyday currency. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -262,19 +305,19 @@
             {
               "word": "PUNY",
               "confidence": 0.95,
-              "reasoning": "The word \"puny\" directly means \"small and weak,\" which matches the clue perfectly. It is a common four-letter word often used in this context, making it a strong candidate for the answer. [Knowledge base match]",
+              "reasoning": "The word \"puny\" is a direct synonym for \"small and weak,\" making it a perfect fit for the clue. It is exactly 4 letters long and commonly used in crossword puzzles for this type of clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "WEAK",
               "confidence": 0.7,
-              "reasoning": "While \"weak\" fits the second part of the clue, it does not inherently imply \"small,\" so it is less precise than \"puny.\" However, it is still a plausible alternative. [Knowledge base match]",
+              "reasoning": "While \"weak\" is part of the clue itself, it could still be a valid answer if the crossword uses a straightforward approach. However, it's less likely since crosswords typically avoid repeating words from the clue in the answer. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "THIN",
               "confidence": 0.4,
-              "reasoning": "\"Thin\" could imply weakness in some contexts, but it does not directly mean \"small and weak.\" It is a less likely fit for the clue. [Knowledge base match]",
+              "reasoning": "\"Thin\" can imply weakness or frailty, but it doesn't directly mean \"small and weak.\" It's a less precise fit for the clue, so it's a less confident alternative. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -287,13 +330,13 @@
             {
               "word": "SEMESTER",
               "confidence": 0.95,
-              "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common term used in schools and universities to describe half of an academic year, and it fits the required 8-letter length perfectly. [Knowledge base match]",
+              "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common division of the academic year, typically lasting about half the year, and it fits the required 8-letter length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "QUARTERS",
               "confidence": 0.4,
-              "reasoning": "Some academic institutions divide the year into four terms called \"quarters.\" However, \"quarters\" is only 7 letters long, so it does not meet the 8-letter requirement. This makes it an unlikely answer. [Knowledge base match]",
+              "reasoning": "Some academic institutions divide the year into \"quarters\" instead of semesters or trimesters. However, \"quarters\" is only 7 letters long, so it does not fit the 8-letter requirement, making this answer unlikely. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -304,15 +347,15 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "DIALS",
+              "word": "EVOKE",
               "confidence": 0.7,
-              "reasoning": "\"Call up\" could also refer to making a phone call, and \"dials\" is a 5-letter word associated with this action. However, \"dials\" is less directly synonymous with \"call up\" than \"recall,\" so this is a less likely option. [Knowledge base match]",
+              "reasoning": "\"Evoke\" can mean to bring something to mind or \"call up\" a memory or feeling. While it fits the clue and length, it is slightly less direct than \"recall.\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "EVOKE",
+              "word": "PHONE",
               "confidence": 0.7,
-              "reasoning": "\"Call up\" can also mean to evoke or bring something to mind, such as a memory or feeling. \"Evoke\" is a plausible alternative, but it is slightly less common in crossword puzzles than \"recall.\" [Knowledge base match]",
+              "reasoning": "\"Call up\" can also refer to making a phone call, and \"phone\" is a 5-letter word that fits this interpretation. However, this is a less likely answer because \"phone\" is more specific and less versatile than \"recall.\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -325,13 +368,7 @@
             {
               "word": "LANCET",
               "confidence": 0.7,
-              "reasoning": "A \"lancet\" is another type of surgical knife, often used for making small incisions or punctures. While it fits the clue, it is less commonly associated with general surgery compared to \"scalpel.\" [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "BISTRO",
-              "confidence": 0.4,
-              "reasoning": "While \"bistoury\" is an older term for a surgical knife, it does not match the 6-letter requirement. \"Bistro\" is a stretch and not directly related to the clue, but it could be considered if there’s a thematic or cryptic element in the puzzle. [Knowledge base match]",
+              "reasoning": "A \"lancet\" is another type of surgical knife, typically used for small incisions or bloodletting. While it fits the 6-letter requirement, it is less precise than \"scalpel\" for the clue and might not be the intended answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -344,13 +381,13 @@
             {
               "word": "CHARADES",
               "confidence": 0.95,
-              "reasoning": "\"Parlour game\" is a direct definition clue. Charades is one of the most classic and well-known parlour games, and it fits the 8-letter requirement perfectly. It is a game often played in a parlour setting, where players act out words or phrases without speaking. [Knowledge base match]",
+              "reasoning": "\"Parlour game\" is a direct definition for CHARADES, a classic game often played in social settings like parlours. The word is exactly 8 letters long, making it a perfect fit for the clue. CHARADES is also one of the most common answers for clues related to parlour games. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "MONOPOLY",
               "confidence": 0.4,
-              "reasoning": "Monopoly is a well-known board game often played in a parlour setting. However, it is not typically categorized as a \"parlour game\" in the traditional sense, and it is more associated with board games. It also does not fit the 8-letter requirement (Monopoly is 9 letters). [Knowledge base match]",
+              "reasoning": "While Monopoly is a well-known game, it is more of a board game than a traditional parlour game. It also doesn't fit the typical association with \"parlour games,\" which are usually more interactive and involve acting or guessing. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -361,21 +398,15 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "BOASTS",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Bragged\" directly suggests a synonym for boasting or showing off. \"BOASTS\" is a common six-letter word that fits this meaning perfectly, and it matches the required length. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PRATED",
-              "confidence": 0.7,
-              "reasoning": "\"Prated\" can mean talking boastfully or excessively, which aligns with \"bragged.\" However, it is less commonly used in everyday language, so it’s a less likely answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
               "word": "CROWED",
               "confidence": 0.7,
-              "reasoning": "\"Crowed\" can mean bragged or gloated, often in a triumphant or boastful way. While it fits the clue, it might not be the most direct synonym for \"bragged.\" [Knowledge base match]",
+              "reasoning": "\"Crowed\" can also mean \"bragged\" in a figurative sense, as in someone boasting loudly or triumphantly. However, it is slightly less common than \"boasted\" as a synonym for \"bragged.\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "GLOWED",
+              "confidence": 0.4,
+              "reasoning": "While \"glowed\" can sometimes imply a sense of pride or satisfaction (which might be interpreted as a subtle form of bragging), it is a much less direct synonym for \"bragged.\" This makes it a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -388,7 +419,7 @@
             {
               "word": "MAUDLIN",
               "confidence": 0.95,
-              "reasoning": "The clue \"Schmaltzy\" suggests something overly sentimental or emotional, which is a direct synonym for \"maudlin.\" The word is exactly 7 letters long, fitting the requirement. [Knowledge base match]",
+              "reasoning": "The clue \"Schmaltzy\" suggests something overly sentimental or emotional, often in a way that feels excessive or insincere. \"Maudlin\" is a perfect synonym for this and fits the 7-letter requirement. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -401,13 +432,19 @@
             {
               "word": "LARGE",
               "confidence": 0.95,
-              "reasoning": "\"Large\" is a common synonym for \"huge\" and fits the 5-letter requirement. It is a straightforward and frequently used word in crossword puzzles for this type of clue. [Knowledge base match]",
+              "reasoning": "\"Huge\" is a straightforward clue, and \"large\" is a common synonym for \"huge.\" It fits the 5-letter requirement and is a very common crossword answer for this type of clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "GIANT",
               "confidence": 0.7,
-              "reasoning": "\"Giant\" is another synonym for \"huge\" and also fits the 5-letter length. However, it is slightly less common than \"large\" in crossword puzzles and might be used more often for specific contexts, such as mythical creatures or exaggerated size. [Knowledge base match]",
+              "reasoning": "\"Giant\" is another synonym for \"huge\" and fits the 5-letter length. However, it is slightly less common in crosswords compared to \"large\" and might imply something more specific (e.g., a giant person or creature) rather than the general idea of \"huge.\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "GREAT",
+              "confidence": 0.7,
+              "reasoning": "\"Great\" can also mean \"huge\" in certain contexts, such as describing magnitude or size. However, it is less directly synonymous with \"huge\" than \"large\" or \"giant,\" so it is a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -420,19 +457,19 @@
             {
               "word": "RACER",
               "confidence": 0.95,
-              "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to a fast car (e.g., a race car) or a fast driver (e.g., someone who races). The word is exactly 5 letters, making it a perfect fit for the clue. [Knowledge base match]",
+              "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to both a fast car (e.g., a race car) and a fast driver (e.g., someone who races). It fits the 5-letter requirement and is a common crossword answer for such clues. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SPEED",
               "confidence": 0.7,
-              "reasoning": "\"Speed\" could loosely fit the clue, as it is associated with both fast cars and fast drivers. However, it doesn't directly describe a car or driver, making it a less precise answer. [Knowledge base match]",
+              "reasoning": "\"Speed\" could loosely fit the clue, as it is associated with both fast cars and fast drivers. However, it doesn't directly describe a car or driver themselves, making it less precise than \"RACER.\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "DRIFT",
               "confidence": 0.4,
-              "reasoning": "\"Drift\" could relate to fast drivers, as drifting is a driving technique often associated with speed. However, it doesn't describe a fast car or driver as directly as \"RACER\" does, and it feels more specific to a particular context. [Knowledge base match]",
+              "reasoning": "\"Drift\" could relate to fast cars or drivers in the context of drifting (a driving technique), but it doesn't directly answer the clue. It’s more of a driving style than a description of a car or driver. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -445,13 +482,19 @@
             {
               "word": "MAGI",
               "confidence": 0.95,
-              "reasoning": "The clue refers to \"travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men or Three Kings, who followed the Star of Bethlehem to find the baby Jesus. \"Magi\" is a common four-letter answer in crosswords for this type of clue. [Knowledge base match]",
+              "reasoning": "The clue refers to \"travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men or Three Kings, who followed the Star of Bethlehem to visit the infant Jesus. The word \"Magi\" is exactly 4 letters long, fitting the length requirement. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SAGE",
               "confidence": 0.7,
-              "reasoning": "\"Sage\" can refer to a wise person, and the Magi are often described as wise men. However, \"sage\" does not specifically imply travellers or following a star, so it is less precise than \"Magi.\" [Knowledge base match]",
+              "reasoning": "\"Sage\" can refer to a wise person, and the Magi are often described as wise men. However, \"Sage\" does not directly connect to the idea of following a star, making it a less precise fit. [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "KING",
+              "confidence": 0.7,
+              "reasoning": "The Magi are sometimes referred to as the Three Kings. While \"King\" fits the length requirement and has a loose connection to the clue, it is not as specific as \"Magi\" in describing the star-following travellers. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -465,8 +508,8 @@
           "candidates": [
             {
               "word": "OEDIPUSREX",
-              "confidence": 0.38,
-              "reasoning": "\"Oedipus Rex\" is one of the most famous Greek tragedies, written by Sophocles. The clue specifies a two-word answer (7,3), and \"Oedipus\" (7 letters) and \"Rex\" (3 letters) fit perfectly. It is a common answer in crosswords for this type of clue. [Knowledge base match]",
+              "confidence": 0.285,
+              "reasoning": "\"Oedipus Rex\" is one of the most famous Greek tragedies, written by Sophocles. The clue specifies a 7,3 format, which matches the two words \"Oedipus\" (7 letters) and \"Rex\" (3 letters). It is a straightforward and common answer for this type of clue. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -479,13 +522,13 @@
             {
               "word": "FULLYEAR",
               "confidence": 0.13999999999999999,
-              "reasoning": "\"FULL YEAR\" is another way to describe a complete year, and when written as a single word, it becomes \"FULLYEAR.\" However, this interpretation is less direct than \"ONE YEAR,\" so the confidence level is lower. [Knowledge base match]",
+              "reasoning": "Another way to describe \"a year\" could be \"full year.\" If we merge the two words into one, it becomes \"FULLYEAR,\" which is 8 letters. However, this interpretation is less direct than \"one year,\" so the confidence is lower. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "CALENDAR",
               "confidence": 0.12,
-              "reasoning": "A \"calendar\" represents a year in a general sense, but it doesn't directly match the clue \"A year (3,5).\" Additionally, \"CALENDAR\" is only 8 letters but doesn't follow the (3,5) format, making it less likely to be correct. [Knowledge base match]",
+              "reasoning": "A \"calendar\" is associated with a year, but it doesn't directly match the clue's format (3,5). Additionally, \"calendar\" is a single word and doesn't fit the multi-word clue structure. This is a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -498,7 +541,13 @@
             {
               "word": "OVAL",
               "confidence": 0.95,
-              "reasoning": "The clue \"Elliptical shape\" directly describes an oval, which is a common term for an elliptical or elongated circular shape. The word \"oval\" is exactly 4 letters, making it a perfect fit for the clue and length requirement. [Knowledge base match]",
+              "reasoning": "The clue \"Elliptical shape\" directly points to the word \"oval,\" which is a common term for an elliptical or elongated circular shape. It is a straightforward and literal interpretation of the clue, and the length (4 letters) matches perfectly. [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ORBS",
+              "confidence": 0.16000000000000003,
+              "reasoning": "\"Orbs\" refers to circular or spherical shapes, which could loosely connect to an ellipse. However, this is less precise since \"orbs\" typically implies perfect circles or spheres, not ellipses. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -511,19 +560,13 @@
             {
               "word": "ACHE",
               "confidence": 0.95,
-              "reasoning": "\"Feeling of discomfort\" directly suggests a physical or emotional sensation of unease or pain. \"ACHE\" is a common four-letter word that fits this definition perfectly. It is simple, direct, and aligns with the clue. [Knowledge base match]",
+              "reasoning": "\"Feeling of discomfort\" directly suggests a physical or emotional sensation of unease, and \"ache\" is a common four-letter word that fits this definition perfectly. It is simple, straightforward, and matches the clue's length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "PAIN",
               "confidence": 0.63,
-              "reasoning": "\"PAIN\" is another synonym for discomfort, and it fits the four-letter requirement. However, \"pain\" often implies a more intense sensation than \"ache,\" so it might not be as precise for this clue. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "ILLS",
-              "confidence": 0.27999999999999997,
-              "reasoning": "\"ILLS\" can refer to discomfort or troubles in a broader sense, but it is less commonly used to describe a direct \"feeling of discomfort.\" It is a less likely choice compared to \"ACHE\" or \"PAIN.\" [Knowledge base match]",
+              "reasoning": "\"Pain\" is another synonym for discomfort, but it often implies a stronger or more acute sensation compared to \"ache.\" While it fits the clue, \"ache\" feels like the more natural answer for a crossword. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -536,20 +579,33 @@
             {
               "word": "NUCLEUS",
               "confidence": 0.855,
-              "reasoning": "\"Kernel\" can mean the central or most important part of something, which aligns with the definition of \"nucleus.\" Additionally, \"nucleus\" is exactly 7 letters long, making it a perfect fit for the clue. [Knowledge base match]",
+              "reasoning": "The word \"nucleus\" is a synonym for \"kernel,\" as both refer to the central or most important part of something. \"Nucleus\" is a common 7-letter word that fits the clue directly and matches the required length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SEEDING",
               "confidence": 0.27999999999999997,
-              "reasoning": "A \"kernel\" can also refer to a seed or the process of seeding. However, \"seeding\" is less directly synonymous with \"kernel\" and is more of a stretch in meaning. [Knowledge base match]",
+              "reasoning": "\"Seeding\" can relate to \"kernel\" in the sense of planting seeds or the central part of a seed. However, this is less direct and less commonly associated with \"kernel,\" so it is a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "PITHIER",
-              "confidence": 0.12,
-              "reasoning": "\"Pith\" can refer to the essential or central part of something, similar to \"kernel.\" However, \"pithier\" is an adjective meaning \"more concise,\" which makes it less likely to fit the clue directly. [Knowledge base match]",
+              "word": "COREKEY",
+              "confidence": 0.08000000000000002,
+              "reasoning": "\"Core\" is often a synonym for \"kernel,\" and \"key\" could emphasize its importance. However, \"corekey\" is not a standard word, so this is a very unlikely answer. [Knowledge base match]",
               "clue_type": "definition"
+            }
+          ]
+        },
+        "6": {
+          "clue_text": "Safety equipment for a biker, say (5,6)",
+          "clue_length": 11,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "BIKERHELMET",
+              "confidence": 0.21,
+              "reasoning": "This is a simpler phrase that directly describes safety equipment for a biker. However, it is less formal than \"MOTORCYCLEHELMET\" and might not be the intended answer, as crossword clues often lean toward more standard terminology. [Knowledge base match]",
+              "clue_type": "complex"
             }
           ]
         },
@@ -561,13 +617,13 @@
             {
               "word": "CONJURE",
               "confidence": 0.855,
-              "reasoning": "The clue \"Perform tricks\" suggests something related to magic or illusions. \"Conjure\" is a 7-letter word that directly means to perform magical tricks or summon something through magic. It fits both the definition and the required length. [Knowledge base match]",
+              "reasoning": "The clue \"Perform tricks\" suggests an action associated with magic or illusions. \"Conjure\" is a 7-letter word that directly means to perform magical tricks or summon something through magic. It fits both the clue and the required length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "CAPERED",
-              "confidence": 0.36000000000000004,
-              "reasoning": "\"Capered\" means to leap or dance in a playful or lively way, which could be interpreted as performing tricks. However, it is less commonly associated with the context of \"tricks\" than \"conjure\" or \"juggle,\" making it a less likely answer. [Knowledge base match]",
+              "word": "DECEIVE",
+              "confidence": 0.32000000000000006,
+              "reasoning": "Deceiving can involve trickery or misleading actions, which might loosely connect to \"perform tricks.\" However, it is less specific to the context of performance or magic and is therefore a weaker fit. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -580,19 +636,19 @@
             {
               "word": "BURR",
               "confidence": 0.95,
-              "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those found on plants like burdock. It fits the clue perfectly, as it is exactly 4 letters long and directly matches the definition. [Knowledge base match]",
+              "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those from burdock plants. It fits the clue perfectly, as it is a direct synonym and matches the required 4-letter length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "HULL",
               "confidence": 0.27999999999999997,
-              "reasoning": "While \"hull\" can refer to the outer covering of a seed or fruit, it is not specifically \"prickly.\" This makes it a less precise match for the clue, but it could still be a possibility depending on the crossword's intended interpretation. [Knowledge base match]",
+              "reasoning": "While \"hull\" can refer to the outer covering of a seed or fruit, it does not specifically imply \"prickly,\" which makes it a less precise fit for the clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "PODS",
               "confidence": 0.16000000000000003,
-              "reasoning": "\"Pods\" can refer to seed cases, but they are not typically described as \"prickly.\" This answer is less likely unless the crossword is using a looser interpretation of the clue. [Knowledge base match]",
+              "reasoning": "\"Pods\" can refer to seed cases, but they are not typically described as \"prickly.\" This makes it an unlikely but possible alternative if the clue is using a broader interpretation. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -605,19 +661,19 @@
             {
               "word": "TEAM",
               "confidence": 0.95,
-              "reasoning": "The clue \"Squad\" directly suggests a group of people working together, which is synonymous with \"team.\" It fits the 4-letter requirement and is a common, straightforward answer in crosswords. [Knowledge base match]",
+              "reasoning": "The word \"team\" is a direct synonym for \"squad,\" and it fits the 4-letter requirement. It is a common and straightforward answer in crosswords for this type of clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "UNIT",
               "confidence": 0.63,
-              "reasoning": "\"Unit\" can also refer to a group or squad, especially in a military or organizational context. While it fits the clue and length, it is slightly less common than \"team\" in general usage. [Knowledge base match]",
+              "reasoning": "\"Unit\" can also mean a group or squad, especially in military or organizational contexts. However, it is slightly less common than \"team\" in general usage. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "CREW",
               "confidence": 0.63,
-              "reasoning": "\"Crew\" is another synonym for \"squad,\" often used in contexts like sports, work, or informal groups. It fits the 4-letter requirement and is plausible, though \"team\" is more universally applicable. [Knowledge base match]",
+              "reasoning": "\"Crew\" is another synonym for \"squad,\" often used in contexts like sports, work teams, or informal groups. It is a plausible alternative but less universally applicable than \"team.\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -630,13 +686,13 @@
             {
               "word": "DEADLOCK",
               "confidence": 0.95,
-              "reasoning": "The clue \"Impasse\" directly suggests a situation where no progress can be made, which is synonymous with \"deadlock.\" The word fits the required length of 8 letters and is a common crossword answer for this type of clue. [Knowledge base match]",
+              "reasoning": "The clue \"Impasse\" directly suggests a situation where no progress can be made, which is synonymous with \"deadlock.\" The word \"deadlock\" is exactly 8 letters long, making it a perfect fit for the clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "GRIDLOCK",
               "confidence": 0.7,
-              "reasoning": "\"Gridlock\" refers to a traffic jam or a broader situation where progress is completely blocked, which can also be interpreted as an \"impasse.\" While it fits the clue and length, it is slightly less commonly used in non-traffic contexts compared to \"deadlock\" or \"stalemate.\" [Knowledge base match]",
+              "reasoning": "\"Gridlock\" refers to a traffic jam or a situation where progress is impossible, which can metaphorically align with \"impasse.\" While slightly less common than \"deadlock\" or \"stalemate\" in general contexts, it is still a plausible answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -647,9 +703,15 @@
           "clue_direction": "across",
           "candidates": [
             {
+              "word": "DOGSDINNER",
+              "confidence": 0.6649999999999999,
+              "reasoning": "The phrase \"dog's dinner\" is a common idiom meaning a mess or something that is untidy or chaotic. It fits the clue perfectly in terms of both meaning and the required format (4,6). [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
               "word": "TOTALCHAOS",
               "confidence": 0.63,
-              "reasoning": "\"Total chaos\" is another phrase that describes a mess or disorder. While it fits the meaning of the clue, it is less specific and less commonly used than \"dumpster fire.\" [Knowledge base match]",
+              "reasoning": "\"Total chaos\" is a synonym for \"mess,\" and it fits the length requirement (4,6). However, it lacks the idiomatic flair that crossword clues often favor, making it a less likely choice. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -662,19 +724,19 @@
             {
               "word": "DELTA",
               "confidence": 0.95,
-              "reasoning": "\"Delta\" is a 5-letter Greek letter and one of the most commonly used in crosswords. It fits the clue perfectly without requiring additional context. It is also a straightforward and widely recognized answer. [Knowledge base match]",
+              "reasoning": "\"Delta\" is a common Greek letter that fits the 5-letter requirement. It is frequently used in crosswords due to its simplicity and familiarity. Additionally, it is one of the most recognizable Greek letters, often associated with rivers or change in mathematics/science. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "GAMMA",
               "confidence": 0.7,
-              "reasoning": "\"Gamma\" is another 5-letter Greek letter that fits the clue. While it is less commonly used in crosswords compared to \"Delta,\" it is still a valid and plausible option. [Knowledge base match]",
+              "reasoning": "\"Gamma\" is another well-known Greek letter that fits the 5-letter requirement. It is less commonly used than \"Delta\" in general contexts but is still a plausible answer, especially if the puzzle leans toward scientific or mathematical themes. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "THETA",
+              "word": "SIGMA",
               "confidence": 0.7,
-              "reasoning": "\"Theta\" is also a 5-letter Greek letter and fits the clue. It is slightly less common than \"Delta\" or \"Gamma\" in crosswords but remains a reasonable alternative. [Knowledge base match]",
+              "reasoning": "\"Sigma\" is a 5-letter Greek letter often associated with summation in mathematics. It is a reasonable alternative, though slightly less likely than \"Delta\" or \"Gamma\" unless the puzzle context suggests a mathematical or statistical connection. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -687,13 +749,13 @@
             {
               "word": "DRACHMA",
               "confidence": 0.95,
-              "reasoning": "The drachma was the official currency of Greece before the euro was introduced in 2001. The clue specifies \"Greek money, formerly,\" and the word \"formerly\" strongly suggests a historical currency. The length of 7 letters matches perfectly with \"drachma,\" making this the most likely answer. [Knowledge base match]",
+              "reasoning": "The drachma was the official currency of Greece before the euro was introduced in 2001. The clue specifies \"Greek money, formerly,\" and the word \"formerly\" strongly suggests a historical currency. The length of 7 letters fits perfectly with \"drachma.\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "LEPTONS",
+              "word": "TALENTS",
               "confidence": 0.36000000000000004,
-              "reasoning": "Leptons were small denominations of Greek currency in ancient times, but they are less commonly referenced compared to the drachma. Additionally, \"leptons\" is plural, which doesn't fit the singular phrasing of \"Greek money\" in the clue. [Knowledge base match]",
+              "reasoning": "Talents were a unit of currency or weight in ancient Greece, but they are less associated with \"money\" in the modern sense and are more obscure compared to \"drachma.\" Additionally, \"talents\" often refers to a larger unit rather than everyday currency. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -706,19 +768,19 @@
             {
               "word": "PUNY",
               "confidence": 0.95,
-              "reasoning": "The word \"puny\" directly means \"small and weak,\" which matches the clue perfectly. It is a common four-letter word often used in this context, making it a strong candidate for the answer. [Knowledge base match]",
+              "reasoning": "The word \"puny\" is a direct synonym for \"small and weak,\" making it a perfect fit for the clue. It is exactly 4 letters long and commonly used in crossword puzzles for this type of clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "WEAK",
               "confidence": 0.27999999999999997,
-              "reasoning": "While \"weak\" fits the second part of the clue, it does not inherently imply \"small,\" so it is less precise than \"puny.\" However, it is still a plausible alternative. [Knowledge base match]",
+              "reasoning": "While \"weak\" is part of the clue itself, it could still be a valid answer if the crossword uses a straightforward approach. However, it's less likely since crosswords typically avoid repeating words from the clue in the answer. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "THIN",
               "confidence": 0.24,
-              "reasoning": "\"Thin\" could imply weakness in some contexts, but it does not directly mean \"small and weak.\" It is a less likely fit for the clue. [Knowledge base match]",
+              "reasoning": "\"Thin\" can imply weakness or frailty, but it doesn't directly mean \"small and weak.\" It's a less precise fit for the clue, so it's a less confident alternative. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -731,13 +793,13 @@
             {
               "word": "SEMESTER",
               "confidence": 0.95,
-              "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common term used in schools and universities to describe half of an academic year, and it fits the required 8-letter length perfectly. [Knowledge base match]",
+              "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common division of the academic year, typically lasting about half the year, and it fits the required 8-letter length. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "QUARTERS",
               "confidence": 0.16000000000000003,
-              "reasoning": "Some academic institutions divide the year into four terms called \"quarters.\" However, \"quarters\" is only 7 letters long, so it does not meet the 8-letter requirement. This makes it an unlikely answer. [Knowledge base match]",
+              "reasoning": "Some academic institutions divide the year into \"quarters\" instead of semesters or trimesters. However, \"quarters\" is only 7 letters long, so it does not fit the 8-letter requirement, making this answer unlikely. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -748,15 +810,15 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "DIALS",
-              "confidence": 0.63,
-              "reasoning": "\"Call up\" could also refer to making a phone call, and \"dials\" is a 5-letter word associated with this action. However, \"dials\" is less directly synonymous with \"call up\" than \"recall,\" so this is a less likely option. [Knowledge base match]",
+              "word": "PHONE",
+              "confidence": 0.7,
+              "reasoning": "\"Call up\" can also refer to making a phone call, and \"phone\" is a 5-letter word that fits this interpretation. However, this is a less likely answer because \"phone\" is more specific and less versatile than \"recall.\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "EVOKE",
               "confidence": 0.63,
-              "reasoning": "\"Call up\" can also mean to evoke or bring something to mind, such as a memory or feeling. \"Evoke\" is a plausible alternative, but it is slightly less common in crossword puzzles than \"recall.\" [Knowledge base match]",
+              "reasoning": "\"Evoke\" can mean to bring something to mind or \"call up\" a memory or feeling. While it fits the clue and length, it is slightly less direct than \"recall.\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -769,7 +831,7 @@
             {
               "word": "LANCET",
               "confidence": 0.7,
-              "reasoning": "A \"lancet\" is another type of surgical knife, often used for making small incisions or punctures. While it fits the clue, it is less commonly associated with general surgery compared to \"scalpel.\" [Knowledge base match]",
+              "reasoning": "A \"lancet\" is another type of surgical knife, typically used for small incisions or bloodletting. While it fits the 6-letter requirement, it is less precise than \"scalpel\" for the clue and might not be the intended answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -782,13 +844,13 @@
             {
               "word": "CHARADES",
               "confidence": 0.95,
-              "reasoning": "\"Parlour game\" is a direct definition clue. Charades is one of the most classic and well-known parlour games, and it fits the 8-letter requirement perfectly. It is a game often played in a parlour setting, where players act out words or phrases without speaking. [Knowledge base match]",
+              "reasoning": "\"Parlour game\" is a direct definition for CHARADES, a classic game often played in social settings like parlours. The word is exactly 8 letters long, making it a perfect fit for the clue. CHARADES is also one of the most common answers for clues related to parlour games. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "MONOPOLY",
               "confidence": 0.36000000000000004,
-              "reasoning": "Monopoly is a well-known board game often played in a parlour setting. However, it is not typically categorized as a \"parlour game\" in the traditional sense, and it is more associated with board games. It also does not fit the 8-letter requirement (Monopoly is 9 letters). [Knowledge base match]",
+              "reasoning": "While Monopoly is a well-known game, it is more of a board game than a traditional parlour game. It also doesn't fit the typical association with \"parlour games,\" which are usually more interactive and involve acting or guessing. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -799,21 +861,15 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "BOASTS",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Bragged\" directly suggests a synonym for boasting or showing off. \"BOASTS\" is a common six-letter word that fits this meaning perfectly, and it matches the required length. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
               "word": "CROWED",
               "confidence": 0.63,
-              "reasoning": "\"Crowed\" can mean bragged or gloated, often in a triumphant or boastful way. While it fits the clue, it might not be the most direct synonym for \"bragged.\" [Knowledge base match]",
+              "reasoning": "\"Crowed\" can also mean \"bragged\" in a figurative sense, as in someone boasting loudly or triumphantly. However, it is slightly less common than \"boasted\" as a synonym for \"bragged.\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "PRATED",
-              "confidence": 0.5599999999999999,
-              "reasoning": "\"Prated\" can mean talking boastfully or excessively, which aligns with \"bragged.\" However, it is less commonly used in everyday language, so it’s a less likely answer. [Knowledge base match]",
+              "word": "GLOWED",
+              "confidence": 0.16000000000000003,
+              "reasoning": "While \"glowed\" can sometimes imply a sense of pride or satisfaction (which might be interpreted as a subtle form of bragging), it is a much less direct synonym for \"bragged.\" This makes it a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -826,7 +882,7 @@
             {
               "word": "MAUDLIN",
               "confidence": 0.95,
-              "reasoning": "The clue \"Schmaltzy\" suggests something overly sentimental or emotional, which is a direct synonym for \"maudlin.\" The word is exactly 7 letters long, fitting the requirement. [Knowledge base match]",
+              "reasoning": "The clue \"Schmaltzy\" suggests something overly sentimental or emotional, often in a way that feels excessive or insincere. \"Maudlin\" is a perfect synonym for this and fits the 7-letter requirement. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -839,13 +895,19 @@
             {
               "word": "LARGE",
               "confidence": 0.95,
-              "reasoning": "\"Large\" is a common synonym for \"huge\" and fits the 5-letter requirement. It is a straightforward and frequently used word in crossword puzzles for this type of clue. [Knowledge base match]",
+              "reasoning": "\"Huge\" is a straightforward clue, and \"large\" is a common synonym for \"huge.\" It fits the 5-letter requirement and is a very common crossword answer for this type of clue. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "GIANT",
               "confidence": 0.7,
-              "reasoning": "\"Giant\" is another synonym for \"huge\" and also fits the 5-letter length. However, it is slightly less common than \"large\" in crossword puzzles and might be used more often for specific contexts, such as mythical creatures or exaggerated size. [Knowledge base match]",
+              "reasoning": "\"Giant\" is another synonym for \"huge\" and fits the 5-letter length. However, it is slightly less common in crosswords compared to \"large\" and might imply something more specific (e.g., a giant person or creature) rather than the general idea of \"huge.\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "GREAT",
+              "confidence": 0.63,
+              "reasoning": "\"Great\" can also mean \"huge\" in certain contexts, such as describing magnitude or size. However, it is less directly synonymous with \"huge\" than \"large\" or \"giant,\" so it is a less likely answer. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -858,19 +920,19 @@
             {
               "word": "RACER",
               "confidence": 0.855,
-              "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to a fast car (e.g., a race car) or a fast driver (e.g., someone who races). The word is exactly 5 letters, making it a perfect fit for the clue. [Knowledge base match]",
+              "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to both a fast car (e.g., a race car) and a fast driver (e.g., someone who races). It fits the 5-letter requirement and is a common crossword answer for such clues. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SPEED",
               "confidence": 0.5599999999999999,
-              "reasoning": "\"Speed\" could loosely fit the clue, as it is associated with both fast cars and fast drivers. However, it doesn't directly describe a car or driver, making it a less precise answer. [Knowledge base match]",
+              "reasoning": "\"Speed\" could loosely fit the clue, as it is associated with both fast cars and fast drivers. However, it doesn't directly describe a car or driver themselves, making it less precise than \"RACER.\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "DRIFT",
               "confidence": 0.16000000000000003,
-              "reasoning": "\"Drift\" could relate to fast drivers, as drifting is a driving technique often associated with speed. However, it doesn't describe a fast car or driver as directly as \"RACER\" does, and it feels more specific to a particular context. [Knowledge base match]",
+              "reasoning": "\"Drift\" could relate to fast cars or drivers in the context of drifting (a driving technique), but it doesn't directly answer the clue. It’s more of a driving style than a description of a car or driver. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -883,13 +945,19 @@
             {
               "word": "MAGI",
               "confidence": 0.95,
-              "reasoning": "The clue refers to \"travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men or Three Kings, who followed the Star of Bethlehem to find the baby Jesus. \"Magi\" is a common four-letter answer in crosswords for this type of clue. [Knowledge base match]",
+              "reasoning": "The clue refers to \"travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men or Three Kings, who followed the Star of Bethlehem to visit the infant Jesus. The word \"Magi\" is exactly 4 letters long, fitting the length requirement. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SAGE",
               "confidence": 0.27999999999999997,
-              "reasoning": "\"Sage\" can refer to a wise person, and the Magi are often described as wise men. However, \"sage\" does not specifically imply travellers or following a star, so it is less precise than \"Magi.\" [Knowledge base match]",
+              "reasoning": "\"Sage\" can refer to a wise person, and the Magi are often described as wise men. However, \"Sage\" does not directly connect to the idea of following a star, making it a less precise fit. [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "KING",
+              "confidence": 0.27999999999999997,
+              "reasoning": "The Magi are sometimes referred to as the Three Kings. While \"King\" fits the length requirement and has a loose connection to the clue, it is not as specific as \"Magi\" in describing the star-following travellers. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -901,7 +969,7 @@
           "clue_text": "Impasse (8)",
           "applied_word": "DEADLOCK",
           "final_confidence": 0.95,
-          "reasoning": "The clue \"Impasse\" directly suggests a situation where no progress can be made, which is synonymous with \"deadlock.\" The word fits the required length of 8 letters and is a common crossword answer for this type of clue. [Knowledge base match]",
+          "reasoning": "The clue \"Impasse\" directly suggests a situation where no progress can be made, which is synonymous with \"deadlock.\" The word \"deadlock\" is exactly 8 letters long, making it a perfect fit for the clue. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -909,7 +977,7 @@
           "clue_text": "Greek money, formerly (7)",
           "applied_word": "DRACHMA",
           "final_confidence": 0.95,
-          "reasoning": "The drachma was the official currency of Greece before the euro was introduced in 2001. The clue specifies \"Greek money, formerly,\" and the word \"formerly\" strongly suggests a historical currency. The length of 7 letters matches perfectly with \"drachma,\" making this the most likely answer. [Knowledge base match]",
+          "reasoning": "The drachma was the official currency of Greece before the euro was introduced in 2001. The clue specifies \"Greek money, formerly,\" and the word \"formerly\" strongly suggests a historical currency. The length of 7 letters fits perfectly with \"drachma.\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -917,7 +985,7 @@
           "clue_text": "Academic term (8)",
           "applied_word": "SEMESTER",
           "final_confidence": 0.95,
-          "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common term used in schools and universities to describe half of an academic year, and it fits the required 8-letter length perfectly. [Knowledge base match]",
+          "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common division of the academic year, typically lasting about half the year, and it fits the required 8-letter length. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -925,7 +993,7 @@
           "clue_text": "Parlour game (8)",
           "applied_word": "CHARADES",
           "final_confidence": 0.95,
-          "reasoning": "\"Parlour game\" is a direct definition clue. Charades is one of the most classic and well-known parlour games, and it fits the 8-letter requirement perfectly. It is a game often played in a parlour setting, where players act out words or phrases without speaking. [Knowledge base match]",
+          "reasoning": "\"Parlour game\" is a direct definition for CHARADES, a classic game often played in social settings like parlours. The word is exactly 8 letters long, making it a perfect fit for the clue. CHARADES is also one of the most common answers for clues related to parlour games. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -933,7 +1001,7 @@
           "clue_text": "Schmaltzy (7)",
           "applied_word": "MAUDLIN",
           "final_confidence": 0.95,
-          "reasoning": "The clue \"Schmaltzy\" suggests something overly sentimental or emotional, which is a direct synonym for \"maudlin.\" The word is exactly 7 letters long, fitting the requirement. [Knowledge base match]",
+          "reasoning": "The clue \"Schmaltzy\" suggests something overly sentimental or emotional, often in a way that feels excessive or insincere. \"Maudlin\" is a perfect synonym for this and fits the 7-letter requirement. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -941,15 +1009,7 @@
           "clue_text": "Greek letter (5)",
           "applied_word": "DELTA",
           "final_confidence": 0.95,
-          "reasoning": "\"Delta\" is a 5-letter Greek letter and one of the most commonly used in crosswords. It fits the clue perfectly without requiring additional context. It is also a straightforward and widely recognized answer. [Knowledge base match]",
-          "clue_type": "definition"
-        },
-        {
-          "clue_number": 19,
-          "clue_text": "Bragged (6)",
-          "applied_word": "BOASTS",
-          "final_confidence": 0.95,
-          "reasoning": "The clue \"Bragged\" directly suggests a synonym for boasting or showing off. \"BOASTS\" is a common six-letter word that fits this meaning perfectly, and it matches the required length. [Knowledge base match]",
+          "reasoning": "\"Delta\" is a common Greek letter that fits the 5-letter requirement. It is frequently used in crosswords due to its simplicity and familiarity. Additionally, it is one of the most recognizable Greek letters, often associated with rivers or change in mathematics/science. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -957,7 +1017,7 @@
           "clue_text": "Huge (5)",
           "applied_word": "LARGE",
           "final_confidence": 0.95,
-          "reasoning": "\"Large\" is a common synonym for \"huge\" and fits the 5-letter requirement. It is a straightforward and frequently used word in crossword puzzles for this type of clue. [Knowledge base match]",
+          "reasoning": "\"Huge\" is a straightforward clue, and \"large\" is a common synonym for \"huge.\" It fits the 5-letter requirement and is a very common crossword answer for this type of clue. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -965,7 +1025,7 @@
           "clue_text": "Fast car or fast driver (5)",
           "applied_word": "RACER",
           "final_confidence": 0.855,
-          "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to a fast car (e.g., a race car) or a fast driver (e.g., someone who races). The word is exactly 5 letters, making it a perfect fit for the clue. [Knowledge base match]",
+          "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to both a fast car (e.g., a race car) and a fast driver (e.g., someone who races). It fits the 5-letter requirement and is a common crossword answer for such clues. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -973,7 +1033,7 @@
           "clue_text": "Elliptical shape (4)",
           "applied_word": "OVAL",
           "final_confidence": 0.95,
-          "reasoning": "The clue \"Elliptical shape\" directly describes an oval, which is a common term for an elliptical or elongated circular shape. The word \"oval\" is exactly 4 letters, making it a perfect fit for the clue and length requirement. [Knowledge base match]",
+          "reasoning": "The clue \"Elliptical shape\" directly points to the word \"oval,\" which is a common term for an elliptical or elongated circular shape. It is a straightforward and literal interpretation of the clue, and the length (4 letters) matches perfectly. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -981,7 +1041,7 @@
           "clue_text": "Feeling of discomfort (4)",
           "applied_word": "ACHE",
           "final_confidence": 0.95,
-          "reasoning": "\"Feeling of discomfort\" directly suggests a physical or emotional sensation of unease or pain. \"ACHE\" is a common four-letter word that fits this definition perfectly. It is simple, direct, and aligns with the clue. [Knowledge base match]",
+          "reasoning": "\"Feeling of discomfort\" directly suggests a physical or emotional sensation of unease, and \"ache\" is a common four-letter word that fits this definition perfectly. It is simple, straightforward, and matches the clue's length. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -989,7 +1049,7 @@
           "clue_text": "Prickly seed case (4)",
           "applied_word": "BURR",
           "final_confidence": 0.95,
-          "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those found on plants like burdock. It fits the clue perfectly, as it is exactly 4 letters long and directly matches the definition. [Knowledge base match]",
+          "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those from burdock plants. It fits the clue perfectly, as it is a direct synonym and matches the required 4-letter length. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -997,7 +1057,7 @@
           "clue_text": "Small and weak (4)",
           "applied_word": "PUNY",
           "final_confidence": 0.95,
-          "reasoning": "The word \"puny\" directly means \"small and weak,\" which matches the clue perfectly. It is a common four-letter word often used in this context, making it a strong candidate for the answer. [Knowledge base match]",
+          "reasoning": "The word \"puny\" is a direct synonym for \"small and weak,\" making it a perfect fit for the clue. It is exactly 4 letters long and commonly used in crossword puzzles for this type of clue. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1005,7 +1065,15 @@
           "clue_text": "Travellers who followed a star (4)",
           "applied_word": "MAGI",
           "final_confidence": 0.95,
-          "reasoning": "The clue refers to \"travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men or Three Kings, who followed the Star of Bethlehem to find the baby Jesus. \"Magi\" is a common four-letter answer in crosswords for this type of clue. [Knowledge base match]",
+          "reasoning": "The clue refers to \"travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men or Three Kings, who followed the Star of Bethlehem to visit the infant Jesus. The word \"Magi\" is exactly 4 letters long, fitting the length requirement. [Knowledge base match]",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 16,
+          "clue_text": "Call up (5)",
+          "applied_word": "PHONE",
+          "final_confidence": 0.7,
+          "reasoning": "\"Call up\" can also refer to making a phone call, and \"phone\" is a 5-letter word that fits this interpretation. However, this is a less likely answer because \"phone\" is more specific and less versatile than \"recall.\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1013,21 +1081,21 @@
           "clue_text": "Surgical knife (6)",
           "applied_word": "LANCET",
           "final_confidence": 0.7,
-          "reasoning": "A \"lancet\" is another type of surgical knife, often used for making small incisions or punctures. While it fits the clue, it is less commonly associated with general surgery compared to \"scalpel.\" [Knowledge base match]",
+          "reasoning": "A \"lancet\" is another type of surgical knife, typically used for small incisions or bloodletting. While it fits the 6-letter requirement, it is less precise than \"scalpel\" for the clue and might not be the intended answer. [Knowledge base match]",
           "clue_type": "definition"
         },
         {
-          "clue_number": 16,
-          "clue_text": "Call up (5)",
-          "applied_word": "EVOKE",
+          "clue_number": 19,
+          "clue_text": "Bragged (6)",
+          "applied_word": "CROWED",
           "final_confidence": 0.63,
-          "reasoning": "\"Call up\" can also mean to evoke or bring something to mind, such as a memory or feeling. \"Evoke\" is a plausible alternative, but it is slightly less common in crossword puzzles than \"recall.\" [Knowledge base match]",
+          "reasoning": "\"Crowed\" can also mean \"bragged\" in a figurative sense, as in someone boasting loudly or triumphantly. However, it is slightly less common than \"boasted\" as a synonym for \"bragged.\" [Knowledge base match]",
           "clue_type": "definition"
         }
       ],
       "progress_made": true,
       "grid_state_before": {
-        "timestamp": "2025-09-18T16:51:47.640974",
+        "timestamp": "2025-09-18T16:57:13.086715",
         "context": "Before iteration 1",
         "solved_clues": [],
         "grid_completion": 0.0,
@@ -2592,11 +2660,11 @@
         "use_async_solving": true
       },
       "grid_state_after": {
-        "timestamp": "2025-09-18T16:52:37.699320",
+        "timestamp": "2025-09-18T16:58:04.396114",
         "context": "After iteration 1",
         "solved_clues": [],
         "grid_completion": 0.0,
-        "grid_visual": "┌───────────────────────────────────────┐\n│ ░  D     D     P     S     E     ░  ░ │\n│ ░  E  ░  R  ░  U  ░  E  ░  V  ░  L  ░ │\n│    L     A     N     M  ░  O  V  A  L │\n│ ░  T  ░  C  ░  Y  ░  E  ░  K  ░  N  ░ │\n│ ░  A  C  H  E  ░     S     E     C    │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  B     A     H     E     M     T  ░ │\n│ ░  O  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    A     L     R     ░  B  U  R  R  ░ │\n│ ░  S  ░  A  ░  A  ░  M  ░  D  ░  A  ░ │\n│    T     R  ░  D  E  A  D  L  O  C  K │\n│ ░  S  ░  G  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     E     S     I     N     R  ░ │\n└───────────────────────────────────────┘",
+        "grid_visual": "┌───────────────────────────────────────┐\n│ ░  D     D     P     S     P     ░  ░ │\n│ ░  E  ░  R  ░  U  ░  E  ░  H  ░  L  ░ │\n│    L     A     N     M  ░  O  V  A  L │\n│ ░  T  ░  C  ░  Y  ░  E  ░  N  ░  N  ░ │\n│ ░  A  C  H  E  ░     S     E     C    │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  C     A     H     E     M     T  ░ │\n│ ░  R  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    O     L     R     ░  B  U  R  R  ░ │\n│ ░  W  ░  A  ░  A  ░  M  ░  D  ░  A  ░ │\n│    E     R  ░  D  E  A  D  L  O  C  K │\n│ ░  D  ░  G  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     E     S     I     N     R  ░ │\n└───────────────────────────────────────┘",
         "grid_matrix": [
           [
             "░",
@@ -2608,7 +2676,7 @@
             "_",
             "S",
             "_",
-            "E",
+            "P",
             "_",
             "░",
             "░"
@@ -2623,7 +2691,7 @@
             "░",
             "E",
             "░",
-            "V",
+            "H",
             "░",
             "L",
             "░"
@@ -2653,7 +2721,7 @@
             "░",
             "E",
             "░",
-            "K",
+            "N",
             "░",
             "N",
             "░"
@@ -2690,7 +2758,7 @@
           ],
           [
             "░",
-            "B",
+            "C",
             "_",
             "A",
             "_",
@@ -2705,7 +2773,7 @@
           ],
           [
             "░",
-            "O",
+            "R",
             "░",
             "░",
             "░",
@@ -2720,7 +2788,7 @@
           ],
           [
             "_",
-            "A",
+            "O",
             "_",
             "L",
             "_",
@@ -2735,7 +2803,7 @@
           ],
           [
             "░",
-            "S",
+            "W",
             "░",
             "A",
             "░",
@@ -2750,7 +2818,7 @@
           ],
           [
             "_",
-            "T",
+            "E",
             "_",
             "R",
             "░",
@@ -2765,7 +2833,7 @@
           ],
           [
             "░",
-            "S",
+            "D",
             "░",
             "G",
             "░",
@@ -2814,10 +2882,10 @@
               null,
               "S",
               null,
-              "E",
+              "P",
               null
             ],
-            "current_word": "D_D_P_S_E_",
+            "current_word": "D_D_P_S_P_",
             "filled_positions": 5,
             "completion_percentage": 50.0,
             "intersecting_clues": [
@@ -3096,7 +3164,7 @@
             },
             "answered": false,
             "current_chars": [
-              "B",
+              "C",
               null,
               "A",
               null,
@@ -3108,7 +3176,7 @@
               null,
               "T"
             ],
-            "current_word": "B_A_H_E_M_T",
+            "current_word": "C_A_H_E_M_T",
             "filled_positions": 6,
             "completion_percentage": 54.54545454545454,
             "intersecting_clues": [
@@ -3187,14 +3255,14 @@
             "answered": false,
             "current_chars": [
               null,
-              "A",
+              "O",
               null,
               "L",
               null,
               "R",
               null
             ],
-            "current_word": "_A_L_R_",
+            "current_word": "_O_L_R_",
             "filled_positions": 3,
             "completion_percentage": 42.857142857142854,
             "intersecting_clues": [
@@ -3287,11 +3355,11 @@
             "answered": false,
             "current_chars": [
               null,
-              "T",
+              "E",
               null,
               "R"
             ],
-            "current_word": "_T_R",
+            "current_word": "_E_R",
             "filled_positions": 2,
             "completion_percentage": 50.0,
             "intersecting_clues": [
@@ -3710,13 +3778,13 @@
             },
             "answered": true,
             "current_chars": [
-              "E",
-              "V",
+              "P",
+              "H",
               "O",
-              "K",
+              "N",
               "E"
             ],
-            "current_word": "EVOKE",
+            "current_word": "PHONE",
             "filled_positions": 5,
             "completion_percentage": 100.0,
             "intersecting_clues": [
@@ -3752,7 +3820,7 @@
               }
             ],
             "fully_solved": true,
-            "final_answer": "EVOKE"
+            "final_answer": "PHONE"
           },
           {
             "number": 17,
@@ -3889,14 +3957,14 @@
             },
             "answered": true,
             "current_chars": [
-              "B",
+              "C",
+              "R",
               "O",
-              "A",
-              "S",
-              "T",
-              "S"
+              "W",
+              "E",
+              "D"
             ],
-            "current_word": "BOASTS",
+            "current_word": "CROWED",
             "filled_positions": 6,
             "completion_percentage": 100.0,
             "intersecting_clues": [
@@ -3932,7 +4000,7 @@
               }
             ],
             "fully_solved": true,
-            "final_answer": "BOASTS"
+            "final_answer": "CROWED"
           },
           {
             "number": 20,
@@ -4165,7 +4233,7 @@
           "clue_completion_percentage": 69.56521739130434
         }
       },
-      "duration": 50.06489181518555,
+      "duration": 51.31407403945923,
       "grid_changed": true,
       "changes_summary": {
         "grid_changed": true,
@@ -4174,7 +4242,7 @@
             "clue_number": 1,
             "clue_text": "Greek tragedy (7,3)",
             "before": "__________",
-            "after": "D_D_P_S_E_",
+            "after": "D_D_P_S_P_",
             "newly_solved": false
           },
           {
@@ -4209,14 +4277,14 @@
             "clue_number": 6,
             "clue_text": "Safety equipment for a biker, say (5,6)",
             "before": "___________",
-            "after": "B_A_H_E_M_T",
+            "after": "C_A_H_E_M_T",
             "newly_solved": false
           },
           {
             "clue_number": 7,
             "clue_text": "Perform tricks (7)",
             "before": "_______",
-            "after": "_A_L_R_",
+            "after": "_O_L_R_",
             "newly_solved": false
           },
           {
@@ -4230,7 +4298,7 @@
             "clue_number": 9,
             "clue_text": "Squad (4)",
             "before": "____",
-            "after": "_T_R",
+            "after": "_E_R",
             "newly_solved": false
           },
           {
@@ -4279,7 +4347,7 @@
             "clue_number": 16,
             "clue_text": "Call up (5)",
             "before": "_____",
-            "after": "EVOKE",
+            "after": "PHONE",
             "newly_solved": true
           },
           {
@@ -4300,7 +4368,7 @@
             "clue_number": 19,
             "clue_text": "Bragged (6)",
             "before": "______",
-            "after": "BOASTS",
+            "after": "CROWED",
             "newly_solved": true
           },
           {
@@ -4335,7 +4403,7 @@
         "new_letters_added": [],
         "completion_delta": 73.39449541284404
       },
-      "visual_diff": "\nBEFORE:\n┌───────────────────────────────────────┐\n│ ░                                ░  ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│                         ░             │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░              ░                      │\n│ ░  ░  ░     ░     ░     ░  ░  ░     ░ │\n│ ░                                   ░ │\n│ ░     ░  ░  ░     ░     ░     ░  ░  ░ │\n│                      ░              ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│             ░                         │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░  ░                                ░ │\n└───────────────────────────────────────┘\n\nAFTER:\n┌───────────────────────────────────────┐\n│ ░  D     D     P     S     E     ░  ░ │\n│ ░  E  ░  R  ░  U  ░  E  ░  V  ░  L  ░ │\n│    L     A     N     M  ░  O  V  A  L │\n│ ░  T  ░  C  ░  Y  ░  E  ░  K  ░  N  ░ │\n│ ░  A  C  H  E  ░     S     E     C    │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  B     A     H     E     M     T  ░ │\n│ ░  O  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    A     L     R     ░  B  U  R  R  ░ │\n│ ░  S  ░  A  ░  A  ░  M  ░  D  ░  A  ░ │\n│    T     R  ░  D  E  A  D  L  O  C  K │\n│ ░  S  ░  G  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     E     S     I     N     R  ░ │\n└───────────────────────────────────────┘\n\nCHANGES:\n- Clue 1 ('Greek tragedy (7,3)'): __________ → D_D_P_S_E_\n- Clue 2 ('A year (3,5)'): ________ → _L_A_N_M\n- Clue 3 ('Elliptical shape (4)'): ____ → OVAL\n  ✅ SOLVED!\n- Clue 4 ('Feeling of discomfort (4)'): ____ → ACHE\n  ✅ SOLVED!\n- Clue 5 ('Kernel (7)'): _______ → _S_E_C_\n- Clue 6 ('Safety equipment for a biker, say (5,6)'): ___________ → B_A_H_E_M_T\n- Clue 7 ('Perform tricks (7)'): _______ → _A_L_R_\n- Clue 8 ('Prickly seed case (4)'): ____ → BURR\n  ✅ SOLVED!\n- Clue 9 ('Squad (4)'): ____ → _T_R\n- Clue 10 ('Impasse (8)'): ________ → DEADLOCK\n  ✅ SOLVED!\n- Clue 11 ('Mess (4,6)'): __________ → _E_S_I_N_R\n- Clue 12 ('Greek letter (5)'): _____ → DELTA\n  ✅ SOLVED!\n- Clue 13 ('Greek money, formerly (7)'): _______ → DRACHMA\n  ✅ SOLVED!\n- Clue 14 ('Small and weak (4)'): ____ → PUNY\n  ✅ SOLVED!\n- Clue 15 ('Academic term (8)'): ________ → SEMESTER\n  ✅ SOLVED!\n- Clue 16 ('Call up (5)'): _____ → EVOKE\n  ✅ SOLVED!\n- Clue 17 ('Surgical knife (6)'): ______ → LANCET\n  ✅ SOLVED!\n- Clue 18 ('Parlour game (8)'): ________ → CHARADES\n  ✅ SOLVED!\n- Clue 19 ('Bragged (6)'): ______ → BOASTS\n  ✅ SOLVED!\n- Clue 20 ('Schmaltzy (7)'): _______ → MAUDLIN\n  ✅ SOLVED!\n- Clue 21 ('Huge (5)'): _____ → LARGE\n  ✅ SOLVED!\n- Clue 22 ('Fast car or fast driver (5)'): _____ → RACER\n  ✅ SOLVED!\n- Clue 23 ('Travellers who followed a star (4)'): ____ → MAGI\n  ✅ SOLVED!\n"
+      "visual_diff": "\nBEFORE:\n┌───────────────────────────────────────┐\n│ ░                                ░  ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│                         ░             │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░              ░                      │\n│ ░  ░  ░     ░     ░     ░  ░  ░     ░ │\n│ ░                                   ░ │\n│ ░     ░  ░  ░     ░     ░     ░  ░  ░ │\n│                      ░              ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│             ░                         │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░  ░                                ░ │\n└───────────────────────────────────────┘\n\nAFTER:\n┌───────────────────────────────────────┐\n│ ░  D     D     P     S     P     ░  ░ │\n│ ░  E  ░  R  ░  U  ░  E  ░  H  ░  L  ░ │\n│    L     A     N     M  ░  O  V  A  L │\n│ ░  T  ░  C  ░  Y  ░  E  ░  N  ░  N  ░ │\n│ ░  A  C  H  E  ░     S     E     C    │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  C     A     H     E     M     T  ░ │\n│ ░  R  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    O     L     R     ░  B  U  R  R  ░ │\n│ ░  W  ░  A  ░  A  ░  M  ░  D  ░  A  ░ │\n│    E     R  ░  D  E  A  D  L  O  C  K │\n│ ░  D  ░  G  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     E     S     I     N     R  ░ │\n└───────────────────────────────────────┘\n\nCHANGES:\n- Clue 1 ('Greek tragedy (7,3)'): __________ → D_D_P_S_P_\n- Clue 2 ('A year (3,5)'): ________ → _L_A_N_M\n- Clue 3 ('Elliptical shape (4)'): ____ → OVAL\n  ✅ SOLVED!\n- Clue 4 ('Feeling of discomfort (4)'): ____ → ACHE\n  ✅ SOLVED!\n- Clue 5 ('Kernel (7)'): _______ → _S_E_C_\n- Clue 6 ('Safety equipment for a biker, say (5,6)'): ___________ → C_A_H_E_M_T\n- Clue 7 ('Perform tricks (7)'): _______ → _O_L_R_\n- Clue 8 ('Prickly seed case (4)'): ____ → BURR\n  ✅ SOLVED!\n- Clue 9 ('Squad (4)'): ____ → _E_R\n- Clue 10 ('Impasse (8)'): ________ → DEADLOCK\n  ✅ SOLVED!\n- Clue 11 ('Mess (4,6)'): __________ → _E_S_I_N_R\n- Clue 12 ('Greek letter (5)'): _____ → DELTA\n  ✅ SOLVED!\n- Clue 13 ('Greek money, formerly (7)'): _______ → DRACHMA\n  ✅ SOLVED!\n- Clue 14 ('Small and weak (4)'): ____ → PUNY\n  ✅ SOLVED!\n- Clue 15 ('Academic term (8)'): ________ → SEMESTER\n  ✅ SOLVED!\n- Clue 16 ('Call up (5)'): _____ → PHONE\n  ✅ SOLVED!\n- Clue 17 ('Surgical knife (6)'): ______ → LANCET\n  ✅ SOLVED!\n- Clue 18 ('Parlour game (8)'): ________ → CHARADES\n  ✅ SOLVED!\n- Clue 19 ('Bragged (6)'): ______ → CROWED\n  ✅ SOLVED!\n- Clue 20 ('Schmaltzy (7)'): _______ → MAUDLIN\n  ✅ SOLVED!\n- Clue 21 ('Huge (5)'): _____ → LARGE\n  ✅ SOLVED!\n- Clue 22 ('Fast car or fast driver (5)'): _____ → RACER\n  ✅ SOLVED!\n- Clue 23 ('Travellers who followed a star (4)'): ____ → MAGI\n  ✅ SOLVED!\n"
     }
   ],
   "final_result": {},
