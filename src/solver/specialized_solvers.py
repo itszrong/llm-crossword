@@ -184,6 +184,10 @@ class SpecializedConstraintAgent:
         self.base_agent = base_agent
         self.difficulty = difficulty.lower()
     
+    def validate_solution(self, puzzle, clue, candidate, state=None):
+        """Validate solution using the base agent's validation logic"""
+        return self.base_agent.validate_solution(puzzle, clue, candidate, state)
+    
     def resolve_conflicts(self, puzzle, state):
         """Resolve conflicts with difficulty-specific logic"""
         
