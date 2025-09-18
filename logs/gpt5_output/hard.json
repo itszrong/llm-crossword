@@ -1,0 +1,52 @@
+{
+    "width": 13,
+    "height": 13,
+    "clues": [
+      {"number":1,"text":"Greek tragedy (7,3)","direction":"across","length":10,"row":0,"col":1,"answer":"OEDIPUSREX","answered":true},
+      {"number":2,"text":"A year (3,5)","direction":"across","length":8,"row":2,"col":0,"answer":"PERANNUM","answered":true},
+      {"number":3,"text":"Elliptical shape (4)","direction":"across","length":4,"row":2,"col":9,"answer":"OVAL","answered":true},
+      {"number":4,"text":"Feeling of discomfort (4)","direction":"across","length":4,"row":4,"col":1,"answer":"ACHE","answered":true},
+      {"number":5,"text":"Kernel (7)","direction":"across","length":7,"row":4,"col":6,"answer":"ESSENCE","answered":true},
+      {"number":6,"text":"Safety equipment for a biker, say (5,6)","direction":"across","length":11,"row":6,"col":1,"answer":"CRASHHELMET","answered":true},
+      {"number":7,"text":"Perform tricks (7)","direction":"across","length":7,"row":8,"col":0,"answer":"CONJURE","answered":true},
+      {"number":8,"text":"Prickly seed case (4)","direction":"across","length":4,"row":8,"col":8,"answer":"BURR","answered":true},
+      {"number":9,"text":"Squad (4)","direction":"across","length":4,"row":10,"col":0,"answer":"TEAM","answered":true},
+      {"number":10,"text":"Impasse (8)","direction":"across","length":8,"row":10,"col":5,"answer":"DEADLOCK","answered":true},
+      {"number":11,"text":"Mess (4,6)","direction":"across","length":10,"row":12,"col":2,"answer":"DOGSDINNER","answered":true},
+      {"number":12,"text":"Greek letter (5)","direction":"down","length":5,"row":0,"col":1,"answer":"OMEGA","answered":true},
+      {"number":13,"text":"Greek money, formerly (7)","direction":"down","length":7,"row":0,"col":3,"answer":"DRACHMA","answered":true},
+      {"number":14,"text":"Small and weak (4)","direction":"down","length":4,"row":0,"col":5,"answer":"PUNY","answered":true},
+      {"number":15,"text":"Academic term (8)","direction":"down","length":8,"row":0,"col":7,"answer":"SEMESTER","answered":true},
+      {"number":16,"text":"Call up (5)","direction":"down","length":5,"row":0,"col":9,"answer":"EVOKE","answered":true},
+      {"number":17,"text":"Surgical knife (6)","direction":"down","length":6,"row":1,"col":11,"answer":"LANCET","answered":true},
+      {"number":18,"text":"Parlour game (8)","direction":"down","length":8,"row":5,"col":5,"answer":"CHARADES","answered":true},
+      {"number":19,"text":"Bragged (6)","direction":"down","length":6,"row":6,"col":1,"answer":"CROWED","answered":true},
+      {"number":20,"text":"Schmaltzy (7)","direction":"down","length":7,"row":6,"col":9,"answer":"MAUDLIN","answered":true},
+      {"number":21,"text":"Huge (5)","direction":"down","length":5,"row":8,"col":3,"answer":"JUMBO","answered":true},
+      {"number":22,"text":"Fast car or fast driver (5)","direction":"down","length":5,"row":8,"col":11,"answer":"RACER","answered":true},
+      {"number":23,"text":"Travellers who followed a star (4)","direction":"down","length":4,"row":9,"col":7,"answer":"MAGI","answered":true}
+    ],
+    "grid_history": [
+      {
+        "width": 13,
+        "height": 13,
+        "cells": [
+          [{"row":0,"col":0,"value":null},{"row":0,"col":1,"value":"O"},{"row":0,"col":2,"value":"E"},{"row":0,"col":3,"value":"D"},{"row":0,"col":4,"value":"I"},{"row":0,"col":5,"value":"P"},{"row":0,"col":6,"value":"U"},{"row":0,"col":7,"value":"S"},{"row":0,"col":8,"value":"R"},{"row":0,"col":9,"value":"E"},{"row":0,"col":10,"value":"X"},{"row":0,"col":11,"value":null},{"row":0,"col":12,"value":null}],
+          [{"row":1,"col":0,"value":null},{"row":1,"col":1,"value":"M"},{"row":1,"col":2,"value":null},{"row":1,"col":3,"value":"R"},{"row":1,"col":4,"value":null},{"row":1,"col":5,"value":"U"},{"row":1,"col":6,"value":null},{"row":1,"col":7,"value":"E"},{"row":1,"col":8,"value":null},{"row":1,"col":9,"value":"V"},{"row":1,"col":10,"value":null},{"row":1,"col":11,"value":"L"},{"row":1,"col":12,"value":null}],
+          [{"row":2,"col":0,"value":"P"},{"row":2,"col":1,"value":"E"},{"row":2,"col":2,"value":"R"},{"row":2,"col":3,"value":"A"},{"row":2,"col":4,"value":"N"},{"row":2,"col":5,"value":"N"},{"row":2,"col":6,"value":"U"},{"row":2,"col":7,"value":"M"},{"row":2,"col":8,"value":null},{"row":2,"col":9,"value":"O"},{"row":2,"col":10,"value":"V"},{"row":2,"col":11,"value":"A"},{"row":2,"col":12,"value":"L"}],
+          [{"row":3,"col":0,"value":null},{"row":3,"col":1,"value":"G"},{"row":3,"col":2,"value":null},{"row":3,"col":3,"value":"C"},{"row":3,"col":4,"value":null},{"row":3,"col":5,"value":"Y"},{"row":3,"col":6,"value":null},{"row":3,"col":7,"value":"E"},{"row":3,"col":8,"value":null},{"row":3,"col":9,"value":"K"},{"row":3,"col":10,"value":null},{"row":3,"col":11,"value":"N"},{"row":3,"col":12,"value":null}],
+          [{"row":4,"col":0,"value":null},{"row":4,"col":1,"value":"A"},{"row":4,"col":2,"value":null},{"row":4,"col":3,"value":"C"},{"row":4,"col":4,"value":null},{"row":4,"col":5,"value":null},{"row":4,"col":6,"value":"E"},{"row":4,"col":7,"value":"S"},{"row":4,"col":8,"value":"S"},{"row":4,"col":9,"value":"E"},{"row":4,"col":10,"value":"N"},{"row":4,"col":11,"value":"C"},{"row":4,"col":12,"value":"E"}],
+          [{"row":5,"col":0,"value":null},{"row":5,"col":1,"value":null},{"row":5,"col":2,"value":null},{"row":5,"col":3,"value":"M"},{"row":5,"col":4,"value":null},{"row":5,"col":5,"value":"C"},{"row":5,"col":6,"value":null},{"row":5,"col":7,"value":"T"},{"row":5,"col":8,"value":null},{"row":5,"col":9,"value":null},{"row":5,"col":10,"value":null},{"row":5,"col":11,"value":"E"},{"row":5,"col":12,"value":null}],
+          [{"row":6,"col":0,"value":null},{"row":6,"col":1,"value":"C"},{"row":6,"col":2,"value":"R"},{"row":6,"col":3,"value":"A"},{"row":6,"col":4,"value":"S"},{"row":6,"col":5,"value":"H"},{"row":6,"col":6,"value":"H"},{"row":6,"col":7,"value":"E"},{"row":6,"col":8,"value":"L"},{"row":6,"col":9,"value":"M"},{"row":6,"col":10,"value":"E"},{"row":6,"col":11,"value":"T"},{"row":6,"col":12,"value":null}],
+          [{"row":7,"col":0,"value":null},{"row":7,"col":1,"value":"R"},{"row":7,"col":2,"value":null},{"row":7,"col":3,"value":null},{"row":7,"col":4,"value":null},{"row":7,"col":5,"value":"A"},{"row":7,"col":6,"value":null},{"row":7,"col":7,"value":"R"},{"row":7,"col":8,"value":null},{"row":7,"col":9,"value":"A"},{"row":7,"col":10,"value":null},{"row":7,"col":11,"value":null},{"row":7,"col":12,"value":null}],
+          [{"row":8,"col":0,"value":"C"},{"row":8,"col":1,"value":"O"},{"row":8,"col":2,"value":"N"},{"row":8,"col":3,"value":"J"},{"row":8,"col":4,"value":"U"},{"row":8,"col":5,"value":"R"},{"row":8,"col":6,"value":"E"},{"row":8,"col":7,"value":null},{"row":8,"col":8,"value":"B"},{"row":8,"col":9,"value":"U"},{"row":8,"col":10,"value":"R"},{"row":8,"col":11,"value":"R"},{"row":8,"col":12,"value":null}],
+          [{"row":9,"col":0,"value":null},{"row":9,"col":1,"value":"W"},{"row":9,"col":2,"value":null},{"row":9,"col":3,"value":"U"},{"row":9,"col":4,"value":null},{"row":9,"col":5,"value":"A"},{"row":9,"col":6,"value":null},{"row":9,"col":7,"value":"M"},{"row":9,"col":8,"value":null},{"row":9,"col":9,"value":"D"},{"row":9,"col":10,"value":null},{"row":9,"col":11,"value":"A"},{"row":9,"col":12,"value":null}],
+          [{"row":10,"col":0,"value":"T"},{"row":10,"col":1,"value":"E"},{"row":10,"col":2,"value":"A"},{"row":10,"col":3,"value":"M"},{"row":10,"col":4,"value":null},{"row":10,"col":5,"value":"D"},{"row":10,"col":6,"value":"E"},{"row":10,"col":7,"value":"A"},{"row":10,"col":8,"value":"D"},{"row":10,"col":9,"value":"L"},{"row":10,"col":10,"value":"O"},{"row":10,"col":11,"value":"C"},{"row":10,"col":12,"value":"K"}],
+          [{"row":11,"col":0,"value":null},{"row":11,"col":1,"value":"D"},{"row":11,"col":2,"value":null},{"row":11,"col":3,"value":"B"},{"row":11,"col":4,"value":null},{"row":11,"col":5,"value":"E"},{"row":11,"col":6,"value":null},{"row":11,"col":7,"value":"G"},{"row":11,"col":8,"value":null},{"row":11,"col":9,"value":"I"},{"row":11,"col":10,"value":null},{"row":11,"col":11,"value":"E"},{"row":11,"col":12,"value":null}],
+          [{"row":12,"col":0,"value":null},{"row":12,"col":1,"value":null},{"row":12,"col":2,"value":"D"},{"row":12,"col":3,"value":"O"},{"row":12,"col":4,"value":"G"},{"row":12,"col":5,"value":"S"},{"row":12,"col":6,"value":"D"},{"row":12,"col":7,"value":"I"},{"row":12,"col":8,"value":"N"},{"row":12,"col":9,"value":"N"},{"row":12,"col":10,"value":"E"},{"row":12,"col":11,"value":"R"},{"row":12,"col":12,"value":null}]
+        ]
+      }
+    ],
+    "clue_history": []
+  }
+  

@@ -1,0 +1,610 @@
+{
+  "timestamp": "2025-09-18T14:14:59.067547",
+  "puzzle_name": "Easy_Test",
+  "puzzle_size": "5x5",
+  "total_clues": 3,
+  "iterations": [
+    {
+      "iteration": 1,
+      "start_time": "2025-09-18T14:14:59.067769",
+      "candidates_generated": {
+        "1": {
+          "clue_text": "Dairy farm animal",
+          "clue_length": 3,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "COW",
+              "confidence": 0.9,
+              "reasoning": "The clue \"Dairy farm animal\" directly points to a cow, as cows are the most common animals associated with dairy farming. The answer is exactly 3 letters, making it a perfect fit.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "YAK",
+              "confidence": 0.6,
+              "reasoning": "While yaks can produce milk, they are far less common than cows on dairy farms, especially in the context of general crossword clues. This answer is less likely but still plausible.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "EWE",
+              "confidence": 0.3,
+              "reasoning": "Ewes (female sheep) can produce milk, but they are not typically associated with dairy farming in the same way cows are. This is an unlikely but possible alternative.",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "2": {
+          "clue_text": "A drop of sadness",
+          "clue_length": 4,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "TEAR",
+              "confidence": 0.9,
+              "reasoning": "The clue \"A drop of sadness\" directly points to \"tear,\" which is a drop of liquid produced by the eyes, often associated with sadness. It is a simple, common, and literal answer that fits the 4-letter requirement.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "WEEP",
+              "confidence": 0.6,
+              "reasoning": "\"Weep\" is a synonym for crying, which is associated with sadness. However, \"weep\" refers more to the act of crying rather than a \"drop,\" making it less precise for this clue.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "DROP",
+              "confidence": 0.3,
+              "reasoning": "While \"drop\" could refer to a small amount of liquid, it does not specifically convey the sadness aspect of the clue. It is a more generic term and less likely to be the intended answer.",
+              "clue_type": "definition"
+            }
+          ]
+        }
+      },
+      "candidates_reviewed": {
+        "1": {
+          "clue_text": "Dairy farm animal",
+          "clue_length": 3,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "COW",
+              "confidence": 0.9,
+              "reasoning": "The clue \"Dairy farm animal\" directly points to a cow, as cows are the most common animals associated with dairy farming. The answer is exactly 3 letters, making it a perfect fit.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "YAK",
+              "confidence": 0.18,
+              "reasoning": "While yaks can produce milk, they are far less common than cows on dairy farms, especially in the context of general crossword clues. This answer is less likely but still plausible.",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "2": {
+          "clue_text": "A drop of sadness",
+          "clue_length": 4,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "TEAR",
+              "confidence": 0.9,
+              "reasoning": "The clue \"A drop of sadness\" directly points to \"tear,\" which is a drop of liquid produced by the eyes, often associated with sadness. It is a simple, common, and literal answer that fits the 4-letter requirement.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "WEEP",
+              "confidence": 0.36,
+              "reasoning": "\"Weep\" is a synonym for crying, which is associated with sadness. However, \"weep\" refers more to the act of crying rather than a \"drop,\" making it less precise for this clue.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "DROP",
+              "confidence": 0.18,
+              "reasoning": "While \"drop\" could refer to a small amount of liquid, it does not specifically convey the sadness aspect of the clue. It is a more generic term and less likely to be the intended answer.",
+              "clue_type": "definition"
+            }
+          ]
+        }
+      },
+      "solutions_applied": [
+        {
+          "clue_number": 1,
+          "clue_text": "Feline friend",
+          "applied_word": "CAT",
+          "final_confidence": 0.9,
+          "reasoning": "The clue \"Feline friend\" directly points to a common and literal synonym for a feline, which is \"cat.\" It fits the 3-letter requirement and is the most straightforward answer for this clue.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 1,
+          "clue_text": "Dairy farm animal",
+          "applied_word": "COW",
+          "final_confidence": 0.9,
+          "reasoning": "The clue \"Dairy farm animal\" directly points to a cow, as cows are the most common animals associated with dairy farming. The answer is exactly 3 letters, making it a perfect fit.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 2,
+          "clue_text": "A drop of sadness",
+          "applied_word": "TEAR",
+          "final_confidence": 0.9,
+          "reasoning": "The clue \"A drop of sadness\" directly points to \"tear,\" which is a drop of liquid produced by the eyes, often associated with sadness. It is a simple, common, and literal answer that fits the 4-letter requirement.",
+          "clue_type": "definition"
+        }
+      ],
+      "progress_made": true,
+      "grid_state_before": {
+        "timestamp": "2025-09-18T14:14:59.067620",
+        "context": "Before iteration 1",
+        "solved_clues": [],
+        "grid_completion": 0.0,
+        "grid_visual": "┌───────────────┐\n│          ░  ░ │\n│    ░     ░  ░ │\n│    ░     ░  ░ │\n│ ░  ░     ░  ░ │\n│ ░  ░  ░  ░  ░ │\n└───────────────┘",
+        "grid_matrix": [
+          [
+            "_",
+            "_",
+            "_",
+            "░",
+            "░"
+          ],
+          [
+            "_",
+            "░",
+            "_",
+            "░",
+            "░"
+          ],
+          [
+            "_",
+            "░",
+            "_",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "░",
+            "_",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "░",
+            "░",
+            "░",
+            "░"
+          ]
+        ],
+        "clue_states": [
+          {
+            "number": 1,
+            "text": "Feline friend",
+            "direction": "across",
+            "length": 3,
+            "position": {
+              "row": 0,
+              "col": 0
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null
+            ],
+            "current_word": "___",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 2,
+                "clue_text": "A drop of sadness",
+                "intersection_cell": {
+                  "row": 0,
+                  "col": 2
+                },
+                "target_position": 2,
+                "other_position": 0
+              }
+            ],
+            "fully_solved": false
+          },
+          {
+            "number": 1,
+            "text": "Dairy farm animal",
+            "direction": "down",
+            "length": 3,
+            "position": {
+              "row": 0,
+              "col": 0
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null
+            ],
+            "current_word": "___",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [],
+            "fully_solved": false
+          },
+          {
+            "number": 2,
+            "text": "A drop of sadness",
+            "direction": "down",
+            "length": 4,
+            "position": {
+              "row": 0,
+              "col": 2
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "current_word": "____",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 1,
+                "clue_text": "Feline friend",
+                "intersection_cell": {
+                  "row": 0,
+                  "col": 2
+                },
+                "target_position": 0,
+                "other_position": 2
+              }
+            ],
+            "fully_solved": false
+          }
+        ],
+        "grid_stats": {
+          "total_clues": 3,
+          "solved_clues": 0,
+          "total_unique_cells": 8,
+          "filled_unique_cells": 0,
+          "grid_completion_percentage": 0.0,
+          "clue_completion_percentage": 0.0
+        }
+      },
+      "solver_info": {
+        "difficulty": "easy",
+        "max_iterations": 3,
+        "backtrack_enabled": false,
+        "thinking_depth": 1,
+        "use_async_solving": false
+      },
+      "grid_state_after": {
+        "timestamp": "2025-09-18T14:15:13.389905",
+        "context": "After iteration 1",
+        "solved_clues": [],
+        "grid_completion": 0.0,
+        "grid_visual": "┌───────────────┐\n│ C  A  T  ░  ░ │\n│ O  ░  E  ░  ░ │\n│ W  ░  A  ░  ░ │\n│ ░  ░  R  ░  ░ │\n│ ░  ░  ░  ░  ░ │\n└───────────────┘",
+        "grid_matrix": [
+          [
+            "C",
+            "A",
+            "T",
+            "░",
+            "░"
+          ],
+          [
+            "O",
+            "░",
+            "E",
+            "░",
+            "░"
+          ],
+          [
+            "W",
+            "░",
+            "A",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "░",
+            "R",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "░",
+            "░",
+            "░",
+            "░"
+          ]
+        ],
+        "clue_states": [
+          {
+            "number": 1,
+            "text": "Feline friend",
+            "direction": "across",
+            "length": 3,
+            "position": {
+              "row": 0,
+              "col": 0
+            },
+            "answered": true,
+            "current_chars": [
+              "C",
+              "A",
+              "T"
+            ],
+            "current_word": "CAT",
+            "filled_positions": 3,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 2,
+                "clue_text": "A drop of sadness",
+                "intersection_cell": {
+                  "row": 0,
+                  "col": 2
+                },
+                "target_position": 2,
+                "other_position": 0
+              }
+            ],
+            "fully_solved": true,
+            "final_answer": "CAT"
+          },
+          {
+            "number": 1,
+            "text": "Dairy farm animal",
+            "direction": "down",
+            "length": 3,
+            "position": {
+              "row": 0,
+              "col": 0
+            },
+            "answered": true,
+            "current_chars": [
+              "C",
+              "O",
+              "W"
+            ],
+            "current_word": "COW",
+            "filled_positions": 3,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [],
+            "fully_solved": true,
+            "final_answer": "COW"
+          },
+          {
+            "number": 2,
+            "text": "A drop of sadness",
+            "direction": "down",
+            "length": 4,
+            "position": {
+              "row": 0,
+              "col": 2
+            },
+            "answered": true,
+            "current_chars": [
+              "T",
+              "E",
+              "A",
+              "R"
+            ],
+            "current_word": "TEAR",
+            "filled_positions": 4,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 1,
+                "clue_text": "Feline friend",
+                "intersection_cell": {
+                  "row": 0,
+                  "col": 2
+                },
+                "target_position": 0,
+                "other_position": 2
+              }
+            ],
+            "fully_solved": true,
+            "final_answer": "TEAR"
+          }
+        ],
+        "grid_stats": {
+          "total_clues": 3,
+          "solved_clues": 3,
+          "total_unique_cells": 8,
+          "filled_unique_cells": 8,
+          "grid_completion_percentage": 100.0,
+          "clue_completion_percentage": 100.0
+        }
+      },
+      "duration": 14.322488784790039,
+      "grid_changed": true,
+      "changes_summary": {
+        "grid_changed": true,
+        "clues_changed": [
+          {
+            "clue_number": 1,
+            "clue_text": "Dairy farm animal",
+            "before": "___",
+            "after": "COW",
+            "newly_solved": true
+          },
+          {
+            "clue_number": 2,
+            "clue_text": "A drop of sadness",
+            "before": "____",
+            "after": "TEAR",
+            "newly_solved": true
+          }
+        ],
+        "new_letters_added": [],
+        "completion_delta": 100.0
+      },
+      "visual_diff": "\nBEFORE:\n┌───────────────┐\n│          ░  ░ │\n│    ░     ░  ░ │\n│    ░     ░  ░ │\n│ ░  ░     ░  ░ │\n│ ░  ░  ░  ░  ░ │\n└───────────────┘\n\nAFTER:\n┌───────────────┐\n│ C  A  T  ░  ░ │\n│ O  ░  E  ░  ░ │\n│ W  ░  A  ░  ░ │\n│ ░  ░  R  ░  ░ │\n│ ░  ░  ░  ░  ░ │\n└───────────────┘\n\nCHANGES:\n- Clue 1 ('Dairy farm animal'): ___ → COW\n  ✅ SOLVED!\n- Clue 2 ('A drop of sadness'): ____ → TEAR\n  ✅ SOLVED!\n"
+    }
+  ],
+  "final_result": {
+    "success": true,
+    "total_iterations": 1,
+    "solved_clues": 3,
+    "completion_rate": 1.0,
+    "final_grid_state": {
+      "timestamp": "2025-09-18T14:15:13.390223",
+      "context": "Final state after solving",
+      "solved_clues": [],
+      "grid_completion": 0.0,
+      "grid_visual": "┌───────────────┐\n│ C  A  T  ░  ░ │\n│ O  ░  E  ░  ░ │\n│ W  ░  A  ░  ░ │\n│ ░  ░  R  ░  ░ │\n│ ░  ░  ░  ░  ░ │\n└───────────────┘",
+      "grid_matrix": [
+        [
+          "C",
+          "A",
+          "T",
+          "░",
+          "░"
+        ],
+        [
+          "O",
+          "░",
+          "E",
+          "░",
+          "░"
+        ],
+        [
+          "W",
+          "░",
+          "A",
+          "░",
+          "░"
+        ],
+        [
+          "░",
+          "░",
+          "R",
+          "░",
+          "░"
+        ],
+        [
+          "░",
+          "░",
+          "░",
+          "░",
+          "░"
+        ]
+      ],
+      "clue_states": [
+        {
+          "number": 1,
+          "text": "Feline friend",
+          "direction": "across",
+          "length": 3,
+          "position": {
+            "row": 0,
+            "col": 0
+          },
+          "answered": true,
+          "current_chars": [
+            "C",
+            "A",
+            "T"
+          ],
+          "current_word": "CAT",
+          "filled_positions": 3,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [
+            {
+              "clue_number": 2,
+              "clue_text": "A drop of sadness",
+              "intersection_cell": {
+                "row": 0,
+                "col": 2
+              },
+              "target_position": 2,
+              "other_position": 0
+            }
+          ],
+          "fully_solved": true,
+          "final_answer": "CAT"
+        },
+        {
+          "number": 1,
+          "text": "Dairy farm animal",
+          "direction": "down",
+          "length": 3,
+          "position": {
+            "row": 0,
+            "col": 0
+          },
+          "answered": true,
+          "current_chars": [
+            "C",
+            "O",
+            "W"
+          ],
+          "current_word": "COW",
+          "filled_positions": 3,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [],
+          "fully_solved": true,
+          "final_answer": "COW"
+        },
+        {
+          "number": 2,
+          "text": "A drop of sadness",
+          "direction": "down",
+          "length": 4,
+          "position": {
+            "row": 0,
+            "col": 2
+          },
+          "answered": true,
+          "current_chars": [
+            "T",
+            "E",
+            "A",
+            "R"
+          ],
+          "current_word": "TEAR",
+          "filled_positions": 4,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [
+            {
+              "clue_number": 1,
+              "clue_text": "Feline friend",
+              "intersection_cell": {
+                "row": 0,
+                "col": 2
+              },
+              "target_position": 0,
+              "other_position": 2
+            }
+          ],
+          "fully_solved": true,
+          "final_answer": "TEAR"
+        }
+      ],
+      "grid_stats": {
+        "total_clues": 3,
+        "solved_clues": 3,
+        "total_unique_cells": 8,
+        "filled_unique_cells": 8,
+        "grid_completion_percentage": 100.0,
+        "clue_completion_percentage": 100.0
+      }
+    },
+    "conflicts_encountered": 0,
+    "retry_count": 0,
+    "visualization_history_count": 3
+  },
+  "performance_metrics": {
+    "total_solving_time": 14.32264494895935,
+    "average_iteration_time": 14.32264494895935,
+    "candidates_generated_total": 2,
+    "candidates_filtered_total": 0,
+    "solutions_applied_total": 3
+  }
+}

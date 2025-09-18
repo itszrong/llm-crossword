@@ -37,15 +37,29 @@ def test_puzzle(puzzle_file: str, puzzle_name: str):
         print(f"\n🎯 Initial grid:")
         print(puzzle)
         
-        # Create solver and solve with statistics
-        solver = AgenticCrosswordSolver()
-        stats = solver.solve_with_stats(puzzle)
+        # Create specialized solver for this difficulty level
+        difficulty = puzzle_name.lower()
+        solver = AgenticCrosswordSolver(difficulty=difficulty)
+        
+        print(f"\n🤖 Using {puzzle_name}CrosswordCoordinator with:")
+        print(f"  ⚙️ Max iterations: {solver.coordinator.max_iterations}")
+        print(f"  ↔️ Backtracking: {solver.coordinator.backtrack_enabled}")
+        print(f"  🧠 Thinking depth: {solver.coordinator.thinking_depth}")
+        print(f"  ⚡ Async solving: {getattr(solver.coordinator, 'use_async_solving', False)}")
+        
+        # Create log path for this difficulty
+        log_path = f"logs/solver_log_{puzzle_name.lower()}.json"
+        
+        stats = solver.solve_with_stats(puzzle, puzzle_name=puzzle_name, log_path=log_path)
         
         # Display results
         print(f"\n📊 Results:")
         print(f"  ✅ Success: {stats['success']}")
         print(f"  📈 Completion: {stats['finally_solved']}/{stats['total_clues']} clues ({stats['completion_rate']:.1%})")
         print(f"  ⏱️  Time: {stats['solving_time']:.2f} seconds")
+        print(f"  📝 Log saved to: {log_path}")
+        print(f"  🤖 Solver: {difficulty.title()}CrosswordCoordinator")
+        print(f"  ⚡ Async: {getattr(solver.coordinator, 'use_async_solving', False)}")
         
         print(f"\n🎯 Final grid:")
         print(puzzle)
@@ -66,7 +80,17 @@ def test_puzzle(puzzle_file: str, puzzle_name: str):
 def main():
     """Test solver on all puzzles"""
     print("🚀 Agentic Crossword Solver Test Suite")
-    print("Using Multi-Agent Design Patterns")
+    print("Using Multi-Agent Design Patterns with Specialized Solvers")
+    print("📝 Detailed logs will be saved for each difficulty level")
+    print("\n🤖 Solver Types:")
+    print("  ☀️ Easy: SimpleCrosswordCoordinator (fast, basic reasoning, sync)")
+    print("  🌤️ Medium: StandardCrosswordCoordinator (balanced approach, async)")
+    print("  ⛈️ Hard: AdvancedCrosswordCoordinator (deep reasoning, backtracking, async)")
+    print("  🌀 Cryptic: CrypticCrosswordCoordinator (wordplay analysis, advanced reasoning, async)")
+    print("\n⚡ Async Processing: Enabled for medium+ difficulties to process multiple clues concurrently")
+    
+    # Create logs directory
+    os.makedirs("logs", exist_ok=True)
     
     # Test puzzles in order of difficulty
     test_cases = [
@@ -93,18 +117,27 @@ def main():
     
     for puzzle_name, success in results.items():
         status = "✅ SOLVED" if success else "❌ FAILED"
-        print(f"  {puzzle_name}: {status}")
+        solver_type = f"{puzzle_name}CrosswordCoordinator"
+        print(f"  {puzzle_name}: {status} (using {solver_type})")
     
     solved_count = sum(results.values())
     total_count = len(results)
-    print(f"\n🎯 Overall: {solved_count}/{total_count} puzzles solved")
+    print(f"\n🎯 Overall: {solved_count}/{total_count} puzzles solved using specialized solvers")
+    print(f"📊 Check the logs/ directory for detailed analysis of each solver's performance")
+    print(f"⚡ Async processing improved speed for multi-clue puzzles")
     
     if solved_count == total_count:
         print("🎉 ALL PUZZLES SOLVED! Excellent work!")
+        print("🤖 All specialized solvers performed well!")
+        print("⚡ Async processing optimized the solving speed!")
     elif solved_count >= total_count // 2:
         print("👍 Good progress! More than half solved.")
+        print("🔧 Consider fine-tuning the solver strategies.")
+        print("⚡ Async processing helped with larger puzzles!")
     else:
         print("💪 Keep working! Room for improvement.")
+        print("🔍 Analyze the logs to understand what went wrong.")
+        print("⚡ Check if async processing is working correctly in the logs.")
 
 
 if __name__ == "__main__":

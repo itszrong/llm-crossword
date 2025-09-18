@@ -44,13 +44,18 @@ class ClueCandidate:
     clue_type: str = "definition"  # definition, wordplay, cryptic, etc.
 
 
+def get_clue_id(clue: Clue) -> str:
+    """Generate unique identifier for a clue"""
+    return f"{clue.number}_{clue.direction}"
+
+
 @dataclass
 class SolverState:
     """Current state of the crossword solving process"""
     puzzle: CrosswordPuzzle
-    candidates: Dict[int, List[ClueCandidate]] = field(default_factory=dict)
-    solved_clues: List[int] = field(default_factory=list)
-    conflicts: List[Tuple[int, int]] = field(default_factory=list)
+    candidates: Dict[str, List[ClueCandidate]] = field(default_factory=dict)
+    solved_clues: List[str] = field(default_factory=list)
+    conflicts: List[Tuple[str, str]] = field(default_factory=list)
     retry_count: int = 0
 
 
@@ -109,6 +114,45 @@ class CrosswordTools:
             
         except Exception as e:
             logger.error(f"Error solving clue '{clue.text}': {e}")
+            return []
+    
+    async def solve_clue_async(self, clue: Clue, context: str = "") -> List[ClueCandidate]:
+        """
+        Asynchronous version of solve_clue for concurrent processing
+        
+        Args:
+            clue: The crossword clue to solve
+            context: Additional context from partially filled grid
+            
+        Returns:
+            List of candidate answers with confidence scores
+        """
+        try:
+            # Determine clue type for specialized prompting
+            clue_type = self._classify_clue_type(clue.text)
+            
+            # Build context-aware prompt
+            prompt = self._build_clue_prompt(clue, context, clue_type)
+            
+            # Use async client if available, otherwise fall back to sync
+            response = await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: self.client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[
+                        {"role": "system", "content": "You are an expert crossword solver. Provide detailed reasoning for your answers."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.3,
+                    max_tokens=500
+                )
+            )
+            
+            # Parse response into candidates
+            return self._parse_clue_response(response.choices[0].message.content, clue, clue_type)
+            
+        except Exception as e:
+            logger.error(f"Error solving clue '{clue.text}' async: {e}")
             return []
     
     def _classify_clue_type(self, clue_text: str) -> str:
@@ -370,6 +414,44 @@ class ClueAgent:
         logger.error(f"ClueAgent failed to solve '{clue.text}' after {self.max_retries + 1} attempts")
         return []
     
+    async def solve_async(self, clue: Clue, puzzle: CrosswordPuzzle) -> List[ClueCandidate]:
+        """
+        Asynchronous version of solve for concurrent processing
+        
+        Args:
+            clue: The clue to solve
+            puzzle: Current puzzle state for context
+            
+        Returns:
+            List of candidate answers
+        """
+        context = self.tools.get_grid_context(puzzle, clue)
+        
+        for attempt in range(self.max_retries + 1):
+            try:
+                candidates = await self.tools.solve_clue_async(clue, context)
+                
+                # Filter candidates that are compatible with current grid state
+                valid_candidates = []
+                for candidate in candidates:
+                    if self._is_candidate_valid_for_grid(candidate, clue, puzzle):
+                        valid_candidates.append(candidate)
+                    else:
+                        logger.debug(f"Filtered out incompatible candidate: {candidate.word}")
+                
+                if valid_candidates:
+                    logger.info(f"ClueAgent solved '{clue.text}' async with {len(valid_candidates)} candidates")
+                    return valid_candidates
+                else:
+                    logger.warning(f"ClueAgent async attempt {attempt + 1} failed for '{clue.text}'")
+                    
+            except Exception as e:
+                logger.error(f"ClueAgent async error on attempt {attempt + 1}: {e}")
+        
+        # Return empty result if all attempts fail
+        logger.error(f"ClueAgent failed to solve '{clue.text}' async after {self.max_retries + 1} attempts")
+        return []
+    
     def _is_candidate_valid_for_grid(self, candidate: ClueCandidate, clue: Clue, puzzle: CrosswordPuzzle) -> bool:
         """Check if a candidate answer is compatible with the current grid state"""
         try:
@@ -434,8 +516,8 @@ class ConstraintAgent:
         # Create priority queue: (confidence * constraint_factor, clue, candidate)
         priority_items = []
         
-        for clue_num, candidates in state.candidates.items():
-            clue = next(c for c in puzzle.clues if c.number == clue_num)
+        for clue_id, candidates in state.candidates.items():
+            clue = next(c for c in puzzle.clues if get_clue_id(c) == clue_id)
             for candidate in candidates:
                 if self.validate_solution(puzzle, clue, candidate):
                     # Higher priority for higher confidence and more intersections
@@ -448,11 +530,12 @@ class ConstraintAgent:
         
         # Greedily select compatible solutions
         for priority, clue, candidate in priority_items:
-            if clue.number not in used_clues:
+            clue_id = get_clue_id(clue)
+            if clue_id not in used_clues:
                 # Check compatibility with already selected solutions
                 if self._is_compatible_with_solution(puzzle, solution, clue, candidate):
                     solution.append((clue, candidate))
-                    used_clues.add(clue.number)
+                    used_clues.add(clue_id)
         
         return solution
     
@@ -479,6 +562,186 @@ class ConstraintAgent:
                                                   existing_clue, existing_candidate.word):
                 return False
         return True
+
+
+class VisualizationAgent:
+    """Agent specialized in grid visualization and state tracking"""
+    
+    def __init__(self):
+        self.visualization_history: List[Dict[str, Any]] = []
+    
+    def capture_grid_state(self, puzzle: CrosswordPuzzle, context: str = "") -> Dict[str, Any]:
+        """Capture comprehensive grid state with visual representation"""
+        grid_state = {
+            "timestamp": datetime.now().isoformat(),
+            "context": context,
+            "solved_clues": [],
+            "grid_completion": 0.0,
+            "grid_visual": str(puzzle),  # Visual representation like main.py
+            "grid_matrix": self._get_grid_matrix(puzzle),  # Matrix for inspection
+            "clue_states": self._get_detailed_clue_states(puzzle),
+            "grid_stats": self._calculate_grid_stats(puzzle)
+        }
+        
+        # Track in history
+        self.visualization_history.append(grid_state)
+        
+        return grid_state
+    
+    def _get_grid_matrix(self, puzzle: CrosswordPuzzle) -> List[List[Optional[str]]]:
+        """Get the grid as a matrix for easy inspection"""
+        matrix = []
+        for row in range(puzzle.height):
+            matrix_row = []
+            for col in range(puzzle.width):
+                cell = puzzle.current_grid.cells[row][col]
+                # Check if this cell is part of any clue
+                is_clue_cell = any(
+                    (row, col) in list(clue.cells())
+                    for clue in puzzle.clues
+                )
+                if is_clue_cell:
+                    matrix_row.append(cell.value or "_")
+                else:
+                    matrix_row.append("░")  # Blocked cell
+            matrix.append(matrix_row)
+        return matrix
+    
+    def _get_detailed_clue_states(self, puzzle: CrosswordPuzzle) -> List[Dict[str, Any]]:
+        """Get detailed state for each clue"""
+        clue_states = []
+        for clue in puzzle.clues:
+            current_chars = puzzle.get_current_clue_chars(clue)
+            clue_state = {
+                "number": clue.number,
+                "text": clue.text,
+                "direction": clue.direction.value,
+                "length": clue.length,
+                "position": {"row": clue.row, "col": clue.col},
+                "answered": clue.answered,
+                "current_chars": current_chars,
+                "current_word": "".join(char or "_" for char in current_chars),
+                "filled_positions": sum(1 for char in current_chars if char is not None),
+                "completion_percentage": (sum(1 for char in current_chars if char is not None) / len(current_chars)) * 100,
+                "intersecting_clues": self._find_intersecting_clues(clue, puzzle)
+            }
+            
+            if clue.answered and all(char is not None for char in current_chars):
+                clue_state["fully_solved"] = True
+                clue_state["final_answer"] = "".join(current_chars)
+            else:
+                clue_state["fully_solved"] = False
+            
+            clue_states.append(clue_state)
+        
+        return clue_states
+    
+    def _find_intersecting_clues(self, target_clue: Clue, puzzle: CrosswordPuzzle) -> List[Dict[str, Any]]:
+        """Find clues that intersect with the target clue"""
+        intersections = []
+        target_cells = list(target_clue.cells())
+        
+        for other_clue in puzzle.clues:
+            if other_clue.number == target_clue.number:
+                continue
+                
+            other_cells = list(other_clue.cells())
+            common_cells = set(target_cells) & set(other_cells)
+            
+            if common_cells:
+                for cell in common_cells:
+                    target_pos = target_cells.index(cell)
+                    other_pos = other_cells.index(cell)
+                    intersections.append({
+                        "clue_number": other_clue.number,
+                        "clue_text": other_clue.text,
+                        "intersection_cell": {"row": cell[0], "col": cell[1]},
+                        "target_position": target_pos,
+                        "other_position": other_pos
+                    })
+        
+        return intersections
+    
+    def _calculate_grid_stats(self, puzzle: CrosswordPuzzle) -> Dict[str, Any]:
+        """Calculate overall grid statistics"""
+        total_cells = sum(
+            len(list(clue.cells())) for clue in puzzle.clues
+        )
+        filled_cells = 0
+        
+        for clue in puzzle.clues:
+            current_chars = puzzle.get_current_clue_chars(clue)
+            filled_cells += sum(1 for char in current_chars if char is not None)
+        
+        # Account for overlapping cells (intersections)
+        unique_cells = set()
+        for clue in puzzle.clues:
+            unique_cells.update(clue.cells())
+        
+        unique_filled_cells = 0
+        for row, col in unique_cells:
+            if puzzle.current_grid.cells[row][col].value is not None:
+                unique_filled_cells += 1
+        
+        return {
+            "total_clues": len(puzzle.clues),
+            "solved_clues": sum(1 for clue in puzzle.clues if clue.answered),
+            "total_unique_cells": len(unique_cells),
+            "filled_unique_cells": unique_filled_cells,
+            "grid_completion_percentage": (unique_filled_cells / len(unique_cells)) * 100 if unique_cells else 0,
+            "clue_completion_percentage": (sum(1 for clue in puzzle.clues if clue.answered) / len(puzzle.clues)) * 100 if puzzle.clues else 0
+        }
+    
+    def compare_states(self, before_state: Dict[str, Any], after_state: Dict[str, Any]) -> Dict[str, Any]:
+        """Compare two grid states and highlight changes"""
+        changes = {
+            "grid_changed": before_state["grid_visual"] != after_state["grid_visual"],
+            "clues_changed": [],
+            "new_letters_added": [],
+            "completion_delta": after_state["grid_stats"]["grid_completion_percentage"] - before_state["grid_stats"]["grid_completion_percentage"]
+        }
+        
+        # Find which clues changed
+        before_clues = {clue["number"]: clue for clue in before_state["clue_states"]}
+        after_clues = {clue["number"]: clue for clue in after_state["clue_states"]}
+        
+        for clue_num in before_clues:
+            if clue_num in after_clues:
+                before_clue = before_clues[clue_num]
+                after_clue = after_clues[clue_num]
+                
+                if before_clue["current_word"] != after_clue["current_word"]:
+                    changes["clues_changed"].append({
+                        "clue_number": clue_num,
+                        "clue_text": before_clue["text"],
+                        "before": before_clue["current_word"],
+                        "after": after_clue["current_word"],
+                        "newly_solved": not before_clue["fully_solved"] and after_clue["fully_solved"]
+                    })
+        
+        return changes
+    
+    def create_visual_diff(self, before_state: Dict[str, Any], after_state: Dict[str, Any]) -> str:
+        """Create a visual representation of changes between states"""
+        if not before_state["grid_visual"] != after_state["grid_visual"]:
+            return "No visual changes"
+        
+        diff_text = f"""
+BEFORE:
+{before_state["grid_visual"]}
+
+AFTER:
+{after_state["grid_visual"]}
+
+CHANGES:
+"""
+        changes = self.compare_states(before_state, after_state)
+        for change in changes["clues_changed"]:
+            diff_text += f"- Clue {change['clue_number']} ('{change['clue_text']}'): {change['before']} → {change['after']}\n"
+            if change["newly_solved"]:
+                diff_text += f"  ✅ SOLVED!\n"
+        
+        return diff_text
 
 
 class ReviewAgent:
@@ -618,8 +881,10 @@ class CoordinatorAgent:
         self.clue_agent = ClueAgent(self.tools)
         self.constraint_agent = ConstraintAgent(self.tools)
         self.review_agent = ReviewAgent(self.tools)
+        self.visualization_agent = VisualizationAgent()
         self.max_iterations = 5
         self.solver_log: Optional[SolverLog] = None
+        self.use_async_solving = True  # Enable async by default
     
     def solve_puzzle(self, puzzle: CrosswordPuzzle, puzzle_name: str = "unknown") -> bool:
         """
@@ -644,6 +909,11 @@ class CoordinatorAgent:
             logger.info(f"Solving iteration {iteration + 1}")
             iteration_start_time = time.time()
             
+            # Capture initial state using VisualizationAgent
+            grid_state_before = self.visualization_agent.capture_grid_state(
+                puzzle, f"Before iteration {iteration + 1}"
+            )
+            
             # Log iteration start
             iteration_log = {
                 "iteration": iteration + 1,
@@ -652,7 +922,14 @@ class CoordinatorAgent:
                 "candidates_reviewed": {},
                 "solutions_applied": [],
                 "progress_made": False,
-                "grid_state_before": self._capture_grid_state(puzzle),
+                "grid_state_before": grid_state_before,
+                "solver_info": {
+                    "difficulty": getattr(self, 'difficulty', 'unknown'),
+                    "max_iterations": self.max_iterations,
+                    "backtrack_enabled": getattr(self, 'backtrack_enabled', False),
+                    "thinking_depth": getattr(self, 'thinking_depth', 1),
+                    "use_async_solving": getattr(self, 'use_async_solving', False)
+                }
             }
             
             # Phase 1: Generate candidates for unsolved clues
@@ -670,8 +947,30 @@ class CoordinatorAgent:
             progress_made = self._apply_solutions(puzzle, solutions, state)
             iteration_log["progress_made"] = progress_made
             iteration_log["solutions_applied"] = self._log_solutions(solutions)
-            iteration_log["grid_state_after"] = self._capture_grid_state(puzzle)
+            
+            # Capture final state using VisualizationAgent
+            grid_state_after = self.visualization_agent.capture_grid_state(
+                puzzle, f"After iteration {iteration + 1}"
+            )
+            iteration_log["grid_state_after"] = grid_state_after
             iteration_log["duration"] = time.time() - iteration_start_time
+            
+            # Use VisualizationAgent to analyze changes
+            changes = self.visualization_agent.compare_states(grid_state_before, grid_state_after)
+            iteration_log["grid_changed"] = changes["grid_changed"]
+            iteration_log["changes_summary"] = changes
+            
+            if changes["grid_changed"]:
+                iteration_log["visual_diff"] = self.visualization_agent.create_visual_diff(
+                    grid_state_before, grid_state_after
+                )
+                logger.info(f"Grid changed in iteration {iteration + 1}:")
+                for change in changes["clues_changed"]:
+                    logger.info(f"  Clue {change['clue_number']}: {change['before']} → {change['after']}")
+                    if change["newly_solved"]:
+                        logger.info(f"    ✅ SOLVED!")
+            else:
+                logger.debug(f"No grid changes in iteration {iteration + 1}")
             
             # Add iteration to log
             self.solver_log.iterations.append(iteration_log)
@@ -699,18 +998,73 @@ class CoordinatorAgent:
     
     def _generate_candidates(self, state: SolverState):
         """Generate candidates for all unsolved clues"""
-        for clue in state.puzzle.clues:
-            if not clue.answered and clue.number not in state.solved_clues:
+        # Get unsolved clues
+        unsolved_clues = [
+            clue for clue in state.puzzle.clues 
+            if not clue.answered and get_clue_id(clue) not in state.solved_clues
+        ]
+        
+        if not unsolved_clues:
+            return
+        
+        # Check if solver supports async operations
+        use_async = getattr(self, 'use_async_solving', True) and len(unsolved_clues) > 1
+        
+        if use_async:
+            # Use async processing for multiple clues
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            try:
+                results = loop.run_until_complete(self._generate_candidates_async(unsolved_clues, state.puzzle))
+                for clue, candidates in results:
+                    if candidates:
+                        state.candidates[get_clue_id(clue)] = candidates
+            finally:
+                loop.close()
+        else:
+            # Fall back to sequential processing
+            for clue in unsolved_clues:
                 candidates = self.clue_agent.solve(clue, state.puzzle)
                 if candidates:
-                    state.candidates[clue.number] = candidates
+                    state.candidates[get_clue_id(clue)] = candidates
+    
+    async def _generate_candidates_async(self, clues: List[Clue], puzzle: CrosswordPuzzle) -> List[Tuple[Clue, List[ClueCandidate]]]:
+        """Generate candidates for multiple clues concurrently"""
+        # Create async tasks for all clues
+        tasks = [
+            self._solve_clue_with_semaphore(clue, puzzle)
+            for clue in clues
+        ]
+        
+        # Run all tasks concurrently with a reasonable limit
+        semaphore = asyncio.Semaphore(5)  # Limit concurrent API calls
+        
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        
+        # Process results
+        clue_results = []
+        for clue, result in zip(clues, results):
+            if isinstance(result, Exception):
+                logger.error(f"Error solving clue '{clue.text}' async: {result}")
+                clue_results.append((clue, []))
+            else:
+                clue_results.append((clue, result))
+        
+        return clue_results
+    
+    async def _solve_clue_with_semaphore(self, clue: Clue, puzzle: CrosswordPuzzle) -> List[ClueCandidate]:
+        """Solve a single clue with semaphore limiting"""
+        # Use semaphore to limit concurrent API calls
+        semaphore = asyncio.Semaphore(5)
+        async with semaphore:
+            return await self.clue_agent.solve_async(clue, puzzle)
     
     def _review_candidates(self, state: SolverState, puzzle: CrosswordPuzzle):
         """Review and filter candidates using the ReviewAgent"""
         reviewed_candidates = {}
         
-        for clue_number, candidates in state.candidates.items():
-            clue = next(c for c in puzzle.clues if c.number == clue_number)
+        for clue_id, candidates in state.candidates.items():
+            clue = next(c for c in puzzle.clues if get_clue_id(c) == clue_id)
             reviewed_list = []
             
             for candidate in candidates:
@@ -735,7 +1089,7 @@ class CoordinatorAgent:
             if reviewed_list:
                 # Re-sort by adjusted confidence
                 reviewed_list.sort(key=lambda x: x.confidence, reverse=True)
-                reviewed_candidates[clue_number] = reviewed_list
+                reviewed_candidates[clue_id] = reviewed_list
         
         # Update state with reviewed candidates
         state.candidates = reviewed_candidates
@@ -756,7 +1110,7 @@ class CoordinatorAgent:
                     
                     # Apply the solution
                     puzzle.set_clue_chars(clue, list(candidate.word))
-                    state.solved_clues.append(clue.number)
+                    state.solved_clues.append(get_clue_id(clue))
                     progress_made = True
                     
                     logger.info(f"Applied solution: '{clue.text}' = {candidate.word} "
@@ -776,12 +1130,12 @@ class CoordinatorAgent:
             total_clues=len(puzzle.clues)
         )
     
-    def _log_candidates(self, candidates: Dict[int, List[ClueCandidate]], puzzle: CrosswordPuzzle) -> Dict[str, Any]:
+    def _log_candidates(self, candidates: Dict[str, List[ClueCandidate]], puzzle: CrosswordPuzzle) -> Dict[str, Any]:
         """Log candidate information"""
         logged_candidates = {}
-        for clue_number, candidate_list in candidates.items():
-            clue = next(c for c in puzzle.clues if c.number == clue_number)
-            logged_candidates[str(clue_number)] = {
+        for clue_id, candidate_list in candidates.items():
+            clue = next(c for c in puzzle.clues if get_clue_id(c) == clue_id)
+            logged_candidates[str(clue.number)] = {
                 "clue_text": clue.text,
                 "clue_length": clue.length,
                 "clue_direction": clue.direction,
@@ -812,38 +1166,82 @@ class CoordinatorAgent:
         return logged_solutions
     
     def _capture_grid_state(self, puzzle: CrosswordPuzzle) -> Dict[str, Any]:
-        """Capture current grid state"""
+        """Capture current grid state with visual representation"""
         grid_state = {
             "solved_clues": [],
-            "grid_completion": 0.0
+            "grid_completion": 0.0,
+            "grid_visual": str(puzzle),  # Add visual representation
+            "grid_matrix": self._get_grid_matrix(puzzle),  # Add matrix representation
+            "clue_states": []
         }
         
         solved_count = 0
         for clue in puzzle.clues:
-            if clue.answered:
-                current_chars = puzzle.get_current_clue_chars(clue)
-                if all(char is not None for char in current_chars):
-                    grid_state["solved_clues"].append({
-                        "number": clue.number,
-                        "text": clue.text,
-                        "answer": "".join(current_chars)
-                    })
-                    solved_count += 1
+            current_chars = puzzle.get_current_clue_chars(clue)
+            clue_state = {
+                "number": clue.number,
+                "text": clue.text,
+                "direction": clue.direction.value,
+                "length": clue.length,
+                "row": clue.row,
+                "col": clue.col,
+                "answered": clue.answered,
+                "current_chars": current_chars,
+                "current_word": "".join(char or "_" for char in current_chars)
+            }
+            
+            if clue.answered and all(char is not None for char in current_chars):
+                grid_state["solved_clues"].append({
+                    "number": clue.number,
+                    "text": clue.text,
+                    "answer": "".join(current_chars)
+                })
+                solved_count += 1
+                clue_state["fully_solved"] = True
+            else:
+                clue_state["fully_solved"] = False
+            
+            grid_state["clue_states"].append(clue_state)
         
         grid_state["grid_completion"] = solved_count / len(puzzle.clues) if puzzle.clues else 0.0
         return grid_state
     
+    def _get_grid_matrix(self, puzzle: CrosswordPuzzle) -> List[List[Optional[str]]]:
+        """Get the grid as a matrix for easy inspection"""
+        matrix = []
+        for row in range(puzzle.height):
+            matrix_row = []
+            for col in range(puzzle.width):
+                cell = puzzle.current_grid.cells[row][col]
+                # Check if this cell is part of any clue
+                is_clue_cell = any(
+                    (row, col) in list(clue.cells())
+                    for clue in puzzle.clues
+                )
+                if is_clue_cell:
+                    matrix_row.append(cell.value)
+                else:
+                    matrix_row.append("░")  # Blocked cell
+            matrix.append(matrix_row)
+        return matrix
+    
     def _finalize_logging(self, puzzle: CrosswordPuzzle, state: SolverState, success: bool, total_time: float):
         """Finalize the solver log"""
         # Final results
+        # Capture final grid state
+        final_grid_state = self.visualization_agent.capture_grid_state(
+            puzzle, "Final state after solving"
+        )
+        
         self.solver_log.final_result = {
             "success": success,
             "total_iterations": len(self.solver_log.iterations),
             "solved_clues": len(state.solved_clues),
             "completion_rate": len(state.solved_clues) / len(puzzle.clues) if puzzle.clues else 0.0,
-            "final_grid_state": self._capture_grid_state(puzzle),
+            "final_grid_state": final_grid_state,
             "conflicts_encountered": len(state.conflicts),
-            "retry_count": state.retry_count
+            "retry_count": state.retry_count,
+            "visualization_history_count": len(self.visualization_agent.visualization_history)
         }
         
         # Performance metrics

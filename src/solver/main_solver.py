@@ -19,12 +19,48 @@ class AgenticCrosswordSolver:
     Main interface for the agentic crossword solver
     
     Usage:
-        solver = AgenticCrosswordSolver()
+        solver = AgenticCrosswordSolver(difficulty="medium")
         success = solver.solve(puzzle)
     """
     
-    def __init__(self):
+    def __init__(self, difficulty: str = "medium"):
+        self.difficulty = difficulty.lower()
+        
+        # Create coordinator and configure it for the difficulty level
         self.coordinator = CoordinatorAgent()
+        self._configure_for_difficulty()
+        
+        logger.info(f"Initialized {self.difficulty.title()}CrosswordCoordinator")
+    
+    def _configure_for_difficulty(self):
+        """Configure the coordinator based on difficulty level"""
+        if self.difficulty == "easy":
+            self.coordinator.max_iterations = 3
+            self.coordinator.backtrack_enabled = False
+            self.coordinator.thinking_depth = 1
+            self.coordinator.use_async_solving = False
+        elif self.difficulty == "medium":
+            self.coordinator.max_iterations = 5
+            self.coordinator.backtrack_enabled = True
+            self.coordinator.thinking_depth = 2
+            self.coordinator.use_async_solving = True
+        elif self.difficulty == "hard":
+            self.coordinator.max_iterations = 8
+            self.coordinator.backtrack_enabled = True
+            self.coordinator.thinking_depth = 3
+            self.coordinator.use_async_solving = True
+        elif self.difficulty == "cryptic":
+            self.coordinator.max_iterations = 12
+            self.coordinator.backtrack_enabled = True
+            self.coordinator.thinking_depth = 4
+            self.coordinator.use_async_solving = True
+        else:
+            logger.warning(f"Unknown difficulty '{self.difficulty}', using medium defaults")
+            self.difficulty = "medium"
+            self._configure_for_difficulty()
+        
+        # Store difficulty info
+        self.coordinator.difficulty = self.difficulty
     
     def solve(self, puzzle: CrosswordPuzzle, verbose: bool = True, puzzle_name: str = "unknown") -> bool:
         """
@@ -39,8 +75,9 @@ class AgenticCrosswordSolver:
             True if puzzle was successfully solved, False otherwise
         """
         if verbose:
-            logger.info(f"Starting agentic solver for {puzzle.width}x{puzzle.height} puzzle")
+            logger.info(f"Starting {self.difficulty} difficulty agentic solver for {puzzle.width}x{puzzle.height} puzzle")
             logger.info(f"Puzzle has {len(puzzle.clues)} clues to solve")
+            logger.info(f"Solver features: backtracking={self.coordinator.backtrack_enabled}, thinking_depth={self.coordinator.thinking_depth}")
         
         try:
             # Use the coordinator agent to solve the puzzle
@@ -100,16 +137,17 @@ class AgenticCrosswordSolver:
         }
 
 
-def quick_solve(puzzle: CrosswordPuzzle, puzzle_name: str = "unknown") -> bool:
+def quick_solve(puzzle: CrosswordPuzzle, puzzle_name: str = "unknown", difficulty: str = "medium") -> bool:
     """
     Convenience function for quick puzzle solving
     
     Args:
         puzzle: The CrosswordPuzzle instance to solve
         puzzle_name: Name identifier for the puzzle
+        difficulty: Difficulty level (easy, medium, hard, cryptic)
         
     Returns:
         True if puzzle was successfully solved
     """
-    solver = AgenticCrosswordSolver()
+    solver = AgenticCrosswordSolver(difficulty=difficulty)
     return solver.solve(puzzle, puzzle_name=puzzle_name)

@@ -1,0 +1,41 @@
+{
+    "width": 7,
+    "height": 7,
+    "clues": [
+      {"number": 1, "text": "A long narrative poem", "direction": "across", "length": 4, "row": 0, "col": 0, "answer": "EPIC", "answered": true},
+      {"number": 2, "text": "A person who writes books", "direction": "across", "length": 6, "row": 3, "col": 1, "answer": "AUTHOR", "answered": true},
+      {"number": 1, "text": "A short story with a moral lesson", "direction": "down", "length": 7, "row": 0, "col": 1, "answer": "PARABLE", "answered": true},
+      {"number": 2, "text": "A book's outer casing", "direction": "down", "length": 5, "row": 2, "col": 5, "answer": "COVER", "answered": true},
+      {"number": 3, "text": "A narrative tale", "direction": "down", "length": 5, "row": 2, "col": 3, "answer": "STORY", "answered": true}
+    ],
+    "grid_history": [
+      {
+        "width": 7,
+        "height": 7,
+        "cells": [
+          [{"row":0,"col":0,"value":null},{"row":0,"col":1,"value":null},{"row":0,"col":2,"value":null},{"row":0,"col":3,"value":null},{"row":0,"col":4,"value":null},{"row":0,"col":5,"value":null},{"row":0,"col":6,"value":null}],
+          [{"row":1,"col":0,"value":null},{"row":1,"col":1,"value":null},{"row":1,"col":2,"value":null},{"row":1,"col":3,"value":null},{"row":1,"col":4,"value":null},{"row":1,"col":5,"value":null},{"row":1,"col":6,"value":null}],
+          [{"row":2,"col":0,"value":null},{"row":2,"col":1,"value":null},{"row":2,"col":2,"value":null},{"row":2,"col":3,"value":null},{"row":2,"col":4,"value":null},{"row":2,"col":5,"value":null},{"row":2,"col":6,"value":null}],
+          [{"row":3,"col":0,"value":null},{"row":3,"col":1,"value":null},{"row":3,"col":2,"value":null},{"row":3,"col":3,"value":null},{"row":3,"col":4,"value":null},{"row":3,"col":5,"value":null},{"row":3,"col":6,"value":null}],
+          [{"row":4,"col":0,"value":null},{"row":4,"col":1,"value":null},{"row":4,"col":2,"value":null},{"row":4,"col":3,"value":null},{"row":4,"col":4,"value":null},{"row":4,"col":5,"value":null},{"row":4,"col":6,"value":null}],
+          [{"row":5,"col":0,"value":null},{"row":5,"col":1,"value":null},{"row":5,"col":2,"value":null},{"row":5,"col":3,"value":null},{"row":5,"col":4,"value":null},{"row":5,"col":5,"value":null},{"row":5,"col":6,"value":null}],
+          [{"row":6,"col":0,"value":null},{"row":6,"col":1,"value":null},{"row":6,"col":2,"value":null},{"row":6,"col":3,"value":null},{"row":6,"col":4,"value":null},{"row":6,"col":5,"value":null},{"row":6,"col":6,"value":null}]
+        ]
+      },
+      {
+        "width": 7,
+        "height": 7,
+        "cells": [
+          [{"row":0,"col":0,"value":"E"},{"row":0,"col":1,"value":"P"},{"row":0,"col":2,"value":"I"},{"row":0,"col":3,"value":"C"},{"row":0,"col":4,"value":null},{"row":0,"col":5,"value":null},{"row":0,"col":6,"value":null}],
+          [{"row":1,"col":0,"value":null},{"row":1,"col":1,"value":"A"},{"row":1,"col":2,"value":null},{"row":1,"col":3,"value":null},{"row":1,"col":4,"value":null},{"row":1,"col":5,"value":null},{"row":1,"col":6,"value":null}],
+          [{"row":2,"col":0,"value":null},{"row":2,"col":1,"value":"R"},{"row":2,"col":2,"value":null},{"row":2,"col":3,"value":"S"},{"row":2,"col":4,"value":null},{"row":2,"col":5,"value":"C"},{"row":2,"col":6,"value":null}],
+          [{"row":3,"col":0,"value":null},{"row":3,"col":1,"value":"A"},{"row":3,"col":2,"value":"U"},{"row":3,"col":3,"value":"T"},{"row":3,"col":4,"value":"H"},{"row":3,"col":5,"value":"O"},{"row":3,"col":6,"value":"R"}],
+          [{"row":4,"col":0,"value":null},{"row":4,"col":1,"value":"B"},{"row":4,"col":2,"value":null},{"row":4,"col":3,"value":"O"},{"row":4,"col":4,"value":null},{"row":4,"col":5,"value":"V"},{"row":4,"col":6,"value":null}],
+          [{"row":5,"col":0,"value":null},{"row":5,"col":1,"value":"L"},{"row":5,"col":2,"value":null},{"row":5,"col":3,"value":"R"},{"row":5,"col":4,"value":null},{"row":5,"col":5,"value":"E"},{"row":5,"col":6,"value":null}],
+          [{"row":6,"col":0,"value":null},{"row":6,"col":1,"value":"E"},{"row":6,"col":2,"value":null},{"row":6,"col":3,"value":"Y"},{"row":6,"col":4,"value":null},{"row":6,"col":5,"value":"R"},{"row":6,"col":6,"value":null}]
+        ]
+      }
+    ],
+    "clue_history": []
+  }
+  
