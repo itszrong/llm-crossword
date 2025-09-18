@@ -20,7 +20,135 @@ from src.solver.review_system import TwoStageReviewSystem
 # Load environment variables
 load_dotenv()
 
-def apply_additional_solver_passes(puzzle: CrosswordPuzzle, solver: AgenticCrosswordSolver, max_passes: int = 3) -> int:
+def iterative_solver_review_loop(puzzle: CrosswordPuzzle, solver: AgenticCrosswordSolver, max_cycles: int = 8) -> dict:
+    """
+    Apply iterative cycles of solver + review system until convergence or max cycles
+    Each cycle: 1) Run solver, 2) Apply review system, 3) Check for improvement
+    """
+    print(f"\n🔄 Iterative Solver + Review Loop (max {max_cycles} cycles)")
+    print("=" * 60)
+    
+    initial_solved = sum(1 for clue in puzzle.clues if clue.answered)
+    best_solved = initial_solved
+    total_improvements = 0
+    cycles_completed = 0
+    
+    for cycle in range(1, max_cycles + 1):
+        print(f"\n🔄 CYCLE {cycle}/{max_cycles}")
+        print("-" * 40)
+        
+        cycle_start_solved = sum(1 for clue in puzzle.clues if clue.answered)
+        
+        # Phase 1: Run solver with fresh state
+        print(f"  🎯 Phase 1: Running solver pass...")
+        
+        # Reset solver state for fresh attempt
+        if hasattr(solver.coordinator, 'last_iteration_candidates'):
+            solver.coordinator.last_iteration_candidates.clear()
+        if hasattr(solver.coordinator, 'failed_clue_attempts'):
+            solver.coordinator.failed_clue_attempts.clear()
+        
+        # Gradually increase aggressiveness with each cycle
+        if cycle <= 2:
+            # Early cycles: standard approach
+            print(f"    🎯 Cycle {cycle}: Standard approach")
+        elif cycle <= 4:
+            # Mid cycles: more aggressive
+            print(f"    🎯 Cycle {cycle}: More aggressive thresholds")
+            solver.coordinator.confidence_threshold = max(0.15, 0.3 - cycle * 0.05)
+            solver.coordinator.review_threshold = max(0.05, 0.15 - cycle * 0.02)
+        else:
+            # Late cycles: very permissive
+            print(f"    🎯 Cycle {cycle}: Very permissive approach")
+            solver.coordinator.confidence_threshold = 0.1
+            solver.coordinator.review_threshold = 0.03
+            solver.coordinator.max_iterations = min(20, 12 + cycle * 2)  # Even more iterations
+        
+        # Run solver
+        solver_success = solver.solve(puzzle, verbose=False, puzzle_name=f"Hard_Cycle_{cycle}")
+        after_solver_solved = sum(1 for clue in puzzle.clues if clue.answered)
+        solver_improvement = after_solver_solved - cycle_start_solved
+        
+        print(f"    📊 Solver result: +{solver_improvement} clues ({after_solver_solved}/{len(puzzle.clues)})")
+        
+        # Phase 2: Apply review system if available and not fully solved
+        review_improvement = 0
+        if after_solver_solved < len(puzzle.clues) and solver.review_system:
+            print(f"  🎭 Phase 2: Applying review system...")
+            
+            try:
+                solver_log = solver.coordinator.solver_log if hasattr(solver.coordinator, 'solver_log') else None
+                
+                if solver_log:
+                    corrections_applied, review_report = solver.review_system.review_and_correct(
+                        puzzle, solver_log, max_corrections=8  # More corrections per cycle
+                    )
+                    
+                    after_review_solved = sum(1 for clue in puzzle.clues if clue.answered)
+                    review_improvement = after_review_solved - after_solver_solved
+                    
+                    if corrections_applied:
+                        print(f"    ✅ Review applied {review_improvement} corrections")
+                    else:
+                        print(f"    ℹ️  Review found no applicable corrections")
+                else:
+                    print(f"    ❌ No solver log available for review")
+                    
+            except Exception as e:
+                print(f"    ❌ Review system error: {e}")
+        else:
+            print(f"  🎭 Phase 2: Skipping review (puzzle complete or review unavailable)")
+        
+        # Calculate cycle results
+        cycle_end_solved = sum(1 for clue in puzzle.clues if clue.answered)
+        cycle_improvement = cycle_end_solved - cycle_start_solved
+        total_improvements += cycle_improvement
+        
+        print(f"  📊 Cycle {cycle} total: +{cycle_improvement} clues")
+        print(f"  📈 Current progress: {cycle_end_solved}/{len(puzzle.clues)} ({cycle_end_solved/len(puzzle.clues)*100:.1f}%)")
+        
+        # Update best result
+        if cycle_end_solved > best_solved:
+            best_solved = cycle_end_solved
+        
+        cycles_completed = cycle
+        
+        # Check for completion
+        if cycle_end_solved >= len(puzzle.clues):
+            print(f"  🎉 PUZZLE COMPLETED in cycle {cycle}!")
+            break
+        
+        # Check for no improvement (convergence)
+        if cycle_improvement == 0:
+            print(f"  ⏹️  No improvement in cycle {cycle}")
+            if cycle >= 3:  # Allow at least 3 cycles before giving up
+                print(f"  🛑 Stopping early - no progress for multiple cycles")
+                break
+        
+        # Reset thresholds for next cycle
+        solver.coordinator.confidence_threshold = 0.3
+        solver.coordinator.review_threshold = 0.15
+        solver.coordinator.max_iterations = 12
+    
+    final_solved = sum(1 for clue in puzzle.clues if clue.answered)
+    
+    print(f"\n📊 Iterative Loop Summary:")
+    print(f"  🔄 Cycles completed: {cycles_completed}/{max_cycles}")
+    print(f"  📈 Total improvement: +{total_improvements} clues")
+    print(f"  🎯 Final result: {final_solved}/{len(puzzle.clues)} clues ({final_solved/len(puzzle.clues)*100:.1f}%)")
+    print(f"  ✅ Success: {final_solved >= len(puzzle.clues)}")
+    
+    return {
+        'cycles_completed': cycles_completed,
+        'initial_solved': initial_solved,
+        'final_solved': final_solved,
+        'total_improvement': total_improvements,
+        'completion_rate': final_solved / len(puzzle.clues),
+        'success': final_solved >= len(puzzle.clues)
+    }
+
+
+def apply_additional_solver_passes(puzzle: CrosswordPuzzle, solver: AgenticCrosswordSolver, max_passes: int = 5) -> int:
     """
     Apply additional solver passes to try to complete more clues
     This uses only the solver's own capabilities, no ground truth
@@ -42,8 +170,38 @@ def apply_additional_solver_passes(puzzle: CrosswordPuzzle, solver: AgenticCross
         
         print(f"    🎯 Attempting to solve {len(unsolved_clues)} remaining clues...")
         
+        # Reset solver state for fresh attempt
+        if hasattr(solver.coordinator, 'last_iteration_candidates'):
+            solver.coordinator.last_iteration_candidates.clear()
+        if hasattr(solver.coordinator, 'failed_clue_attempts'):
+            solver.coordinator.failed_clue_attempts.clear()
+            
+        # Modify strategy for different passes
+        if pass_num == 1:
+            # Pass 1: Standard approach
+            print(f"    🎯 Pass {pass_num}: Standard solving approach")
+        elif pass_num == 2:
+            # Pass 2: More aggressive (lower confidence threshold)
+            print(f"    🎯 Pass {pass_num}: More aggressive (lower thresholds)")
+            original_confidence = solver.coordinator.confidence_threshold
+            solver.coordinator.confidence_threshold = max(0.2, original_confidence - 0.1)
+        elif pass_num == 3:
+            # Pass 3: Focus on multi-word clues first
+            print(f"    🎯 Pass {pass_num}: Multi-word clue priority")
+            solver.coordinator.confidence_threshold = 0.2
+        else:
+            # Pass 4+: Very permissive
+            print(f"    🎯 Pass {pass_num}: Very permissive approach")
+            solver.coordinator.confidence_threshold = 0.1
+            solver.coordinator.review_threshold = 0.05
+            
         # Apply solver again on the current state
         pass_success = solver.solve(puzzle, verbose=False, puzzle_name=f"Hard_Test_Pass_{pass_num}")
+        
+        # Reset thresholds after each pass
+        if pass_num >= 2:
+            solver.coordinator.confidence_threshold = 0.3  # Reset to hard defaults
+            solver.coordinator.review_threshold = 0.15
         
         current_solved = sum(1 for clue in puzzle.clues if clue.answered)
         improvements_this_pass = current_solved - (initial_solved + total_improvements)
@@ -133,16 +291,16 @@ def test_hard_puzzle():
             except Exception as e:
                 print(f"  ❌ Review system error: {e}")
         
-        # Apply additional solver passes if still not fully solved
+        # Apply iterative solver + review loop until convergence
         if stats['completion_rate'] < 1.0:
-            print(f"\n🔄 Applying Additional Solver Passes...")
-            additional_solved = apply_additional_solver_passes(puzzle, solver, max_passes=3)
+            print(f"\n🔄 Starting Iterative Solver + Review Loop...")
+            final_stats = iterative_solver_review_loop(puzzle, solver, max_cycles=8)
             
-            if additional_solved > 0:
-                new_solved = sum(1 for clue in puzzle.clues if clue.answered)
-                stats['finally_solved'] = new_solved
-                stats['completion_rate'] = new_solved / len(puzzle.clues)
-                stats['success'] = stats['completion_rate'] >= 1.0
+            # Update stats with final results
+            stats['finally_solved'] = final_stats['final_solved']
+            stats['completion_rate'] = final_stats['completion_rate']
+            stats['success'] = final_stats['success']
+            stats['total_cycles'] = final_stats['cycles_completed']
         
         print(f"\n🎯 Final grid:")
         print(puzzle)
@@ -160,8 +318,10 @@ def test_hard_puzzle():
         print(f"  📈 Final Completion: {stats['finally_solved']}/{stats['total_clues']} clues ({stats['completion_rate']:.1%})")
         print(f"  ⏱️  Initial Solve Time: {stats['solving_time']:.2f} seconds")
         print(f"  🎭 Review System Used: {stats['review_enabled']}")
+        if 'total_cycles' in stats:
+            print(f"  🔄 Iterative Cycles: {stats['total_cycles']}")
         print(f"  ✅ Solution Consistency: {validation_success}")
-        print(f"  🧩 Solver Method: Agentic solving with review system and additional passes")
+        print(f"  🧩 Solver Method: Iterative agentic solving with review system")
         
         print(f"\n📋 Visualization History:")
         print(f"  Total visualizations captured: {len(solver.coordinator.visualization_agent.visualization_history)}")

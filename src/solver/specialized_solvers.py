@@ -61,16 +61,16 @@ class DifficultyConfigurator:
         
         elif difficulty == "hard":
             return {
-                "max_iterations": 8,
+                "max_iterations": 12,  # Increased from 8 to give more chances
                 "backtrack_enabled": True,
                 "thinking_depth": 3,
                 "use_async_solving": True,
             "max_candidates_per_clue": 5,
-            "confidence_threshold": 0.4,
-                "review_threshold": 0.2,  # More lenient to avoid filtering OEDIPUSREX
+            "confidence_threshold": 0.3,  # More lenient to try more candidates
+                "review_threshold": 0.15,  # Even more lenient for hard puzzles
             "prefer_high_confidence": False,
             "parallel_solving": True,
-            "max_backtracks": 5,
+            "max_backtracks": 8,  # More backtracks for hard puzzles
             "deep_reasoning": True,
                 "constraint_propagation": True,
                 "prompt_style": "advanced"

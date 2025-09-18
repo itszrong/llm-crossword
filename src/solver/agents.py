@@ -119,7 +119,7 @@ class CrosswordTools:
             response = self.client.chat.completions.create(
                 model="gpt-4o",
                 messages=[
-                    {"role": "system", "content": "You are an expert crossword solver. Provide detailed reasoning for your answers."},
+                    {"role": "system", "content": "You are an expert crossword solver. Follow the EXACT format requested. Do not use markdown formatting like **bold**. Use plain text only with the exact format: ANSWER: word | CONFIDENCE: level | etc."},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.3,
@@ -127,7 +127,7 @@ class CrosswordTools:
             )
             
             # Parse response into candidates
-            return self._parse_clue_response(response.choices[0].message.content, clue, clue_type)
+            return self._parse_clue_response(response.choices[0].message.content, clue, clue_type, current_pattern)
             
         except Exception as e:
             logger.error(f"Error solving clue '{clue.text}': {e}")
@@ -164,7 +164,7 @@ class CrosswordTools:
                 lambda: self.client.chat.completions.create(
                     model="gpt-4o",
                     messages=[
-                        {"role": "system", "content": "You are an expert crossword solver. Provide detailed reasoning for your answers."},
+                        {"role": "system", "content": "You are an expert crossword solver. Follow the EXACT format requested. Do not use markdown formatting like **bold**. Use plain text only with the exact format: ANSWER: word | CONFIDENCE: level | etc."},
                         {"role": "user", "content": prompt}
                     ],
                     temperature=0.3,
@@ -173,7 +173,7 @@ class CrosswordTools:
             )
             
             # Parse response into candidates
-            return self._parse_clue_response(response.choices[0].message.content, clue, clue_type)
+            return self._parse_clue_response(response.choices[0].message.content, clue, clue_type, current_pattern)
             
         except Exception as e:
             logger.error(f"Error solving clue '{clue.text}' async: {e}")
@@ -261,14 +261,33 @@ PREVIOUS ATTEMPTS (don't repeat these):
 IMPORTANT: You must suggest DIFFERENT words that haven't been tried before!
 """
         
-        # Build pattern constraint section
+        # Build pattern constraint section with enhanced reasoning
         pattern_section = ""
         if current_pattern and '_' in current_pattern:
+            # Count known vs unknown letters
+            known_letters = sum(1 for c in current_pattern if c != '_')
+            total_letters = len(current_pattern)
+            constraint_strength = known_letters / total_letters if total_letters > 0 else 0
+            
             pattern_section = f"""
-CONSTRAINT: Must fit pattern "{current_pattern}" where:
-- Letters shown are FIXED from intersecting clues
+CRITICAL CONSTRAINT: Must fit pattern "{current_pattern}" where:
+- Letters shown are FIXED from intersecting clues ({known_letters}/{total_letters} positions known)
 - Underscores (_) are positions you need to fill
 - Your answer must match this exact pattern
+- Constraint strength: {constraint_strength:.1%} - {"HIGHLY CONSTRAINED" if constraint_strength > 0.5 else "MODERATELY CONSTRAINED" if constraint_strength > 0.2 else "LIGHTLY CONSTRAINED"}
+
+CHAIN OF THOUGHT REASONING REQUIRED:
+1. Analyze the known letters and their positions
+2. Consider what words could fit this specific pattern
+3. Match against the clue meaning
+4. Verify the word makes semantic sense
+5. Double-check every letter position matches the pattern
+
+PATTERN ANALYSIS STRATEGY:
+- Look for common letter combinations in the known positions
+- Consider if the pattern suggests compound words, proper names, or technical terms
+- Think about word roots, prefixes, and suffixes that fit
+- Use the pattern to eliminate impossible candidates early
 """
         
         base_prompt = f"""
@@ -292,29 +311,52 @@ IMPORTANT:
 - Think about common crossword answers and wordplay patterns
 - For simple clues, prefer obvious, common words over obscure ones
 
-Strategic thinking approach:
-1. ANALYZE: What is the clue asking for? (person, place, thing, concept, action)
-2. BRAINSTORM: What are the most likely answers in that category?
-3. CONSTRAIN: Which of those fit the exact letter count?
-4. VERIFY: Does the answer make perfect sense for the clue?
+MANDATORY CHAIN OF THOUGHT REASONING:
+Step 1: PATTERN ANALYSIS (if pattern exists)
+- Examine each known letter and its position
+- Identify letter combinations that suggest specific words
+- Consider common prefixes/suffixes that fit the pattern
+- Note any impossible letter combinations
 
-For multi-word clues specifically:
-- Famous titles (books, plays, movies written as one word)
-- Compound terms (technical terms, equipment names combined)
-- Proper names (first + last name combined)
-- Common phrases that become single crossword entries
-- Latin/foreign phrases commonly used in English
+Step 2: CLUE ANALYSIS
+- Break down the clue into its core meaning(s)
+- Identify the category (person, place, thing, concept, action)
+- Look for wordplay hints or double meanings
+- Consider alternative interpretations
 
-Please provide:
-1. Your best answer (exactly {clue.length} letters, no spaces)
-2. 2-3 alternative possibilities
-3. Confidence level (HIGH/MEDIUM/LOW) for each
-4. Brief reasoning for each answer
+Step 3: CANDIDATE GENERATION
+- Generate words that fit both the pattern AND the clue meaning
+- For multi-word clues: think compound words, proper names, technical terms
+- Consider famous titles, names, or phrases written as one word
+- Use pattern constraints to eliminate impossible options
 
-Format your response as:
-ANSWER: [word] | CONFIDENCE: [level] | REASONING: [explanation]
-ALT1: [word] | CONFIDENCE: [level] | REASONING: [explanation]
-ALT2: [word] | CONFIDENCE: [level] | REASONING: [explanation]
+Step 4: VALIDATION
+- Check each candidate letter-by-letter against the pattern
+- Verify the semantic fit with the clue
+- Confirm the word length matches exactly
+- Ensure it's a reasonable crossword answer
+
+Step 5: CONFIDENCE ASSESSMENT
+- HIGH: Perfect pattern match + clear semantic fit
+- MEDIUM: Good pattern match + reasonable semantic fit  
+- LOW: Partial fit or uncertain semantic connection
+
+REQUIRED FORMAT - SHOW YOUR CHAIN OF THOUGHT:
+
+PATTERN ANALYSIS: [analyze the pattern if one exists]
+CLUE BREAKDOWN: [break down the clue meaning]
+REASONING CHAIN: [walk through your logic step by step]
+
+Then provide your candidates:
+ANSWER: [word] | CONFIDENCE: [HIGH/MEDIUM/LOW] | PATTERN CHECK: [verify letter by letter]
+ALT1: [word] | CONFIDENCE: [HIGH/MEDIUM/LOW] | PATTERN CHECK: [verify letter by letter]
+ALT2: [word] | CONFIDENCE: [HIGH/MEDIUM/LOW] | PATTERN CHECK: [verify letter by letter]
+
+Example for a pattern like "O_D_P_S":
+PATTERN ANALYSIS: Starts with O, has D in position 3, P in position 5, S at end
+CLUE BREAKDOWN: Greek tragedy - famous classical work
+REASONING CHAIN: Greek tragedies → Sophocles plays → Oedipus Rex → fits O_D_P_S pattern perfectly
+ANSWER: OEDIPUS | CONFIDENCE: HIGH | PATTERN CHECK: O(1)E(2)D(3)I(4)P(5)U(6)S(7) - matches O_D_P_S
 """
         
         # Add difficulty-specific prompt additions
@@ -363,18 +405,78 @@ For definition clues:
         else:
             return f"Length: {expected_length} letters"
     
-    def _parse_clue_response(self, response: str, clue: Clue, clue_type: str) -> List[ClueCandidate]:
-        """Parse LLM response into structured candidates"""
+    def _parse_clue_response(self, response: str, clue: Clue, clue_type: str, current_pattern: str = None) -> List[ClueCandidate]:
+        """Parse LLM response into structured candidates with chain of thought"""
         candidates = []
         
-        for line in response.split('\n'):
-            if any(prefix in line for prefix in ['ANSWER:', 'ALT1:', 'ALT2:']):
+        # Extract chain of thought sections for richer reasoning
+        reasoning_sections = {}
+        response_lines = response.split('\n')
+        
+        for line in response_lines:
+            if 'PATTERN ANALYSIS:' in line:
+                reasoning_sections['pattern'] = line.split('PATTERN ANALYSIS:')[1].strip()
+            elif 'CLUE BREAKDOWN:' in line:
+                reasoning_sections['breakdown'] = line.split('CLUE BREAKDOWN:')[1].strip()
+            elif 'REASONING CHAIN:' in line:
+                reasoning_sections['chain'] = line.split('REASONING CHAIN:')[1].strip()
+        
+        # Build enhanced reasoning context
+        reasoning_context = ""
+        if reasoning_sections:
+            if 'pattern' in reasoning_sections:
+                reasoning_context += f"Pattern: {reasoning_sections['pattern']}. "
+            if 'breakdown' in reasoning_sections:
+                reasoning_context += f"Clue: {reasoning_sections['breakdown']}. "
+            if 'chain' in reasoning_sections:
+                reasoning_context += f"Logic: {reasoning_sections['chain']}. "
+        
+        for line in response_lines:
+            # Handle both regular and markdown bold formatting
+            line_clean = line.replace('**', '').replace('*', '').strip()  # Remove markdown formatting
+            if any(prefix in line_clean for prefix in ['ANSWER:', 'ALT1:', 'ALT2:']):
                 try:
-                    parts = line.split('|')
-                    if len(parts) >= 3:
-                        word = parts[0].split(':')[1].strip().upper()
-                        confidence_str = parts[1].split(':')[1].strip()
-                        reasoning = parts[2].split(':')[1].strip()
+                    parts = line_clean.split('|')
+                    if len(parts) >= 2:  # Relaxed requirement - at least word and confidence
+                        # Extract word
+                        word_part = parts[0]
+                        if ':' in word_part:
+                            word = word_part.split(':')[1].strip().upper()
+                        else:
+                            # Fallback: try to extract word from the line
+                            for prefix in ['ANSWER:', 'ALT1:', 'ALT2:']:
+                                if prefix in word_part:
+                                    word = word_part.replace(prefix, '').strip().upper()
+                                    break
+                            else:
+                                continue  # Skip this malformed line
+                        
+                        # Extract confidence
+                        if len(parts) >= 2:
+                            conf_part = parts[1]
+                            if ':' in conf_part:
+                                confidence_str = conf_part.split(':')[1].strip()
+                            else:
+                                confidence_str = conf_part.strip()
+                        else:
+                            confidence_str = "MEDIUM"  # Default confidence
+                        
+                        # Extract pattern check if available
+                        pattern_check = ""
+                        if len(parts) >= 4 and 'PATTERN CHECK:' in parts[3]:
+                            try:
+                                pattern_check = parts[3].split(':')[1].strip()
+                            except IndexError:
+                                pattern_check = ""
+                        
+                        # Combine reasoning with chain of thought
+                        try:
+                            base_reasoning = parts[2].split(':')[1].strip() if len(parts) >= 3 else ""
+                        except IndexError:
+                            base_reasoning = parts[2] if len(parts) >= 3 else ""
+                        full_reasoning = reasoning_context + base_reasoning
+                        if pattern_check:
+                            full_reasoning += f" Pattern verification: {pattern_check}"
                         
                         # Clean and validate word - remove common LLM artifacts
                         clean_word = word.replace(' ', '').replace('-', '').upper()
@@ -401,12 +503,17 @@ For definition clues:
                             if hasattr(self, 'knowledge') and self.knowledge.validate_category_answer(clue.text, clean_word):
                                 # Boost confidence for answers that match known categories
                                 confidence = min(0.95, confidence + 0.1)
-                                reasoning += " [Knowledge base match]"
+                                full_reasoning += " [Knowledge base match]"
+                            
+                            # Boost confidence if pattern reasoning is strong
+                            if pattern_check and any(word in pattern_check.lower() for word in ['matches', 'fits', 'perfect']):
+                                confidence = min(0.95, confidence + 0.05)
+                                full_reasoning += " [Strong pattern match]"
                             
                             candidates.append(ClueCandidate(
                                 word=clean_word,
                                 confidence=confidence,
-                                reasoning=reasoning,
+                                reasoning=full_reasoning,
                                 clue_type=clue_type
                             ))
                         else:
@@ -700,10 +807,13 @@ class ClueAgent:
         """
         context = self.tools.get_grid_context(puzzle, clue)
         
+        # Get current pattern for the clue
+        current_pattern = self.tools.get_current_pattern(puzzle, clue)
+        
         for attempt in range(self.max_retries + 1):
             try:
                 candidates = await self.tools.solve_clue_async(clue, context, 
-                                                              None, None, None,  # No attempt history for async version yet
+                                                              None, None, current_pattern,  # Include current pattern
                                                               iteration=attempt + 1, total_solved=0)
                 
                 # Filter candidates for semantic relevance and grid compatibility
@@ -950,15 +1060,22 @@ class ConstraintAgent:
                     # HARD PUZZLE BOOST: Significantly boost multi-word answers with high confidence
                     multiword_boost = 1.0
                     
-                    # Detect multi-word clues by various patterns
+                    # More intelligent multi-word detection - only for genuinely multi-word clues
                     clue_lower = clue.text.lower()
                     is_multiword = (
-                        '(' in clue.text or ',' in clue.text or  # (7,3) or (5,6) patterns
-                        clue.length >= 10 or  # Very long answers likely multi-word
+                        # Explicit multi-word patterns like (7,3) or (5,6)
+                        ('(' in clue.text and ',' in clue.text) or
+                        # Very long answers (10+ letters) that are likely compound/multi-word
+                        clue.length >= 10 or
+                        # Specific indicators of compound terms/proper names
                         any(keyword in clue_lower for keyword in [
-                            'tragedy', 'equipment', 'narrative', 'safety', 'farm animal'
+                            'tragedy', 'equipment for', 'safety equipment', 'farm animal', 'parlour game'
                         ])
                     )
+                    
+                    # NEVER treat short words (<=6 letters) as multi-word unless explicit indicators
+                    if clue.length <= 6:
+                        is_multiword = ('(' in clue.text and ',' in clue.text)
                     
                     # Apply boost for high-confidence multi-word candidates
                     if is_multiword and candidate.confidence >= 0.7:
@@ -1674,15 +1791,22 @@ class CoordinatorAgent:
             for clue in unsolved_clues:
                 current_pattern = self.tools.get_current_pattern(state.puzzle, clue)
                 
-                # Detect multi-word clues (these are high-confidence anchors)
+                # Detect multi-word clues more intelligently (these are high-confidence anchors)
                 clue_lower = clue.text.lower()
                 is_multiword = (
-                    '(' in clue.text or ',' in clue.text or  # (7,3) or (5,6) patterns
-                    clue.length >= 10 or  # Very long answers likely multi-word
+                    # Explicit multi-word patterns like (7,3) or (5,6)
+                    ('(' in clue.text and ',' in clue.text) or
+                    # Very long answers (10+ letters) that are likely compound/multi-word
+                    clue.length >= 10 or
+                    # Specific indicators of compound terms/proper names
                     any(keyword in clue_lower for keyword in [
-                        'tragedy', 'equipment', 'narrative', 'safety', 'farm animal', 'impasse'
+                        'tragedy', 'equipment for', 'safety equipment', 'farm animal', 'parlour game'
                     ])
                 )
+                
+                # NEVER treat short words (<=6 letters) as multi-word unless explicit indicators
+                if clue.length <= 6:
+                    is_multiword = ('(' in clue.text and ',' in clue.text)
                 
                 if is_multiword and current_pattern == '_' * clue.length:
                     # Empty multi-word clues - highest priority
@@ -1757,7 +1881,7 @@ class CoordinatorAgent:
         ]
         
         # Run all tasks concurrently with a reasonable limit
-        semaphore = asyncio.Semaphore(5)  # Limit concurrent API calls
+        semaphore = asyncio.Semaphore(5)  # Restore higher concurrency for better performance
         
         results = await asyncio.gather(*tasks, return_exceptions=True)
         

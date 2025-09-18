@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-09-18T17:13:26.716919",
+  "timestamp": "2025-09-18T17:24:45.570394",
   "puzzle_name": "Hard_Test",
   "puzzle_size": "13x13",
   "total_clues": 23,
   "iterations": [
     {
       "iteration": 1,
-      "start_time": "2025-09-18T17:13:26.722553",
+      "start_time": "2025-09-18T17:24:45.576169",
       "candidates_generated": {
         "1": {
           "clue_text": "Greek tragedy (7,3)",
@@ -16,101 +16,13 @@
             {
               "word": "OEDIPUSREX",
               "confidence": 0.95,
-              "reasoning": "\"Oedipus Rex\" is one of the most famous Greek tragedies, written by Sophocles. The clue specifies (7,3), which matches the two words \"Oedipus\" (7 letters) and \"Rex\" (3 letters). It is a very common crossword answer for this type of clue. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"__________\", which means no letters are currently known. The answer is two words (7,3), totaling 10 letters. This indicates a compound phrase or title related to \"Greek tragedy.\". Clue: . Logic: . O(1)E(2)D(3)I(4)P(5)U(6)S(7)R(8)E(9)X(10) - matches perfectly. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "ANTIGONEST",
-              "confidence": 0.7,
-              "reasoning": "Another famous Greek tragedy by Sophocles is \"Antigone.\" However, \"Antigone\" is a single word and does not fit the (7,3) pattern. If the clue were more flexible, this might be a reasonable alternative. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "2": {
-          "clue_text": "A year (3,5)",
-          "clue_length": 8,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "NEWYEARS",
+              "word": "ANTIGONEAN",
               "confidence": 0.4,
-              "reasoning": "\"New Year's\" could be a playful interpretation of \"a year,\" referring to the start of a year. Written as a single word, it becomes \"NEWYEARS.\" However, this is less likely because it doesn't directly match the clue's simplicity. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "3": {
-          "clue_text": "Elliptical shape (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "OVAL",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Elliptical shape\" directly suggests a synonym for an ellipse. The most common 4-letter word for an elliptical shape is \"OVAL.\" This is a straightforward and literal interpretation of the clue. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "OBIT",
-              "confidence": 0.4,
-              "reasoning": "While \"OBIT\" is a 4-letter word, it refers to an obituary and has no direct connection to the clue \"Elliptical shape.\" This is included only as a filler possibility in case of a misdirection or unusual interpretation. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "ORBS",
-              "confidence": 0.4,
-              "reasoning": "\"ORBS\" refers to spherical or rounded objects, which could loosely relate to shapes. However, it does not specifically describe an elliptical shape, so it is unlikely to be the correct answer. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "4": {
-          "clue_text": "Feeling of discomfort (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "ACHE",
-              "confidence": 0.95,
-              "reasoning": "\"Ache\" is a common four-letter word that directly relates to a \"feeling of discomfort.\" It is simple, fits the clue perfectly, and is frequently used in crosswords for similar clues. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PAIN",
-              "confidence": 0.7,
-              "reasoning": "\"Pain\" is another synonym for discomfort and fits the four-letter requirement. However, \"pain\" often conveys a stronger or more acute sensation than \"discomfort,\" making it slightly less likely to be the intended answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "UNEZ",
-              "confidence": 0.4,
-              "reasoning": "\"Unez\" is derived from the French word \"unease,\" which aligns with the idea of discomfort. However, this is less likely because the clue does not suggest a foreign language or a less common term. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "5": {
-          "clue_text": "Kernel (7)",
-          "clue_length": 7,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "NUCLEUS",
-              "confidence": 0.95,
-              "reasoning": "The word \"kernel\" can mean the central or most important part of something, which aligns with the definition of \"nucleus.\" Additionally, \"nucleus\" is a 7-letter word that fits the required length. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "SEEDING",
-              "confidence": 0.7,
-              "reasoning": "A \"kernel\" can also refer to a seed or the core of a seed. While \"seeding\" could be a related term, it is less directly synonymous with \"kernel\" compared to \"nucleus.\" [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "COREBIT",
-              "confidence": 0.4,
-              "reasoning": "\"Core\" is a synonym for \"kernel,\" and \"bit\" could refer to a small part or piece. However, \"corebit\" is not a commonly used word, making this a less likely answer. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"__________\", which means no letters are currently known. The answer is two words (7,3), totaling 10 letters. This indicates a compound phrase or title related to \"Greek tragedy.\". Clue: . Logic: . Does not fit the (7,3) length. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -121,104 +33,10 @@
           "clue_direction": "across",
           "candidates": [
             {
-              "word": "HELMETVISOR",
-              "confidence": 0.7,
-              "reasoning": "A helmet visor is a component of safety equipment for bikers, protecting their eyes and face. While this fits the 11-letter requirement, it might be too specific compared to the more general \"motorcycle helmet.\" [Knowledge base match]",
+              "word": "CRASHHELMET",
+              "confidence": 0.95,
+              "reasoning": "Pattern: No fixed letters are provided, so the pattern is entirely open: \"___________\" (5,6). The answer must consist of two words, the first with 5 letters and the second with 6 letters, totaling 11 letters.. Clue: . Logic: . C(1)R(2)A(3)S(4)H(5) H(6)E(7)L(8)M(9)E(10)T(11) - matches the 5,6 pattern perfectly. [Knowledge base match]",
               "clue_type": "complex"
-            },
-            {
-              "word": "ROADGEARSET",
-              "confidence": 0.4,
-              "reasoning": "This could refer to a set of safety gear for bikers, but it feels less precise and less commonly used in this context. Additionally, it doesn't directly align with the clue's phrasing. [Knowledge base match]",
-              "clue_type": "complex"
-            }
-          ]
-        },
-        "7": {
-          "clue_text": "Perform tricks (7)",
-          "clue_length": 7,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "CONJURE",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Perform tricks\" suggests something related to magic or illusions. \"Conjure\" is a 7-letter word that directly means to perform magical tricks or summon something through magic, fitting both the definition and the length requirement. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "DECEIVE",
-              "confidence": 0.4,
-              "reasoning": "\"Deceive\" could loosely fit the idea of performing tricks, as in tricking someone or creating an illusion. However, it doesn’t directly align with the likely intent of the clue, which seems to lean toward magic or performance. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "8": {
-          "clue_text": "Prickly seed case (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "BURR",
-              "confidence": 0.95,
-              "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those found on plants like burdock. It directly matches the definition in the clue and fits the 4-letter requirement. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "HUSK",
-              "confidence": 0.7,
-              "reasoning": "While a \"husk\" can refer to the outer covering of seeds or grains, it is not typically described as \"prickly.\" This makes it a less precise match for the clue. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PODS",
-              "confidence": 0.4,
-              "reasoning": "\"Pods\" can refer to seed cases, but they are not usually described as \"prickly.\" This answer is less likely to fit the clue's specific description. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "9": {
-          "clue_text": "Squad (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "TEAM",
-              "confidence": 0.95,
-              "reasoning": "The word \"team\" is a direct synonym for \"squad,\" both referring to a group of people working together, often in sports or other collaborative efforts. It is a common, straightforward answer that fits the 4-letter requirement. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "UNIT",
-              "confidence": 0.7,
-              "reasoning": "\"Unit\" can also mean a group of people working together, such as a military unit or a specialized squad. While less common than \"team,\" it is a plausible alternative depending on the context. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "CREW",
-              "confidence": 0.7,
-              "reasoning": "\"Crew\" is another synonym for \"squad,\" often used to describe a group working together, such as a film crew or a ship's crew. It fits the clue but is slightly less likely than \"team\" due to the broader usage of \"team.\" [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "10": {
-          "clue_text": "Impasse (8)",
-          "clue_length": 8,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "DEADLOCK",
-              "confidence": 0.95,
-              "reasoning": "The word \"deadlock\" is a direct synonym for \"impasse,\" meaning a situation where no progress can be made. It is exactly 8 letters long and fits the clue perfectly. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "GRIDLOCK",
-              "confidence": 0.7,
-              "reasoning": "\"Gridlock\" refers to a situation where movement is completely blocked, often used in the context of traffic but also metaphorically for an impasse. While it fits the clue in meaning and length, it is slightly less common than \"deadlock\" or \"stalemate\" in general usage for \"impasse.\" [Knowledge base match]",
-              "clue_type": "definition"
             }
           ]
         },
@@ -228,46 +46,9 @@
           "clue_direction": "across",
           "candidates": [
             {
-              "word": "DOGSDINNER",
-              "confidence": 0.95,
-              "reasoning": "The phrase \"dog's dinner\" is a common idiom meaning a mess or something that is untidy or chaotic. It fits the clue perfectly in both meaning and format (4,6). [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PIGSSTYLES",
+              "word": "BIGTROUBLE",
               "confidence": 0.7,
-              "reasoning": "This could be a playful interpretation of \"mess,\" as \"pigsty\" is often used to describe a messy place. However, this phrase is less common and doesn't fit as naturally as \"dog's dinner.\" [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "TOTALCHAOS",
-              "confidence": 0.7,
-              "reasoning": "\"Total chaos\" is another way to describe a mess, and it fits the 4,6 format. However, it feels slightly less idiomatic than \"dog's dinner\" for this specific clue. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "12": {
-          "clue_text": "Greek letter (5)",
-          "clue_length": 5,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "DELTA",
-              "confidence": 0.95,
-              "reasoning": "\"Delta\" is a common Greek letter with exactly 5 letters. It is frequently used in crosswords due to its simplicity and relevance. Without additional context, this is a strong, straightforward choice. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "ALPHA",
-              "confidence": 0.95,
-              "reasoning": "\"Alpha\" is another well-known Greek letter with 5 letters. It is often used in crosswords and is a plausible alternative if \"Delta\" does not fit with intersecting clues. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "GAMMA",
-              "confidence": 0.7,
-              "reasoning": "\"Gamma\" is also a Greek letter with 5 letters. While slightly less common than \"Delta\" or \"Alpha\" in crosswords, it remains a valid option. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is currently unknown (no fixed letters provided). The answer must be two words, with lengths 4 and 6, totaling 10 letters. Since no intersecting letters are given, the solution must fit the clue \"Mess\" semantically.. Clue: . Logic: . B(1)I(2)G(3) T(4)R(5)O(6)U(7)B(8)L(9)E(10) - matches 4,6 [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -280,89 +61,7 @@
             {
               "word": "DRACHMA",
               "confidence": 0.95,
-              "reasoning": "The drachma was the official currency of Greece before the country adopted the euro in 2001. The clue specifies \"Greek money, formerly,\" and the length of the answer (7 letters) fits perfectly with \"drachma.\" This is a common crossword answer for clues related to old Greek currency. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "TALENTS",
-              "confidence": 0.4,
-              "reasoning": "Talent was a large unit of weight and currency in ancient Greece. However, it is less specific than \"drachma\" and is rarely used in crosswords for this type of clue. Additionally, it doesn't fit as well with the \"formerly\" hint, which suggests a more recent currency like the drachma. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "14": {
-          "clue_text": "Small and weak (4)",
-          "clue_length": 4,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "PUNY",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Small and weak\" directly describes something that lacks strength or size. \"PUNY\" is a common four-letter word synonymous with \"small and weak,\" making it a highly likely answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "WEAK",
-              "confidence": 0.7,
-              "reasoning": "While \"WEAK\" matches part of the clue, it doesn't fully capture the \"small\" aspect. It focuses more on the lack of strength rather than size, so it is less precise than \"PUNY.\" [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "THIN",
-              "confidence": 0.4,
-              "reasoning": "\"THIN\" could loosely fit the idea of being \"small and weak,\" but it primarily describes something narrow or lacking thickness, which doesn't fully align with the clue. It is a less likely option. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "15": {
-          "clue_text": "Academic term (8)",
-          "clue_length": 8,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "SEMESTER",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common academic term lasting about half a year, and it fits the required 8-letter length. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "16": {
-          "clue_text": "Call up (5)",
-          "clue_length": 5,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "EVOKE",
-              "confidence": 0.7,
-              "reasoning": "\"Evoke\" can mean to bring something to mind or call up a memory, which aligns with the clue. However, \"evoke\" is slightly less direct than \"recall\" in this context. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PHONE",
-              "confidence": 0.4,
-              "reasoning": "\"Phone\" could loosely fit the clue if interpreted as \"calling up\" someone on the phone. However, this interpretation is less likely since it doesn’t fully capture the broader meaning of \"call up.\" [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "17": {
-          "clue_text": "Surgical knife (6)",
-          "clue_length": 6,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "LANCET",
-              "confidence": 0.7,
-              "reasoning": "A \"lancet\" is another type of surgical knife, typically used for making small incisions or punctures. While less common than \"scalpel,\" it fits the clue and the 6-letter requirement. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "BISTRO",
-              "confidence": 0.4,
-              "reasoning": "While \"bistoury\" is an older term for a surgical knife, it doesn't fit the 6-letter requirement. \"Bistro\" is a stretch and not directly related to the clue, but it could be considered in a highly abstract or misdirected puzzle. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The answer must be a single 7-letter word.. Clue: \"Greek money, formerly (7)\". Logic: . D(1)R(2)A(3)C(4)H(5)M(6)A(7) - matches \"_______\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -375,13 +74,283 @@
             {
               "word": "CHARADES",
               "confidence": 0.95,
-              "reasoning": "\"Charades\" is a well-known parlour game where players act out words or phrases without speaking, making it a direct and fitting answer to the clue. It is exactly 8 letters long and matches the straightforward interpretation of the clue. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided. The answer must be exactly 8 letters long. Since there are no constraints from intersecting clues, the solution must be derived purely from the clue's meaning.. Clue: . Logic: . C(1)H(2)A(3)R(4)A(5)D(6)E(7)S(8) - matches \"________\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "MONOPOLY",
+              "word": "CHARADES",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided. The answer must be exactly 8 letters long. Since there are no constraints from intersecting clues, the solution must be derived purely from the clue's meaning.. Clue: . Logic: . Fully matches length and clue meaning. [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "3": {
+          "clue_text": "Elliptical shape (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "OVAL",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\", meaning no letters are known yet. The answer must be exactly 4 letters long.. Clue: The clue is \"Elliptical shape (4)\". This suggests a word that describes an oval or elliptical form. The clue is straightforward and likely refers to a common geometric or descriptive term.. Logic: . O(1)V(2)A(3)L(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "NONE",
+              "confidence": 0.6,
+              "reasoning": "Pattern: The pattern is \"____\", meaning no letters are known yet. The answer must be exactly 4 letters long.. Clue: The clue is \"Elliptical shape (4)\". This suggests a word that describes an oval or elliptical form. The clue is straightforward and likely refers to a common geometric or descriptive term.. Logic: . No other reasonable alternatives fit the clue and pattern. [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "4": {
+          "clue_text": "Feeling of discomfort (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "ACHE",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\", meaning no fixed letters are provided. The word must be exactly 4 letters long. This leaves the solution completely open to interpretation based on the clue.. Clue: . Logic: . A(1)C(2)H(3)E(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "PAIN",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\", meaning no fixed letters are provided. The word must be exactly 4 letters long. This leaves the solution completely open to interpretation based on the clue.. Clue: . Logic: . P(1)A(2)I(3)N(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "UNEA",
               "confidence": 0.4,
-              "reasoning": "While \"Monopoly\" is a classic game, it is generally considered a board game rather than a parlour game. Additionally, it is 8 letters long but does not align as well with the clue's focus on parlour games, which typically involve social or interactive activities. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"____\", meaning no fixed letters are provided. The word must be exactly 4 letters long. This leaves the solution completely open to interpretation based on the clue.. Clue: . Logic: . U(1)N(2)E(3)A(4) - fits pattern but is not a valid word. [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "5": {
+          "clue_text": "Kernel (7)",
+          "clue_length": 7,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "NUCLEUS",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 letters), with no fixed letters provided. This means all positions are open, and we need to find a single 7-letter word that fits the clue \"Kernel.\". Clue: . Logic: . N(1)U(2)C(3)L(4)E(5)U(6)S(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ESSENCE",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 letters), with no fixed letters provided. This means all positions are open, and we need to find a single 7-letter word that fits the clue \"Kernel.\". Clue: . Logic: . E(1)S(2)S(3)E(4)N(5)C(6)E(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "SEEDING",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 letters), with no fixed letters provided. This means all positions are open, and we need to find a single 7-letter word that fits the clue \"Kernel.\". Clue: . Logic: . S(1)E(2)E(3)D(4)I(5)N(6)G(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "7": {
+          "clue_text": "Perform tricks (7)",
+          "clue_length": 7,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "CONJURE",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blanks), meaning no letters are fixed yet. This leaves all positions open for possibilities. The word must be exactly 7 letters long.. Clue: . Logic: . C(1)O(2)N(3)J(4)U(5)R(6)E(7) - matches \"_______\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "DECEIVE",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blanks), meaning no letters are fixed yet. This leaves all positions open for possibilities. The word must be exactly 7 letters long.. Clue: . Logic: . D(1)E(2)C(3)E(4)I(5)V(6)E(7) - matches \"_______\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ENCHANT",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blanks), meaning no letters are fixed yet. This leaves all positions open for possibilities. The word must be exactly 7 letters long.. Clue: . Logic: . E(1)N(2)C(3)H(4)A(5)N(6)T(7) - matches \"_______\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "8": {
+          "clue_text": "Prickly seed case (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "BURR",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be exactly 4 letters long. No fixed letters are provided, so all positions are open. This allows for maximum flexibility in generating candidates.. Clue: . Logic: . b(1)u(2)r(3)r(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "NONE",
+              "confidence": 0.6,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be exactly 4 letters long. No fixed letters are provided, so all positions are open. This allows for maximum flexibility in generating candidates.. Clue: . Logic: . N/A [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "NONE",
+              "confidence": 0.6,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be exactly 4 letters long. No fixed letters are provided, so all positions are open. This allows for maximum flexibility in generating candidates.. Clue: . Logic: . N/A [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "9": {
+          "clue_text": "Squad (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "TEAM",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be a single 4-letter word. No fixed letters are provided, so all positions are open. The word must fit the clue \"Squad.\". Clue: . Logic: . T(1)E(2)A(3)M(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "UNIT",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be a single 4-letter word. No fixed letters are provided, so all positions are open. The word must fit the clue \"Squad.\". Clue: . Logic: . U(1)N(2)I(3)T(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "CREW",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be a single 4-letter word. No fixed letters are provided, so all positions are open. The word must fit the clue \"Squad.\". Clue: . Logic: . C(1)R(2)E(3)W(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "10": {
+          "clue_text": "Impasse (8)",
+          "clue_length": 8,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "DEADLOCK",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are known. The word must be 8 letters long. Since no intersecting letters are provided, we are free to explore all possibilities that fit the clue.. Clue: . Logic: . D(1)E(2)A(3)D(4)L(5)O(6)C(7)K(8) - matches \"________\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "12": {
+          "clue_text": "Greek letter (5)",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "ALPHA",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are provided. The word must be exactly 5 letters long.. Clue: The clue is \"Greek letter (5)\". This is a straightforward definition clue, asking for the name of a Greek letter that is 5 letters long.. Logic: . A(1)L(2)P(3)H(4)A(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "DELTA",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are provided. The word must be exactly 5 letters long.. Clue: The clue is \"Greek letter (5)\". This is a straightforward definition clue, asking for the name of a Greek letter that is 5 letters long.. Logic: . D(1)E(2)L(3)T(4)A(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "GAMMA",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are provided. The word must be exactly 5 letters long.. Clue: The clue is \"Greek letter (5)\". This is a straightforward definition clue, asking for the name of a Greek letter that is 5 letters long.. Logic: . G(1)A(2)M(3)M(4)A(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "14": {
+          "clue_text": "Small and weak (4)",
+          "clue_length": 4,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "PUNY",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning no fixed letters are provided. The word must be exactly 4 letters long. No constraints on specific letters, so all possibilities are open.. Clue: . Logic: . P(1)U(2)N(3)Y(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "WEAK",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning no fixed letters are provided. The word must be exactly 4 letters long. No constraints on specific letters, so all possibilities are open.. Clue: . Logic: . W(1)E(2)A(3)K(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "THIN",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning no fixed letters are provided. The word must be exactly 4 letters long. No constraints on specific letters, so all possibilities are open.. Clue: . Logic: . T(1)H(2)I(3)N(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "15": {
+          "clue_text": "Academic term (8)",
+          "clue_length": 8,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "SEMESTER",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided yet. The word must be exactly 8 letters long. Since no constraints are given, we have full flexibility to explore possibilities.. Clue: The clue is \"Academic term (8).\". Logic: . S(1)E(2)M(3)E(4)S(5)T(6)E(7)R(8) - matches \"________\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "QUARTERS",
+              "confidence": 0.4,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided yet. The word must be exactly 8 letters long. Since no constraints are given, we have full flexibility to explore possibilities.. Clue: The clue is \"Academic term (8).\". Logic: . Does not fit (7 letters). [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "16": {
+          "clue_text": "Call up (5)",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "RAISE",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are known. The answer must be exactly 5 letters long. The clue \"Call up\" suggests an action, likely a verb, and could mean to summon, remember, or contact.. Clue: . Logic: . R(1)A(2)I(3)S(4)E(5) - matches \"_____\". [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "RAISE",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are known. The answer must be exactly 5 letters long. The clue \"Call up\" suggests an action, likely a verb, and could mean to summon, remember, or contact.. Clue: . Logic: . R(1)A(2)I(3)S(4)E(5) - matches \"_____\". [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "RECAP",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are known. The answer must be exactly 5 letters long. The clue \"Call up\" suggests an action, likely a verb, and could mean to summon, remember, or contact.. Clue: . Logic: . R(1)E(2)C(3)A(4)P(5) - matches \"_____\". [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "17": {
+          "clue_text": "Surgical knife (6)",
+          "clue_length": 6,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "LANCET",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"______\" (6 blank spaces), meaning no fixed letters are provided. The answer must be exactly 6 letters long.. Clue: The clue is \"Surgical knife (6)\". A surgical knife is a tool used in medical procedures, typically sharp and precise. Common synonyms include scalpel, lancet, bistoury, etc.. Logic: . L(1)A(2)N(3)C(4)E(5)T(6) - matches \"______\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "BISTRO",
+              "confidence": 0.4,
+              "reasoning": "Pattern: The pattern is \"______\" (6 blank spaces), meaning no fixed letters are provided. The answer must be exactly 6 letters long.. Clue: The clue is \"Surgical knife (6)\". A surgical knife is a tool used in medical procedures, typically sharp and precise. Common synonyms include scalpel, lancet, bistoury, etc.. Logic: . B(1)I(2)S(3)T(4)R(5)O(6) - matches \"______\" but less semantically fitting. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -392,15 +361,9 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "GABBED",
+              "word": "CROWED",
               "confidence": 0.7,
-              "reasoning": "While \"gabbed\" can mean talking a lot, it could loosely connect to \"bragged\" in the sense of talking boastfully. However, this is a less direct synonym and less likely to be the intended answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PRATED",
-              "confidence": 0.7,
-              "reasoning": "\"Prated\" means to talk at length, often in a boastful or trivial manner. It could fit as a more obscure synonym for \"bragged,\" but it is less commonly used in everyday language, making it a less likely answer. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"______\", meaning all six letters are unknown. There are no intersecting letters provided, so the solution must be derived purely from the clue and word length.. Clue: The clue is \"Bragged (6)\".. Logic: . C(1)R(2)O(3)W(4)E(5)D(6) - matches \"______\". [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -413,13 +376,19 @@
             {
               "word": "MAUDLIN",
               "confidence": 0.95,
-              "reasoning": "The clue \"Schmaltzy\" is a synonym-based clue. \"Schmaltzy\" refers to something overly sentimental or emotional, often in a way that feels excessive or cloying. The word \"maudlin\" is a perfect match for this meaning and fits the 7-letter requirement. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The word must be exactly 7 letters long.. Clue: The clue is \"Schmaltzy (7).\". Logic: . M(1)A(2)U(3)D(4)L(5)I(6)N(7) - matches _______ [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "TREACLY",
               "confidence": 0.7,
-              "reasoning": "\"Treacly\" can also mean overly sentimental or cloying, much like \"schmaltzy.\" However, it is less commonly used than \"maudlin,\" which makes it a less likely answer for this clue. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The word must be exactly 7 letters long.. Clue: The clue is \"Schmaltzy (7).\". Logic: . T(1)R(2)E(3)A(4)C(5)L(6)Y(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "LACHRYM",
+              "confidence": 0.4,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The word must be exactly 7 letters long.. Clue: The clue is \"Schmaltzy (7).\". Logic: . L(1)A(2)C(3)H(4)R(5)Y(6)M(7) - matches _______ [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -430,21 +399,21 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "LARGE",
-              "confidence": 0.95,
-              "reasoning": "\"Large\" is a direct and common synonym for \"huge,\" and it fits the 5-letter requirement. It is a straightforward and likely answer for this clue. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
               "word": "GIANT",
-              "confidence": 0.7,
-              "reasoning": "\"Giant\" is another synonym for \"huge,\" often used to describe something very large in size. However, it is slightly less common in crossword puzzles compared to \"large.\" [Knowledge base match]",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are given. The answer must be exactly 5 letters long.. Clue: The clue is \"Huge (5).\" This is a definition clue, so the answer must be a synonym for \"huge.\". Logic: . G(1)I(2)A(3)N(4)T(5) - matches \"_____\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "VASTS",
-              "confidence": 0.4,
-              "reasoning": "While \"vast\" is a synonym for \"huge,\" the plural form \"vasts\" is less natural in English and less likely to be the intended answer. However, it technically fits the clue and length. [Knowledge base match]",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are given. The answer must be exactly 5 letters long.. Clue: The clue is \"Huge (5).\" This is a definition clue, so the answer must be a synonym for \"huge.\". Logic: . V(1)A(2)S(3)T(4)S(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "GREAT",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are given. The answer must be exactly 5 letters long.. Clue: The clue is \"Huge (5).\" This is a definition clue, so the answer must be a synonym for \"huge.\". Logic: . G(1)R(2)E(3)A(4)T(5) - matches \"_____\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -457,19 +426,19 @@
             {
               "word": "RACER",
               "confidence": 0.95,
-              "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to both a high-speed car (e.g., a racing car) and a person who drives fast in races. It fits the 5-letter requirement perfectly and is a common crossword answer. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are provided. The word must be exactly 5 letters long. There are no constraints from intersecting clues.. Clue: . Logic: . R(1)A(2)C(3)E(4)R(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "RACER",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are provided. The word must be exactly 5 letters long. There are no constraints from intersecting clues.. Clue: . Logic: . R(1)A(2)C(3)E(4)R(5) - matches perfectly. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SPEED",
               "confidence": 0.7,
-              "reasoning": "\"Speed\" could describe the quality of being fast, which applies to both a fast car and a fast driver. However, it is less specific than \"racer\" and doesn't directly refer to a person or vehicle, making it a less likely answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "DRIFT",
-              "confidence": 0.4,
-              "reasoning": "\"Drift\" could be a reference to a fast-driving technique often associated with racing cars. While it connects to the idea of fast driving, it doesn't clearly describe a fast car or driver, so it's less likely to be the correct answer. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are provided. The word must be exactly 5 letters long. There are no constraints from intersecting clues.. Clue: . Logic: . S(1)P(2)E(3)E(4)D(5) - matches \"_____\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -480,15 +449,15 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "MAGI",
+              "word": "WISE",
               "confidence": 0.95,
-              "reasoning": "The clue refers to \"Travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men, who followed the Star of Bethlehem to visit the infant Jesus. The answer is exactly 4 letters and fits the context perfectly. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"____\", which means no fixed letters are provided. The word must be exactly 4 letters long.. Clue: \"Travellers who followed a star\" refers to the Biblical story of the Magi (also known as the Wise Men or Three Kings) who followed the Star of Bethlehem to find Jesus. The clue is asking for a 4-letter word that fits this description.. Logic: . W(1)I(2)S(3)E(4) - matches \"____\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "SAGE",
-              "confidence": 0.7,
-              "reasoning": "\"Sage\" can refer to a wise person, and the Magi are often described as wise men. However, this is less specific to the idea of travelers following a star, making it a less likely answer. [Knowledge base match]",
+              "word": "MAGI",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\", which means no fixed letters are provided. The word must be exactly 4 letters long.. Clue: \"Travellers who followed a star\" refers to the Biblical story of the Magi (also known as the Wise Men or Three Kings) who followed the Star of Bethlehem to find Jesus. The clue is asking for a 4-letter word that fits this description.. Logic: . M(1)A(2)G(3)I(4) - matches \"____\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -503,83 +472,13 @@
             {
               "word": "OEDIPUSREX",
               "confidence": 0.285,
-              "reasoning": "\"Oedipus Rex\" is one of the most famous Greek tragedies, written by Sophocles. The clue specifies (7,3), which matches the two words \"Oedipus\" (7 letters) and \"Rex\" (3 letters). It is a very common crossword answer for this type of clue. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "2": {
-          "clue_text": "A year (3,5)",
-          "clue_length": 8,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "NEWYEARS",
-              "confidence": 0.12,
-              "reasoning": "\"New Year's\" could be a playful interpretation of \"a year,\" referring to the start of a year. Written as a single word, it becomes \"NEWYEARS.\" However, this is less likely because it doesn't directly match the clue's simplicity. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "3": {
-          "clue_text": "Elliptical shape (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "OVAL",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Elliptical shape\" directly suggests a synonym for an ellipse. The most common 4-letter word for an elliptical shape is \"OVAL.\" This is a straightforward and literal interpretation of the clue. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"__________\", which means no letters are currently known. The answer is two words (7,3), totaling 10 letters. This indicates a compound phrase or title related to \"Greek tragedy.\". Clue: . Logic: . O(1)E(2)D(3)I(4)P(5)U(6)S(7)R(8)E(9)X(10) - matches perfectly. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "ORBS",
-              "confidence": 0.16000000000000003,
-              "reasoning": "\"ORBS\" refers to spherical or rounded objects, which could loosely relate to shapes. However, it does not specifically describe an elliptical shape, so it is unlikely to be the correct answer. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "4": {
-          "clue_text": "Feeling of discomfort (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "ACHE",
-              "confidence": 0.95,
-              "reasoning": "\"Ache\" is a common four-letter word that directly relates to a \"feeling of discomfort.\" It is simple, fits the clue perfectly, and is frequently used in crosswords for similar clues. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PAIN",
-              "confidence": 0.63,
-              "reasoning": "\"Pain\" is another synonym for discomfort and fits the four-letter requirement. However, \"pain\" often conveys a stronger or more acute sensation than \"discomfort,\" making it slightly less likely to be the intended answer. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "5": {
-          "clue_text": "Kernel (7)",
-          "clue_length": 7,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "NUCLEUS",
-              "confidence": 0.855,
-              "reasoning": "The word \"kernel\" can mean the central or most important part of something, which aligns with the definition of \"nucleus.\" Additionally, \"nucleus\" is a 7-letter word that fits the required length. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "SEEDING",
-              "confidence": 0.27999999999999997,
-              "reasoning": "A \"kernel\" can also refer to a seed or the core of a seed. While \"seeding\" could be a related term, it is less directly synonymous with \"kernel\" compared to \"nucleus.\" [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "COREBIT",
+              "word": "ANTIGONEAN",
               "confidence": 0.08000000000000002,
-              "reasoning": "\"Core\" is a synonym for \"kernel,\" and \"bit\" could refer to a small part or piece. However, \"corebit\" is not a commonly used word, making this a less likely answer. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"__________\", which means no letters are currently known. The answer is two words (7,3), totaling 10 letters. This indicates a compound phrase or title related to \"Greek tragedy.\". Clue: . Logic: . Does not fit the (7,3) length. [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -590,104 +489,10 @@
           "clue_direction": "across",
           "candidates": [
             {
-              "word": "HELMETVISOR",
-              "confidence": 0.21,
-              "reasoning": "A helmet visor is a component of safety equipment for bikers, protecting their eyes and face. While this fits the 11-letter requirement, it might be too specific compared to the more general \"motorcycle helmet.\" [Knowledge base match]",
+              "word": "CRASHHELMET",
+              "confidence": 0.6649999999999999,
+              "reasoning": "Pattern: No fixed letters are provided, so the pattern is entirely open: \"___________\" (5,6). The answer must consist of two words, the first with 5 letters and the second with 6 letters, totaling 11 letters.. Clue: . Logic: . C(1)R(2)A(3)S(4)H(5) H(6)E(7)L(8)M(9)E(10)T(11) - matches the 5,6 pattern perfectly. [Knowledge base match]",
               "clue_type": "complex"
-            },
-            {
-              "word": "ROADGEARSET",
-              "confidence": 0.08000000000000002,
-              "reasoning": "This could refer to a set of safety gear for bikers, but it feels less precise and less commonly used in this context. Additionally, it doesn't directly align with the clue's phrasing. [Knowledge base match]",
-              "clue_type": "complex"
-            }
-          ]
-        },
-        "7": {
-          "clue_text": "Perform tricks (7)",
-          "clue_length": 7,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "CONJURE",
-              "confidence": 0.855,
-              "reasoning": "The clue \"Perform tricks\" suggests something related to magic or illusions. \"Conjure\" is a 7-letter word that directly means to perform magical tricks or summon something through magic, fitting both the definition and the length requirement. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "DECEIVE",
-              "confidence": 0.32000000000000006,
-              "reasoning": "\"Deceive\" could loosely fit the idea of performing tricks, as in tricking someone or creating an illusion. However, it doesn’t directly align with the likely intent of the clue, which seems to lean toward magic or performance. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "8": {
-          "clue_text": "Prickly seed case (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "BURR",
-              "confidence": 0.95,
-              "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those found on plants like burdock. It directly matches the definition in the clue and fits the 4-letter requirement. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "HUSK",
-              "confidence": 0.27999999999999997,
-              "reasoning": "While a \"husk\" can refer to the outer covering of seeds or grains, it is not typically described as \"prickly.\" This makes it a less precise match for the clue. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PODS",
-              "confidence": 0.16000000000000003,
-              "reasoning": "\"Pods\" can refer to seed cases, but they are not usually described as \"prickly.\" This answer is less likely to fit the clue's specific description. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "9": {
-          "clue_text": "Squad (4)",
-          "clue_length": 4,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "TEAM",
-              "confidence": 0.95,
-              "reasoning": "The word \"team\" is a direct synonym for \"squad,\" both referring to a group of people working together, often in sports or other collaborative efforts. It is a common, straightforward answer that fits the 4-letter requirement. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "UNIT",
-              "confidence": 0.63,
-              "reasoning": "\"Unit\" can also mean a group of people working together, such as a military unit or a specialized squad. While less common than \"team,\" it is a plausible alternative depending on the context. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "CREW",
-              "confidence": 0.63,
-              "reasoning": "\"Crew\" is another synonym for \"squad,\" often used to describe a group working together, such as a film crew or a ship's crew. It fits the clue but is slightly less likely than \"team\" due to the broader usage of \"team.\" [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "10": {
-          "clue_text": "Impasse (8)",
-          "clue_length": 8,
-          "clue_direction": "across",
-          "candidates": [
-            {
-              "word": "DEADLOCK",
-              "confidence": 0.95,
-              "reasoning": "The word \"deadlock\" is a direct synonym for \"impasse,\" meaning a situation where no progress can be made. It is exactly 8 letters long and fits the clue perfectly. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "GRIDLOCK",
-              "confidence": 0.7,
-              "reasoning": "\"Gridlock\" refers to a situation where movement is completely blocked, often used in the context of traffic but also metaphorically for an impasse. While it fits the clue in meaning and length, it is slightly less common than \"deadlock\" or \"stalemate\" in general usage for \"impasse.\" [Knowledge base match]",
-              "clue_type": "definition"
             }
           ]
         },
@@ -697,40 +502,9 @@
           "clue_direction": "across",
           "candidates": [
             {
-              "word": "DOGSDINNER",
-              "confidence": 0.6649999999999999,
-              "reasoning": "The phrase \"dog's dinner\" is a common idiom meaning a mess or something that is untidy or chaotic. It fits the clue perfectly in both meaning and format (4,6). [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "TOTALCHAOS",
-              "confidence": 0.63,
-              "reasoning": "\"Total chaos\" is another way to describe a mess, and it fits the 4,6 format. However, it feels slightly less idiomatic than \"dog's dinner\" for this specific clue. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "12": {
-          "clue_text": "Greek letter (5)",
-          "clue_length": 5,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "DELTA",
-              "confidence": 0.95,
-              "reasoning": "\"Delta\" is a common Greek letter with exactly 5 letters. It is frequently used in crosswords due to its simplicity and relevance. Without additional context, this is a strong, straightforward choice. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "ALPHA",
-              "confidence": 0.95,
-              "reasoning": "\"Alpha\" is another well-known Greek letter with 5 letters. It is often used in crosswords and is a plausible alternative if \"Delta\" does not fit with intersecting clues. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "GAMMA",
-              "confidence": 0.7,
-              "reasoning": "\"Gamma\" is also a Greek letter with 5 letters. While slightly less common than \"Delta\" or \"Alpha\" in crosswords, it remains a valid option. [Knowledge base match]",
+              "word": "BIGTROUBLE",
+              "confidence": 0.5599999999999999,
+              "reasoning": "Pattern: The pattern is currently unknown (no fixed letters provided). The answer must be two words, with lengths 4 and 6, totaling 10 letters. Since no intersecting letters are given, the solution must fit the clue \"Mess\" semantically.. Clue: . Logic: . B(1)I(2)G(3) T(4)R(5)O(6)U(7)B(8)L(9)E(10) - matches 4,6 [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -743,83 +517,7 @@
             {
               "word": "DRACHMA",
               "confidence": 0.95,
-              "reasoning": "The drachma was the official currency of Greece before the country adopted the euro in 2001. The clue specifies \"Greek money, formerly,\" and the length of the answer (7 letters) fits perfectly with \"drachma.\" This is a common crossword answer for clues related to old Greek currency. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "TALENTS",
-              "confidence": 0.36000000000000004,
-              "reasoning": "Talent was a large unit of weight and currency in ancient Greece. However, it is less specific than \"drachma\" and is rarely used in crosswords for this type of clue. Additionally, it doesn't fit as well with the \"formerly\" hint, which suggests a more recent currency like the drachma. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "14": {
-          "clue_text": "Small and weak (4)",
-          "clue_length": 4,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "PUNY",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Small and weak\" directly describes something that lacks strength or size. \"PUNY\" is a common four-letter word synonymous with \"small and weak,\" making it a highly likely answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "WEAK",
-              "confidence": 0.27999999999999997,
-              "reasoning": "While \"WEAK\" matches part of the clue, it doesn't fully capture the \"small\" aspect. It focuses more on the lack of strength rather than size, so it is less precise than \"PUNY.\" [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "THIN",
-              "confidence": 0.27999999999999997,
-              "reasoning": "\"THIN\" could loosely fit the idea of being \"small and weak,\" but it primarily describes something narrow or lacking thickness, which doesn't fully align with the clue. It is a less likely option. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "15": {
-          "clue_text": "Academic term (8)",
-          "clue_length": 8,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "SEMESTER",
-              "confidence": 0.95,
-              "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common academic term lasting about half a year, and it fits the required 8-letter length. [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "16": {
-          "clue_text": "Call up (5)",
-          "clue_length": 5,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "EVOKE",
-              "confidence": 0.63,
-              "reasoning": "\"Evoke\" can mean to bring something to mind or call up a memory, which aligns with the clue. However, \"evoke\" is slightly less direct than \"recall\" in this context. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "PHONE",
-              "confidence": 0.4,
-              "reasoning": "\"Phone\" could loosely fit the clue if interpreted as \"calling up\" someone on the phone. However, this interpretation is less likely since it doesn’t fully capture the broader meaning of \"call up.\" [Knowledge base match]",
-              "clue_type": "definition"
-            }
-          ]
-        },
-        "17": {
-          "clue_text": "Surgical knife (6)",
-          "clue_length": 6,
-          "clue_direction": "down",
-          "candidates": [
-            {
-              "word": "LANCET",
-              "confidence": 0.7,
-              "reasoning": "A \"lancet\" is another type of surgical knife, typically used for making small incisions or punctures. While less common than \"scalpel,\" it fits the clue and the 6-letter requirement. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The answer must be a single 7-letter word.. Clue: \"Greek money, formerly (7)\". Logic: . D(1)R(2)A(3)C(4)H(5)M(6)A(7) - matches \"_______\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -832,13 +530,253 @@
             {
               "word": "CHARADES",
               "confidence": 0.95,
-              "reasoning": "\"Charades\" is a well-known parlour game where players act out words or phrases without speaking, making it a direct and fitting answer to the clue. It is exactly 8 letters long and matches the straightforward interpretation of the clue. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided. The answer must be exactly 8 letters long. Since there are no constraints from intersecting clues, the solution must be derived purely from the clue's meaning.. Clue: . Logic: . C(1)H(2)A(3)R(4)A(5)D(6)E(7)S(8) - matches \"________\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "MONOPOLY",
-              "confidence": 0.36000000000000004,
-              "reasoning": "While \"Monopoly\" is a classic game, it is generally considered a board game rather than a parlour game. Additionally, it is 8 letters long but does not align as well with the clue's focus on parlour games, which typically involve social or interactive activities. [Knowledge base match]",
+              "word": "CHARADES",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided. The answer must be exactly 8 letters long. Since there are no constraints from intersecting clues, the solution must be derived purely from the clue's meaning.. Clue: . Logic: . Fully matches length and clue meaning. [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "3": {
+          "clue_text": "Elliptical shape (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "OVAL",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\", meaning no letters are known yet. The answer must be exactly 4 letters long.. Clue: The clue is \"Elliptical shape (4)\". This suggests a word that describes an oval or elliptical form. The clue is straightforward and likely refers to a common geometric or descriptive term.. Logic: . O(1)V(2)A(3)L(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "4": {
+          "clue_text": "Feeling of discomfort (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "ACHE",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\", meaning no fixed letters are provided. The word must be exactly 4 letters long. This leaves the solution completely open to interpretation based on the clue.. Clue: . Logic: . A(1)C(2)H(3)E(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "PAIN",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"____\", meaning no fixed letters are provided. The word must be exactly 4 letters long. This leaves the solution completely open to interpretation based on the clue.. Clue: . Logic: . P(1)A(2)I(3)N(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "5": {
+          "clue_text": "Kernel (7)",
+          "clue_length": 7,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "NUCLEUS",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 letters), with no fixed letters provided. This means all positions are open, and we need to find a single 7-letter word that fits the clue \"Kernel.\". Clue: . Logic: . N(1)U(2)C(3)L(4)E(5)U(6)S(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ESSENCE",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 letters), with no fixed letters provided. This means all positions are open, and we need to find a single 7-letter word that fits the clue \"Kernel.\". Clue: . Logic: . E(1)S(2)S(3)E(4)N(5)C(6)E(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "SEEDING",
+              "confidence": 0.27999999999999997,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 letters), with no fixed letters provided. This means all positions are open, and we need to find a single 7-letter word that fits the clue \"Kernel.\". Clue: . Logic: . S(1)E(2)E(3)D(4)I(5)N(6)G(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "7": {
+          "clue_text": "Perform tricks (7)",
+          "clue_length": 7,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "CONJURE",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blanks), meaning no letters are fixed yet. This leaves all positions open for possibilities. The word must be exactly 7 letters long.. Clue: . Logic: . C(1)O(2)N(3)J(4)U(5)R(6)E(7) - matches \"_______\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "DECEIVE",
+              "confidence": 0.5599999999999999,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blanks), meaning no letters are fixed yet. This leaves all positions open for possibilities. The word must be exactly 7 letters long.. Clue: . Logic: . D(1)E(2)C(3)E(4)I(5)V(6)E(7) - matches \"_______\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ENCHANT",
+              "confidence": 0.5599999999999999,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blanks), meaning no letters are fixed yet. This leaves all positions open for possibilities. The word must be exactly 7 letters long.. Clue: . Logic: . E(1)N(2)C(3)H(4)A(5)N(6)T(7) - matches \"_______\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "8": {
+          "clue_text": "Prickly seed case (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "BURR",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be exactly 4 letters long. No fixed letters are provided, so all positions are open. This allows for maximum flexibility in generating candidates.. Clue: . Logic: . b(1)u(2)r(3)r(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "9": {
+          "clue_text": "Squad (4)",
+          "clue_length": 4,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "TEAM",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be a single 4-letter word. No fixed letters are provided, so all positions are open. The word must fit the clue \"Squad.\". Clue: . Logic: . T(1)E(2)A(3)M(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "UNIT",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be a single 4-letter word. No fixed letters are provided, so all positions are open. The word must fit the clue \"Squad.\". Clue: . Logic: . U(1)N(2)I(3)T(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "CREW",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be a single 4-letter word. No fixed letters are provided, so all positions are open. The word must fit the clue \"Squad.\". Clue: . Logic: . C(1)R(2)E(3)W(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "10": {
+          "clue_text": "Impasse (8)",
+          "clue_length": 8,
+          "clue_direction": "across",
+          "candidates": [
+            {
+              "word": "DEADLOCK",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are known. The word must be 8 letters long. Since no intersecting letters are provided, we are free to explore all possibilities that fit the clue.. Clue: . Logic: . D(1)E(2)A(3)D(4)L(5)O(6)C(7)K(8) - matches \"________\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "12": {
+          "clue_text": "Greek letter (5)",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "DELTA",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are provided. The word must be exactly 5 letters long.. Clue: The clue is \"Greek letter (5)\". This is a straightforward definition clue, asking for the name of a Greek letter that is 5 letters long.. Logic: . D(1)E(2)L(3)T(4)A(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "GAMMA",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are provided. The word must be exactly 5 letters long.. Clue: The clue is \"Greek letter (5)\". This is a straightforward definition clue, asking for the name of a Greek letter that is 5 letters long.. Logic: . G(1)A(2)M(3)M(4)A(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "ALPHA",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are provided. The word must be exactly 5 letters long.. Clue: The clue is \"Greek letter (5)\". This is a straightforward definition clue, asking for the name of a Greek letter that is 5 letters long.. Logic: . A(1)L(2)P(3)H(4)A(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "14": {
+          "clue_text": "Small and weak (4)",
+          "clue_length": 4,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "PUNY",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning no fixed letters are provided. The word must be exactly 4 letters long. No constraints on specific letters, so all possibilities are open.. Clue: . Logic: . P(1)U(2)N(3)Y(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "THIN",
+              "confidence": 0.42,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning no fixed letters are provided. The word must be exactly 4 letters long. No constraints on specific letters, so all possibilities are open.. Clue: . Logic: . T(1)H(2)I(3)N(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "WEAK",
+              "confidence": 0.27999999999999997,
+              "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning no fixed letters are provided. The word must be exactly 4 letters long. No constraints on specific letters, so all possibilities are open.. Clue: . Logic: . W(1)E(2)A(3)K(4) - matches \"____\" [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "15": {
+          "clue_text": "Academic term (8)",
+          "clue_length": 8,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "SEMESTER",
+              "confidence": 0.95,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided yet. The word must be exactly 8 letters long. Since no constraints are given, we have full flexibility to explore possibilities.. Clue: The clue is \"Academic term (8).\". Logic: . S(1)E(2)M(3)E(4)S(5)T(6)E(7)R(8) - matches \"________\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "QUARTERS",
+              "confidence": 0.16000000000000003,
+              "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided yet. The word must be exactly 8 letters long. Since no constraints are given, we have full flexibility to explore possibilities.. Clue: The clue is \"Academic term (8).\". Logic: . Does not fit (7 letters). [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "16": {
+          "clue_text": "Call up (5)",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "RAISE",
+              "confidence": 0.76,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are known. The answer must be exactly 5 letters long. The clue \"Call up\" suggests an action, likely a verb, and could mean to summon, remember, or contact.. Clue: . Logic: . R(1)A(2)I(3)S(4)E(5) - matches \"_____\". [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "RAISE",
+              "confidence": 0.6649999999999999,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are known. The answer must be exactly 5 letters long. The clue \"Call up\" suggests an action, likely a verb, and could mean to summon, remember, or contact.. Clue: . Logic: . R(1)A(2)I(3)S(4)E(5) - matches \"_____\". [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "RECAP",
+              "confidence": 0.27999999999999997,
+              "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are known. The answer must be exactly 5 letters long. The clue \"Call up\" suggests an action, likely a verb, and could mean to summon, remember, or contact.. Clue: . Logic: . R(1)E(2)C(3)A(4)P(5) - matches \"_____\". [Knowledge base match]",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "17": {
+          "clue_text": "Surgical knife (6)",
+          "clue_length": 6,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "LANCET",
+              "confidence": 0.7,
+              "reasoning": "Pattern: The pattern is \"______\" (6 blank spaces), meaning no fixed letters are provided. The answer must be exactly 6 letters long.. Clue: The clue is \"Surgical knife (6)\". A surgical knife is a tool used in medical procedures, typically sharp and precise. Common synonyms include scalpel, lancet, bistoury, etc.. Logic: . L(1)A(2)N(3)C(4)E(5)T(6) - matches \"______\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -849,15 +787,9 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "PRATED",
-              "confidence": 0.5599999999999999,
-              "reasoning": "\"Prated\" means to talk at length, often in a boastful or trivial manner. It could fit as a more obscure synonym for \"bragged,\" but it is less commonly used in everyday language, making it a less likely answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "GABBED",
-              "confidence": 0.21,
-              "reasoning": "While \"gabbed\" can mean talking a lot, it could loosely connect to \"bragged\" in the sense of talking boastfully. However, this is a less direct synonym and less likely to be the intended answer. [Knowledge base match]",
+              "word": "CROWED",
+              "confidence": 0.63,
+              "reasoning": "Pattern: The pattern is \"______\", meaning all six letters are unknown. There are no intersecting letters provided, so the solution must be derived purely from the clue and word length.. Clue: The clue is \"Bragged (6)\".. Logic: . C(1)R(2)O(3)W(4)E(5)D(6) - matches \"______\". [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -870,13 +802,19 @@
             {
               "word": "MAUDLIN",
               "confidence": 0.95,
-              "reasoning": "The clue \"Schmaltzy\" is a synonym-based clue. \"Schmaltzy\" refers to something overly sentimental or emotional, often in a way that feels excessive or cloying. The word \"maudlin\" is a perfect match for this meaning and fits the 7-letter requirement. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The word must be exactly 7 letters long.. Clue: The clue is \"Schmaltzy (7).\". Logic: . M(1)A(2)U(3)D(4)L(5)I(6)N(7) - matches _______ [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "TREACLY",
               "confidence": 0.7,
-              "reasoning": "\"Treacly\" can also mean overly sentimental or cloying, much like \"schmaltzy.\" However, it is less commonly used than \"maudlin,\" which makes it a less likely answer for this clue. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The word must be exactly 7 letters long.. Clue: The clue is \"Schmaltzy (7).\". Logic: . T(1)R(2)E(3)A(4)C(5)L(6)Y(7) - matches _______ [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "LACHRYM",
+              "confidence": 0.08000000000000002,
+              "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The word must be exactly 7 letters long.. Clue: The clue is \"Schmaltzy (7).\". Logic: . L(1)A(2)C(3)H(4)R(5)Y(6)M(7) - matches _______ [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -887,21 +825,21 @@
           "clue_direction": "down",
           "candidates": [
             {
-              "word": "LARGE",
+              "word": "GIANT",
               "confidence": 0.95,
-              "reasoning": "\"Large\" is a direct and common synonym for \"huge,\" and it fits the 5-letter requirement. It is a straightforward and likely answer for this clue. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are given. The answer must be exactly 5 letters long.. Clue: The clue is \"Huge (5).\" This is a definition clue, so the answer must be a synonym for \"huge.\". Logic: . G(1)I(2)A(3)N(4)T(5) - matches \"_____\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "GIANT",
-              "confidence": 0.7,
-              "reasoning": "\"Giant\" is another synonym for \"huge,\" often used to describe something very large in size. However, it is slightly less common in crossword puzzles compared to \"large.\" [Knowledge base match]",
+              "word": "GREAT",
+              "confidence": 0.63,
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are given. The answer must be exactly 5 letters long.. Clue: The clue is \"Huge (5).\" This is a definition clue, so the answer must be a synonym for \"huge.\". Logic: . G(1)R(2)E(3)A(4)T(5) - matches \"_____\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "VASTS",
-              "confidence": 0.08000000000000002,
-              "reasoning": "While \"vast\" is a synonym for \"huge,\" the plural form \"vasts\" is less natural in English and less likely to be the intended answer. However, it technically fits the clue and length. [Knowledge base match]",
+              "confidence": 0.13999999999999999,
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are given. The answer must be exactly 5 letters long.. Clue: The clue is \"Huge (5).\" This is a definition clue, so the answer must be a synonym for \"huge.\". Logic: . V(1)A(2)S(3)T(4)S(5) - matches \"_____\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -914,19 +852,19 @@
             {
               "word": "RACER",
               "confidence": 0.855,
-              "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to both a high-speed car (e.g., a racing car) and a person who drives fast in races. It fits the 5-letter requirement perfectly and is a common crossword answer. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are provided. The word must be exactly 5 letters long. There are no constraints from intersecting clues.. Clue: . Logic: . R(1)A(2)C(3)E(4)R(5) - matches \"_____\" [Knowledge base match]",
+              "clue_type": "definition"
+            },
+            {
+              "word": "RACER",
+              "confidence": 0.855,
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are provided. The word must be exactly 5 letters long. There are no constraints from intersecting clues.. Clue: . Logic: . R(1)A(2)C(3)E(4)R(5) - matches perfectly. [Knowledge base match]",
               "clue_type": "definition"
             },
             {
               "word": "SPEED",
               "confidence": 0.5599999999999999,
-              "reasoning": "\"Speed\" could describe the quality of being fast, which applies to both a fast car and a fast driver. However, it is less specific than \"racer\" and doesn't directly refer to a person or vehicle, making it a less likely answer. [Knowledge base match]",
-              "clue_type": "definition"
-            },
-            {
-              "word": "DRIFT",
-              "confidence": 0.24,
-              "reasoning": "\"Drift\" could be a reference to a fast-driving technique often associated with racing cars. While it connects to the idea of fast driving, it doesn't clearly describe a fast car or driver, so it's less likely to be the correct answer. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are provided. The word must be exactly 5 letters long. There are no constraints from intersecting clues.. Clue: . Logic: . S(1)P(2)E(3)E(4)D(5) - matches \"_____\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -939,13 +877,13 @@
             {
               "word": "MAGI",
               "confidence": 0.95,
-              "reasoning": "The clue refers to \"Travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men, who followed the Star of Bethlehem to visit the infant Jesus. The answer is exactly 4 letters and fits the context perfectly. [Knowledge base match]",
+              "reasoning": "Pattern: The pattern is \"____\", which means no fixed letters are provided. The word must be exactly 4 letters long.. Clue: \"Travellers who followed a star\" refers to the Biblical story of the Magi (also known as the Wise Men or Three Kings) who followed the Star of Bethlehem to find Jesus. The clue is asking for a 4-letter word that fits this description.. Logic: . M(1)A(2)G(3)I(4) - matches \"____\" [Knowledge base match]",
               "clue_type": "definition"
             },
             {
-              "word": "SAGE",
-              "confidence": 0.27999999999999997,
-              "reasoning": "\"Sage\" can refer to a wise person, and the Magi are often described as wise men. However, this is less specific to the idea of travelers following a star, making it a less likely answer. [Knowledge base match]",
+              "word": "WISE",
+              "confidence": 0.57,
+              "reasoning": "Pattern: The pattern is \"____\", which means no fixed letters are provided. The word must be exactly 4 letters long.. Clue: \"Travellers who followed a star\" refers to the Biblical story of the Magi (also known as the Wise Men or Three Kings) who followed the Star of Bethlehem to find Jesus. The clue is asking for a 4-letter word that fits this description.. Logic: . W(1)I(2)S(3)E(4) - matches \"____\" [Knowledge base match]",
               "clue_type": "definition"
             }
           ]
@@ -953,27 +891,11 @@
       },
       "solutions_applied": [
         {
-          "clue_number": 10,
-          "clue_text": "Impasse (8)",
-          "applied_word": "DEADLOCK",
-          "final_confidence": 0.95,
-          "reasoning": "The word \"deadlock\" is a direct synonym for \"impasse,\" meaning a situation where no progress can be made. It is exactly 8 letters long and fits the clue perfectly. [Knowledge base match]",
-          "clue_type": "definition"
-        },
-        {
           "clue_number": 13,
           "clue_text": "Greek money, formerly (7)",
           "applied_word": "DRACHMA",
           "final_confidence": 0.95,
-          "reasoning": "The drachma was the official currency of Greece before the country adopted the euro in 2001. The clue specifies \"Greek money, formerly,\" and the length of the answer (7 letters) fits perfectly with \"drachma.\" This is a common crossword answer for clues related to old Greek currency. [Knowledge base match]",
-          "clue_type": "definition"
-        },
-        {
-          "clue_number": 15,
-          "clue_text": "Academic term (8)",
-          "applied_word": "SEMESTER",
-          "final_confidence": 0.95,
-          "reasoning": "The clue \"Academic term\" directly suggests a period of time in an academic calendar. A \"semester\" is a common academic term lasting about half a year, and it fits the required 8-letter length. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The answer must be a single 7-letter word.. Clue: \"Greek money, formerly (7)\". Logic: . D(1)R(2)A(3)C(4)H(5)M(6)A(7) - matches \"_______\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -981,7 +903,23 @@
           "clue_text": "Parlour game (8)",
           "applied_word": "CHARADES",
           "final_confidence": 0.95,
-          "reasoning": "\"Charades\" is a well-known parlour game where players act out words or phrases without speaking, making it a direct and fitting answer to the clue. It is exactly 8 letters long and matches the straightforward interpretation of the clue. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided. The answer must be exactly 8 letters long. Since there are no constraints from intersecting clues, the solution must be derived purely from the clue's meaning.. Clue: . Logic: . C(1)H(2)A(3)R(4)A(5)D(6)E(7)S(8) - matches \"________\" [Knowledge base match]",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 10,
+          "clue_text": "Impasse (8)",
+          "applied_word": "DEADLOCK",
+          "final_confidence": 0.95,
+          "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are known. The word must be 8 letters long. Since no intersecting letters are provided, we are free to explore all possibilities that fit the clue.. Clue: . Logic: . D(1)E(2)A(3)D(4)L(5)O(6)C(7)K(8) - matches \"________\" [Knowledge base match]",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 15,
+          "clue_text": "Academic term (8)",
+          "applied_word": "SEMESTER",
+          "final_confidence": 0.95,
+          "reasoning": "Pattern: The pattern is \"________\" (8 underscores), meaning no fixed letters are provided yet. The word must be exactly 8 letters long. Since no constraints are given, we have full flexibility to explore possibilities.. Clue: The clue is \"Academic term (8).\". Logic: . S(1)E(2)M(3)E(4)S(5)T(6)E(7)R(8) - matches \"________\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -989,31 +927,23 @@
           "clue_text": "Schmaltzy (7)",
           "applied_word": "MAUDLIN",
           "final_confidence": 0.95,
-          "reasoning": "The clue \"Schmaltzy\" is a synonym-based clue. \"Schmaltzy\" refers to something overly sentimental or emotional, often in a way that feels excessive or cloying. The word \"maudlin\" is a perfect match for this meaning and fits the 7-letter requirement. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"_______\" (7 blank spaces), meaning no fixed letters are provided. The word must be exactly 7 letters long.. Clue: The clue is \"Schmaltzy (7).\". Logic: . M(1)A(2)U(3)D(4)L(5)I(6)N(7) - matches _______ [Knowledge base match]",
           "clue_type": "definition"
         },
         {
           "clue_number": 12,
           "clue_text": "Greek letter (5)",
-          "applied_word": "DELTA",
-          "final_confidence": 0.95,
-          "reasoning": "\"Delta\" is a common Greek letter with exactly 5 letters. It is frequently used in crosswords due to its simplicity and relevance. Without additional context, this is a strong, straightforward choice. [Knowledge base match]",
+          "applied_word": "ALPHA",
+          "final_confidence": 0.855,
+          "reasoning": "Pattern: The pattern is \"_____\", meaning no fixed letters are provided. The word must be exactly 5 letters long.. Clue: The clue is \"Greek letter (5)\". This is a straightforward definition clue, asking for the name of a Greek letter that is 5 letters long.. Logic: . A(1)L(2)P(3)H(4)A(5) - matches \"_____\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
           "clue_number": 21,
           "clue_text": "Huge (5)",
-          "applied_word": "LARGE",
+          "applied_word": "GIANT",
           "final_confidence": 0.95,
-          "reasoning": "\"Large\" is a direct and common synonym for \"huge,\" and it fits the 5-letter requirement. It is a straightforward and likely answer for this clue. [Knowledge base match]",
-          "clue_type": "definition"
-        },
-        {
-          "clue_number": 22,
-          "clue_text": "Fast car or fast driver (5)",
-          "applied_word": "RACER",
-          "final_confidence": 0.855,
-          "reasoning": "The clue \"Fast car or fast driver\" directly points to the word \"RACER.\" A racer can refer to both a high-speed car (e.g., a racing car) and a person who drives fast in races. It fits the 5-letter requirement perfectly and is a common crossword answer. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are given. The answer must be exactly 5 letters long.. Clue: The clue is \"Huge (5).\" This is a definition clue, so the answer must be a synonym for \"huge.\". Logic: . G(1)I(2)A(3)N(4)T(5) - matches \"_____\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1021,7 +951,7 @@
           "clue_text": "Elliptical shape (4)",
           "applied_word": "OVAL",
           "final_confidence": 0.95,
-          "reasoning": "The clue \"Elliptical shape\" directly suggests a synonym for an ellipse. The most common 4-letter word for an elliptical shape is \"OVAL.\" This is a straightforward and literal interpretation of the clue. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"____\", meaning no letters are known yet. The answer must be exactly 4 letters long.. Clue: The clue is \"Elliptical shape (4)\". This suggests a word that describes an oval or elliptical form. The clue is straightforward and likely refers to a common geometric or descriptive term.. Logic: . O(1)V(2)A(3)L(4) - matches \"____\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1029,7 +959,7 @@
           "clue_text": "Feeling of discomfort (4)",
           "applied_word": "ACHE",
           "final_confidence": 0.95,
-          "reasoning": "\"Ache\" is a common four-letter word that directly relates to a \"feeling of discomfort.\" It is simple, fits the clue perfectly, and is frequently used in crosswords for similar clues. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"____\", meaning no fixed letters are provided. The word must be exactly 4 letters long. This leaves the solution completely open to interpretation based on the clue.. Clue: . Logic: . A(1)C(2)H(3)E(4) - matches \"____\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1037,7 +967,7 @@
           "clue_text": "Prickly seed case (4)",
           "applied_word": "BURR",
           "final_confidence": 0.95,
-          "reasoning": "A \"burr\" is a common term for a prickly seed case, such as those found on plants like burdock. It directly matches the definition in the clue and fits the 4-letter requirement. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning the answer must be exactly 4 letters long. No fixed letters are provided, so all positions are open. This allows for maximum flexibility in generating candidates.. Clue: . Logic: . b(1)u(2)r(3)r(4) - matches \"____\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1045,7 +975,7 @@
           "clue_text": "Small and weak (4)",
           "applied_word": "PUNY",
           "final_confidence": 0.95,
-          "reasoning": "The clue \"Small and weak\" directly describes something that lacks strength or size. \"PUNY\" is a common four-letter word synonymous with \"small and weak,\" making it a highly likely answer. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"____\" (4 blank spaces), meaning no fixed letters are provided. The word must be exactly 4 letters long. No constraints on specific letters, so all possibilities are open.. Clue: . Logic: . P(1)U(2)N(3)Y(4) - matches \"____\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1053,7 +983,31 @@
           "clue_text": "Travellers who followed a star (4)",
           "applied_word": "MAGI",
           "final_confidence": 0.95,
-          "reasoning": "The clue refers to \"Travellers who followed a star,\" which is a direct reference to the biblical story of the Magi, also known as the Wise Men, who followed the Star of Bethlehem to visit the infant Jesus. The answer is exactly 4 letters and fits the context perfectly. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"____\", which means no fixed letters are provided. The word must be exactly 4 letters long.. Clue: \"Travellers who followed a star\" refers to the Biblical story of the Magi (also known as the Wise Men or Three Kings) who followed the Star of Bethlehem to find Jesus. The clue is asking for a 4-letter word that fits this description.. Logic: . M(1)A(2)G(3)I(4) - matches \"____\" [Knowledge base match]",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 6,
+          "clue_text": "Safety equipment for a biker, say (5,6)",
+          "applied_word": "CRASHHELMET",
+          "final_confidence": 0.6649999999999999,
+          "reasoning": "Pattern: No fixed letters are provided, so the pattern is entirely open: \"___________\" (5,6). The answer must consist of two words, the first with 5 letters and the second with 6 letters, totaling 11 letters.. Clue: . Logic: . C(1)R(2)A(3)S(4)H(5) H(6)E(7)L(8)M(9)E(10)T(11) - matches the 5,6 pattern perfectly. [Knowledge base match]",
+          "clue_type": "complex"
+        },
+        {
+          "clue_number": 5,
+          "clue_text": "Kernel (7)",
+          "applied_word": "ESSENCE",
+          "final_confidence": 0.855,
+          "reasoning": "Pattern: The pattern is \"_______\" (7 letters), with no fixed letters provided. This means all positions are open, and we need to find a single 7-letter word that fits the clue \"Kernel.\". Clue: . Logic: . E(1)S(2)S(3)E(4)N(5)C(6)E(7) - matches _______ [Knowledge base match]",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 22,
+          "clue_text": "Fast car or fast driver (5)",
+          "applied_word": "RACER",
+          "final_confidence": 0.855,
+          "reasoning": "Pattern: The pattern is \"_____\" (5 blank spaces), meaning no fixed letters are provided. The word must be exactly 5 letters long. There are no constraints from intersecting clues.. Clue: . Logic: . R(1)A(2)C(3)E(4)R(5) - matches \"_____\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
@@ -1061,29 +1015,21 @@
           "clue_text": "Surgical knife (6)",
           "applied_word": "LANCET",
           "final_confidence": 0.7,
-          "reasoning": "A \"lancet\" is another type of surgical knife, typically used for making small incisions or punctures. While less common than \"scalpel,\" it fits the clue and the 6-letter requirement. [Knowledge base match]",
-          "clue_type": "definition"
-        },
-        {
-          "clue_number": 16,
-          "clue_text": "Call up (5)",
-          "applied_word": "EVOKE",
-          "final_confidence": 0.63,
-          "reasoning": "\"Evoke\" can mean to bring something to mind or call up a memory, which aligns with the clue. However, \"evoke\" is slightly less direct than \"recall\" in this context. [Knowledge base match]",
+          "reasoning": "Pattern: The pattern is \"______\" (6 blank spaces), meaning no fixed letters are provided. The answer must be exactly 6 letters long.. Clue: The clue is \"Surgical knife (6)\". A surgical knife is a tool used in medical procedures, typically sharp and precise. Common synonyms include scalpel, lancet, bistoury, etc.. Logic: . L(1)A(2)N(3)C(4)E(5)T(6) - matches \"______\" [Knowledge base match]",
           "clue_type": "definition"
         },
         {
           "clue_number": 19,
           "clue_text": "Bragged (6)",
-          "applied_word": "PRATED",
-          "final_confidence": 0.5599999999999999,
-          "reasoning": "\"Prated\" means to talk at length, often in a boastful or trivial manner. It could fit as a more obscure synonym for \"bragged,\" but it is less commonly used in everyday language, making it a less likely answer. [Knowledge base match]",
+          "applied_word": "CROWED",
+          "final_confidence": 0.63,
+          "reasoning": "Pattern: The pattern is \"______\", meaning all six letters are unknown. There are no intersecting letters provided, so the solution must be derived purely from the clue and word length.. Clue: The clue is \"Bragged (6)\".. Logic: . C(1)R(2)O(3)W(4)E(5)D(6) - matches \"______\". [Knowledge base match]",
           "clue_type": "definition"
         }
       ],
       "progress_made": true,
       "grid_state_before": {
-        "timestamp": "2025-09-18T17:13:26.716939",
+        "timestamp": "2025-09-18T17:24:45.570420",
         "context": "Before iteration 1",
         "solved_clues": [],
         "grid_completion": 0.0,
@@ -2642,21 +2588,21 @@
       },
       "solver_info": {
         "difficulty": "hard",
-        "max_iterations": 8,
+        "max_iterations": 12,
         "backtrack_enabled": true,
         "thinking_depth": 3,
         "use_async_solving": true
       },
       "grid_state_after": {
-        "timestamp": "2025-09-18T17:14:26.257119",
+        "timestamp": "2025-09-18T17:25:35.643543",
         "context": "After iteration 1",
         "solved_clues": [],
         "grid_completion": 0.0,
-        "grid_visual": "┌───────────────────────────────────────┐\n│ ░  D     D     P     S     E     ░  ░ │\n│ ░  E  ░  R  ░  U  ░  E  ░  V  ░  L  ░ │\n│    L     A     N     M  ░  O  V  A  L │\n│ ░  T  ░  C  ░  Y  ░  E  ░  K  ░  N  ░ │\n│ ░  A  C  H  E  ░     S     E     C    │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  P     A     H     E     M     T  ░ │\n│ ░  R  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    A     L     R     ░  B  U  R  R  ░ │\n│ ░  T  ░  A  ░  A  ░  M  ░  D  ░  A  ░ │\n│    E     R  ░  D  E  A  D  L  O  C  K │\n│ ░  D  ░  G  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     E     S     I     N     R  ░ │\n└───────────────────────────────────────┘",
+        "grid_visual": "┌───────────────────────────────────────┐\n│ ░  A     D     P     S           ░  ░ │\n│ ░  L  ░  R  ░  U  ░  E  ░     ░  L  ░ │\n│    P     A     N     M  ░  O  V  A  L │\n│ ░  H  ░  C  ░  Y  ░  E  ░     ░  N  ░ │\n│ ░  A  C  H  E  ░  E  S  S  E  N  C  E │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  C  R  A  S  H  H  E  L  M  E  T  ░ │\n│ ░  R  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    O     G     R     ░  B  U  R  R  ░ │\n│ ░  W  ░  I  ░  A  ░  M  ░  D  ░  A  ░ │\n│    E     A  ░  D  E  A  D  L  O  C  K │\n│ ░  D  ░  N  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     T     S     I     N     R  ░ │\n└───────────────────────────────────────┘",
         "grid_matrix": [
           [
             "░",
-            "D",
+            "A",
             "_",
             "D",
             "_",
@@ -2664,14 +2610,14 @@
             "_",
             "S",
             "_",
-            "E",
+            "_",
             "_",
             "░",
             "░"
           ],
           [
             "░",
-            "E",
+            "L",
             "░",
             "R",
             "░",
@@ -2679,14 +2625,14 @@
             "░",
             "E",
             "░",
-            "V",
+            "_",
             "░",
             "L",
             "░"
           ],
           [
             "_",
-            "L",
+            "P",
             "_",
             "A",
             "_",
@@ -2701,7 +2647,7 @@
           ],
           [
             "░",
-            "T",
+            "H",
             "░",
             "C",
             "░",
@@ -2709,7 +2655,7 @@
             "░",
             "E",
             "░",
-            "K",
+            "_",
             "░",
             "N",
             "░"
@@ -2721,13 +2667,13 @@
             "H",
             "E",
             "░",
-            "_",
+            "E",
             "S",
-            "_",
+            "S",
             "E",
-            "_",
+            "N",
             "C",
-            "_"
+            "E"
           ],
           [
             "░",
@@ -2746,16 +2692,16 @@
           ],
           [
             "░",
-            "P",
-            "_",
+            "C",
+            "R",
             "A",
-            "_",
+            "S",
             "H",
-            "_",
+            "H",
             "E",
-            "_",
+            "L",
             "M",
-            "_",
+            "E",
             "T",
             "░"
           ],
@@ -2776,9 +2722,9 @@
           ],
           [
             "_",
-            "A",
+            "O",
             "_",
-            "L",
+            "G",
             "_",
             "R",
             "_",
@@ -2791,9 +2737,9 @@
           ],
           [
             "░",
-            "T",
+            "W",
             "░",
-            "A",
+            "I",
             "░",
             "A",
             "░",
@@ -2808,7 +2754,7 @@
             "_",
             "E",
             "_",
-            "R",
+            "A",
             "░",
             "D",
             "E",
@@ -2823,7 +2769,7 @@
             "░",
             "D",
             "░",
-            "G",
+            "N",
             "░",
             "E",
             "░",
@@ -2838,7 +2784,7 @@
             "░",
             "░",
             "_",
-            "E",
+            "T",
             "_",
             "S",
             "_",
@@ -2862,7 +2808,7 @@
             },
             "answered": false,
             "current_chars": [
-              "D",
+              "A",
               null,
               "D",
               null,
@@ -2870,12 +2816,12 @@
               null,
               "S",
               null,
-              "E",
+              null,
               null
             ],
-            "current_word": "D_D_P_S_E_",
-            "filled_positions": 5,
-            "completion_percentage": 50.0,
+            "current_word": "A_D_P_S___",
+            "filled_positions": 4,
+            "completion_percentage": 40.0,
             "intersecting_clues": [
               {
                 "clue_number": 12,
@@ -2942,7 +2888,7 @@
             "answered": false,
             "current_chars": [
               null,
-              "L",
+              "P",
               null,
               "A",
               null,
@@ -2950,7 +2896,7 @@
               null,
               "M"
             ],
-            "current_word": "_L_A_N_M",
+            "current_word": "_P_A_N_M",
             "filled_positions": 4,
             "completion_percentage": 50.0,
             "intersecting_clues": [
@@ -3094,19 +3040,19 @@
               "row": 4,
               "col": 6
             },
-            "answered": false,
+            "answered": true,
             "current_chars": [
-              null,
-              "S",
-              null,
               "E",
-              null,
+              "S",
+              "S",
+              "E",
+              "N",
               "C",
-              null
+              "E"
             ],
-            "current_word": "_S_E_C_",
-            "filled_positions": 3,
-            "completion_percentage": 42.857142857142854,
+            "current_word": "ESSENCE",
+            "filled_positions": 7,
+            "completion_percentage": 100.0,
             "intersecting_clues": [
               {
                 "clue_number": 15,
@@ -3139,7 +3085,8 @@
                 "other_position": 3
               }
             ],
-            "fully_solved": false
+            "fully_solved": true,
+            "final_answer": "ESSENCE"
           },
           {
             "number": 6,
@@ -3150,23 +3097,23 @@
               "row": 6,
               "col": 1
             },
-            "answered": false,
+            "answered": true,
             "current_chars": [
-              "P",
-              null,
+              "C",
+              "R",
               "A",
-              null,
+              "S",
               "H",
-              null,
+              "H",
               "E",
-              null,
+              "L",
               "M",
-              null,
+              "E",
               "T"
             ],
-            "current_word": "P_A_H_E_M_T",
-            "filled_positions": 6,
-            "completion_percentage": 54.54545454545454,
+            "current_word": "CRASHHELMET",
+            "filled_positions": 11,
+            "completion_percentage": 100.0,
             "intersecting_clues": [
               {
                 "clue_number": 13,
@@ -3229,7 +3176,8 @@
                 "other_position": 0
               }
             ],
-            "fully_solved": false
+            "fully_solved": true,
+            "final_answer": "CRASHHELMET"
           },
           {
             "number": 7,
@@ -3243,14 +3191,14 @@
             "answered": false,
             "current_chars": [
               null,
-              "A",
+              "O",
               null,
-              "L",
+              "G",
               null,
               "R",
               null
             ],
-            "current_word": "_A_L_R_",
+            "current_word": "_O_G_R_",
             "filled_positions": 3,
             "completion_percentage": 42.857142857142854,
             "intersecting_clues": [
@@ -3345,9 +3293,9 @@
               null,
               "E",
               null,
-              "R"
+              "A"
             ],
-            "current_word": "_E_R",
+            "current_word": "_E_A",
             "filled_positions": 2,
             "completion_percentage": 50.0,
             "intersecting_clues": [
@@ -3454,7 +3402,7 @@
             "answered": false,
             "current_chars": [
               null,
-              "E",
+              "T",
               null,
               "S",
               null,
@@ -3464,7 +3412,7 @@
               null,
               "R"
             ],
-            "current_word": "_E_S_I_N_R",
+            "current_word": "_T_S_I_N_R",
             "filled_positions": 5,
             "completion_percentage": 50.0,
             "intersecting_clues": [
@@ -3532,13 +3480,13 @@
             },
             "answered": true,
             "current_chars": [
-              "D",
-              "E",
+              "A",
               "L",
-              "T",
+              "P",
+              "H",
               "A"
             ],
-            "current_word": "DELTA",
+            "current_word": "ALPHA",
             "filled_positions": 5,
             "completion_percentage": 100.0,
             "intersecting_clues": [
@@ -3574,7 +3522,7 @@
               }
             ],
             "fully_solved": true,
-            "final_answer": "DELTA"
+            "final_answer": "ALPHA"
           },
           {
             "number": 13,
@@ -3764,17 +3712,17 @@
               "row": 0,
               "col": 9
             },
-            "answered": true,
+            "answered": false,
             "current_chars": [
-              "E",
-              "V",
+              null,
+              null,
               "O",
-              "K",
+              null,
               "E"
             ],
-            "current_word": "EVOKE",
-            "filled_positions": 5,
-            "completion_percentage": 100.0,
+            "current_word": "__O_E",
+            "filled_positions": 2,
+            "completion_percentage": 40.0,
             "intersecting_clues": [
               {
                 "clue_number": 1,
@@ -3807,8 +3755,7 @@
                 "other_position": 3
               }
             ],
-            "fully_solved": true,
-            "final_answer": "EVOKE"
+            "fully_solved": false
           },
           {
             "number": 17,
@@ -3945,14 +3892,14 @@
             },
             "answered": true,
             "current_chars": [
-              "P",
+              "C",
               "R",
-              "A",
-              "T",
+              "O",
+              "W",
               "E",
               "D"
             ],
-            "current_word": "PRATED",
+            "current_word": "CROWED",
             "filled_positions": 6,
             "completion_percentage": 100.0,
             "intersecting_clues": [
@@ -3988,7 +3935,7 @@
               }
             ],
             "fully_solved": true,
-            "final_answer": "PRATED"
+            "final_answer": "CROWED"
           },
           {
             "number": 20,
@@ -4068,13 +4015,13 @@
             },
             "answered": true,
             "current_chars": [
-              "L",
-              "A",
-              "R",
               "G",
-              "E"
+              "I",
+              "A",
+              "N",
+              "T"
             ],
-            "current_word": "LARGE",
+            "current_word": "GIANT",
             "filled_positions": 5,
             "completion_percentage": 100.0,
             "intersecting_clues": [
@@ -4110,7 +4057,7 @@
               }
             ],
             "fully_solved": true,
-            "final_answer": "LARGE"
+            "final_answer": "GIANT"
           },
           {
             "number": 22,
@@ -4214,14 +4161,14 @@
         ],
         "grid_stats": {
           "total_clues": 23,
-          "solved_clues": 16,
+          "solved_clues": 17,
           "total_unique_cells": 109,
-          "filled_unique_cells": 80,
-          "grid_completion_percentage": 73.39449541284404,
-          "clue_completion_percentage": 69.56521739130434
+          "filled_unique_cells": 86,
+          "grid_completion_percentage": 78.89908256880734,
+          "clue_completion_percentage": 73.91304347826086
         }
       },
-      "duration": 59.54675889015198,
+      "duration": 50.07766008377075,
       "grid_changed": true,
       "changes_summary": {
         "grid_changed": true,
@@ -4230,14 +4177,14 @@
             "clue_number": 1,
             "clue_text": "Greek tragedy (7,3)",
             "before": "__________",
-            "after": "D_D_P_S_E_",
+            "after": "A_D_P_S___",
             "newly_solved": false
           },
           {
             "clue_number": 2,
             "clue_text": "A year (3,5)",
             "before": "________",
-            "after": "_L_A_N_M",
+            "after": "_P_A_N_M",
             "newly_solved": false
           },
           {
@@ -4258,21 +4205,21 @@
             "clue_number": 5,
             "clue_text": "Kernel (7)",
             "before": "_______",
-            "after": "_S_E_C_",
-            "newly_solved": false
+            "after": "ESSENCE",
+            "newly_solved": true
           },
           {
             "clue_number": 6,
             "clue_text": "Safety equipment for a biker, say (5,6)",
             "before": "___________",
-            "after": "P_A_H_E_M_T",
-            "newly_solved": false
+            "after": "CRASHHELMET",
+            "newly_solved": true
           },
           {
             "clue_number": 7,
             "clue_text": "Perform tricks (7)",
             "before": "_______",
-            "after": "_A_L_R_",
+            "after": "_O_G_R_",
             "newly_solved": false
           },
           {
@@ -4286,7 +4233,7 @@
             "clue_number": 9,
             "clue_text": "Squad (4)",
             "before": "____",
-            "after": "_E_R",
+            "after": "_E_A",
             "newly_solved": false
           },
           {
@@ -4300,14 +4247,14 @@
             "clue_number": 11,
             "clue_text": "Mess (4,6)",
             "before": "__________",
-            "after": "_E_S_I_N_R",
+            "after": "_T_S_I_N_R",
             "newly_solved": false
           },
           {
             "clue_number": 12,
             "clue_text": "Greek letter (5)",
             "before": "_____",
-            "after": "DELTA",
+            "after": "ALPHA",
             "newly_solved": true
           },
           {
@@ -4335,8 +4282,8 @@
             "clue_number": 16,
             "clue_text": "Call up (5)",
             "before": "_____",
-            "after": "EVOKE",
-            "newly_solved": true
+            "after": "__O_E",
+            "newly_solved": false
           },
           {
             "clue_number": 17,
@@ -4356,7 +4303,7 @@
             "clue_number": 19,
             "clue_text": "Bragged (6)",
             "before": "______",
-            "after": "PRATED",
+            "after": "CROWED",
             "newly_solved": true
           },
           {
@@ -4370,7 +4317,7 @@
             "clue_number": 21,
             "clue_text": "Huge (5)",
             "before": "_____",
-            "after": "LARGE",
+            "after": "GIANT",
             "newly_solved": true
           },
           {
@@ -4389,9 +4336,9 @@
           }
         ],
         "new_letters_added": [],
-        "completion_delta": 73.39449541284404
+        "completion_delta": 78.89908256880734
       },
-      "visual_diff": "\nBEFORE:\n┌───────────────────────────────────────┐\n│ ░                                ░  ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│                         ░             │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░              ░                      │\n│ ░  ░  ░     ░     ░     ░  ░  ░     ░ │\n│ ░                                   ░ │\n│ ░     ░  ░  ░     ░     ░     ░  ░  ░ │\n│                      ░              ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│             ░                         │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░  ░                                ░ │\n└───────────────────────────────────────┘\n\nAFTER:\n┌───────────────────────────────────────┐\n│ ░  D     D     P     S     E     ░  ░ │\n│ ░  E  ░  R  ░  U  ░  E  ░  V  ░  L  ░ │\n│    L     A     N     M  ░  O  V  A  L │\n│ ░  T  ░  C  ░  Y  ░  E  ░  K  ░  N  ░ │\n│ ░  A  C  H  E  ░     S     E     C    │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  P     A     H     E     M     T  ░ │\n│ ░  R  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    A     L     R     ░  B  U  R  R  ░ │\n│ ░  T  ░  A  ░  A  ░  M  ░  D  ░  A  ░ │\n│    E     R  ░  D  E  A  D  L  O  C  K │\n│ ░  D  ░  G  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     E     S     I     N     R  ░ │\n└───────────────────────────────────────┘\n\nCHANGES:\n- Clue 1 ('Greek tragedy (7,3)'): __________ → D_D_P_S_E_\n- Clue 2 ('A year (3,5)'): ________ → _L_A_N_M\n- Clue 3 ('Elliptical shape (4)'): ____ → OVAL\n  ✅ SOLVED!\n- Clue 4 ('Feeling of discomfort (4)'): ____ → ACHE\n  ✅ SOLVED!\n- Clue 5 ('Kernel (7)'): _______ → _S_E_C_\n- Clue 6 ('Safety equipment for a biker, say (5,6)'): ___________ → P_A_H_E_M_T\n- Clue 7 ('Perform tricks (7)'): _______ → _A_L_R_\n- Clue 8 ('Prickly seed case (4)'): ____ → BURR\n  ✅ SOLVED!\n- Clue 9 ('Squad (4)'): ____ → _E_R\n- Clue 10 ('Impasse (8)'): ________ → DEADLOCK\n  ✅ SOLVED!\n- Clue 11 ('Mess (4,6)'): __________ → _E_S_I_N_R\n- Clue 12 ('Greek letter (5)'): _____ → DELTA\n  ✅ SOLVED!\n- Clue 13 ('Greek money, formerly (7)'): _______ → DRACHMA\n  ✅ SOLVED!\n- Clue 14 ('Small and weak (4)'): ____ → PUNY\n  ✅ SOLVED!\n- Clue 15 ('Academic term (8)'): ________ → SEMESTER\n  ✅ SOLVED!\n- Clue 16 ('Call up (5)'): _____ → EVOKE\n  ✅ SOLVED!\n- Clue 17 ('Surgical knife (6)'): ______ → LANCET\n  ✅ SOLVED!\n- Clue 18 ('Parlour game (8)'): ________ → CHARADES\n  ✅ SOLVED!\n- Clue 19 ('Bragged (6)'): ______ → PRATED\n  ✅ SOLVED!\n- Clue 20 ('Schmaltzy (7)'): _______ → MAUDLIN\n  ✅ SOLVED!\n- Clue 21 ('Huge (5)'): _____ → LARGE\n  ✅ SOLVED!\n- Clue 22 ('Fast car or fast driver (5)'): _____ → RACER\n  ✅ SOLVED!\n- Clue 23 ('Travellers who followed a star (4)'): ____ → MAGI\n  ✅ SOLVED!\n"
+      "visual_diff": "\nBEFORE:\n┌───────────────────────────────────────┐\n│ ░                                ░  ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│                         ░             │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░              ░                      │\n│ ░  ░  ░     ░     ░     ░  ░  ░     ░ │\n│ ░                                   ░ │\n│ ░     ░  ░  ░     ░     ░     ░  ░  ░ │\n│                      ░              ░ │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│             ░                         │\n│ ░     ░     ░     ░     ░     ░     ░ │\n│ ░  ░                                ░ │\n└───────────────────────────────────────┘\n\nAFTER:\n┌───────────────────────────────────────┐\n│ ░  A     D     P     S           ░  ░ │\n│ ░  L  ░  R  ░  U  ░  E  ░     ░  L  ░ │\n│    P     A     N     M  ░  O  V  A  L │\n│ ░  H  ░  C  ░  Y  ░  E  ░     ░  N  ░ │\n│ ░  A  C  H  E  ░  E  S  S  E  N  C  E │\n│ ░  ░  ░  M  ░  C  ░  T  ░  ░  ░  E  ░ │\n│ ░  C  R  A  S  H  H  E  L  M  E  T  ░ │\n│ ░  R  ░  ░  ░  A  ░  R  ░  A  ░  ░  ░ │\n│    O     G     R     ░  B  U  R  R  ░ │\n│ ░  W  ░  I  ░  A  ░  M  ░  D  ░  A  ░ │\n│    E     A  ░  D  E  A  D  L  O  C  K │\n│ ░  D  ░  N  ░  E  ░  G  ░  I  ░  E  ░ │\n│ ░  ░     T     S     I     N     R  ░ │\n└───────────────────────────────────────┘\n\nCHANGES:\n- Clue 1 ('Greek tragedy (7,3)'): __________ → A_D_P_S___\n- Clue 2 ('A year (3,5)'): ________ → _P_A_N_M\n- Clue 3 ('Elliptical shape (4)'): ____ → OVAL\n  ✅ SOLVED!\n- Clue 4 ('Feeling of discomfort (4)'): ____ → ACHE\n  ✅ SOLVED!\n- Clue 5 ('Kernel (7)'): _______ → ESSENCE\n  ✅ SOLVED!\n- Clue 6 ('Safety equipment for a biker, say (5,6)'): ___________ → CRASHHELMET\n  ✅ SOLVED!\n- Clue 7 ('Perform tricks (7)'): _______ → _O_G_R_\n- Clue 8 ('Prickly seed case (4)'): ____ → BURR\n  ✅ SOLVED!\n- Clue 9 ('Squad (4)'): ____ → _E_A\n- Clue 10 ('Impasse (8)'): ________ → DEADLOCK\n  ✅ SOLVED!\n- Clue 11 ('Mess (4,6)'): __________ → _T_S_I_N_R\n- Clue 12 ('Greek letter (5)'): _____ → ALPHA\n  ✅ SOLVED!\n- Clue 13 ('Greek money, formerly (7)'): _______ → DRACHMA\n  ✅ SOLVED!\n- Clue 14 ('Small and weak (4)'): ____ → PUNY\n  ✅ SOLVED!\n- Clue 15 ('Academic term (8)'): ________ → SEMESTER\n  ✅ SOLVED!\n- Clue 16 ('Call up (5)'): _____ → __O_E\n- Clue 17 ('Surgical knife (6)'): ______ → LANCET\n  ✅ SOLVED!\n- Clue 18 ('Parlour game (8)'): ________ → CHARADES\n  ✅ SOLVED!\n- Clue 19 ('Bragged (6)'): ______ → CROWED\n  ✅ SOLVED!\n- Clue 20 ('Schmaltzy (7)'): _______ → MAUDLIN\n  ✅ SOLVED!\n- Clue 21 ('Huge (5)'): _____ → GIANT\n  ✅ SOLVED!\n- Clue 22 ('Fast car or fast driver (5)'): _____ → RACER\n  ✅ SOLVED!\n- Clue 23 ('Travellers who followed a star (4)'): ____ → MAGI\n  ✅ SOLVED!\n"
     }
   ],
   "final_result": {},
