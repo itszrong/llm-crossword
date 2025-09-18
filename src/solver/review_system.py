@@ -5,6 +5,74 @@ Two-Stage Review System for Crossword Solving
 This module implements a review agent that analyzes failed/partial solutions
 and a correction agent that attempts to fix remaining issues using insights
 from the complete solving history.
+
+AGENTIC DESIGN PATTERNS USED:
+===========================================
+
+1. MULTI-AGENT SYSTEM: ReviewAgent + CorrectionAgent + TwoStageReviewSystem
+   - Multiple specialized agents working together
+   - Each agent has distinct responsibilities and capabilities
+
+2. REFLECTION PATTERN: ReviewAgent analyzes solving process and outcomes
+   - Self-assessment of performance and failure modes
+   - Meta-cognitive analysis of what went wrong
+
+3. HIERARCHICAL AGENT STRUCTURE: TwoStageReviewSystem coordinates sub-agents
+   - Orchestrator pattern managing workflow between agents
+   - Clear separation of concerns and responsibilities
+
+4. TOOL-USING AGENTS: Both agents use CrosswordTools for LLM interactions
+   - Agents augmented with external tools and capabilities
+   - Consistent interface for AI model interactions
+
+5. MEMORY/CONTEXT PATTERN: Comprehensive logging and state tracking
+   - Rich historical context from SolverLog
+   - Persistent insights and decision tracking
+
+KEY ARCHITECTURAL DECISIONS & TRADEOFFS:
+=====================================
+
+1. TWO-STAGE DESIGN (Review → Correction)
+   DECISION: Separate analysis from action
+   TRADEOFF: 
+   ✅ PRO: Clear separation of concerns, better debugging, modular
+   ❌ CON: More complexity, additional LLM calls, latency
+   ALTERNATIVE: Single-stage agent doing both review and correction
+   
+2. TRIGGER-BASED ACTIVATION (Only when stuck)
+   DECISION: Only activate review when solver makes no progress
+   TRADEOFF:
+   ✅ PRO: Reduces unnecessary LLM calls, cost-efficient, targeted intervention
+   ❌ CON: May miss early opportunities for correction, reactive vs proactive
+   ALTERNATIVE: Always-on review after each iteration
+   
+3. DIFFICULTY-SPECIFIC ENABLEMENT (Hard/Cryptic only)
+   DECISION: Auto-enable only for difficult puzzles
+   TRADEOFF:
+   ✅ PRO: Resource efficient, targeted where most needed
+   ❌ CON: May miss benefits on easier puzzles, less consistent behavior
+   ALTERNATIVE: Enable for all difficulties
+   
+4. LIMITED CORRECTION ATTEMPTS (Max 3 corrections)
+   DECISION: Cap the number of correction attempts
+   TRADEOFF:
+   ✅ PRO: Prevents infinite loops, bounds cost, faster termination
+   ❌ CON: May miss solutions requiring more attempts
+   ALTERNATIVE: Unlimited attempts with other stopping criteria
+   
+5. PRIORITIZED CLUE SELECTION (Score-based ranking)
+   DECISION: Focus on highest-impact clues first
+   TRADEOFF:
+   ✅ PRO: Maximizes improvement per attempt, efficient resource usage
+   ❌ CON: May miss cascading effects from lower-priority clues
+   ALTERNATIVE: Random selection or breadth-first approach
+   
+6. SEMANTIC VERIFICATION THRESHOLD (Only <80% completion)
+   DECISION: Skip expensive semantic checks when mostly solved
+   TRADEOFF:
+   ✅ PRO: Reduces LLM calls when puzzle is nearly complete
+   ❌ CON: May miss semantic errors in late-stage solving
+   ALTERNATIVE: Always verify or use completion-rate-based thresholds
 """
 
 import logging
@@ -19,7 +87,13 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class ReviewInsight:
-    """Individual insight from the review process"""
+    """
+    Individual insight from the review process
+    
+    DESIGN PATTERN: STRUCTURED KNOWLEDGE REPRESENTATION
+    - Encapsulates findings from analysis in structured format
+    - Enables consistent reasoning about different types of issues
+    """
     clue_id: str
     issue_type: str  # 'intersection_conflict', 'pattern_mismatch', 'semantic_error', 'length_error'
     confidence: float
@@ -29,7 +103,13 @@ class ReviewInsight:
 
 @dataclass
 class ReviewReport:
-    """Comprehensive review of the current puzzle state"""
+    """
+    Comprehensive review of the current puzzle state
+    
+    DESIGN PATTERN: AGGREGATED ANALYSIS RESULTS
+    - Consolidates multiple insights into actionable intelligence
+    - Provides prioritized recommendations for correction
+    """
     puzzle_name: str
     total_clues: int
     solved_clues: int
@@ -40,9 +120,22 @@ class ReviewReport:
 
 
 class ReviewAgent:
-    """Analyzes the final state of a crossword puzzle and identifies issues"""
+    """
+    Analyzes the final state of a crossword puzzle and identifies issues
+    
+    DESIGN PATTERN: REFLECTION AGENT
+    - Performs meta-cognitive analysis of solving process
+    - Identifies failure modes and improvement opportunities
+    - Uses historical context to understand what went wrong
+    
+    PATTERN: ANALYTICAL REASONING AGENT
+    - Systematic analysis of puzzle state and solving history
+    - Multi-faceted evaluation (semantic, structural, logical)
+    - Evidence-based insight generation
+    """
     
     def __init__(self):
+        # PATTERN: TOOL-USING AGENT - Equipped with LLM capabilities
         self.tools = CrosswordTools()
     
     def analyze_puzzle_state(self, puzzle: CrosswordPuzzle, solver_log: SolverLog) -> ReviewReport:
@@ -69,8 +162,9 @@ class ReviewAgent:
             clue_insights = self._analyze_unsolved_clue(clue, puzzle, solver_log)
             insights.extend(clue_insights)
         
-        # Analyze solved clues for potential errors (only if completion rate < 80%)
-        # This reduces unnecessary LLM calls when most clues are solved correctly
+        # OPTIMIZATION DECISION: CONDITIONAL SEMANTIC VERIFICATION
+        # Only analyze solved clues for potential errors if completion rate < 80%
+        # TRADEOFF: Reduces unnecessary LLM calls vs potentially missing late-stage errors
         if completion_rate < 0.8:
             solved_clues_list = [clue for clue in puzzle.clues if clue.answered]
             for clue in solved_clues_list:
@@ -115,7 +209,8 @@ class ReviewAgent:
             ))
         else:
             # Analyze why attempts failed
-            pattern = puzzle.get_current_clue_pattern(clue)
+            current_chars = puzzle.get_current_clue_chars(clue)
+            pattern = "".join(char or "_" for char in current_chars)
             
             # Check pattern constraints
             if '_' not in pattern:  # Fully constrained
@@ -294,9 +389,23 @@ Respond with just a decimal number between 0.0 and 1.0.
 
 
 class CorrectionAgent:
-    """Uses review insights to attempt corrections on remaining clues"""
+    """
+    Uses review insights to attempt corrections on remaining clues
+    
+    DESIGN PATTERN: ACTION-ORIENTED AGENT
+    - Takes insights from ReviewAgent and implements corrections
+    - Focused on execution rather than analysis
+    
+    KEY DECISIONS:
+    1. LIMITED ATTEMPTS: Max 3 corrections to prevent resource drain
+    2. INSIGHT-DRIVEN: Uses structured insights to guide corrections
+    3. CANDIDATE GENERATION: Creates targeted alternatives based on context
+    
+    TRADEOFF: Targeted corrections vs exhaustive search
+    """
     
     def __init__(self):
+        # PATTERN: TOOL-USING AGENT - Equipped with LLM capabilities for correction
         self.tools = CrosswordTools()
     
     def apply_corrections(self, puzzle: CrosswordPuzzle, review_report: ReviewReport, 
@@ -378,7 +487,8 @@ class CorrectionAgent:
                                       puzzle: CrosswordPuzzle, solver_log: SolverLog) -> List[str]:
         """Generate candidates specifically for correction"""
         
-        pattern = puzzle.get_current_clue_pattern(clue)
+        current_chars = puzzle.get_current_clue_chars(clue)
+        pattern = "".join(char or "_" for char in current_chars)
         
         # Use LLM with context from insights
         insight_context = "\n".join([f"- {i.description}" for i in insights])
@@ -510,3 +620,58 @@ class TwoStageReviewSystem:
             json.dump(report_dict, f, indent=2, ensure_ascii=False)
         
         logger.info(f"Review report saved to {output_path}")
+
+
+"""
+COMPREHENSIVE DECISION FRAMEWORK SUMMARY:
+=======================================
+
+PERFORMANCE vs COST TRADEOFFS:
+1. Trigger-based activation: Only when stuck (cost-efficient)
+2. Limited correction attempts: Max 3 (bounded cost)
+3. Conditional semantic verification: Skip when >80% complete
+4. Difficulty-specific enablement: Hard/Cryptic only
+
+ACCURACY vs EFFICIENCY TRADEOFFS:
+1. Two-stage design: Separate analysis/action (better accuracy, more complex)
+2. Prioritized clue selection: High-impact first (efficiency over completeness)
+3. Pattern-guided corrections: Use constraints to narrow search space
+
+ROBUSTNESS vs SIMPLICITY TRADEOFFS:
+1. Multi-agent architecture: More robust but complex coordination
+2. Structured insight representation: Systematic but overhead
+3. Comprehensive logging: Full observability but storage cost
+
+DESIGN PATTERN ADVANTAGES:
+✅ Reflection Pattern: Self-improvement capability
+✅ Multi-Agent System: Specialized expertise, parallel processing
+✅ Hierarchical Structure: Clear responsibilities, coordinated action
+✅ Tool-Using Agents: Leverages LLM capabilities effectively
+✅ Memory/Context: Rich historical awareness
+
+POTENTIAL INTERVIEW QUESTIONS & RESPONSES:
+
+Q: "Why two agents instead of one?"
+A: "Separation of analysis and action. ReviewAgent focuses on understanding 
+   what went wrong, CorrectionAgent focuses on fixing it. This enables 
+   specialized reasoning and better debugging."
+
+Q: "How do you prevent infinite correction loops?"
+A: "Multiple safeguards: max 3 correction attempts, progress tracking,
+   trigger conditions (only when stuck), and bounded search space."
+
+Q: "What about computational costs?"
+A: "Designed for efficiency: trigger-based activation, conditional analysis,
+   difficulty-specific enablement, limited attempts. Only activates when
+   needed most (hard puzzles that are stuck)."
+
+Q: "How do you handle scaling to larger puzzles?"
+A: "Prioritized analysis focuses on highest-impact clues first. Structured
+   insights enable efficient processing. Limited scope prevents exponential
+   growth."
+
+Q: "What are the failure modes?"
+A: "Could miss early intervention opportunities (reactive), may not solve
+   issues requiring >3 attempts, semantic verification threshold could miss
+   late-stage errors. Trade-offs are documented and measurable."
+"""

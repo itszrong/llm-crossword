@@ -57,14 +57,15 @@ def test_review_system_on_cryptic():
     
     # Display puzzle state
     print("\n🎯 Final puzzle grid:")
-    puzzle.display()
+    print(puzzle)
     
     # Show some clue states
     print("\n🔍 Sample clue states:")
     for clue in puzzle.clues[:10]:  # Show first 10 clues
         status = "✅" if clue.answered else "❌"
-        current_pattern = puzzle.get_current_clue_pattern(clue)
-        print(f"  {status} Clue {clue.number} {clue.direction.name}: '{clue.text}' = {current_pattern}")
+        current_chars = puzzle.get_current_clue_chars(clue)
+        current_word = "".join(char or "_" for char in current_chars)
+        print(f"  {status} Clue {clue.number} {clue.direction.name}: '{clue.text}' = {current_word}")
 
 
 def test_review_system_comparison():

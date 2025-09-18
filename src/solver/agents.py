@@ -134,7 +134,9 @@ class CrosswordTools:
     async def solve_clue_async(self, clue: Clue, context: str = "",
                               attempted_words: List[str] = None, 
                               rejection_reasons: List[str] = None,
-                              current_pattern: str = None) -> List[ClueCandidate]:
+                              current_pattern: str = None,
+                              iteration: int = 1,
+                              total_solved: int = 0) -> List[ClueCandidate]:
         """
         Asynchronous version of solve_clue for concurrent processing
         
@@ -151,7 +153,8 @@ class CrosswordTools:
             
             # Build context-aware prompt with attempt history
             prompt = self._build_clue_prompt(clue, context, clue_type,
-                                           attempted_words, rejection_reasons, current_pattern)
+                                           attempted_words, rejection_reasons, current_pattern,
+                                           iteration, total_solved)
             
             # Use async client if available, otherwise fall back to sync
             response = await asyncio.get_event_loop().run_in_executor(
@@ -201,8 +204,22 @@ class CrosswordTools:
         # Handle parenthetical hints for multi-word answers
         length_info = self._parse_length_hint(clue.text, clue.length)
         
-        # Note: Adaptive prompting can be added later if needed
-        # For now, use standard prompt structure
+        # BREAK THE LOOP: Add iteration-specific instructions
+        iteration_guidance = ""
+        if iteration > 1:
+            iteration_guidance = f"""
+🚨 ITERATION {iteration} - PREVIOUS ATTEMPTS FAILED!
+- You have tried {iteration - 1} times and failed
+- CRITICAL: Answer must be EXACTLY {clue.length} letters, no more, no less
+- Common errors to avoid: adding extra words, wrong length, complex phrases
+- Focus on SIMPLE, DIRECT answers that fit the exact length requirement
+- For multi-word clues like (7,3), provide ONE word with NO SPACES
+
+URGENT: If this is a multi-word clue pattern like (7,3), the answer is likely:
+- A famous name, title, or compound word
+- Should be written as one word: OEDIPUSREX not "OEDIPUS REX"
+- Double-check your answer has EXACTLY {clue.length} letters before submitting
+"""
         
         # Build attempt history section
         history_section = ""
@@ -227,6 +244,8 @@ CONSTRAINT: Must fit pattern "{current_pattern}" where:
 """
         
         base_prompt = f"""
+{iteration_guidance}
+
 Solve this crossword clue:
 Clue: "{clue.text}"
 {length_info}
@@ -322,8 +341,17 @@ For definition clues:
                         confidence_str = parts[1].split(':')[1].strip()
                         reasoning = parts[2].split(':')[1].strip()
                         
-                        # Clean and validate word
+                        # Clean and validate word - remove common LLM artifacts
                         clean_word = word.replace(' ', '').replace('-', '').upper()
+                        # Remove common prefixes/suffixes that LLMs add
+                        clean_word = clean_word.replace('**', '').replace('""', '').replace("''", '')
+                        # Remove leading/trailing non-alphabetic characters
+                        clean_word = ''.join(c for c in clean_word if c.isalpha())
+                        
+                        # CRITICAL: Reject candidates with wrong length immediately
+                        if len(clean_word) != clue.length:
+                            logger.warning(f"❌ LENGTH MISMATCH: '{clean_word}' ({len(clean_word)} letters) rejected for {clue.length}-letter clue '{clue.text}'")
+                            continue
                         
                         # Validate word length and format
                         if len(clean_word) == clue.length and clean_word.isalpha():
@@ -472,7 +500,8 @@ class ClueAgent:
         for attempt in range(self.max_retries + 1):
             try:
                 candidates = self.tools.solve_clue(clue, context, 
-                                                 attempted_words, rejection_reasons, current_pattern)
+                                                 attempted_words, rejection_reasons, current_pattern,
+                                                 iteration=attempt + 1, total_solved=0)
                 
                 # Filter candidates for semantic relevance and grid compatibility
                 valid_candidates = []
@@ -517,7 +546,8 @@ class ClueAgent:
         for attempt in range(self.max_retries + 1):
             try:
                 candidates = await self.tools.solve_clue_async(clue, context, 
-                                                              None, None, None)  # No attempt history for async version yet
+                                                              None, None, None,  # No attempt history for async version yet
+                                                              iteration=attempt + 1, total_solved=0)
                 
                 # Filter candidates for semantic relevance and grid compatibility
                 valid_candidates = []
@@ -1125,6 +1155,11 @@ class CoordinatorAgent:
         self.max_iterations = 5
         self.solver_log: Optional[SolverLog] = None
         self.use_async_solving = True  # Enable async by default
+        
+        # Loop detection and prevention
+        self.last_iteration_candidates = {}
+        self.failed_clue_attempts = {}
+        self.max_identical_iterations = 3
         
         # Add attributes that specialized solvers might configure
         self.backtrack_enabled = False

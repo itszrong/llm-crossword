@@ -28,7 +28,9 @@ class AgenticCrosswordSolver:
     def __init__(self, difficulty: str = "medium", enable_review: bool = None):
         self.difficulty = difficulty.lower()
         
+        # DESIGN DECISION: DIFFICULTY-BASED AUTO-ENABLEMENT
         # Auto-enable review only for hard and cryptic difficulties
+        # RATIONALE: These puzzles benefit most from review, cost-optimization for easier puzzles
         if enable_review is None:
             self.enable_review = self.difficulty in ["hard", "cryptic"]
         else:
@@ -114,6 +116,18 @@ class AgenticCrosswordSolver:
         """
         Determine if the review system should be triggered based on solver progress
         
+        KEY DECISION: PROGRESS-BASED TRIGGERING
+        - Only activate expensive review when solver is genuinely stuck
+        - Balances intervention timing vs resource efficiency
+        
+        TRIGGER CONDITIONS:
+        1. At least 3 iterations completed (avoid premature triggering)
+        2. 2+ of last 3 iterations made no progress (clear stall pattern)
+        
+        TRADEOFF ANALYSIS:
+        ✅ PRO: Targeted intervention, cost-efficient, reduces noise
+        ❌ CON: Reactive rather than proactive, may miss early issues
+        
         Returns:
             True if review should be triggered (no progress made in recent iterations)
         """
@@ -131,7 +145,7 @@ class AgenticCrosswordSolver:
         
         # Count how many recent iterations made no progress
         no_progress_count = sum(1 for iteration in recent_iterations 
-                               if not iteration.get("progress_made", False))
+                               if isinstance(iteration, dict) and not iteration.get("progress_made", False))
         
         # Trigger review if 2+ of the last 3 iterations made no progress
         should_trigger = no_progress_count >= 2
