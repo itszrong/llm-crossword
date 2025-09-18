@@ -81,12 +81,13 @@ class SolverLog:
 class CrosswordTools:
     """Core tools for crossword solving"""
     
-    def __init__(self):
+    def __init__(self, difficulty: str = "medium"):
         self.client = AzureOpenAI(
             api_version=os.getenv("OPENAI_API_VERSION"),
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
             api_key=os.getenv("AZURE_OPENAI_API_KEY")
         )
+        self.difficulty = difficulty
     
     def solve_clue(self, clue: Clue, context: str = "", 
                    attempted_words: List[str] = None, 
@@ -130,7 +131,10 @@ class CrosswordTools:
             logger.error(f"Error solving clue '{clue.text}': {e}")
             return []
     
-    async def solve_clue_async(self, clue: Clue, context: str = "") -> List[ClueCandidate]:
+    async def solve_clue_async(self, clue: Clue, context: str = "",
+                              attempted_words: List[str] = None, 
+                              rejection_reasons: List[str] = None,
+                              current_pattern: str = None) -> List[ClueCandidate]:
         """
         Asynchronous version of solve_clue for concurrent processing
         
@@ -145,8 +149,9 @@ class CrosswordTools:
             # Determine clue type for specialized prompting
             clue_type = self._classify_clue_type(clue.text)
             
-            # Build context-aware prompt
-            prompt = self._build_clue_prompt(clue, context, clue_type)
+            # Build context-aware prompt with attempt history
+            prompt = self._build_clue_prompt(clue, context, clue_type,
+                                           attempted_words, rejection_reasons, current_pattern)
             
             # Use async client if available, otherwise fall back to sync
             response = await asyncio.get_event_loop().run_in_executor(
@@ -189,10 +194,15 @@ class CrosswordTools:
     def _build_clue_prompt(self, clue: Clue, context: str, clue_type: str, 
                           attempted_words: List[str] = None, 
                           rejection_reasons: List[str] = None,
-                          current_pattern: str = None) -> str:
-        """Build a specialized prompt based on clue type with attempt history"""
+                          current_pattern: str = None,
+                          iteration: int = 1,
+                          total_solved: int = 0) -> str:
+        """Build a specialized prompt based on clue type with attempt history and adaptive strategies"""
         # Handle parenthetical hints for multi-word answers
         length_info = self._parse_length_hint(clue.text, clue.length)
+        
+        # Note: Adaptive prompting can be added later if needed
+        # For now, use standard prompt structure
         
         # Build attempt history section
         history_section = ""
@@ -252,6 +262,15 @@ ANSWER: [word] | CONFIDENCE: [level] | REASONING: [explanation]
 ALT1: [word] | CONFIDENCE: [level] | REASONING: [explanation]
 ALT2: [word] | CONFIDENCE: [level] | REASONING: [explanation]
 """
+        
+        # Add difficulty-specific prompt additions
+        try:
+            from src.solver.specialized_solvers import DifficultyConfigurator
+            if hasattr(self, 'difficulty'):
+                difficulty_additions = DifficultyConfigurator.get_prompt_additions(self.difficulty, clue_type)
+                base_prompt += difficulty_additions
+        except ImportError:
+            pass  # Fallback gracefully if specialized_solvers not available
         
         if clue_type == "cryptic":
             base_prompt += """
@@ -455,9 +474,15 @@ class ClueAgent:
                 candidates = self.tools.solve_clue(clue, context, 
                                                  attempted_words, rejection_reasons, current_pattern)
                 
-                # Filter candidates that are compatible with current grid state
+                # Filter candidates for semantic relevance and grid compatibility
                 valid_candidates = []
                 for candidate in candidates:
+                    # First check semantic relevance to prevent mismatched answers
+                    if not self._is_semantically_relevant(candidate, clue):
+                        logger.warning(f"🚫 SEMANTIC MISMATCH: '{candidate.word}' rejected for clue '{clue.text}' - seems irrelevant")
+                        continue
+                    
+                    # Then check grid compatibility  
                     if self._is_candidate_valid_for_grid(candidate, clue, puzzle):
                         valid_candidates.append(candidate)
                     else:
@@ -491,11 +516,18 @@ class ClueAgent:
         
         for attempt in range(self.max_retries + 1):
             try:
-                candidates = await self.tools.solve_clue_async(clue, context)
+                candidates = await self.tools.solve_clue_async(clue, context, 
+                                                              None, None, None)  # No attempt history for async version yet
                 
-                # Filter candidates that are compatible with current grid state
+                # Filter candidates for semantic relevance and grid compatibility
                 valid_candidates = []
                 for candidate in candidates:
+                    # First check semantic relevance to prevent mismatched answers
+                    if not self._is_semantically_relevant(candidate, clue):
+                        logger.warning(f"🚫 SEMANTIC MISMATCH: '{candidate.word}' rejected for clue '{clue.text}' - seems irrelevant")
+                        continue
+                    
+                    # Then check grid compatibility  
                     if self._is_candidate_valid_for_grid(candidate, clue, puzzle):
                         valid_candidates.append(candidate)
                     else:
@@ -514,6 +546,60 @@ class ClueAgent:
         logger.error(f"ClueAgent failed to solve '{clue.text}' async after {self.max_retries + 1} attempts")
         return []
     
+    def _is_semantically_relevant(self, candidate: ClueCandidate, clue: Clue) -> bool:
+        """
+        Check if a candidate answer is semantically relevant to the clue.
+        Prevents mismatched answers like OEDIPUSREX for "Kernel (7)".
+        """
+        word = candidate.word.upper()
+        clue_text = clue.text.lower()
+        reasoning = candidate.reasoning.lower() if candidate.reasoning else ""
+        
+        # Define semantic mismatch patterns
+        mismatches = [
+            # Classical/literary answers for non-classical clues
+            ({"oedipus", "rex", "oedipusrex", "hamlet", "macbeth", "othello"}, 
+             {"kernel", "essence", "core", "seed", "nut", "pit"}),
+            
+            # Technical/equipment answers for simple clues  
+            ({"crash", "helmet", "crashhelmet", "equipment", "gear"}, 
+             {"kernel", "essence", "core", "simple", "basic"}),
+            
+            # Animal answers for non-animal clues
+            ({"cow", "bull", "sheep", "pig", "horse"}, 
+             {"tragedy", "play", "drama", "greek", "classical"}),
+            
+            # Food answers for non-food clues
+            ({"butter", "cheese", "milk", "bread"}, 
+             {"tragedy", "play", "drama", "equipment", "safety"}),
+        ]
+        
+        # Check for obvious semantic mismatches
+        word_lower = word.lower()
+        for mismatch_words, mismatch_contexts in mismatches:
+            if word_lower in mismatch_words or any(w in word_lower for w in mismatch_words):
+                if any(context in clue_text for context in mismatch_contexts):
+                    logger.debug(f"Semantic mismatch detected: '{word}' doesn't match clue context '{clue.text}'")
+                    return False
+        
+        # Additional heuristic: Check length appropriateness for common mismatches
+        if len(word) == 10:  # Common length for complex answers
+            # OEDIPUSREX should only go with classical/literary clues
+            if word_lower in ["oedipusrex"] and not any(indicator in clue_text for indicator in 
+                ["greek", "tragedy", "play", "drama", "classical", "sophocles", "king", "thebes"]):
+                logger.debug(f"'{word}' rejected - not appropriate for non-classical clue '{clue.text}'")
+                return False
+        
+        # Check reasoning for obvious mismatches
+        if reasoning:
+            # If reasoning mentions unrelated concepts, it's likely a mismatch
+            if ("greek" in reasoning or "tragedy" in reasoning) and not any(indicator in clue_text for indicator in 
+                ["greek", "tragedy", "play", "drama", "classical", "ancient"]):
+                logger.debug(f"'{word}' rejected - reasoning mentions Greek/tragedy for unrelated clue")
+                return False
+        
+        return True  # Passed all semantic relevance checks
+
     def _is_candidate_valid_for_grid(self, candidate: ClueCandidate, clue: Clue, puzzle: CrosswordPuzzle) -> bool:
         """Check if a candidate answer is compatible with the current grid state"""
         try:
@@ -1039,6 +1125,17 @@ class CoordinatorAgent:
         self.max_iterations = 5
         self.solver_log: Optional[SolverLog] = None
         self.use_async_solving = True  # Enable async by default
+        
+        # Add attributes that specialized solvers might configure
+        self.backtrack_enabled = False
+        self.thinking_depth = 1
+        self.max_candidates_per_clue = 3
+        self.confidence_threshold = 0.5
+        self.review_threshold = 0.3
+        self.prefer_high_confidence = True
+        self.parallel_solving = True
+        self.max_backtracks = 2
+        self.difficulty = "medium"
     
     def solve_puzzle(self, puzzle: CrosswordPuzzle, puzzle_name: str = "unknown") -> bool:
         """
@@ -1288,7 +1385,7 @@ class CoordinatorAgent:
                 adjusted_confidence = candidate.confidence * review_score
                 
                 # Only keep candidates with reasonable scores
-                if review_score >= 0.3:  # Threshold for keeping candidates
+                if review_score >= self.review_threshold:  # Threshold for keeping candidates
                     candidate.confidence = adjusted_confidence
                     reviewed_list.append(candidate)
                     logger.debug(f"Candidate '{candidate.word}' for '{clue.text}': "

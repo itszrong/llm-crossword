@@ -9,6 +9,8 @@ for integration with the existing crossword framework.
 import logging
 from typing import Optional
 from src.solver.agents import CoordinatorAgent
+from src.solver.specialized_solvers import create_specialized_solver
+from src.solver.review_system import TwoStageReviewSystem
 from src.crossword.crossword import CrosswordPuzzle
 
 logger = logging.getLogger(__name__)
@@ -23,44 +25,26 @@ class AgenticCrosswordSolver:
         success = solver.solve(puzzle)
     """
     
-    def __init__(self, difficulty: str = "medium"):
+    def __init__(self, difficulty: str = "medium", enable_review: bool = None):
         self.difficulty = difficulty.lower()
         
-        # Create coordinator and configure it for the difficulty level
-        self.coordinator = CoordinatorAgent()
-        self._configure_for_difficulty()
-        
-        logger.info(f"Initialized {self.difficulty.title()}CrosswordCoordinator")
-    
-    def _configure_for_difficulty(self):
-        """Configure the coordinator based on difficulty level"""
-        if self.difficulty == "easy":
-            self.coordinator.max_iterations = 3
-            self.coordinator.backtrack_enabled = False
-            self.coordinator.thinking_depth = 1
-            self.coordinator.use_async_solving = False
-        elif self.difficulty == "medium":
-            self.coordinator.max_iterations = 5
-            self.coordinator.backtrack_enabled = True
-            self.coordinator.thinking_depth = 2
-            self.coordinator.use_async_solving = True
-        elif self.difficulty == "hard":
-            self.coordinator.max_iterations = 8
-            self.coordinator.backtrack_enabled = True
-            self.coordinator.thinking_depth = 3
-            self.coordinator.use_async_solving = True
-        elif self.difficulty == "cryptic":
-            self.coordinator.max_iterations = 12
-            self.coordinator.backtrack_enabled = True
-            self.coordinator.thinking_depth = 4
-            self.coordinator.use_async_solving = True
+        # Auto-enable review only for hard and cryptic difficulties
+        if enable_review is None:
+            self.enable_review = self.difficulty in ["hard", "cryptic"]
         else:
-            logger.warning(f"Unknown difficulty '{self.difficulty}', using medium defaults")
-            self.difficulty = "medium"
-            self._configure_for_difficulty()
+            self.enable_review = enable_review
         
-        # Store difficulty info
-        self.coordinator.difficulty = self.difficulty
+        # Create coordinator and configure it for the difficulty level
+        base_coordinator = CoordinatorAgent()
+        self.coordinator = create_specialized_solver(base_coordinator, self.difficulty)
+        
+        # Initialize review system if enabled
+        if self.enable_review:
+            self.review_system = TwoStageReviewSystem()
+        else:
+            self.review_system = None
+        
+        logger.info(f"Initialized {self.difficulty.title()} CrosswordSolver (review: {self.enable_review})")
     
     def solve(self, puzzle: CrosswordPuzzle, verbose: bool = True, puzzle_name: str = "unknown") -> bool:
         """
@@ -83,6 +67,33 @@ class AgenticCrosswordSolver:
             # Use the coordinator agent to solve the puzzle
             success = self.coordinator.solve_puzzle(puzzle, puzzle_name)
             
+            # Apply review system if enabled, puzzle not fully solved, and solver made no progress
+            if (self.enable_review and self.review_system and not success and 
+                self._should_trigger_review()):
+                if verbose:
+                    logger.info("🎭 No progress detected - attempting review and correction process...")
+                
+                # Get the solver log
+                solver_log = self.coordinator.solver_log
+                if solver_log:
+                    corrections_applied, review_report = self.review_system.review_and_correct(
+                        puzzle, solver_log, max_corrections=3
+                    )
+                    
+                    # Store review report for potential saving
+                    self._last_review_report = review_report
+                    
+                    if corrections_applied:
+                        # Check if puzzle is now solved
+                        final_solved = sum(1 for clue in puzzle.clues if clue.answered)
+                        success = final_solved == len(puzzle.clues)
+                        
+                        if verbose:
+                            if success:
+                                logger.info("🎉 Puzzle completed after review corrections!")
+                            else:
+                                logger.info(f"⚡ Partial improvement: {final_solved}/{len(puzzle.clues)} clues solved")
+            
             if verbose:
                 if success:
                     logger.info("✅ Puzzle solved successfully!")
@@ -99,7 +110,39 @@ class AgenticCrosswordSolver:
             logger.error(f"Error during puzzle solving: {e}")
             return False
     
-    def solve_with_stats(self, puzzle: CrosswordPuzzle, puzzle_name: str = "unknown", log_path: str = None) -> dict:
+    def _should_trigger_review(self) -> bool:
+        """
+        Determine if the review system should be triggered based on solver progress
+        
+        Returns:
+            True if review should be triggered (no progress made in recent iterations)
+        """
+        if not hasattr(self.coordinator, 'solver_log') or not self.coordinator.solver_log:
+            return False
+        
+        solver_log = self.coordinator.solver_log
+        
+        # Check if there have been at least 3 iterations
+        if len(solver_log.iterations) < 3:
+            return False
+        
+        # Check the last 2-3 iterations for progress
+        recent_iterations = solver_log.iterations[-3:]
+        
+        # Count how many recent iterations made no progress
+        no_progress_count = sum(1 for iteration in recent_iterations 
+                               if not iteration.get("progress_made", False))
+        
+        # Trigger review if 2+ of the last 3 iterations made no progress
+        should_trigger = no_progress_count >= 2
+        
+        if should_trigger:
+            logger.info(f"🔍 Review trigger: {no_progress_count}/3 recent iterations made no progress")
+        
+        return should_trigger
+    
+    def solve_with_stats(self, puzzle: CrosswordPuzzle, puzzle_name: str = "unknown", 
+                        log_path: str = None, review_log_path: str = None) -> dict:
         """
         Solve puzzle and return detailed statistics
         
@@ -107,6 +150,7 @@ class AgenticCrosswordSolver:
             puzzle: The CrosswordPuzzle instance to solve
             puzzle_name: Name identifier for the puzzle
             log_path: Optional path to save detailed JSON log
+            review_log_path: Optional path to save review report
             
         Returns:
             Dictionary with solving statistics
@@ -125,6 +169,10 @@ class AgenticCrosswordSolver:
         if log_path:
             self.coordinator.save_log(log_path)
         
+        # Save review log if review was used and path provided
+        if review_log_path and self.enable_review and hasattr(self, '_last_review_report'):
+            self.review_system.save_review_report(self._last_review_report, review_log_path)
+        
         return {
             "success": success,
             "total_clues": len(puzzle.clues),
@@ -133,7 +181,8 @@ class AgenticCrosswordSolver:
             "clues_solved": final_solved - initial_solved,
             "completion_rate": final_solved / len(puzzle.clues),
             "solving_time": end_time - start_time,
-            "puzzle_size": f"{puzzle.width}x{puzzle.height}"
+            "puzzle_size": f"{puzzle.width}x{puzzle.height}",
+            "review_enabled": self.enable_review
         }
 
 

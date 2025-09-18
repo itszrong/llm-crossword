@@ -2,451 +2,379 @@
 """
 Specialized Crossword Solvers for Different Difficulty Levels
 
-This module provides specialized solver implementations that inherit from the base
-CoordinatorAgent but have different tools, strategies, and sophistication levels
-appropriate for different puzzle difficulties.
+This module provides specialized solver configurations that modify the base
+CoordinatorAgent with different strategies and thresholds appropriate for 
+different puzzle difficulties.
 """
 
 import logging
-import time
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, Tuple, Set
-from enum import Enum
-
+from typing import Dict, Any
 from src.solver.types import DifficultyLevel
-from src.crossword.crossword import CrosswordPuzzle
-from src.crossword.types import Clue
 
 logger = logging.getLogger(__name__)
 
 
-@dataclass
-class SolverMove:
-    """Represents a move in the solving process for undo functionality"""
-    clue: Clue
-    candidate: ClueCandidate
-    timestamp: str
-    grid_state_before: Dict[str, Any]
-
-
-class BaseDifficultyCoordinator:
-    """Base class for difficulty-specific coordinators"""
+class DifficultyConfigurator:
+    """Factory class for configuring solvers based on difficulty level"""
     
-    def __init__(self, difficulty: DifficultyLevel):
-        super().__init__()
-        self.difficulty = difficulty
-        self.move_history: List[SolverMove] = []
-        self.backtrack_enabled = False
-        self.thinking_depth = 1
+    @staticmethod
+    def get_solver_config(difficulty: str) -> Dict[str, Any]:
+        """
+        Get solver configuration parameters for a difficulty level
         
-    @abstractmethod
-    def get_specialized_tools(self) -> CrosswordTools:
-        """Get tools specialized for this difficulty level"""
-        pass
-    
-    @abstractmethod
-    def get_solving_strategy(self) -> Dict[str, Any]:
-        """Get solving strategy parameters for this difficulty"""
-        pass
-    
-    def can_undo(self) -> bool:
-        """Check if undo is available"""
-        return self.backtrack_enabled and len(self.move_history) > 0
-    
-    def undo_last_move(self, puzzle: CrosswordPuzzle) -> bool:
-        """Undo the last move"""
-        if not self.can_undo():
-            return False
+        Args:
+            difficulty: The difficulty level (easy, medium, hard, cryptic)
+            
+        Returns:
+            Dictionary with solver configuration parameters
+        """
+        difficulty = difficulty.lower()
         
-        last_move = self.move_history.pop()
+        if difficulty == "easy":
+            return {
+                "max_iterations": 3,
+                "backtrack_enabled": False,
+                "thinking_depth": 1,
+                "use_async_solving": False,
+                "max_candidates_per_clue": 2,
+                "confidence_threshold": 0.6,
+                "review_threshold": 0.4,
+                "prefer_high_confidence": True,
+                "parallel_solving": False,
+                "prompt_style": "simple"
+            }
         
-        # Restore grid state
-        try:
-            # Clear the clue
-            puzzle.clear_clue_chars(last_move.clue)
-            logger.info(f"Undid move: '{last_move.clue.text}' = {last_move.candidate.word}")
-            return True
-        except Exception as e:
-            logger.error(f"Failed to undo move: {e}")
-            return False
-
-
-class EasyCrosswordCoordinator(BaseDifficultyCoordinator):
-    """Solver optimized for easy puzzles - fast and straightforward"""
-    
-    def __init__(self):
-        super().__init__(DifficultyLevel.EASY)
-        self.max_iterations = 3  # Quick solving
-        self.backtrack_enabled = False  # No undos needed
-        self.thinking_depth = 1  # Simple reasoning
+        elif difficulty == "medium":
+            return {
+                "max_iterations": 5,
+                "backtrack_enabled": True,
+                "thinking_depth": 2,
+                "use_async_solving": True,
+                "max_candidates_per_clue": 3,
+                "confidence_threshold": 0.5,
+                "review_threshold": 0.3,
+                "prefer_high_confidence": True,
+                "parallel_solving": True,
+                "max_backtracks": 2,
+                "prompt_style": "enhanced"
+            }
         
-        # Use simplified tools
-        self.tools = self.get_specialized_tools()
-        self.clue_agent = SimpleClueAgent(self.tools)
-        self.constraint_agent = FastConstraintAgent(self.tools)
-        self.review_agent = BasicReviewAgent(self.tools)
-        self.use_async_solving = False  # Keep it simple for easy puzzles
-        # VisualizationAgent is inherited from parent
-    
-    def get_specialized_tools(self) -> CrosswordTools:
-        """Simple tools for easy puzzles"""
-        return SimpleCrosswordTools()
-    
-    def get_solving_strategy(self) -> Dict[str, Any]:
-        return {
-            "max_candidates_per_clue": 2,
-            "confidence_threshold": 0.6,
-            "review_threshold": 0.4,
-            "prefer_high_confidence": True,
-            "parallel_solving": False
-        }
-
-
-class MediumCrosswordCoordinator(BaseDifficultyCoordinator):
-    """Solver for medium difficulty - balanced approach"""
-    
-    def __init__(self):
-        super().__init__(DifficultyLevel.MEDIUM)
-        self.max_iterations = 5
-        self.backtrack_enabled = True  # Limited backtracking
-        self.thinking_depth = 2
+        elif difficulty == "hard":
+            return {
+                "max_iterations": 8,
+                "backtrack_enabled": True,
+                "thinking_depth": 3,
+                "use_async_solving": True,
+                "max_candidates_per_clue": 5,
+                "confidence_threshold": 0.4,
+                "review_threshold": 0.2,  # More lenient to avoid filtering OEDIPUSREX
+                "prefer_high_confidence": False,
+                "parallel_solving": True,
+                "max_backtracks": 5,
+                "deep_reasoning": True,
+                "constraint_propagation": True,
+                "prompt_style": "advanced"
+            }
         
-        self.tools = self.get_specialized_tools()
-        self.clue_agent = StandardClueAgent(self.tools)
-        self.constraint_agent = ConstraintAgent(self.tools)
-        self.review_agent = ReviewAgent(self.tools)
-        self.use_async_solving = True  # Enable async for medium+
-    
-    def get_specialized_tools(self) -> CrosswordTools:
-        """Standard tools with some enhancements"""
-        return EnhancedCrosswordTools()
-    
-    def get_solving_strategy(self) -> Dict[str, Any]:
-        return {
-            "max_candidates_per_clue": 3,
-            "confidence_threshold": 0.5,
-            "review_threshold": 0.3,
-            "prefer_high_confidence": True,
-            "parallel_solving": True,
-            "max_backtracks": 2
-        }
-
-
-class HardCrosswordCoordinator(BaseDifficultyCoordinator):
-    """Solver for hard puzzles - sophisticated reasoning"""
-    
-    def __init__(self):
-        super().__init__(DifficultyLevel.HARD)
-        self.max_iterations = 8
-        self.backtrack_enabled = True
-        self.thinking_depth = 3
+        elif difficulty == "cryptic":
+            return {
+                "max_iterations": 12,
+                "backtrack_enabled": True,
+                "thinking_depth": 4,
+                "use_async_solving": True,
+                "max_candidates_per_clue": 8,
+                "confidence_threshold": 0.3,
+                "review_threshold": 0.1,  # Very lenient for cryptic clues
+                "prefer_high_confidence": False,
+                "parallel_solving": True,
+                "max_backtracks": 10,
+                "deep_reasoning": True,
+                "constraint_propagation": True,
+                "wordplay_analysis": True,
+                "anagram_detection": True,
+                "prompt_style": "cryptic"
+            }
         
-        self.tools = self.get_specialized_tools()
-        self.clue_agent = AdvancedClueAgent(self.tools)
-        self.constraint_agent = AdvancedConstraintAgent(self.tools)
-        self.review_agent = ThoroughReviewAgent(self.tools)
-        self.reasoning_agent = ReasoningAgent(self.tools)
-        self.use_async_solving = True  # Definitely use async for hard puzzles
+        else:
+            logger.warning(f"Unknown difficulty '{difficulty}', using medium defaults")
+            return DifficultyConfigurator.get_solver_config("medium")
     
-    def get_specialized_tools(self) -> CrosswordTools:
-        """Advanced tools with deep reasoning"""
-        return AdvancedCrosswordTools()
-    
-    def get_solving_strategy(self) -> Dict[str, Any]:
-        return {
-            "max_candidates_per_clue": 5,
-            "confidence_threshold": 0.4,
-            "review_threshold": 0.2,
-            "prefer_high_confidence": False,
-            "parallel_solving": True,
-            "max_backtracks": 5,
-            "deep_reasoning": True,
-            "constraint_propagation": True
-        }
-
-
-class CrypticCrosswordCoordinator(BaseDifficultyCoordinator):
-    """Solver for cryptic puzzles - specialized for wordplay"""
-    
-    def __init__(self):
-        super().__init__(DifficultyLevel.CRYPTIC)
-        self.max_iterations = 12
-        self.backtrack_enabled = True
-        self.thinking_depth = 4
+    @staticmethod
+    def get_prompt_additions(difficulty: str, clue_type: str = "definition") -> str:
+        """
+        Get additional prompt text based on difficulty level
         
-        self.tools = self.get_specialized_tools()
-        self.clue_agent = CrypticClueAgent(self.tools)
-        self.constraint_agent = AdvancedConstraintAgent(self.tools)
-        self.review_agent = CrypticReviewAgent(self.tools)
-        self.wordplay_agent = WordplayAgent(self.tools)
-        self.reasoning_agent = ReasoningAgent(self.tools)
-        self.use_async_solving = True  # Cryptic puzzles benefit most from async
-    
-    def get_specialized_tools(self) -> CrosswordTools:
-        """Cryptic-specific tools"""
-        return CrypticCrosswordTools()
-    
-    def get_solving_strategy(self) -> Dict[str, Any]:
-        return {
-            "max_candidates_per_clue": 8,
-            "confidence_threshold": 0.3,
-            "review_threshold": 0.1,
-            "prefer_high_confidence": False,
-            "parallel_solving": True,
-            "max_backtracks": 10,
-            "deep_reasoning": True,
-            "constraint_propagation": True,
-            "wordplay_analysis": True,
-            "anagram_detection": True
-        }
-
-
-# Specialized Tool Classes
-
-class SimpleCrosswordTools(CrosswordTools):
-    """Simplified tools for easy puzzles"""
-    
-    def _build_clue_prompt(self, clue: Clue, context: str, clue_type: str) -> str:
-        # Simplified prompt for easy puzzles
-        return f"""
-Solve this simple crossword clue:
-Clue: "{clue.text}"
-Length: {clue.length} letters
-
-Think of the most obvious, common answer. Keep it simple.
-
-Provide your best answer:
-ANSWER: [word] | CONFIDENCE: HIGH/MEDIUM/LOW | REASONING: [brief explanation]
+        Args:
+            difficulty: The difficulty level
+            clue_type: The type of clue (definition, cryptic, etc.)
+            
+        Returns:
+            Additional prompt text to append
+        """
+        difficulty = difficulty.lower()
+        
+        if difficulty == "easy":
+            return """
+For easy puzzles:
+- Think of the most obvious, common answer
+- Prefer simple, everyday words
+- Avoid obscure references
 """
-
-
-class EnhancedCrosswordTools(CrosswordTools):
-    """Enhanced tools for medium difficulty"""
-    
-    def _build_clue_prompt(self, clue: Clue, context: str, clue_type: str) -> str:
-        base_prompt = super()._build_clue_prompt(clue, context, clue_type)
-        return base_prompt + """
-
+        
+        elif difficulty == "medium":
+            return """
 For medium difficulty:
 - Consider multiple meanings of words
 - Think about synonyms and related terms
 - Consider common crossword conventions
+- Look for wordplay patterns
 """
-
-
-class AdvancedCrosswordTools(CrosswordTools):
-    """Advanced tools for hard puzzles"""
-    
-    def _build_clue_prompt(self, clue: Clue, context: str, clue_type: str) -> str:
-        base_prompt = super()._build_clue_prompt(clue, context, clue_type)
-        return base_prompt + """
-
+        
+        elif difficulty == "hard":
+            return """
 For hard difficulty:
 - Consider wordplay and double meanings
 - Think about less obvious connections
 - Consider abbreviations and acronyms
 - Look for misdirection in the clue
 - Think step by step through possible interpretations
+- Consider literary, historical, or specialized references
 """
+        
+        elif difficulty == "cryptic" or clue_type == "cryptic":
+            return """
+CRYPTIC CLUE ANALYSIS:
+Cryptic clues have TWO parts that must BOTH work:
+1. DEFINITION (straight definition, usually at start or end)
+2. WORDPLAY (anagram, hidden word, charade, reversal, etc.)
 
+STEP-BY-STEP APPROACH:
+1. Identify which part is the definition (often 1-2 words)
+2. Identify wordplay indicators and mechanism
+3. Work through the wordplay letter by letter
+4. Verify the final word matches BOTH definition and wordplay
 
-class CrypticCrosswordTools(CrosswordTools):
-    """Specialized tools for cryptic puzzles"""
-    
-    def _classify_clue_type(self, clue_text: str) -> str:
-        # Always treat as cryptic
-        return "cryptic"
-    
-    def _build_clue_prompt(self, clue: Clue, context: str, clue_type: str) -> str:
-        return f"""
-Solve this cryptic crossword clue:
-Clue: "{clue.text}"
-Length: {clue.length} letters
+ENHANCED CRYPTIC INDICATORS:
+- Anagrams: mixed, confused, broken, twisted, wild, mad, upset, reform, etc.
+- Hidden words: in, within, inside, part of, contains, holds, etc.
+- Reversals: back, returns, up (in down clues), reverse, opposite, etc.
+- Charades: after, before, with, around, about, following, etc.
+- Homophones: sounds like, heard, spoken, audibly, etc.
+- Deletions: without, missing, loses, drops, etc.
 
-Cryptic clues have two parts:
-1. Definition (usually at the beginning or end)
-2. Wordplay (anagram, hidden word, charade, etc.)
+CRYPTIC SOLVING RULES:
+- Every letter must be accounted for in the wordplay
+- The definition should be a straightforward synonym
+- Look for "connector words" like "of", "in", "for" that link parts
+- Numbers in parentheses show word lengths (e.g., "7" or "3,4")
 
-Analyze this clue:
-- Identify the definition part
-- Identify the wordplay mechanism
-- Work through the wordplay step by step
-- Verify the answer satisfies both parts
-
-Common cryptic indicators:
-- Anagrams: mixed, confused, broken, twisted, etc.
-- Hidden words: in, within, inside, part of, etc.
-- Reversals: back, returns, up (in down clues), etc.
-- Charades: after, before, with, etc.
-
-Provide multiple possibilities:
-ANSWER: [word] | CONFIDENCE: [level] | DEFINITION: [part] | WORDPLAY: [mechanism and explanation]
-ALT1: [word] | CONFIDENCE: [level] | DEFINITION: [part] | WORDPLAY: [mechanism and explanation]
-ALT2: [word] | CONFIDENCE: [level] | DEFINITION: [part] | WORDPLAY: [mechanism and explanation]
+Provide multiple possibilities with DETAILED wordplay breakdown:
+ANSWER: [word] | CONFIDENCE: [0.0-1.0] | DEFINITION: [which part] | WORDPLAY: [step-by-step mechanism]
+ALT1: [word] | CONFIDENCE: [0.0-1.0] | DEFINITION: [which part] | WORDPLAY: [step-by-step mechanism]  
+ALT2: [word] | CONFIDENCE: [0.0-1.0] | DEFINITION: [which part] | WORDPLAY: [step-by-step mechanism]
 """
+        
+        return ""
 
 
-# Specialized Agent Classes
-
-class SimpleClueAgent(ClueAgent):
-    """Simple clue agent for easy puzzles"""
+class SpecializedConstraintAgent:
+    """Constraint agent with difficulty-specific behavior"""
     
-    def __init__(self, tools: CrosswordTools):
-        super().__init__(tools)
-        self.max_retries = 1  # Quick attempts only
-
-
-class StandardClueAgent(ClueAgent):
-    """Standard clue agent for medium puzzles"""
+    def __init__(self, base_agent, difficulty: str):
+        self.base_agent = base_agent
+        self.difficulty = difficulty.lower()
     
-    def __init__(self, tools: CrosswordTools):
-        super().__init__(tools)
-        self.max_retries = 2
-
-
-class AdvancedClueAgent(ClueAgent):
-    """Advanced clue agent for hard puzzles"""
+    def resolve_conflicts(self, puzzle, state):
+        """Resolve conflicts with difficulty-specific logic"""
+        
+        if self.difficulty == "cryptic":
+            return self._cryptic_conflict_resolution(puzzle, state)
+        elif self.difficulty == "hard":
+            return self._hard_conflict_resolution(puzzle, state)
+        else:
+            # Use base implementation for easy/medium
+            return self.base_agent.resolve_conflicts(puzzle, state)
     
-    def __init__(self, tools: CrosswordTools):
-        super().__init__(tools)
-        self.max_retries = 3
-
-
-class CrypticClueAgent(ClueAgent):
-    """Cryptic clue agent with wordplay expertise"""
+    def _cryptic_conflict_resolution(self, puzzle, state):
+        """Cryptic-specific conflict resolution prioritizing wordplay quality"""
+        from src.solver.agents import get_clue_id
+        
+        if not state.candidates:
+            return []
+        
+        priority_items = []
+        
+        for clue_id, candidates in state.candidates.items():
+            if not candidates:
+                continue
+            
+            # Find the clue object
+            clue = None
+            for c in puzzle.clues:
+                if get_clue_id(c) == clue_id:
+                    clue = c
+                    break
+            
+            if not clue:
+                continue
+            
+            for candidate in candidates:
+                # Skip if validation fails
+                is_valid, _ = self.base_agent.validate_solution(puzzle, clue, candidate, state)
+                if not is_valid:
+                    continue
+                
+                # Calculate priority with cryptic-specific boosts
+                constraint_factor = self.base_agent._calculate_constraint_factor(puzzle, clue)
+                
+                # CRYPTIC-SPECIFIC BOOSTS
+                wordplay_boost = 1.0
+                reasoning = candidate.reasoning.lower()
+                
+                # Boost for quality wordplay explanations
+                if any(mechanism in reasoning for mechanism in ["anagram", "hidden", "reversal"]):
+                    wordplay_boost = 2.5
+                elif "definition" in reasoning and "wordplay" in reasoning:
+                    wordplay_boost = 2.0
+                elif candidate.confidence >= 0.8:
+                    wordplay_boost = 1.5
+                
+                # Extra boost for detailed explanations
+                if any(detail in reasoning for detail in ["step by step", "letter by letter", "anagram of"]):
+                    wordplay_boost *= 1.3
+                
+                priority = candidate.confidence * constraint_factor * wordplay_boost
+                priority_items.append((priority, clue, candidate))
+        
+        # Sort by priority and apply greedily
+        priority_items.sort(key=lambda x: x[0], reverse=True)
+        
+        solutions = []
+        applied_clues = set()
+        
+        for priority, clue, candidate in priority_items:
+            clue_id = get_clue_id(clue)
+            if clue_id in applied_clues:
+                continue
+            
+            solutions.append((clue, candidate))
+            applied_clues.add(clue_id)
+        
+        return solutions
     
-    def __init__(self, tools: CrosswordTools):
-        super().__init__(tools)
-        self.max_retries = 4
+    def _hard_conflict_resolution(self, puzzle, state):
+        """Hard-specific conflict resolution with more sophisticated selection"""
+        # For now, use base implementation but could add sophisticated CSP solving
+        return self.base_agent.resolve_conflicts(puzzle, state)
 
 
-class FastConstraintAgent(ConstraintAgent):
-    """Fast constraint checking for easy puzzles"""
+class SpecializedReviewAgent:
+    """Review agent with difficulty-specific behavior"""
     
-    def resolve_conflicts(self, puzzle: CrosswordPuzzle, state: SolverState) -> List[Tuple[Clue, ClueCandidate]]:
-        # Simple greedy approach - take highest confidence
-        solution = []
-        for clue_num, candidates in state.candidates.items():
-            if candidates:
-                clue = next(c for c in puzzle.clues if c.number == clue_num)
-                best_candidate = candidates[0]  # Already sorted by confidence
-                if self.validate_solution(puzzle, clue, best_candidate):
-                    solution.append((clue, best_candidate))
-        return solution
-
-
-class AdvancedConstraintAgent(ConstraintAgent):
-    """Advanced constraint agent with backtracking"""
+    def __init__(self, base_agent, difficulty: str):
+        self.base_agent = base_agent
+        self.difficulty = difficulty.lower()
     
-    def resolve_conflicts(self, puzzle: CrosswordPuzzle, state: SolverState) -> List[Tuple[Clue, ClueCandidate]]:
-        # Use constraint satisfaction with backtracking
-        return self._solve_with_backtracking(puzzle, state)
+    def review_solution(self, clue, candidate, puzzle):
+        """Review solution with difficulty-specific criteria"""
+        
+        if self.difficulty == "cryptic":
+            return self._cryptic_review(clue, candidate, puzzle)
+        elif self.difficulty == "easy":
+            return self._easy_review(clue, candidate, puzzle)
+        else:
+            # Use base implementation for medium/hard
+            return self.base_agent.review_solution(clue, candidate, puzzle)
     
-    def _solve_with_backtracking(self, puzzle: CrosswordPuzzle, state: SolverState) -> List[Tuple[Clue, ClueCandidate]]:
-        # Implement backtracking constraint satisfaction
-        # This is a simplified version - would need full CSP implementation
-        return super().resolve_conflicts(puzzle, state)
-
-
-class BasicReviewAgent(ReviewAgent):
-    """Basic review for easy puzzles"""
-    
-    def review_solution(self, clue: Clue, candidate: ClueCandidate, puzzle: CrosswordPuzzle) -> float:
-        # Simplified review - mainly check constraints
+    def _easy_review(self, clue, candidate, puzzle):
+        """Simplified review for easy puzzles"""
+        # Basic checks only
         if len(candidate.word) != clue.length:
             return 0.0
         
-        context_score = self._check_context_consistency(clue, candidate, puzzle)
+        context_score = self.base_agent._check_context_consistency(clue, candidate, puzzle)
         return context_score * 0.8 + 0.2  # Give benefit of doubt
-
-
-class ThoroughReviewAgent(ReviewAgent):
-    """Thorough review for hard puzzles"""
     
-    def review_solution(self, clue: Clue, candidate: ClueCandidate, puzzle: CrosswordPuzzle) -> float:
-        # Enhanced review with multiple checks
-        score = super().review_solution(clue, candidate, puzzle)
-        
-        # Additional checks for hard puzzles
-        if score > 0.5:
-            # Double-check with secondary reasoning
-            secondary_score = self._secondary_validation(clue, candidate)
-            score = (score + secondary_score) / 2
-        
-        return score
-    
-    def _secondary_validation(self, clue: Clue, candidate: ClueCandidate) -> float:
-        # Implement secondary validation logic
-        return 0.8  # Placeholder
-
-
-class CrypticReviewAgent(ReviewAgent):
-    """Cryptic-specific review agent"""
-    
-    def review_solution(self, clue: Clue, candidate: ClueCandidate, puzzle: CrosswordPuzzle) -> float:
-        # Cryptic-specific validation
-        base_score = super().review_solution(clue, candidate, puzzle)
+    def _cryptic_review(self, clue, candidate, puzzle):
+        """Cryptic-specific review with wordplay validation"""
+        base_score = self.base_agent.review_solution(clue, candidate, puzzle)
         
         # Check if wordplay explanation makes sense
-        wordplay_score = self._validate_cryptic_wordplay(clue, candidate)
+        wordplay_score = self._validate_cryptic_wordplay(candidate)
         
-        return (base_score + wordplay_score) / 2
+        # Boost score for detailed wordplay explanations
+        explanation_bonus = self._evaluate_explanation_quality(candidate)
+        
+        final_score = (base_score + wordplay_score + explanation_bonus) / 3
+        return min(final_score, 1.0)
     
-    def _validate_cryptic_wordplay(self, clue: Clue, candidate: ClueCandidate) -> float:
-        # Validate cryptic wordplay - simplified implementation
-        if "anagram" in candidate.reasoning.lower():
-            return 0.9  # High confidence for explained anagrams
-        elif "hidden" in candidate.reasoning.lower():
+    def _validate_cryptic_wordplay(self, candidate):
+        """Validate cryptic wordplay quality"""
+        reasoning = candidate.reasoning.lower()
+        
+        # High confidence mechanisms
+        if any(mechanism in reasoning for mechanism in ["anagram", "hidden", "reversal"]):
+            return 0.9
+        elif any(mechanism in reasoning for mechanism in ["charade", "homophone", "deletion"]):
             return 0.8
+        elif "definition" in reasoning and "wordplay" in reasoning:
+            return 0.7
         else:
-            return 0.6  # Lower confidence for other mechanisms
-
-
-# Additional Specialized Agents
-
-class ReasoningAgent:
-    """Agent for deep reasoning and step-by-step analysis"""
+            return 0.5
     
-    def __init__(self, tools: CrosswordTools):
-        self.tools = tools
-    
-    def deep_analyze(self, clue: Clue, candidates: List[ClueCandidate], puzzle: CrosswordPuzzle) -> List[ClueCandidate]:
-        """Perform deep analysis on candidates"""
-        # Implement deep reasoning logic
-        return candidates
+    def _evaluate_explanation_quality(self, candidate):
+        """Evaluate explanation quality"""
+        reasoning = candidate.reasoning.lower()
+        
+        quality_indicators = [
+            "step by step", "letter by letter", "definition:", "wordplay:",
+            "anagram of", "hidden in", "sounds like", "reversed", 
+            "around", "contains", "plus", "minus"
+        ]
+        
+        explanation_score = sum(1 for indicator in quality_indicators if indicator in reasoning)
+        return min(explanation_score * 0.1, 0.3)  # Max bonus of 0.3
 
 
-class WordplayAgent:
-    """Agent specialized in cryptic wordplay analysis"""
+def create_specialized_solver(base_coordinator, difficulty: str):
+    """
+    Configure a base CoordinatorAgent for a specific difficulty level
     
-    def __init__(self, tools: CrosswordTools):
-        self.tools = tools
+    Args:
+        base_coordinator: The base CoordinatorAgent instance
+        difficulty: The difficulty level (easy, medium, hard, cryptic)
+        
+    Returns:
+        The configured coordinator
+    """
+    from src.solver.agents import CrosswordTools, ClueAgent, ConstraintAgent, ReviewAgent
     
-    def analyze_wordplay(self, clue: Clue) -> Dict[str, Any]:
-        """Analyze cryptic wordplay mechanisms"""
-        # Implement wordplay analysis
-        return {
-            "mechanism": "unknown",
-            "definition_part": "",
-            "wordplay_part": "",
-            "confidence": 0.5
-        }
-
-
-# Factory function to create appropriate solver
-
-def create_solver_for_difficulty(difficulty: str) -> BaseDifficultyCoordinator:
-    """Factory function to create the appropriate solver for a difficulty level"""
-    difficulty_map = {
-        "easy": EasyCrosswordCoordinator,
-        "medium": MediumCrosswordCoordinator,
-        "hard": HardCrosswordCoordinator,
-        "cryptic": CrypticCrosswordCoordinator
-    }
+    config = DifficultyConfigurator.get_solver_config(difficulty)
     
-    solver_class = difficulty_map.get(difficulty.lower())
-    if not solver_class:
-        raise ValueError(f"Unknown difficulty level: {difficulty}")
+    # Apply configuration to the coordinator
+    for key, value in config.items():
+        if hasattr(base_coordinator, key):
+            setattr(base_coordinator, key, value)
     
-    return solver_class()
+    # Store difficulty for reference
+    base_coordinator.difficulty = difficulty
+    
+    # Recreate tools and agents with difficulty awareness
+    base_coordinator.tools = CrosswordTools(difficulty)
+    base_coordinator.clue_agent = ClueAgent(base_coordinator.tools)
+    base_coordinator.constraint_agent = ConstraintAgent(base_coordinator.tools)
+    base_coordinator.review_agent = ReviewAgent(base_coordinator.tools)
+    
+    # Wrap agents with specialized behavior if needed
+    if difficulty in ["cryptic", "hard"]:
+        base_coordinator.constraint_agent = SpecializedConstraintAgent(
+            base_coordinator.constraint_agent, difficulty
+        )
+    
+    if difficulty in ["cryptic", "easy"]:
+        base_coordinator.review_agent = SpecializedReviewAgent(
+            base_coordinator.review_agent, difficulty
+        )
+    
+    logger.info(f"Configured solver for {difficulty} difficulty")
+    return base_coordinator
