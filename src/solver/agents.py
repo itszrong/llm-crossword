@@ -1,0 +1,879 @@
+#!/usr/bin/env python3
+"""
+Agentic Crossword Solver using Multi-Agent Design Patterns
+
+This implementation incorporates several agentic design patterns:
+- Tool Use: LLM-powered clue solving and constraint validation
+- Multi-Agent: Specialized agents for different aspects of solving
+- Reasoning Techniques: Chain-of-thought for complex clues
+- Memory Management: State tracking and candidate management
+- Exception Handling: Retry logic and graceful degradation
+"""
+
+import asyncio
+import json
+import logging
+import os
+import time
+from dataclasses import dataclass, field, asdict
+from typing import Dict, List, Optional, Any, Tuple
+from enum import Enum
+from datetime import datetime
+from openai import AzureOpenAI
+
+from src.crossword.crossword import CrosswordPuzzle
+from src.crossword.types import Clue
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+class ConfidenceLevel(Enum):
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
+
+
+@dataclass
+class ClueCandidate:
+    """A candidate answer for a crossword clue"""
+    word: str
+    confidence: float
+    reasoning: str
+    clue_type: str = "definition"  # definition, wordplay, cryptic, etc.
+
+
+@dataclass
+class SolverState:
+    """Current state of the crossword solving process"""
+    puzzle: CrosswordPuzzle
+    candidates: Dict[int, List[ClueCandidate]] = field(default_factory=dict)
+    solved_clues: List[int] = field(default_factory=list)
+    conflicts: List[Tuple[int, int]] = field(default_factory=list)
+    retry_count: int = 0
+
+
+@dataclass
+class SolverLog:
+    """Comprehensive log of solver attempts and decisions"""
+    timestamp: str
+    puzzle_name: str
+    puzzle_size: str
+    total_clues: int
+    iterations: List[Dict[str, Any]] = field(default_factory=list)
+    final_result: Dict[str, Any] = field(default_factory=dict)
+    performance_metrics: Dict[str, Any] = field(default_factory=dict)
+
+
+class CrosswordTools:
+    """Core tools for crossword solving"""
+    
+    def __init__(self):
+        self.client = AzureOpenAI(
+            api_version=os.getenv("OPENAI_API_VERSION"),
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY")
+        )
+    
+    def solve_clue(self, clue: Clue, context: str = "") -> List[ClueCandidate]:
+        """
+        Generate candidate answers for a crossword clue using LLM
+        
+        Args:
+            clue: The crossword clue to solve
+            context: Additional context from partially filled grid
+            
+        Returns:
+            List of candidate answers with confidence scores
+        """
+        try:
+            # Determine clue type for specialized prompting
+            clue_type = self._classify_clue_type(clue.text)
+            
+            # Build context-aware prompt
+            prompt = self._build_clue_prompt(clue, context, clue_type)
+            
+            response = self.client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": "You are an expert crossword solver. Provide detailed reasoning for your answers."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,
+                max_tokens=500
+            )
+            
+            # Parse response into candidates
+            return self._parse_clue_response(response.choices[0].message.content, clue, clue_type)
+            
+        except Exception as e:
+            logger.error(f"Error solving clue '{clue.text}': {e}")
+            return []
+    
+    def _classify_clue_type(self, clue_text: str) -> str:
+        """Classify the type of crossword clue for specialized handling"""
+        clue_lower = clue_text.lower()
+        
+        # Cryptic clue indicators
+        cryptic_indicators = [
+            "anagram", "mixed", "confused", "broken", "around", "about",
+            "hidden", "contains", "inside", "sounds like", "we hear"
+        ]
+        
+        if any(indicator in clue_lower for indicator in cryptic_indicators):
+            return "cryptic"
+        elif len(clue_text.split()) > 6:
+            return "complex"
+        else:
+            return "definition"
+    
+    def _build_clue_prompt(self, clue: Clue, context: str, clue_type: str) -> str:
+        """Build a specialized prompt based on clue type"""
+        # Handle parenthetical hints for multi-word answers
+        length_info = self._parse_length_hint(clue.text, clue.length)
+        
+        base_prompt = f"""
+Solve this crossword clue:
+Clue: "{clue.text}"
+{length_info}
+Direction: {clue.direction}
+
+{context}
+
+IMPORTANT: 
+- If the clue has parentheses like (7,3), it indicates a two-word answer
+- For multi-word answers, provide words WITHOUT spaces (e.g., "OEDIPUS REX" becomes "OEDIPUSREX")
+- Single-word answers should be exactly {clue.length} letters with no spaces
+- Double-check that your answer matches the required length
+- Think about common crossword answers and wordplay patterns
+- For simple clues, prefer obvious, common words over obscure ones
+
+Common crossword patterns to consider:
+- Think about the most direct, literal meaning first
+- Consider common synonyms and alternative words
+- For animals, think of the most well-known examples
+- For emotions or actions, consider simple, everyday words
+- For historical/literary references, think of famous examples
+
+Please provide:
+1. Your best answer (exactly {clue.length} letters, no spaces)
+2. 2-3 alternative possibilities
+3. Confidence level (HIGH/MEDIUM/LOW) for each
+4. Brief reasoning for each answer
+
+Format your response as:
+ANSWER: [word] | CONFIDENCE: [level] | REASONING: [explanation]
+ALT1: [word] | CONFIDENCE: [level] | REASONING: [explanation]
+ALT2: [word] | CONFIDENCE: [level] | REASONING: [explanation]
+"""
+        
+        if clue_type == "cryptic":
+            base_prompt += """
+For cryptic clues, break down:
+- Definition part
+- Wordplay mechanism (anagram, hidden word, etc.)
+- How the wordplay leads to the answer
+"""
+        elif clue_type == "definition":
+            base_prompt += """
+For definition clues:
+- Think of the most common and direct meaning
+- Consider synonyms and alternative words
+- Crosswords often use simple, well-known answers
+"""
+        
+        return base_prompt
+    
+    def _parse_length_hint(self, clue_text: str, expected_length: int) -> str:
+        """Parse parenthetical length hints in clue text"""
+        import re
+        
+        # Look for patterns like (7,3) or (4,6)
+        pattern = r'\((\d+),(\d+)\)'
+        match = re.search(pattern, clue_text)
+        
+        if match:
+            first_word = int(match.group(1))
+            second_word = int(match.group(2))
+            total_expected = first_word + second_word
+            
+            if total_expected == expected_length:
+                return f"Length: {expected_length} letters ({first_word},{second_word} - two words)"
+            else:
+                return f"Length: {expected_length} letters (pattern suggests {first_word},{second_word} but total should be {expected_length})"
+        else:
+            return f"Length: {expected_length} letters"
+    
+    def _parse_clue_response(self, response: str, clue: Clue, clue_type: str) -> List[ClueCandidate]:
+        """Parse LLM response into structured candidates"""
+        candidates = []
+        
+        for line in response.split('\n'):
+            if any(prefix in line for prefix in ['ANSWER:', 'ALT1:', 'ALT2:']):
+                try:
+                    parts = line.split('|')
+                    if len(parts) >= 3:
+                        word = parts[0].split(':')[1].strip().upper()
+                        confidence_str = parts[1].split(':')[1].strip()
+                        reasoning = parts[2].split(':')[1].strip()
+                        
+                        # Clean and validate word
+                        clean_word = word.replace(' ', '').replace('-', '').upper()
+                        
+                        # Validate word length and format
+                        if len(clean_word) == clue.length and clean_word.isalpha():
+                            confidence = self._parse_confidence(confidence_str)
+                            candidates.append(ClueCandidate(
+                                word=clean_word,
+                                confidence=confidence,
+                                reasoning=reasoning,
+                                clue_type=clue_type
+                            ))
+                        else:
+                            logger.warning(f"Candidate '{word}' (cleaned: '{clean_word}') has length {len(clean_word)}, expected {clue.length}")
+                except (IndexError, ValueError) as e:
+                    logger.warning(f"Failed to parse candidate line: {line}")
+                    continue
+        
+        # Sort by confidence
+        candidates.sort(key=lambda x: x.confidence, reverse=True)
+        return candidates[:3]  # Return top 3 candidates
+    
+    def _parse_confidence(self, confidence_str: str) -> float:
+        """Convert confidence string to numeric value"""
+        confidence_map = {
+            "HIGH": 0.9,
+            "MEDIUM": 0.6, 
+            "LOW": 0.3
+        }
+        return confidence_map.get(confidence_str.upper(), 0.5)
+    
+    def validate_intersection(self, puzzle: CrosswordPuzzle, clue1: Clue, word1: str, 
+                            clue2: Clue, word2: str) -> bool:
+        """
+        Validate that two intersecting words are compatible
+        
+        Args:
+            puzzle: The crossword puzzle
+            clue1, word1: First clue and proposed word
+            clue2, word2: Second clue and proposed word
+            
+        Returns:
+            True if words can intersect correctly
+        """
+        try:
+            # Find intersection points
+            cells1 = list(clue1.cells())
+            cells2 = list(clue2.cells())
+            
+            # Find common cells
+            intersections = set(cells1) & set(cells2)
+            
+            for row, col in intersections:
+                # Get character positions in each word
+                pos1 = cells1.index((row, col))
+                pos2 = cells2.index((row, col))
+                
+                # Check if characters match
+                if pos1 < len(word1) and pos2 < len(word2):
+                    if word1[pos1] != word2[pos2]:
+                        return False
+                else:
+                    return False
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error validating intersection: {e}")
+            return False
+    
+    def get_grid_context(self, puzzle: CrosswordPuzzle, target_clue: Clue) -> str:
+        """
+        Generate context string from partially filled grid
+        
+        Args:
+            puzzle: The crossword puzzle
+            target_clue: The clue we're trying to solve
+            
+        Returns:
+            Context string describing intersecting letters
+        """
+        context_parts = []
+        current_chars = puzzle.get_current_clue_chars(target_clue)
+        
+        # Add known letters
+        known_positions = []
+        for i, char in enumerate(current_chars):
+            if char is not None:
+                known_positions.append(f"Position {i+1}: {char}")
+        
+        if known_positions:
+            context_parts.append("Known letters: " + ", ".join(known_positions))
+        
+        # Add intersecting clue information
+        intersecting_clues = []
+        for other_clue in puzzle.clues:
+            if other_clue != target_clue and other_clue.answered:
+                other_chars = puzzle.get_current_clue_chars(other_clue)
+                if any(char is not None for char in other_chars):
+                    intersecting_clues.append(f"'{other_clue.text}' = {''.join(other_chars)}")
+        
+        if intersecting_clues:
+            context_parts.append("Intersecting words: " + "; ".join(intersecting_clues))
+        
+        return "\n".join(context_parts) if context_parts else "No additional context available."
+
+
+class ClueAgent:
+    """Agent specialized in solving individual crossword clues"""
+    
+    def __init__(self, tools: CrosswordTools):
+        self.tools = tools
+        self.max_retries = 2
+    
+    def solve(self, clue: Clue, puzzle: CrosswordPuzzle) -> List[ClueCandidate]:
+        """
+        Solve a single crossword clue with context awareness
+        
+        Args:
+            clue: The clue to solve
+            puzzle: Current puzzle state for context
+            
+        Returns:
+            List of candidate answers
+        """
+        context = self.tools.get_grid_context(puzzle, clue)
+        
+        for attempt in range(self.max_retries + 1):
+            try:
+                candidates = self.tools.solve_clue(clue, context)
+                
+                # Filter candidates that are compatible with current grid state
+                valid_candidates = []
+                for candidate in candidates:
+                    if self._is_candidate_valid_for_grid(candidate, clue, puzzle):
+                        valid_candidates.append(candidate)
+                    else:
+                        logger.debug(f"Filtered out incompatible candidate: {candidate.word}")
+                
+                if valid_candidates:
+                    logger.info(f"ClueAgent solved '{clue.text}' with {len(valid_candidates)} candidates")
+                    return valid_candidates
+                else:
+                    logger.warning(f"ClueAgent attempt {attempt + 1} failed for '{clue.text}'")
+                    
+            except Exception as e:
+                logger.error(f"ClueAgent error on attempt {attempt + 1}: {e}")
+        
+        # Return empty result if all attempts fail
+        logger.error(f"ClueAgent failed to solve '{clue.text}' after {self.max_retries + 1} attempts")
+        return []
+    
+    def _is_candidate_valid_for_grid(self, candidate: ClueCandidate, clue: Clue, puzzle: CrosswordPuzzle) -> bool:
+        """Check if a candidate answer is compatible with the current grid state"""
+        try:
+            # Get current characters in the clue's cells
+            current_chars = puzzle.get_current_clue_chars(clue)
+            
+            # Check each position
+            for i, (current_char, candidate_char) in enumerate(zip(current_chars, candidate.word)):
+                if current_char is not None and current_char.upper() != candidate_char.upper():
+                    return False
+            
+            return True
+        except Exception as e:
+            logger.error(f"Error validating candidate {candidate.word}: {e}")
+            return False
+
+
+class ConstraintAgent:
+    """Agent specialized in validating constraints and resolving conflicts"""
+    
+    def __init__(self, tools: CrosswordTools):
+        self.tools = tools
+    
+    def validate_solution(self, puzzle: CrosswordPuzzle, clue: Clue, 
+                         candidate: ClueCandidate) -> bool:
+        """
+        Validate that a candidate solution doesn't conflict with existing answers
+        
+        Args:
+            puzzle: Current puzzle state
+            clue: The clue being solved
+            candidate: Proposed answer
+            
+        Returns:
+            True if candidate is compatible with current state
+        """
+        # Check intersections with all answered clues
+        for other_clue in puzzle.clues:
+            if other_clue != clue and other_clue.answered:
+                other_word = ''.join(puzzle.get_current_clue_chars(other_clue))
+                if not self.tools.validate_intersection(puzzle, clue, candidate.word, 
+                                                      other_clue, other_word):
+                    return False
+        
+        return True
+    
+    def resolve_conflicts(self, puzzle: CrosswordPuzzle, state: SolverState) -> List[Tuple[Clue, ClueCandidate]]:
+        """
+        Resolve conflicts between competing solutions using constraint satisfaction
+        
+        Args:
+            puzzle: Current puzzle state  
+            state: Solver state with candidates
+            
+        Returns:
+            List of (clue, candidate) pairs representing optimal solution
+        """
+        # Simple greedy approach: prioritize high-confidence, high-constraint solutions
+        solution = []
+        used_clues = set()
+        
+        # Create priority queue: (confidence * constraint_factor, clue, candidate)
+        priority_items = []
+        
+        for clue_num, candidates in state.candidates.items():
+            clue = next(c for c in puzzle.clues if c.number == clue_num)
+            for candidate in candidates:
+                if self.validate_solution(puzzle, clue, candidate):
+                    # Higher priority for higher confidence and more intersections
+                    constraint_factor = self._calculate_constraint_factor(puzzle, clue)
+                    priority = candidate.confidence * constraint_factor
+                    priority_items.append((priority, clue, candidate))
+        
+        # Sort by priority (highest first)
+        priority_items.sort(key=lambda x: x[0], reverse=True)
+        
+        # Greedily select compatible solutions
+        for priority, clue, candidate in priority_items:
+            if clue.number not in used_clues:
+                # Check compatibility with already selected solutions
+                if self._is_compatible_with_solution(puzzle, solution, clue, candidate):
+                    solution.append((clue, candidate))
+                    used_clues.add(clue.number)
+        
+        return solution
+    
+    def _calculate_constraint_factor(self, puzzle: CrosswordPuzzle, clue: Clue) -> float:
+        """Calculate how constrained a clue is (more intersections = higher factor)"""
+        intersecting_clues = 0
+        for other_clue in puzzle.clues:
+            if other_clue != clue:
+                # Check if clues intersect
+                cells1 = set(clue.cells())
+                cells2 = set(other_clue.cells())
+                if cells1 & cells2:
+                    intersecting_clues += 1
+        
+        # Normalize: more intersections = higher constraint factor
+        return 1.0 + (intersecting_clues * 0.2)
+    
+    def _is_compatible_with_solution(self, puzzle: CrosswordPuzzle, 
+                                   current_solution: List[Tuple[Clue, ClueCandidate]],
+                                   new_clue: Clue, new_candidate: ClueCandidate) -> bool:
+        """Check if new candidate is compatible with current solution"""
+        for existing_clue, existing_candidate in current_solution:
+            if not self.tools.validate_intersection(puzzle, new_clue, new_candidate.word,
+                                                  existing_clue, existing_candidate.word):
+                return False
+        return True
+
+
+class ReviewAgent:
+    """Agent specialized in reviewing and validating proposed solutions"""
+    
+    def __init__(self, tools: CrosswordTools):
+        self.tools = tools
+    
+    def review_solution(self, clue: Clue, candidate: ClueCandidate, puzzle: CrosswordPuzzle) -> float:
+        """
+        Review a proposed solution and return a quality score
+        
+        Args:
+            clue: The crossword clue
+            candidate: Proposed answer
+            puzzle: Current puzzle state
+            
+        Returns:
+            Quality score between 0.0 and 1.0
+        """
+        try:
+            # Basic validation checks
+            score = 1.0
+            
+            # Length check (critical)
+            if len(candidate.word) != clue.length:
+                return 0.0
+            
+            # Alphabetic check
+            if not candidate.word.isalpha():
+                score *= 0.8
+            
+            # Context consistency check
+            context_score = self._check_context_consistency(clue, candidate, puzzle)
+            score *= context_score
+            
+            # Semantic plausibility check
+            semantic_score = self._check_semantic_plausibility(clue, candidate)
+            score *= semantic_score
+            
+            # Intersection compatibility
+            intersection_score = self._check_intersection_compatibility(clue, candidate, puzzle)
+            score *= intersection_score
+            
+            return max(0.0, min(1.0, score))
+            
+        except Exception as e:
+            logger.error(f"Error reviewing solution '{candidate.word}' for '{clue.text}': {e}")
+            return 0.0
+    
+    def _check_context_consistency(self, clue: Clue, candidate: ClueCandidate, puzzle: CrosswordPuzzle) -> float:
+        """Check if candidate is consistent with current grid context"""
+        try:
+            current_chars = puzzle.get_current_clue_chars(clue)
+            
+            # Check each position for consistency
+            for i, (current_char, candidate_char) in enumerate(zip(current_chars, candidate.word)):
+                if current_char is not None and current_char.upper() != candidate_char.upper():
+                    return 0.0  # Hard failure for inconsistency
+            
+            return 1.0
+        except Exception:
+            return 0.5
+    
+    def _check_semantic_plausibility(self, clue: Clue, candidate: ClueCandidate) -> float:
+        """Use LLM to check if the answer makes semantic sense for the clue"""
+        try:
+            prompt = f"""
+Review this crossword clue and proposed answer:
+
+Clue: "{clue.text}"
+Proposed Answer: "{candidate.word}"
+Length: {clue.length} letters
+
+Please evaluate if this answer makes sense for the clue on a scale of 1-10:
+- 1-3: Poor fit (answer doesn't match clue meaning)
+- 4-6: Possible but weak connection
+- 7-8: Good fit (answer matches clue well)
+- 9-10: Excellent fit (perfect match)
+
+Consider:
+- Does the answer directly relate to the clue's meaning?
+- Is this a reasonable crossword answer?
+- Are there obvious better alternatives?
+
+Respond with just a number from 1-10 and a brief explanation.
+Format: SCORE: [number] | REASON: [brief explanation]
+"""
+
+            response = self.tools.client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": "You are an expert crossword reviewer. Evaluate clue-answer pairs objectively."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.1,
+                max_tokens=200
+            )
+            
+            # Parse score from response
+            content = response.choices[0].message.content
+            if "SCORE:" in content:
+                score_part = content.split("SCORE:")[1].split("|")[0].strip()
+                try:
+                    score = float(score_part)
+                    return min(1.0, max(0.0, score / 10.0))
+                except ValueError:
+                    pass
+            
+            return 0.5  # Default if parsing fails
+            
+        except Exception as e:
+            logger.error(f"Error in semantic plausibility check: {e}")
+            return 0.5
+    
+    def _check_intersection_compatibility(self, clue: Clue, candidate: ClueCandidate, puzzle: CrosswordPuzzle) -> float:
+        """Check how well the candidate fits with intersecting words"""
+        try:
+            compatibility_score = 1.0
+            
+            for other_clue in puzzle.clues:
+                if other_clue != clue and other_clue.answered:
+                    other_word = ''.join(puzzle.get_current_clue_chars(other_clue))
+                    if not self.tools.validate_intersection(puzzle, clue, candidate.word, other_clue, other_word):
+                        return 0.0  # Hard failure for intersection conflicts
+            
+            return compatibility_score
+        except Exception:
+            return 0.5
+
+
+class CoordinatorAgent:
+    """Main coordinator agent that orchestrates the solving process"""
+    
+    def __init__(self):
+        self.tools = CrosswordTools()
+        self.clue_agent = ClueAgent(self.tools)
+        self.constraint_agent = ConstraintAgent(self.tools)
+        self.review_agent = ReviewAgent(self.tools)
+        self.max_iterations = 5
+        self.solver_log: Optional[SolverLog] = None
+    
+    def solve_puzzle(self, puzzle: CrosswordPuzzle, puzzle_name: str = "unknown") -> bool:
+        """
+        Solve the entire crossword puzzle using multi-agent coordination
+        
+        Args:
+            puzzle: The crossword puzzle to solve
+            puzzle_name: Name identifier for the puzzle
+            
+        Returns:
+            True if puzzle was successfully solved
+        """
+        # Initialize logging
+        self._initialize_logging(puzzle, puzzle_name)
+        start_time = time.time()
+        
+        state = SolverState(puzzle=puzzle)
+        
+        logger.info(f"CoordinatorAgent starting to solve puzzle with {len(puzzle.clues)} clues")
+        
+        for iteration in range(self.max_iterations):
+            logger.info(f"Solving iteration {iteration + 1}")
+            iteration_start_time = time.time()
+            
+            # Log iteration start
+            iteration_log = {
+                "iteration": iteration + 1,
+                "start_time": datetime.now().isoformat(),
+                "candidates_generated": {},
+                "candidates_reviewed": {},
+                "solutions_applied": [],
+                "progress_made": False,
+                "grid_state_before": self._capture_grid_state(puzzle),
+            }
+            
+            # Phase 1: Generate candidates for unsolved clues
+            self._generate_candidates(state)
+            iteration_log["candidates_generated"] = self._log_candidates(state.candidates, puzzle)
+            
+            # Phase 2: Review and filter candidates
+            self._review_candidates(state, puzzle)
+            iteration_log["candidates_reviewed"] = self._log_candidates(state.candidates, puzzle)
+            
+            # Phase 3: Resolve conflicts and select best solutions
+            solutions = self.constraint_agent.resolve_conflicts(puzzle, state)
+            
+            # Phase 4: Apply solutions to puzzle
+            progress_made = self._apply_solutions(puzzle, solutions, state)
+            iteration_log["progress_made"] = progress_made
+            iteration_log["solutions_applied"] = self._log_solutions(solutions)
+            iteration_log["grid_state_after"] = self._capture_grid_state(puzzle)
+            iteration_log["duration"] = time.time() - iteration_start_time
+            
+            # Add iteration to log
+            self.solver_log.iterations.append(iteration_log)
+            
+            # Check if puzzle is complete
+            if puzzle.validate_all():
+                end_time = time.time()
+                self._finalize_logging(puzzle, state, True, end_time - start_time)
+                logger.info(f"Puzzle solved successfully in {iteration + 1} iterations!")
+                return True
+            
+            # If no progress made, try different approach
+            if not progress_made:
+                logger.warning(f"No progress in iteration {iteration + 1}, trying alternative approach")
+                state.retry_count += 1
+                if state.retry_count > 2:
+                    break
+        
+        # Finalize logging
+        end_time = time.time()
+        self._finalize_logging(puzzle, state, False, end_time - start_time)
+        
+        logger.warning("Failed to solve puzzle completely")
+        return False
+    
+    def _generate_candidates(self, state: SolverState):
+        """Generate candidates for all unsolved clues"""
+        for clue in state.puzzle.clues:
+            if not clue.answered and clue.number not in state.solved_clues:
+                candidates = self.clue_agent.solve(clue, state.puzzle)
+                if candidates:
+                    state.candidates[clue.number] = candidates
+    
+    def _review_candidates(self, state: SolverState, puzzle: CrosswordPuzzle):
+        """Review and filter candidates using the ReviewAgent"""
+        reviewed_candidates = {}
+        
+        for clue_number, candidates in state.candidates.items():
+            clue = next(c for c in puzzle.clues if c.number == clue_number)
+            reviewed_list = []
+            
+            for candidate in candidates:
+                # Get review score
+                review_score = self.review_agent.review_solution(clue, candidate, puzzle)
+                
+                # Update candidate confidence with review score
+                adjusted_confidence = candidate.confidence * review_score
+                
+                # Only keep candidates with reasonable scores
+                if review_score >= 0.3:  # Threshold for keeping candidates
+                    candidate.confidence = adjusted_confidence
+                    reviewed_list.append(candidate)
+                    logger.debug(f"Candidate '{candidate.word}' for '{clue.text}': "
+                               f"original confidence {candidate.confidence:.2f}, "
+                               f"review score {review_score:.2f}, "
+                               f"final confidence {adjusted_confidence:.2f}")
+                else:
+                    logger.info(f"Filtered out candidate '{candidate.word}' for '{clue.text}' "
+                              f"(review score: {review_score:.2f})")
+            
+            if reviewed_list:
+                # Re-sort by adjusted confidence
+                reviewed_list.sort(key=lambda x: x.confidence, reverse=True)
+                reviewed_candidates[clue_number] = reviewed_list
+        
+        # Update state with reviewed candidates
+        state.candidates = reviewed_candidates
+    
+    def _apply_solutions(self, puzzle: CrosswordPuzzle, 
+                        solutions: List[Tuple[Clue, ClueCandidate]], 
+                        state: SolverState) -> bool:
+        """Apply selected solutions to the puzzle"""
+        progress_made = False
+        
+        for clue, candidate in solutions:
+            if not clue.answered:
+                try:
+                    # Validate that the solution fits correctly
+                    if len(candidate.word) != clue.length:
+                        logger.error(f"Failed to apply solution for '{clue.text}': Expected {clue.length} characters, got {len(candidate.word)}")
+                        continue
+                    
+                    # Apply the solution
+                    puzzle.set_clue_chars(clue, list(candidate.word))
+                    state.solved_clues.append(clue.number)
+                    progress_made = True
+                    
+                    logger.info(f"Applied solution: '{clue.text}' = {candidate.word} "
+                              f"(confidence: {candidate.confidence:.2f})")
+                    
+                except Exception as e:
+                    logger.error(f"Failed to apply solution for '{clue.text}': {e}")
+        
+        return progress_made
+    
+    def _initialize_logging(self, puzzle: CrosswordPuzzle, puzzle_name: str):
+        """Initialize the solver log"""
+        self.solver_log = SolverLog(
+            timestamp=datetime.now().isoformat(),
+            puzzle_name=puzzle_name,
+            puzzle_size=f"{puzzle.width}x{puzzle.height}",
+            total_clues=len(puzzle.clues)
+        )
+    
+    def _log_candidates(self, candidates: Dict[int, List[ClueCandidate]], puzzle: CrosswordPuzzle) -> Dict[str, Any]:
+        """Log candidate information"""
+        logged_candidates = {}
+        for clue_number, candidate_list in candidates.items():
+            clue = next(c for c in puzzle.clues if c.number == clue_number)
+            logged_candidates[str(clue_number)] = {
+                "clue_text": clue.text,
+                "clue_length": clue.length,
+                "clue_direction": clue.direction,
+                "candidates": [
+                    {
+                        "word": candidate.word,
+                        "confidence": candidate.confidence,
+                        "reasoning": candidate.reasoning,
+                        "clue_type": candidate.clue_type
+                    }
+                    for candidate in candidate_list
+                ]
+            }
+        return logged_candidates
+    
+    def _log_solutions(self, solutions: List[Tuple[Clue, ClueCandidate]]) -> List[Dict[str, Any]]:
+        """Log applied solutions"""
+        logged_solutions = []
+        for clue, candidate in solutions:
+            logged_solutions.append({
+                "clue_number": clue.number,
+                "clue_text": clue.text,
+                "applied_word": candidate.word,
+                "final_confidence": candidate.confidence,
+                "reasoning": candidate.reasoning,
+                "clue_type": candidate.clue_type
+            })
+        return logged_solutions
+    
+    def _capture_grid_state(self, puzzle: CrosswordPuzzle) -> Dict[str, Any]:
+        """Capture current grid state"""
+        grid_state = {
+            "solved_clues": [],
+            "grid_completion": 0.0
+        }
+        
+        solved_count = 0
+        for clue in puzzle.clues:
+            if clue.answered:
+                current_chars = puzzle.get_current_clue_chars(clue)
+                if all(char is not None for char in current_chars):
+                    grid_state["solved_clues"].append({
+                        "number": clue.number,
+                        "text": clue.text,
+                        "answer": "".join(current_chars)
+                    })
+                    solved_count += 1
+        
+        grid_state["grid_completion"] = solved_count / len(puzzle.clues) if puzzle.clues else 0.0
+        return grid_state
+    
+    def _finalize_logging(self, puzzle: CrosswordPuzzle, state: SolverState, success: bool, total_time: float):
+        """Finalize the solver log"""
+        # Final results
+        self.solver_log.final_result = {
+            "success": success,
+            "total_iterations": len(self.solver_log.iterations),
+            "solved_clues": len(state.solved_clues),
+            "completion_rate": len(state.solved_clues) / len(puzzle.clues) if puzzle.clues else 0.0,
+            "final_grid_state": self._capture_grid_state(puzzle),
+            "conflicts_encountered": len(state.conflicts),
+            "retry_count": state.retry_count
+        }
+        
+        # Performance metrics
+        self.solver_log.performance_metrics = {
+            "total_solving_time": total_time,
+            "average_iteration_time": total_time / max(1, len(self.solver_log.iterations)),
+            "candidates_generated_total": sum(
+                len(iteration["candidates_generated"]) 
+                for iteration in self.solver_log.iterations
+            ),
+            "candidates_filtered_total": sum(
+                len(iteration["candidates_generated"]) - len(iteration["candidates_reviewed"])
+                for iteration in self.solver_log.iterations
+            ),
+            "solutions_applied_total": sum(
+                len(iteration["solutions_applied"])
+                for iteration in self.solver_log.iterations
+            )
+        }
+    
+    def save_log(self, output_path: str):
+        """Save the solver log to a JSON file"""
+        if self.solver_log:
+            # Convert to dictionary for JSON serialization
+            log_dict = asdict(self.solver_log)
+            
+            # Create directory if it doesn't exist
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(log_dict, f, indent=2, ensure_ascii=False)
+            
+            logger.info(f"Solver log saved to {output_path}")
