@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-09-18T14:31:34.030666",
+  "timestamp": "2025-09-18T16:16:51.975874",
   "puzzle_name": "Medium_Test",
   "puzzle_size": "7x7",
   "total_clues": 5,
   "iterations": [
     {
       "iteration": 1,
-      "start_time": "2025-09-18T14:31:34.031278",
+      "start_time": "2025-09-18T16:16:51.976327",
       "candidates_generated": {
         "1": {
           "clue_text": "A short story with a moral lesson",
@@ -16,13 +16,13 @@
             {
               "word": "PARABLE",
               "confidence": 0.6,
-              "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. It fits the clue well but is exactly 7 letters in its singular form, making it a viable alternative.",
+              "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. While it fits the clue, it is exactly 7 letters and could also be a valid answer, but \"fables\" is more common in general usage.",
               "clue_type": "complex"
             },
             {
               "word": "MORALTA",
               "confidence": 0.3,
-              "reasoning": "This is a less common and obscure term that could theoretically fit the clue, but it is not widely recognized in English usage. It is unlikely to be the intended answer.",
+              "reasoning": "This is a less common term derived from \"moral tale.\" While it could theoretically fit the clue, it is not a standard or widely recognized word, making it an unlikely answer.",
               "clue_type": "complex"
             }
           ]
@@ -35,13 +35,13 @@
             {
               "word": "COVER",
               "confidence": 0.9,
-              "reasoning": "The clue \"A book's outer casing\" directly points to the term \"cover,\" which is the most common and straightforward word for the outer part of a book. It matches the required length of 5 letters and is a frequent answer in crosswords for similar clues.",
+              "reasoning": "The most common term for \"a book's outer casing\" is \"cover.\" It directly refers to the protective outer layer of a book, such as a hardcover or paperback cover. It is a straightforward and literal match for the clue.",
               "clue_type": "definition"
             },
             {
               "word": "SHELL",
-              "confidence": 0.6,
-              "reasoning": "While \"shell\" can mean an outer casing, it is less commonly used in the context of books. It might be a metaphorical or less direct answer, but it still fits the clue and the 5-letter requirement.",
+              "confidence": 0.3,
+              "reasoning": "\"Shell\" could metaphorically describe the outer casing of a book, as it is sometimes used to describe protective outer layers. However, it is not a common term in relation to books, making it an unlikely answer.",
               "clue_type": "definition"
             }
           ]
@@ -54,19 +54,13 @@
             {
               "word": "STORY",
               "confidence": 0.9,
-              "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common 5-letter word synonymous with a narrative or tale. It fits the length requirement and is a straightforward answer for this type of clue.",
+              "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common synonym for a narrative or tale. It is a simple, everyday word that fits the 5-letter requirement and aligns with the straightforward nature of the clue.",
               "clue_type": "definition"
             },
             {
-              "word": "NOVEL",
+              "word": "FABLE",
               "confidence": 0.6,
-              "reasoning": "A \"novel\" is a type of narrative tale, but it typically refers to a long, fictional work. While it fits the length and is related to the clue, it is less likely than \"story\" because the clue doesn't specify a longer or fictional tale.",
-              "clue_type": "definition"
-            },
-            {
-              "word": "MYTHS",
-              "confidence": 0.3,
-              "reasoning": "\"Myths\" are a type of narrative tale, often rooted in folklore or tradition. However, the plural form makes it less likely to match the clue, which seems to suggest a singular narrative.",
+              "reasoning": "A \"fable\" is a type of narrative tale, often with a moral lesson. While it fits the clue, it is more specific than the general term \"story,\" so it is less likely unless the crossword is looking for a more precise answer.",
               "clue_type": "definition"
             }
           ]
@@ -81,7 +75,7 @@
             {
               "word": "PARABLE",
               "confidence": 0.6,
-              "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. It fits the clue well but is exactly 7 letters in its singular form, making it a viable alternative.",
+              "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. While it fits the clue, it is exactly 7 letters and could also be a valid answer, but \"fables\" is more common in general usage.",
               "clue_type": "complex"
             }
           ]
@@ -94,13 +88,13 @@
             {
               "word": "COVER",
               "confidence": 0.9,
-              "reasoning": "The clue \"A book's outer casing\" directly points to the term \"cover,\" which is the most common and straightforward word for the outer part of a book. It matches the required length of 5 letters and is a frequent answer in crosswords for similar clues.",
+              "reasoning": "The most common term for \"a book's outer casing\" is \"cover.\" It directly refers to the protective outer layer of a book, such as a hardcover or paperback cover. It is a straightforward and literal match for the clue.",
               "clue_type": "definition"
             },
             {
               "word": "SHELL",
-              "confidence": 0.24,
-              "reasoning": "While \"shell\" can mean an outer casing, it is less commonly used in the context of books. It might be a metaphorical or less direct answer, but it still fits the clue and the 5-letter requirement.",
+              "confidence": 0.12,
+              "reasoning": "\"Shell\" could metaphorically describe the outer casing of a book, as it is sometimes used to describe protective outer layers. However, it is not a common term in relation to books, making it an unlikely answer.",
               "clue_type": "definition"
             }
           ]
@@ -113,19 +107,13 @@
             {
               "word": "STORY",
               "confidence": 0.9,
-              "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common 5-letter word synonymous with a narrative or tale. It fits the length requirement and is a straightforward answer for this type of clue.",
+              "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common synonym for a narrative or tale. It is a simple, everyday word that fits the 5-letter requirement and aligns with the straightforward nature of the clue.",
               "clue_type": "definition"
             },
             {
-              "word": "NOVEL",
-              "confidence": 0.48,
-              "reasoning": "A \"novel\" is a type of narrative tale, but it typically refers to a long, fictional work. While it fits the length and is related to the clue, it is less likely than \"story\" because the clue doesn't specify a longer or fictional tale.",
-              "clue_type": "definition"
-            },
-            {
-              "word": "MYTHS",
-              "confidence": 0.21,
-              "reasoning": "\"Myths\" are a type of narrative tale, often rooted in folklore or tradition. However, the plural form makes it less likely to match the clue, which seems to suggest a singular narrative.",
+              "word": "FABLE",
+              "confidence": 0.54,
+              "reasoning": "A \"fable\" is a type of narrative tale, often with a moral lesson. While it fits the clue, it is more specific than the general term \"story,\" so it is less likely unless the crossword is looking for a more precise answer.",
               "clue_type": "definition"
             }
           ]
@@ -133,27 +121,11 @@
       },
       "solutions_applied": [
         {
-          "clue_number": 2,
-          "clue_text": "A person who writes books",
-          "applied_word": "AUTHOR",
-          "final_confidence": 0.9,
-          "reasoning": "The clue directly defines \"a person who writes books,\" and \"author\" is the most common and straightforward 6-letter word for this definition. It matches the required length and is a frequent crossword answer for similar clues.",
-          "clue_type": "definition"
-        },
-        {
           "clue_number": 1,
           "clue_text": "A long narrative poem",
           "applied_word": "EPIC",
           "final_confidence": 0.9,
-          "reasoning": "The word \"epic\" is a common term for a long narrative poem, such as \"The Iliad\" or \"The Odyssey.\" It is a direct and concise answer that fits the 4-letter requirement perfectly. This is a standard crossword answer for this type of clue.",
-          "clue_type": "definition"
-        },
-        {
-          "clue_number": 2,
-          "clue_text": "A book's outer casing",
-          "applied_word": "COVER",
-          "final_confidence": 0.9,
-          "reasoning": "The clue \"A book's outer casing\" directly points to the term \"cover,\" which is the most common and straightforward word for the outer part of a book. It matches the required length of 5 letters and is a frequent answer in crosswords for similar clues.",
+          "reasoning": "The clue \"A long narrative poem\" directly points to \"EPIC,\" which is a well-known term for a lengthy, narrative poem often centered on heroic deeds or significant events (e.g., \"The Iliad\" or \"The Odyssey\"). It fits the 4-letter requirement and is a common crossword answer.",
           "clue_type": "definition"
         },
         {
@@ -161,7 +133,23 @@
           "clue_text": "A narrative tale",
           "applied_word": "STORY",
           "final_confidence": 0.9,
-          "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common 5-letter word synonymous with a narrative or tale. It fits the length requirement and is a straightforward answer for this type of clue.",
+          "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common synonym for a narrative or tale. It is a simple, everyday word that fits the 5-letter requirement and aligns with the straightforward nature of the clue.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 2,
+          "clue_text": "A person who writes books",
+          "applied_word": "AUTHOR",
+          "final_confidence": 0.9,
+          "reasoning": "The clue \"A person who writes books\" directly describes an author. \"Author\" is a common and straightforward six-letter word that fits perfectly with the definition. It is the most obvious choice for this clue.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 2,
+          "clue_text": "A book's outer casing",
+          "applied_word": "COVER",
+          "final_confidence": 0.9,
+          "reasoning": "The most common term for \"a book's outer casing\" is \"cover.\" It directly refers to the protective outer layer of a book, such as a hardcover or paperback cover. It is a straightforward and literal match for the clue.",
           "clue_type": "definition"
         },
         {
@@ -169,13 +157,13 @@
           "clue_text": "A short story with a moral lesson",
           "applied_word": "PARABLE",
           "final_confidence": 0.6,
-          "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. It fits the clue well but is exactly 7 letters in its singular form, making it a viable alternative.",
+          "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. While it fits the clue, it is exactly 7 letters and could also be a valid answer, but \"fables\" is more common in general usage.",
           "clue_type": "complex"
         }
       ],
       "progress_made": true,
       "grid_state_before": {
-        "timestamp": "2025-09-18T14:31:34.030727",
+        "timestamp": "2025-09-18T16:16:51.975903",
         "context": "Before iteration 1",
         "solved_clues": [],
         "grid_completion": 0.0,
@@ -424,7 +412,7 @@
         "use_async_solving": true
       },
       "grid_state_after": {
-        "timestamp": "2025-09-18T14:31:45.458196",
+        "timestamp": "2025-09-18T16:17:06.578084",
         "context": "After iteration 1",
         "solved_clues": [],
         "grid_completion": 0.0,
@@ -670,7 +658,7 @@
           "clue_completion_percentage": 100.0
         }
       },
-      "duration": 11.427860975265503,
+      "duration": 14.603260278701782,
       "grid_changed": true,
       "changes_summary": {
         "grid_changed": true,
@@ -709,7 +697,7 @@
     "solved_clues": 5,
     "completion_rate": 1.0,
     "final_grid_state": {
-      "timestamp": "2025-09-18T14:31:45.458693",
+      "timestamp": "2025-09-18T16:17:06.579273",
       "context": "Final state after solving",
       "solved_clues": [],
       "grid_completion": 0.0,
@@ -960,8 +948,8 @@
     "visualization_history_count": 3
   },
   "performance_metrics": {
-    "total_solving_time": 11.428008079528809,
-    "average_iteration_time": 11.428008079528809,
+    "total_solving_time": 14.603373050689697,
+    "average_iteration_time": 14.603373050689697,
     "candidates_generated_total": 3,
     "candidates_filtered_total": 0,
     "solutions_applied_total": 5

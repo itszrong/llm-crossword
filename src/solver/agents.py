@@ -500,8 +500,7 @@ class ClueAgent:
         for attempt in range(self.max_retries + 1):
             try:
                 candidates = self.tools.solve_clue(clue, context, 
-                                                 attempted_words, rejection_reasons, current_pattern,
-                                                 iteration=attempt + 1, total_solved=0)
+                                                 attempted_words, rejection_reasons, current_pattern)
                 
                 # Filter candidates for semantic relevance and grid compatibility
                 valid_candidates = []
