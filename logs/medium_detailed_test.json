@@ -1,0 +1,968 @@
+{
+  "timestamp": "2025-09-18T14:31:34.030666",
+  "puzzle_name": "Medium_Test",
+  "puzzle_size": "7x7",
+  "total_clues": 5,
+  "iterations": [
+    {
+      "iteration": 1,
+      "start_time": "2025-09-18T14:31:34.031278",
+      "candidates_generated": {
+        "1": {
+          "clue_text": "A short story with a moral lesson",
+          "clue_length": 7,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "PARABLE",
+              "confidence": 0.6,
+              "clue_type": "complex"
+            },
+            {
+              "word": "MORALTA",
+              "confidence": 0.3,
+              "reasoning": "This is a less common and obscure term that could theoretically fit the clue, but it is not widely recognized in English usage. It is unlikely to be the intended answer.",
+              "clue_type": "complex"
+            }
+          ]
+        },
+        "2": {
+          "clue_text": "A book's outer casing",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "COVER",
+              "confidence": 0.9,
+              "reasoning": "The clue \"A book's outer casing\" directly points to the term \"cover,\" which is the most common and straightforward word for the outer part of a book. It matches the required length of 5 letters and is a frequent answer in crosswords for similar clues.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "SHELL",
+              "confidence": 0.6,
+              "reasoning": "While \"shell\" can mean an outer casing, it is less commonly used in the context of books. It might be a metaphorical or less direct answer, but it still fits the clue and the 5-letter requirement.",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "3": {
+          "clue_text": "A narrative tale",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "STORY",
+              "confidence": 0.9,
+              "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common 5-letter word synonymous with a narrative or tale. It fits the length requirement and is a straightforward answer for this type of clue.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "NOVEL",
+              "confidence": 0.6,
+              "reasoning": "A \"novel\" is a type of narrative tale, but it typically refers to a long, fictional work. While it fits the length and is related to the clue, it is less likely than \"story\" because the clue doesn't specify a longer or fictional tale.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "MYTHS",
+              "confidence": 0.3,
+              "reasoning": "\"Myths\" are a type of narrative tale, often rooted in folklore or tradition. However, the plural form makes it less likely to match the clue, which seems to suggest a singular narrative.",
+              "clue_type": "definition"
+            }
+          ]
+        }
+      },
+      "candidates_reviewed": {
+        "1": {
+          "clue_text": "A short story with a moral lesson",
+          "clue_length": 7,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "PARABLE",
+              "confidence": 0.6,
+              "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. It fits the clue well but is exactly 7 letters in its singular form, making it a viable alternative.",
+              "clue_type": "complex"
+            }
+          ]
+        },
+        "2": {
+          "clue_text": "A book's outer casing",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "COVER",
+              "confidence": 0.9,
+              "reasoning": "The clue \"A book's outer casing\" directly points to the term \"cover,\" which is the most common and straightforward word for the outer part of a book. It matches the required length of 5 letters and is a frequent answer in crosswords for similar clues.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "SHELL",
+              "confidence": 0.24,
+              "reasoning": "While \"shell\" can mean an outer casing, it is less commonly used in the context of books. It might be a metaphorical or less direct answer, but it still fits the clue and the 5-letter requirement.",
+              "clue_type": "definition"
+            }
+          ]
+        },
+        "3": {
+          "clue_text": "A narrative tale",
+          "clue_length": 5,
+          "clue_direction": "down",
+          "candidates": [
+            {
+              "word": "STORY",
+              "confidence": 0.9,
+              "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common 5-letter word synonymous with a narrative or tale. It fits the length requirement and is a straightforward answer for this type of clue.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "NOVEL",
+              "confidence": 0.48,
+              "reasoning": "A \"novel\" is a type of narrative tale, but it typically refers to a long, fictional work. While it fits the length and is related to the clue, it is less likely than \"story\" because the clue doesn't specify a longer or fictional tale.",
+              "clue_type": "definition"
+            },
+            {
+              "word": "MYTHS",
+              "confidence": 0.21,
+              "reasoning": "\"Myths\" are a type of narrative tale, often rooted in folklore or tradition. However, the plural form makes it less likely to match the clue, which seems to suggest a singular narrative.",
+              "clue_type": "definition"
+            }
+          ]
+        }
+      },
+      "solutions_applied": [
+        {
+          "clue_number": 2,
+          "clue_text": "A person who writes books",
+          "applied_word": "AUTHOR",
+          "final_confidence": 0.9,
+          "reasoning": "The clue directly defines \"a person who writes books,\" and \"author\" is the most common and straightforward 6-letter word for this definition. It matches the required length and is a frequent crossword answer for similar clues.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 1,
+          "clue_text": "A long narrative poem",
+          "applied_word": "EPIC",
+          "final_confidence": 0.9,
+          "reasoning": "The word \"epic\" is a common term for a long narrative poem, such as \"The Iliad\" or \"The Odyssey.\" It is a direct and concise answer that fits the 4-letter requirement perfectly. This is a standard crossword answer for this type of clue.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 2,
+          "clue_text": "A book's outer casing",
+          "applied_word": "COVER",
+          "final_confidence": 0.9,
+          "reasoning": "The clue \"A book's outer casing\" directly points to the term \"cover,\" which is the most common and straightforward word for the outer part of a book. It matches the required length of 5 letters and is a frequent answer in crosswords for similar clues.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 3,
+          "clue_text": "A narrative tale",
+          "applied_word": "STORY",
+          "final_confidence": 0.9,
+          "reasoning": "The clue \"A narrative tale\" directly points to \"story,\" which is a common 5-letter word synonymous with a narrative or tale. It fits the length requirement and is a straightforward answer for this type of clue.",
+          "clue_type": "definition"
+        },
+        {
+          "clue_number": 1,
+          "clue_text": "A short story with a moral lesson",
+          "applied_word": "PARABLE",
+          "final_confidence": 0.6,
+          "reasoning": "A \"parable\" is another type of short story with a moral lesson, often used in religious or philosophical contexts. It fits the clue well but is exactly 7 letters in its singular form, making it a viable alternative.",
+          "clue_type": "complex"
+        }
+      ],
+      "progress_made": true,
+      "grid_state_before": {
+        "timestamp": "2025-09-18T14:31:34.030727",
+        "context": "Before iteration 1",
+        "solved_clues": [],
+        "grid_completion": 0.0,
+        "grid_visual": "┌─────────────────────┐\n│             ░  ░  ░ │\n│ ░     ░  ░  ░  ░  ░ │\n│ ░     ░     ░     ░ │\n│ ░                   │\n│ ░     ░     ░     ░ │\n│ ░     ░     ░     ░ │\n│ ░     ░     ░     ░ │\n└─────────────────────┘",
+        "grid_matrix": [
+          [
+            "_",
+            "_",
+            "_",
+            "_",
+            "░",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "_",
+            "░",
+            "░",
+            "░",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "_",
+            "░",
+            "_",
+            "░",
+            "_",
+            "░"
+          ],
+          [
+            "░",
+            "_",
+            "_",
+            "_",
+            "_",
+            "_",
+            "_"
+          ],
+          [
+            "░",
+            "_",
+            "░",
+            "_",
+            "░",
+            "_",
+            "░"
+          ],
+          [
+            "░",
+            "_",
+            "░",
+            "_",
+            "░",
+            "_",
+            "░"
+          ],
+          [
+            "░",
+            "_",
+            "░",
+            "_",
+            "░",
+            "_",
+            "░"
+          ]
+        ],
+        "clue_states": [
+          {
+            "number": 1,
+            "text": "A long narrative poem",
+            "direction": "across",
+            "length": 4,
+            "position": {
+              "row": 0,
+              "col": 0
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null,
+              null
+            ],
+            "current_word": "____",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [],
+            "fully_solved": false
+          },
+          {
+            "number": 2,
+            "text": "A person who writes books",
+            "direction": "across",
+            "length": 6,
+            "position": {
+              "row": 3,
+              "col": 1
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "current_word": "______",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 1,
+                "clue_text": "A short story with a moral lesson",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 1
+                },
+                "target_position": 0,
+                "other_position": 3
+              },
+              {
+                "clue_number": 3,
+                "clue_text": "A narrative tale",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 3
+                },
+                "target_position": 2,
+                "other_position": 1
+              }
+            ],
+            "fully_solved": false
+          },
+          {
+            "number": 1,
+            "text": "A short story with a moral lesson",
+            "direction": "down",
+            "length": 7,
+            "position": {
+              "row": 0,
+              "col": 1
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "current_word": "_______",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 2,
+                "clue_text": "A person who writes books",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 1
+                },
+                "target_position": 3,
+                "other_position": 0
+              }
+            ],
+            "fully_solved": false
+          },
+          {
+            "number": 2,
+            "text": "A book's outer casing",
+            "direction": "down",
+            "length": 5,
+            "position": {
+              "row": 2,
+              "col": 5
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "current_word": "_____",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [],
+            "fully_solved": false
+          },
+          {
+            "number": 3,
+            "text": "A narrative tale",
+            "direction": "down",
+            "length": 5,
+            "position": {
+              "row": 2,
+              "col": 3
+            },
+            "answered": false,
+            "current_chars": [
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "current_word": "_____",
+            "filled_positions": 0,
+            "completion_percentage": 0.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 2,
+                "clue_text": "A person who writes books",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 3
+                },
+                "target_position": 1,
+                "other_position": 2
+              }
+            ],
+            "fully_solved": false
+          }
+        ],
+        "grid_stats": {
+          "total_clues": 5,
+          "solved_clues": 0,
+          "total_unique_cells": 23,
+          "filled_unique_cells": 0,
+          "grid_completion_percentage": 0.0,
+          "clue_completion_percentage": 0.0
+        }
+      },
+      "solver_info": {
+        "difficulty": "medium",
+        "max_iterations": 5,
+        "backtrack_enabled": true,
+        "thinking_depth": 2,
+        "use_async_solving": true
+      },
+      "grid_state_after": {
+        "timestamp": "2025-09-18T14:31:45.458196",
+        "context": "After iteration 1",
+        "solved_clues": [],
+        "grid_completion": 0.0,
+        "grid_visual": "┌─────────────────────┐\n│ E  P  I  C  ░  ░  ░ │\n│ ░  A  ░  ░  ░  ░  ░ │\n│ ░  R  ░  S  ░  C  ░ │\n│ ░  A  U  T  H  O  R │\n│ ░  B  ░  O  ░  V  ░ │\n│ ░  L  ░  R  ░  E  ░ │\n│ ░  E  ░  Y  ░  R  ░ │\n└─────────────────────┘",
+        "grid_matrix": [
+          [
+            "E",
+            "P",
+            "I",
+            "C",
+            "░",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "A",
+            "░",
+            "░",
+            "░",
+            "░",
+            "░"
+          ],
+          [
+            "░",
+            "R",
+            "░",
+            "S",
+            "░",
+            "C",
+            "░"
+          ],
+          [
+            "░",
+            "A",
+            "U",
+            "T",
+            "H",
+            "O",
+            "R"
+          ],
+          [
+            "░",
+            "B",
+            "░",
+            "O",
+            "░",
+            "V",
+            "░"
+          ],
+          [
+            "░",
+            "L",
+            "░",
+            "R",
+            "░",
+            "E",
+            "░"
+          ],
+          [
+            "░",
+            "E",
+            "░",
+            "Y",
+            "░",
+            "R",
+            "░"
+          ]
+        ],
+        "clue_states": [
+          {
+            "number": 1,
+            "text": "A long narrative poem",
+            "direction": "across",
+            "length": 4,
+            "position": {
+              "row": 0,
+              "col": 0
+            },
+            "answered": true,
+            "current_chars": [
+              "E",
+              "P",
+              "I",
+              "C"
+            ],
+            "current_word": "EPIC",
+            "filled_positions": 4,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [],
+            "fully_solved": true,
+            "final_answer": "EPIC"
+          },
+          {
+            "number": 2,
+            "text": "A person who writes books",
+            "direction": "across",
+            "length": 6,
+            "position": {
+              "row": 3,
+              "col": 1
+            },
+            "answered": true,
+            "current_chars": [
+              "A",
+              "U",
+              "T",
+              "H",
+              "O",
+              "R"
+            ],
+            "current_word": "AUTHOR",
+            "filled_positions": 6,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 1,
+                "clue_text": "A short story with a moral lesson",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 1
+                },
+                "target_position": 0,
+                "other_position": 3
+              },
+              {
+                "clue_number": 3,
+                "clue_text": "A narrative tale",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 3
+                },
+                "target_position": 2,
+                "other_position": 1
+              }
+            ],
+            "fully_solved": true,
+            "final_answer": "AUTHOR"
+          },
+          {
+            "number": 1,
+            "text": "A short story with a moral lesson",
+            "direction": "down",
+            "length": 7,
+            "position": {
+              "row": 0,
+              "col": 1
+            },
+            "answered": true,
+            "current_chars": [
+              "P",
+              "A",
+              "R",
+              "A",
+              "B",
+              "L",
+              "E"
+            ],
+            "current_word": "PARABLE",
+            "filled_positions": 7,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 2,
+                "clue_text": "A person who writes books",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 1
+                },
+                "target_position": 3,
+                "other_position": 0
+              }
+            ],
+            "fully_solved": true,
+            "final_answer": "PARABLE"
+          },
+          {
+            "number": 2,
+            "text": "A book's outer casing",
+            "direction": "down",
+            "length": 5,
+            "position": {
+              "row": 2,
+              "col": 5
+            },
+            "answered": true,
+            "current_chars": [
+              "C",
+              "O",
+              "V",
+              "E",
+              "R"
+            ],
+            "current_word": "COVER",
+            "filled_positions": 5,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [],
+            "fully_solved": true,
+            "final_answer": "COVER"
+          },
+          {
+            "number": 3,
+            "text": "A narrative tale",
+            "direction": "down",
+            "length": 5,
+            "position": {
+              "row": 2,
+              "col": 3
+            },
+            "answered": true,
+            "current_chars": [
+              "S",
+              "T",
+              "O",
+              "R",
+              "Y"
+            ],
+            "current_word": "STORY",
+            "filled_positions": 5,
+            "completion_percentage": 100.0,
+            "intersecting_clues": [
+              {
+                "clue_number": 2,
+                "clue_text": "A person who writes books",
+                "intersection_cell": {
+                  "row": 3,
+                  "col": 3
+                },
+                "target_position": 1,
+                "other_position": 2
+              }
+            ],
+            "fully_solved": true,
+            "final_answer": "STORY"
+          }
+        ],
+        "grid_stats": {
+          "total_clues": 5,
+          "solved_clues": 5,
+          "total_unique_cells": 23,
+          "filled_unique_cells": 23,
+          "grid_completion_percentage": 100.0,
+          "clue_completion_percentage": 100.0
+        }
+      },
+      "duration": 11.427860975265503,
+      "grid_changed": true,
+      "changes_summary": {
+        "grid_changed": true,
+        "clues_changed": [
+          {
+            "clue_number": 1,
+            "clue_text": "A short story with a moral lesson",
+            "before": "_______",
+            "after": "PARABLE",
+            "newly_solved": true
+          },
+          {
+            "clue_number": 2,
+            "clue_text": "A book's outer casing",
+            "before": "_____",
+            "after": "COVER",
+            "newly_solved": true
+          },
+          {
+            "clue_number": 3,
+            "clue_text": "A narrative tale",
+            "before": "_____",
+            "after": "STORY",
+            "newly_solved": true
+          }
+        ],
+        "new_letters_added": [],
+        "completion_delta": 100.0
+      },
+      "visual_diff": "\nBEFORE:\n┌─────────────────────┐\n│             ░  ░  ░ │\n│ ░     ░  ░  ░  ░  ░ │\n│ ░     ░     ░     ░ │\n│ ░                   │\n│ ░     ░     ░     ░ │\n│ ░     ░     ░     ░ │\n│ ░     ░     ░     ░ │\n└─────────────────────┘\n\nAFTER:\n┌─────────────────────┐\n│ E  P  I  C  ░  ░  ░ │\n│ ░  A  ░  ░  ░  ░  ░ │\n│ ░  R  ░  S  ░  C  ░ │\n│ ░  A  U  T  H  O  R │\n│ ░  B  ░  O  ░  V  ░ │\n│ ░  L  ░  R  ░  E  ░ │\n│ ░  E  ░  Y  ░  R  ░ │\n└─────────────────────┘\n\nCHANGES:\n- Clue 1 ('A short story with a moral lesson'): _______ → PARABLE\n  ✅ SOLVED!\n- Clue 2 ('A book's outer casing'): _____ → COVER\n  ✅ SOLVED!\n- Clue 3 ('A narrative tale'): _____ → STORY\n  ✅ SOLVED!\n"
+    }
+  ],
+  "final_result": {
+    "success": true,
+    "total_iterations": 1,
+    "solved_clues": 5,
+    "completion_rate": 1.0,
+    "final_grid_state": {
+      "timestamp": "2025-09-18T14:31:45.458693",
+      "context": "Final state after solving",
+      "solved_clues": [],
+      "grid_completion": 0.0,
+      "grid_visual": "┌─────────────────────┐\n│ E  P  I  C  ░  ░  ░ │\n│ ░  A  ░  ░  ░  ░  ░ │\n│ ░  R  ░  S  ░  C  ░ │\n│ ░  A  U  T  H  O  R │\n│ ░  B  ░  O  ░  V  ░ │\n│ ░  L  ░  R  ░  E  ░ │\n│ ░  E  ░  Y  ░  R  ░ │\n└─────────────────────┘",
+      "grid_matrix": [
+        [
+          "E",
+          "P",
+          "I",
+          "C",
+          "░",
+          "░",
+          "░"
+        ],
+        [
+          "░",
+          "A",
+          "░",
+          "░",
+          "░",
+          "░",
+          "░"
+        ],
+        [
+          "░",
+          "R",
+          "░",
+          "S",
+          "░",
+          "C",
+          "░"
+        ],
+        [
+          "░",
+          "A",
+          "U",
+          "T",
+          "H",
+          "O",
+          "R"
+        ],
+        [
+          "░",
+          "B",
+          "░",
+          "O",
+          "░",
+          "V",
+          "░"
+        ],
+        [
+          "░",
+          "L",
+          "░",
+          "R",
+          "░",
+          "E",
+          "░"
+        ],
+        [
+          "░",
+          "E",
+          "░",
+          "Y",
+          "░",
+          "R",
+          "░"
+        ]
+      ],
+      "clue_states": [
+        {
+          "number": 1,
+          "text": "A long narrative poem",
+          "direction": "across",
+          "length": 4,
+          "position": {
+            "row": 0,
+            "col": 0
+          },
+          "answered": true,
+          "current_chars": [
+            "E",
+            "P",
+            "I",
+            "C"
+          ],
+          "current_word": "EPIC",
+          "filled_positions": 4,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [],
+          "fully_solved": true,
+          "final_answer": "EPIC"
+        },
+        {
+          "number": 2,
+          "text": "A person who writes books",
+          "direction": "across",
+          "length": 6,
+          "position": {
+            "row": 3,
+            "col": 1
+          },
+          "answered": true,
+          "current_chars": [
+            "A",
+            "U",
+            "T",
+            "H",
+            "O",
+            "R"
+          ],
+          "current_word": "AUTHOR",
+          "filled_positions": 6,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [
+            {
+              "clue_number": 1,
+              "clue_text": "A short story with a moral lesson",
+              "intersection_cell": {
+                "row": 3,
+                "col": 1
+              },
+              "target_position": 0,
+              "other_position": 3
+            },
+            {
+              "clue_number": 3,
+              "clue_text": "A narrative tale",
+              "intersection_cell": {
+                "row": 3,
+                "col": 3
+              },
+              "target_position": 2,
+              "other_position": 1
+            }
+          ],
+          "fully_solved": true,
+          "final_answer": "AUTHOR"
+        },
+        {
+          "number": 1,
+          "text": "A short story with a moral lesson",
+          "direction": "down",
+          "length": 7,
+          "position": {
+            "row": 0,
+            "col": 1
+          },
+          "answered": true,
+          "current_chars": [
+            "P",
+            "A",
+            "R",
+            "A",
+            "B",
+            "L",
+            "E"
+          ],
+          "current_word": "PARABLE",
+          "filled_positions": 7,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [
+            {
+              "clue_number": 2,
+              "clue_text": "A person who writes books",
+              "intersection_cell": {
+                "row": 3,
+                "col": 1
+              },
+              "target_position": 3,
+              "other_position": 0
+            }
+          ],
+          "fully_solved": true,
+          "final_answer": "PARABLE"
+        },
+        {
+          "number": 2,
+          "text": "A book's outer casing",
+          "direction": "down",
+          "length": 5,
+          "position": {
+            "row": 2,
+            "col": 5
+          },
+          "answered": true,
+          "current_chars": [
+            "C",
+            "O",
+            "V",
+            "E",
+            "R"
+          ],
+          "current_word": "COVER",
+          "filled_positions": 5,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [],
+          "fully_solved": true,
+          "final_answer": "COVER"
+        },
+        {
+          "number": 3,
+          "text": "A narrative tale",
+          "direction": "down",
+          "length": 5,
+          "position": {
+            "row": 2,
+            "col": 3
+          },
+          "answered": true,
+          "current_chars": [
+            "S",
+            "T",
+            "O",
+            "R",
+            "Y"
+          ],
+          "current_word": "STORY",
+          "filled_positions": 5,
+          "completion_percentage": 100.0,
+          "intersecting_clues": [
+            {
+              "clue_number": 2,
+              "clue_text": "A person who writes books",
+              "intersection_cell": {
+                "row": 3,
+                "col": 3
+              },
+              "target_position": 1,
+              "other_position": 2
+            }
+          ],
+          "fully_solved": true,
+          "final_answer": "STORY"
+        }
+      ],
+      "grid_stats": {
+        "total_clues": 5,
+        "solved_clues": 5,
+        "total_unique_cells": 23,
+        "filled_unique_cells": 23,
+        "grid_completion_percentage": 100.0,
+        "clue_completion_percentage": 100.0
+      }
+    },
+    "conflicts_encountered": 0,
+    "retry_count": 0,
+    "visualization_history_count": 3
+  },
+  "performance_metrics": {
+    "total_solving_time": 11.428008079528809,
+    "average_iteration_time": 11.428008079528809,
+    "candidates_generated_total": 3,
+    "candidates_filtered_total": 0,
+    "solutions_applied_total": 5
+  }
+}

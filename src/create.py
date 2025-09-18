@@ -14,10 +14,13 @@ from crossword.types import Clue, Direction, Grid
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.WARNING,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Disable httpx request logging
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 class CrosswordCreator:
     """Creates and manages crossword puzzles in .json format."""

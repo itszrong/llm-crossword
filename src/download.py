@@ -15,10 +15,13 @@ from unidecode import unidecode
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.WARNING,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Disable httpx request logging
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 # Type aliases
 GridPosition = Dict[str, int]
