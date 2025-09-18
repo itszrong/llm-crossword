@@ -144,8 +144,16 @@ class AgenticCrosswordSolver:
         recent_iterations = solver_log.iterations[-3:]
         
         # Count how many recent iterations made no progress
-        no_progress_count = sum(1 for iteration in recent_iterations 
-                               if isinstance(iteration, dict) and not iteration.get("progress_made", False))
+        no_progress_count = 0
+        for iteration in recent_iterations:
+            if isinstance(iteration, dict):
+                if not iteration.get("progress_made", False):
+                    no_progress_count += 1
+            else:
+                # Handle non-dict iterations gracefully
+                logger.warning(f"Unexpected iteration type: {type(iteration)}, value: {iteration}")
+                # Assume no progress if we can't parse it
+                no_progress_count += 1
         
         # Trigger review if 2+ of the last 3 iterations made no progress
         should_trigger = no_progress_count >= 2

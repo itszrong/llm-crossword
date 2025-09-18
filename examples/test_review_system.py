@@ -11,7 +11,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Add src to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.crossword.crossword import CrosswordPuzzle
 from src.crossword.utils import load_puzzle
@@ -29,12 +29,12 @@ def test_review_system_on_cryptic():
     """Test the review system on the cryptic puzzle that failed in the terminal output"""
     
     # Load the cryptic puzzle
-    cryptic_file = Path("data/cryptic.json")
+    cryptic_file = Path("../data/cryptic.json")
     if not cryptic_file.exists():
         logger.error(f"Cryptic puzzle file not found: {cryptic_file}")
         return
     
-    puzzle = load_puzzle("data/cryptic.json")
+    puzzle = load_puzzle("../data/cryptic.json")
     
     logger.info("🧩 Testing Review System on Cryptic Puzzle")
     logger.info(f"Puzzle: {puzzle.width}x{puzzle.height} with {len(puzzle.clues)} clues")
@@ -45,8 +45,8 @@ def test_review_system_on_cryptic():
     stats = solver_with_review.solve_with_stats(
         puzzle=puzzle,
         puzzle_name="cryptic_test_with_review",
-        log_path="logs/review_test_solver_log.json",
-        review_log_path="logs/review_test_review_report.json"
+        log_path="../logs/review_test_solver_log.json",
+        review_log_path="../logs/review_test_review_report.json"
     )
     
     logger.info("📊 Results with Review System:")
@@ -72,10 +72,10 @@ def test_review_system_comparison():
     """Compare solving with and without review system"""
     
     # Load a hard puzzle for comparison
-    hard_file = Path("data/hard.json") 
+    hard_file = Path("../data/hard.json") 
     if not hard_file.exists():
         logger.warning("Hard puzzle file not found, using cryptic puzzle for comparison")
-        hard_file = Path("data/cryptic.json")
+        hard_file = Path("../data/cryptic.json")
     
     # Test without review system (explicitly disabled)
     puzzle1 = load_puzzle(str(hard_file))
@@ -93,7 +93,7 @@ def test_review_system_comparison():
     stats_with_review = solver_with_review.solve_with_stats(
         puzzle=puzzle2, 
         puzzle_name="comparison_with_review",
-        review_log_path="logs/comparison_review_report.json"
+        review_log_path="../logs/comparison_review_report.json"
     )
     
     logger.info("\n📊 Comparison Results:")

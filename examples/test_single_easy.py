@@ -8,7 +8,7 @@ import sys
 from dotenv import load_dotenv
 
 # Add src to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.crossword.utils import load_puzzle
 from src.solver.main_solver import AgenticCrosswordSolver
@@ -23,7 +23,7 @@ def test_easy_puzzle():
     
     try:
         # Load the puzzle
-        puzzle = load_puzzle("data/easy.json")
+        puzzle = load_puzzle("../data/easy.json")
         print(f"📋 Loaded puzzle: {puzzle.width}x{puzzle.height} grid, {len(puzzle.clues)} clues")
         
         # Show clues
@@ -43,7 +43,7 @@ def test_easy_puzzle():
         print(f"  🧠 Thinking depth: {solver.coordinator.thinking_depth}")
         
         # Create log path
-        log_path = "logs/easy_detailed_test.json"
+        log_path = "../logs/easy_detailed_test.json"
         os.makedirs("logs", exist_ok=True)
         
         print("\n🔍 Starting solve with detailed visualization logging...")

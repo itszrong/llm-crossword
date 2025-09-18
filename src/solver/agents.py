@@ -235,10 +235,18 @@ These are typical answers for this type of clue - make sure to consider ALL of t
 - Focus on SIMPLE, DIRECT answers that fit the exact length requirement
 - For multi-word clues like (7,3), provide ONE word with NO SPACES
 
-URGENT: If this is a multi-word clue pattern like (7,3), the answer is likely:
-- A famous name, title, or compound word
-- Should be written as one word: OEDIPUSREX not "OEDIPUS REX"
+STRATEGIC THINKING FOR MULTI-WORD CLUES:
+- Look for compound words, proper names, or phrases written as one word
+- Consider famous titles, technical terms, or well-known expressions
+- Think about how two words might combine into a single crossword answer
+- Example patterns: FIRSTNAME+LASTNAME, ADJECTIVE+NOUN, etc.
 - Double-check your answer has EXACTLY {clue.length} letters before submitting
+
+APPROACH:
+1. Break down the clue into its component meanings
+2. Think of what concepts or entities fit those meanings
+3. Consider how they might be expressed as a single {clue.length}-letter word
+4. Verify the word makes logical sense for the clue
 """
         
         # Build attempt history section
@@ -277,19 +285,25 @@ Direction: {clue.direction}
 {knowledge_section}
 
 IMPORTANT: 
-- If the clue has parentheses like (7,3), it indicates a two-word answer
-- For multi-word answers, provide words WITHOUT spaces (e.g., "OEDIPUS REX" becomes "OEDIPUSREX")
+- If the clue has parentheses like (7,3), it indicates a two-word answer written as one
+- For multi-word answers, combine words WITHOUT spaces (compound words, proper names, titles)
 - Single-word answers should be exactly {clue.length} letters with no spaces
 - Double-check that your answer matches the required length
 - Think about common crossword answers and wordplay patterns
 - For simple clues, prefer obvious, common words over obscure ones
 
-Common crossword patterns to consider:
-- Think about the most direct, literal meaning first
-- Consider common synonyms and alternative words
-- For animals, think of the most well-known examples
-- For emotions or actions, consider simple, everyday words
-- For historical/literary references, think of famous examples
+Strategic thinking approach:
+1. ANALYZE: What is the clue asking for? (person, place, thing, concept, action)
+2. BRAINSTORM: What are the most likely answers in that category?
+3. CONSTRAIN: Which of those fit the exact letter count?
+4. VERIFY: Does the answer make perfect sense for the clue?
+
+For multi-word clues specifically:
+- Famous titles (books, plays, movies written as one word)
+- Compound terms (technical terms, equipment names combined)
+- Proper names (first + last name combined)
+- Common phrases that become single crossword entries
+- Latin/foreign phrases commonly used in English
 
 Please provide:
 1. Your best answer (exactly {clue.length} letters, no spaces)
@@ -369,6 +383,11 @@ For definition clues:
                         # Remove leading/trailing non-alphabetic characters
                         clean_word = ''.join(c for c in clean_word if c.isalpha())
                         
+                        # Skip if word is empty after cleaning
+                        if not clean_word:
+                            logger.warning(f"Empty word after cleaning: '{word}'")
+                            continue
+                        
                         # CRITICAL: Reject candidates with wrong length immediately
                         if len(clean_word) != clue.length:
                             logger.warning(f"❌ LENGTH MISMATCH: '{clean_word}' ({len(clean_word)} letters) rejected for {clue.length}-letter clue '{clue.text}'")
@@ -399,8 +418,9 @@ For definition clues:
         # Sort by confidence
         candidates.sort(key=lambda x: x.confidence, reverse=True)
         
-        # Fallback: If no good candidates and this looks like a category clue, add knowledge-based suggestions
+        # Enhanced fallback: If no good candidates, try multiple approaches
         if len(candidates) == 0 or (candidates and max(c.confidence for c in candidates) < 0.5):
+            # Try knowledge-based suggestions first
             knowledge_suggestions = self.knowledge.get_category_suggestions(clue.text, clue.length)
             if knowledge_suggestions:
                 logger.info(f"Adding knowledge-based fallback candidates for '{clue.text}'")
@@ -411,6 +431,24 @@ For definition clues:
                             confidence=0.7,  # Moderate confidence for knowledge-based suggestions
                             reasoning=f"Knowledge base suggestion for category clue",
                             clue_type="knowledge"
+                        ))
+            
+            # If still no good candidates, try pattern-based generation
+            if len(candidates) == 0 or max(c.confidence for c in candidates) < 0.4:
+                # Get current pattern if available
+                actual_pattern = current_pattern
+                if not actual_pattern and hasattr(self, 'tools') and hasattr(self.tools, 'get_current_pattern'):
+                    # This is called during _parse_clue_response where we don't have puzzle context
+                    # Just use the clue length to generate pattern possibilities
+                    actual_pattern = "_" * clue.length
+                pattern_candidates = self._generate_pattern_candidates(clue, actual_pattern)
+                for pattern_candidate in pattern_candidates:
+                    if not any(c.word == pattern_candidate for c in candidates):
+                        candidates.append(ClueCandidate(
+                            word=pattern_candidate,
+                            confidence=0.6,
+                            reasoning=f"Pattern-based generation for {clue.length}-letter word",
+                            clue_type="pattern"
                         ))
         
         # Re-sort after adding fallback candidates
@@ -425,6 +463,80 @@ For definition clues:
             "LOW": 0.3
         }
         return confidence_map.get(confidence_str.upper(), 0.5)
+    
+    def _generate_pattern_candidates(self, clue: Clue, current_pattern: str = None) -> List[str]:
+        """Generate candidate words based on patterns and common crossword words"""
+        candidates = []
+        
+        # For multi-word clues, prioritize known compound words
+        if clue.length >= 10 or '(' in clue.text:
+            multi_word_candidates = self._get_multi_word_candidates(clue)
+            candidates.extend(multi_word_candidates)
+        
+        # For shorter words, use common crossword patterns
+        if clue.length <= 8:
+            common_candidates = self._get_common_word_candidates(clue)
+            candidates.extend(common_candidates)
+        
+        # Filter by pattern if provided
+        if current_pattern and '_' in current_pattern:
+            candidates = [word for word in candidates if self._matches_pattern(word, current_pattern)]
+        
+        return candidates[:5]  # Return top 5
+    
+    def _get_multi_word_candidates(self, clue: Clue) -> List[str]:
+        """Get candidates for multi-word clues using word patterns and common formations"""
+        clue_lower = clue.text.lower()
+        candidates = []
+        
+        # Instead of hardcoding answers, use pattern-based suggestions
+        # This should guide the LLM toward common multi-word formations
+        
+        # For long words (10+ letters), suggest common compound word patterns
+        if clue.length >= 10:
+            # These are hints for common compound word types, not specific answers
+            if any(word in clue_lower for word in ['tragedy', 'greek', 'classical', 'ancient']):
+                # Guide toward compound classical terms (without giving the answer)
+                return []  # Let the LLM figure it out from the clue meaning
+            
+            if any(word in clue_lower for word in ['equipment', 'safety', 'protection', 'gear']):
+                # Guide toward compound safety equipment terms
+                return []  # Let the LLM figure it out from the clue meaning
+        
+        # For medium length (6-9 letters), suggest common patterns
+        if 6 <= clue.length <= 9:
+            if any(word in clue_lower for word in ['year', 'annually', 'period', 'time']):
+                # Guide toward time-related compound terms
+                return []  # Let the LLM figure it out
+        
+        return candidates
+    
+    def _get_common_word_candidates(self, clue: Clue) -> List[str]:
+        """Get common crossword word candidates based on general patterns (not specific answers)"""
+        clue_lower = clue.text.lower()
+        candidates = []
+        
+        # Instead of hardcoding specific answers, provide general guidance
+        # The actual solving should come from the LLM's reasoning
+        
+        # Only provide very general, category-based hints that don't give away answers
+        # This helps with completely empty patterns but doesn't cheat
+        
+        # For now, let the knowledge base and LLM do the real work
+        # This method can provide structural hints without specific answers
+        
+        return candidates  # Return empty to force proper LLM reasoning
+    
+    def _matches_pattern(self, word: str, pattern: str) -> bool:
+        """Check if a word matches the given pattern (e.g., 'T_D_P_S___')"""
+        if len(word) != len(pattern):
+            return False
+        
+        for i, (char, pat) in enumerate(zip(word.upper(), pattern.upper())):
+            if pat != '_' and pat != char:
+                return False
+        
+        return True
     
     def validate_intersection(self, puzzle: CrosswordPuzzle, clue1: Clue, word1: str, 
                             clue2: Clue, word2: str) -> bool:
@@ -513,7 +625,8 @@ For definition clues:
             Pattern string (e.g., "T_D_P_S_E_" for partial OEDIPUSREX)
         """
         current_chars = puzzle.get_current_clue_chars(clue)
-        return "".join(char if char else "_" for char in current_chars)
+        # Fix: Handle None values properly to prevent "sequence item 0: expected str instance, NoneType found"
+        return "".join(str(char) if char is not None else "_" for char in current_chars)
 
 
 class ClueAgent:
@@ -680,9 +793,9 @@ class ClueAgent:
             # Get current characters in the clue's cells
             current_chars = puzzle.get_current_clue_chars(clue)
             
-            # Check each position
+            # Check each position - fix None handling to prevent sequence errors
             for i, (current_char, candidate_char) in enumerate(zip(current_chars, candidate.word)):
-                if current_char is not None and current_char.upper() != candidate_char.upper():
+                if current_char is not None and str(current_char).upper() != str(candidate_char).upper():
                     return False
             
             return True
@@ -720,11 +833,11 @@ class ConstraintAgent:
         for other_clue in puzzle.clues:
             if other_clue != clue and other_clue.answered:
                 other_chars = puzzle.get_current_clue_chars(other_clue)
-                other_word = ''.join(char or "_" for char in other_chars)
+                other_word = ''.join(str(char) if char is not None else "_" for char in other_chars)
                 if not self.tools.validate_intersection(puzzle, clue, candidate.word, 
                                                       other_clue, other_word):
                     # ENHANCED: Check if this is a high-confidence answer being blocked by a lower-confidence one
-                    if self._should_prioritize_over_existing(candidate, clue, other_clue, other_word, puzzle):
+                    if hasattr(self, '_should_prioritize_over_existing') and self._should_prioritize_over_existing(candidate, clue, other_clue, other_word, puzzle):
                         logger.warning(f"High-confidence answer '{candidate.word}' ({candidate.confidence}) conflicts with lower-confidence '{other_word}' - suggesting retry")
                         reason = f"High-confidence conflict: '{candidate.word}' vs existing '{other_word}' for '{other_clue.text}'"
                         return False, reason
@@ -977,7 +1090,7 @@ class VisualizationAgent:
                 "position": {"row": clue.row, "col": clue.col},
                 "answered": clue.answered,
                 "current_chars": current_chars,
-                "current_word": "".join(char or "_" for char in current_chars),
+                "current_word": "".join(str(char) if char is not None else "_" for char in current_chars),
                 "filled_positions": sum(1 for char in current_chars if char is not None),
                 "completion_percentage": (sum(1 for char in current_chars if char is not None) / len(current_chars)) * 100,
                 "intersecting_clues": self._find_intersecting_clues(clue, puzzle)
@@ -1222,7 +1335,7 @@ Format: SCORE: [number] | REASON: [brief explanation]
             for other_clue in puzzle.clues:
                 if other_clue != clue and other_clue.answered:
                     other_chars = puzzle.get_current_clue_chars(other_clue)
-                other_word = ''.join(char or "_" for char in other_chars)
+                    other_word = ''.join(str(char) if char is not None else "_" for char in other_chars)
                     if not self.tools.validate_intersection(puzzle, clue, candidate.word, other_clue, other_word):
                         return 0.0  # Hard failure for intersection conflicts
             
@@ -1419,7 +1532,8 @@ class CoordinatorAgent:
             # Add to attempted words to avoid repeating the wrong answer
             if clue_id not in state.attempted_words:
                 state.attempted_words[clue_id] = []
-            state.attempted_words[clue_id].append(current_answer)
+            if current_answer and all(c for c in current_answer):  # Only add if not None and no None chars
+                state.attempted_words[clue_id].append(current_answer)
             
             # Add reason for rejection
             if clue_id not in state.rejection_reasons:
@@ -1511,7 +1625,7 @@ class CoordinatorAgent:
                 if intersections:
                     # Check if placing the candidate would conflict
                     other_chars = puzzle.get_current_clue_chars(other_clue)
-                other_word = ''.join(char or "_" for char in other_chars)
+                    other_word = ''.join(str(char) if char is not None else "_" for char in other_chars)
                     if not self.tools.validate_intersection(puzzle, target_clue, candidate.word, 
                                                           other_clue, other_word):
                         logger.info(f"Clearing conflicting answer '{other_word}' from clue {other_clue.number} to allow '{candidate.word}'")
@@ -1528,7 +1642,8 @@ class CoordinatorAgent:
                         # Mark for retry with rejection reason
                         if other_clue_id not in state.attempted_words:
                             state.attempted_words[other_clue_id] = []
-                        state.attempted_words[other_clue_id].append(other_word)
+                        if other_word and all(c for c in other_word):  # Only add if not None and no None chars
+                            state.attempted_words[other_clue_id].append(other_word)
                         
                         if other_clue_id not in state.rejection_reasons:
                             state.rejection_reasons[other_clue_id] = []
@@ -1628,7 +1743,7 @@ class CoordinatorAgent:
                     for candidate in candidates:
                         if clue_id not in state.attempted_words:
                             state.attempted_words[clue_id] = []
-                        if candidate.word not in state.attempted_words[clue_id]:
+                        if candidate.word and candidate.word not in state.attempted_words[clue_id]:
                             state.attempted_words[clue_id].append(candidate.word)
                     
                     state.candidates[clue_id] = candidates
@@ -1792,7 +1907,7 @@ class CoordinatorAgent:
                 "col": clue.col,
                 "answered": clue.answered,
                 "current_chars": current_chars,
-                "current_word": "".join(char or "_" for char in current_chars)
+                "current_word": "".join(str(char) if char is not None else "_" for char in current_chars)
             }
             
             if clue.answered and all(char is not None for char in current_chars):

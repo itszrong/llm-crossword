@@ -9,8 +9,8 @@ import sys
 import json
 from dotenv import load_dotenv
 
-# Add src to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+# Add parent directory to path to import from src
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.crossword.utils import load_puzzle
 from src.crossword.crossword import CrosswordPuzzle
@@ -69,7 +69,7 @@ def test_hard_puzzle():
     
     try:
         # Load the puzzle
-        puzzle = load_puzzle("data/hard.json")
+        puzzle = load_puzzle("../data/hard.json")
         print(f"📋 Loaded puzzle: {puzzle.width}x{puzzle.height} grid, {len(puzzle.clues)} clues")
         
         # Show clues
@@ -91,9 +91,9 @@ def test_hard_puzzle():
         print(f"  🎭 Review system: {solver.enable_review} (auto-enabled for hard difficulty)")
         
         # Create log paths
-        log_path = "logs/hard_detailed_test.json"
-        review_log_path = "logs/hard_detailed_review_report.json"
-        os.makedirs("logs", exist_ok=True)
+        log_path = "../logs/hard_detailed_test.json"
+        review_log_path = "../logs/hard_detailed_review_report.json"
+        os.makedirs("../logs", exist_ok=True)
         
         print("\n🔍 Starting solve with detailed visualization logging and review system...")
         stats = solver.solve_with_stats(puzzle, puzzle_name="Hard_Test", log_path=log_path, review_log_path=review_log_path)

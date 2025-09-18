@@ -10,7 +10,7 @@ import sys
 from dotenv import load_dotenv
 
 # Add src to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.crossword.utils import load_puzzle
 from src.solver.main_solver import AgenticCrosswordSolver
@@ -48,7 +48,7 @@ def test_puzzle(puzzle_file: str, puzzle_name: str):
         print(f"  ⚡ Async solving: {getattr(solver.coordinator, 'use_async_solving', False)}")
         
         # Create log path for this difficulty
-        log_path = f"logs/solver_log_{puzzle_name.lower()}.json"
+        log_path = f"../logs/solver_log_{puzzle_name.lower()}.json"
         
         stats = solver.solve_with_stats(puzzle, puzzle_name=puzzle_name, log_path=log_path)
         
@@ -94,10 +94,10 @@ def main():
     
     # Test puzzles in order of difficulty
     test_cases = [
-        ("data/easy.json", "Easy"),
-        ("data/medium.json", "Medium"),
-        ("data/hard.json", "Hard"),
-        ("data/cryptic.json", "Cryptic")
+        ("../data/easy.json", "Easy"),
+        ("../data/medium.json", "Medium"),
+        ("../data/hard.json", "Hard"),
+        ("../data/cryptic.json", "Cryptic")
     ]
     
     results = {}

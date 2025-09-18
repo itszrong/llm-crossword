@@ -7,11 +7,16 @@ based on crossword expertise and pattern analysis.
 """
 
 import os
+import sys
 import json
 import logging
+from dotenv import load_dotenv
+
+# Add parent directory to path to import from src
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from src.crossword.crossword import CrosswordPuzzle
 from src.crossword.types import Clue, Direction
-from dotenv import load_dotenv
 
 load_dotenv()
 logging.basicConfig(level=logging.WARNING, format='%(levelname)s:%(name)s:%(message)s')
@@ -23,7 +28,7 @@ def main():
     print("============================")
     
     # Load puzzle
-    with open("data/hard.json", 'r') as f:
+    with open("../data/hard.json", 'r') as f:
         puzzle_data = json.load(f)
     
     # Create clues

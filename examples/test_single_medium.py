@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script for a single cryptic puzzle with detailed visualization logging
+Test script for a single medium puzzle with detailed visualization logging
 """
 
 import os
@@ -8,7 +8,7 @@ import sys
 from dotenv import load_dotenv
 
 # Add src to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.crossword.utils import load_puzzle
 from src.solver.main_solver import AgenticCrosswordSolver
@@ -16,41 +16,39 @@ from src.solver.main_solver import AgenticCrosswordSolver
 # Load environment variables
 load_dotenv()
 
-def test_cryptic_puzzle():
-    """Test the cryptic puzzle with detailed logging"""
-    print("🧩 Testing Cryptic Puzzle with VisualizationAgent")
+def test_medium_puzzle():
+    """Test the medium puzzle with detailed logging"""
+    print("🧩 Testing Medium Puzzle with VisualizationAgent")
     print("=" * 60)
     
     try:
         # Load the puzzle
-        puzzle = load_puzzle("data/cryptic.json")
+        puzzle = load_puzzle("../data/medium.json")
         print(f"📋 Loaded puzzle: {puzzle.width}x{puzzle.height} grid, {len(puzzle.clues)} clues")
         
         # Show clues
-        print("\n📝 Cryptic Clues:")
+        print("\n📝 Clues:")
         for clue in puzzle.clues:
             print(f"  {clue.number}. {clue.text} ({clue.length} letters, {clue.direction})")
         
         print(f"\n🎯 Initial grid:")
         print(puzzle)
         
-        # Create specialized solver for cryptic difficulty
-        solver = AgenticCrosswordSolver(difficulty="cryptic")
+        # Create specialized solver for medium difficulty
+        solver = AgenticCrosswordSolver(difficulty="medium")
         
-        print(f"\n🤖 Using CrypticCrosswordCoordinator with:")
+        print(f"\n🤖 Using MediumCrosswordCoordinator with:")
         print(f"  ⚙️ Max iterations: {solver.coordinator.max_iterations}")
         print(f"  ↔️ Backtracking: {solver.coordinator.backtrack_enabled}")
         print(f"  🧠 Thinking depth: {solver.coordinator.thinking_depth}")
         print(f"  ⚡ Async solving: {getattr(solver.coordinator, 'use_async_solving', False)}")
-        print(f"  🔀 Wordplay analysis: Enabled")
-        print(f"  🧩 Anagram detection: Enabled")
         
         # Create log path
-        log_path = "logs/cryptic_detailed_test.json"
+        log_path = "../logs/medium_detailed_test.json"
         os.makedirs("logs", exist_ok=True)
         
-        print("\n🔍 Starting solve with detailed cryptic wordplay analysis...")
-        stats = solver.solve_with_stats(puzzle, puzzle_name="Cryptic_Test", log_path=log_path)
+        print("\n🔍 Starting solve with detailed visualization logging...")
+        stats = solver.solve_with_stats(puzzle, puzzle_name="Medium_Test", log_path=log_path)
         
         # Display results
         print(f"\n📊 Results:")
@@ -79,43 +77,28 @@ def test_cryptic_puzzle():
             solved = "✅" if clue.answered and all(char is not None for char in current_chars) else "❌"
             print(f"  {solved} Clue {clue.number} {clue.direction}: '{clue.text}' = {current_word}")
             
-        # Show cryptic clue analysis
-        print(f"\n🧩 Cryptic Clues Analysis:")
-        cryptic_examples = {
-            "1_across": {
-                "clue": "Deliver dollar to complete start of betting spreads (7)",
-                "answer": "BUTTERS",
-                "wordplay": "B(etting) + UTTER$ (deliver dollar)"
-            },
-            "2_across": {
-                "clue": "Campaigned for B. Dole surprisingly winning twice (7)",
-                "answer": "LOBBIED", 
-                "wordplay": "Anagram of 'B Dole' + BI (twice)"
-            },
-            "3_across": {
-                "clue": "Discovered hot curry initially taken away (5)",
-                "answer": "SPIED",
-                "wordplay": "SP-ICE-D with H(ot) and C(urry) removed"
-            },
-            "15_down": {
-                "clue": "Cry about time working in US city (6)",
-                "answer": "BOSTON",
-                "wordplay": "SOB (cry) around T (time) + ON (working)"
-            }
+        # Show expected answers for debugging
+        print(f"\n🎯 Expected Answers:")
+        expected_answers = {
+            "1_across": "EPIC",
+            "1_down": "PARABLE", 
+            "2_across": "AUTHOR",
+            "2_down": "COVER",
+            "3_down": "STORY"
         }
-        
-        for clue_key, info in cryptic_examples.items():
-            print(f"  🔑 {clue_key}: '{info['clue']}'")
-            print(f"     → {info['answer']} ({info['wordplay']})")
+        for clue in puzzle.clues:
+            clue_key = f"{clue.number}_{clue.direction}"
+            if clue_key in expected_answers:
+                print(f"  Clue {clue.number} {clue.direction}: '{clue.text}' → {expected_answers[clue_key]}")
             
         return stats['success']
         
     except Exception as e:
-        print(f"❌ Error testing cryptic puzzle: {e}")
+        print(f"❌ Error testing medium puzzle: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 if __name__ == "__main__":
-    success = test_cryptic_puzzle()
+    success = test_medium_puzzle()
     print(f"\n🎯 Result: {'✅ SUCCESS' if success else '❌ FAILED'}")

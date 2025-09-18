@@ -188,6 +188,24 @@ class SpecializedConstraintAgent:
         """Validate solution using the base agent's validation logic"""
         return self.base_agent.validate_solution(puzzle, clue, candidate, state)
     
+    def _should_prioritize_over_existing(self, candidate, clue, other_clue, other_word, puzzle):
+        """Delegate to base agent's prioritization logic"""
+        if hasattr(self.base_agent, '_should_prioritize_over_existing'):
+            return self.base_agent._should_prioritize_over_existing(candidate, clue, other_clue, other_word, puzzle)
+        return False
+    
+    def _calculate_constraint_factor(self, puzzle, clue):
+        """Delegate to base agent's constraint calculation"""
+        if hasattr(self.base_agent, '_calculate_constraint_factor'):
+            return self.base_agent._calculate_constraint_factor(puzzle, clue)
+        return 1.0
+    
+    def validate_with_tolerance(self, puzzle, clue, candidate, tolerance_level="normal"):
+        """Delegate to base agent's tolerance validation"""
+        if hasattr(self.base_agent, 'validate_with_tolerance'):
+            return self.base_agent.validate_with_tolerance(puzzle, clue, candidate, tolerance_level)
+        return self.validate_solution(puzzle, clue, candidate)
+    
     def resolve_conflicts(self, puzzle, state):
         """Resolve conflicts with difficulty-specific logic"""
         
